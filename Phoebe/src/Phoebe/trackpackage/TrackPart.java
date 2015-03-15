@@ -39,7 +39,7 @@ public abstract class TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	abstract Barrier getBarrier(Coordinate coord);
+	public abstract Barrier getBarrier(Coordinate coord);
 
 	/**
 	 * 

@@ -6,20 +6,20 @@ import Phoebe.trackpackage.*;
 
 public abstract class Bot {
 
-	private Displacement displacement;
-	private Coordinate position;
-	private RobotState state;
-	private TrackPart actualPart;
-	private Coordinate nextPosition;
+	protected Displacement displacement;
+	protected Coordinate position;
+	protected RobotState state;
+	protected TrackPart actualPart;
+	protected Coordinate nextPosition;
+	
+	
 
 	/**
 	 * 
 	 * @param track
 	 * @return 
 	 */
-	void jump(Track track) {
-		throw new UnsupportedOperationException();
-	}
+	public abstract void jump(Track track);
 
 	/**
 	 * 
@@ -94,8 +94,7 @@ public abstract class Bot {
 		//throw new UnsupportedOperationException();
 		System.out.println("Barrier lerakas");
 		part.addBarrier(barrier, coord);
-		barrier.modifyDisplacement(this);
-		barrier.setState(this);
+		
 	}
 
 	/**

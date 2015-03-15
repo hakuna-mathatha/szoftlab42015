@@ -7,7 +7,7 @@ import Phoebe.gamepackage.Bot;
 
 public abstract class Barrier {
 
-	JumpablePart barriers;
+	
 	private Time timeStamp;
 	private Coordinate position;
 

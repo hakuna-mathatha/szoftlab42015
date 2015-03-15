@@ -15,19 +15,24 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	public Robot(){
-		System.out.println("	Robotpeldany letrehozasa.");
+		System.out.println("	Robotpeldany letrehozasa");
 	}
 	
-	void reducePuttyRepository() {
-		throw new UnsupportedOperationException();
+	
+	
+	public void reducePuttyRepository() {
+//		throw new UnsupportedOperationException();
+		System.out.println("	Leraktam egy ragacsot, csokken a keszlet");
 	}
 
 	/**
 	 * 
 	 * @return 
 	 */
-	void reduceOilRepository() {
-		throw new UnsupportedOperationException();
+	public void reduceOilRepository() {
+//		throw new UnsupportedOperationException();
+		System.out.println("	Leraktam egy olajat, csokken a keszlet.");
+		
 	}
 
 	/**
@@ -35,7 +40,7 @@ public class Robot extends Bot {
 	 * @param distance
 	 * @return 
 	 */
-	void setDistance(double distance) {
+	public void setDistance(double distance) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -43,8 +48,10 @@ public class Robot extends Bot {
 	 * 
 	 * @return 
 	 */
-	double getDistance() {
-		throw new UnsupportedOperationException();
+	public double getDistance() {
+//		throw new UnsupportedOperationException();
+		System.out.println("Robot tavolsaganak lekerese");
+		return 0;
 	}
 
 	/**
@@ -53,7 +60,10 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	private void getTheEffectForRobot(Barrier barrier) {
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
+		System.out.println("getTheEffectForRobot fgv hivas");
+		barrier.modifyDisplacement(this);
+		barrier.setState(this);
 	}
 
 	/**
@@ -80,7 +90,10 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	private Barrier giveMeTheBarrier(Coordinate coord, TrackPart part) {
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
+		System.out.println("Akadaly keresese az elemen");
+		Barrier b = part.getBarrier(coord);
+		return b;
 	}
 
 	/**
@@ -90,7 +103,20 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	private Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
+		System.out.println("Robot koord szamolas");
+		return null;
+	}
+	
+	
+	@Override
+	public void jump(Track track){
+//		throw new UnsupportedOperationException();
+		System.out.println("Bot jump() hivason");
+		calcCoordinate(position, displacement);
+		TrackPart part = track.findAPart(position);
+		Barrier b = giveMeTheBarrier(position, part);
+		getTheEffectForRobot(b);
 	}
 
 }

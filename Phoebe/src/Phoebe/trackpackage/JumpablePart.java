@@ -1,16 +1,30 @@
 package Phoebe.trackpackage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JumpablePart extends TrackPart {
 
-	Track trackParts;
+	List<Barrier> barriers;
 
+	public JumpablePart(){
+		barriers = new ArrayList<Barrier>();
+		barriers.add(new Oil());
+		barriers.add(new Putty());
+		barriers.add(new Pure());
+		
+//		System.out.println("                     Uj jumpable part");
+	}
+	
 	/**
 	 * 
 	 * @param coord
 	 * @return 
 	 */
-	Barrier getBarrier(Coordinate coord) {
-		throw new UnsupportedOperationException();
+	public Barrier getBarrier(Coordinate coord) {
+//		throw new UnsupportedOperationException();
+		System.out.println("Vissza adok egy akadalyt");
+		return barriers.get(0);
 	}
 
 }
