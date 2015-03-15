@@ -1,10 +1,13 @@
 package Phoebe.trackpackage;
 
+import java.sql.Time;
+
 import Phoebe.*;
+import Phoebe.gamepackage.Bot;
 
 public abstract class Barrier {
 
-	JumpablePart barriers;
+	
 	private Time timeStamp;
 	private Coordinate position;
 
@@ -27,8 +30,11 @@ public abstract class Barrier {
 	 * @param coord
 	 * @return 
 	 */
-	bool containCoord(Coordinate coord) {
-		throw new UnsupportedOperationException();
+	protected boolean containCoord(Coordinate coord) {
+//		throw new UnsupportedOperationException();
+		System.out.println("			Megnezi a Barrier hogy a koordinata hozza tartozik e.");
+		return true;
+
 	}
 
 	/**

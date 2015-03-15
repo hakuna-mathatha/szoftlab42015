@@ -28,8 +28,10 @@ public abstract class TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	viod addBarrier(Barrier barrier, Coordinate coord) {
-		throw new UnsupportedOperationException();
+	public void addBarrier(Barrier barrier, Coordinate coord) {
+		//throw new UnsupportedOperationException();
+		System.out.println("		Adjunk egy barriert a parthoz.");
+		
 	}
 
 	/**
@@ -37,7 +39,7 @@ public abstract class TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	abstract Barrier getBarrier(Coordinate coord);
+	public abstract Barrier getBarrier(Coordinate coord);
 
 	/**
 	 * 
@@ -53,8 +55,11 @@ public abstract class TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	bool containCoord(Coordinate coord) {
-		throw new UnsupportedOperationException();
+	protected boolean containCoord(Coordinate coord) {
+//		throw new UnsupportedOperationException();
+		System.out.println("			Megnezi a palya elem hogy a koordinata hozza tartozik e.");
+		
+		return true;
 	}
 
 }
