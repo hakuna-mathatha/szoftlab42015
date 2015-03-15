@@ -7,7 +7,7 @@ import Phoebe.gamepackage.Bot;
 
 public abstract class Barrier {
 
-	
+	JumpablePart barriers;
 	private Time timeStamp;
 	private Coordinate position;
 
@@ -30,11 +30,8 @@ public abstract class Barrier {
 	 * @param coord
 	 * @return 
 	 */
-	protected boolean containCoord(Coordinate coord) {
-//		throw new UnsupportedOperationException();
-		System.out.println("			Megnezi a Barrier hogy a koordinata hozza tartozik e.");
-		return true;
-
+	boolean containCoord(Coordinate coord) {
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -18,29 +18,7 @@ public class Robot extends Bot {
 		System.out.println("	Robotpeldany letrehozasa.");
 	}
 	
-	
-	
-	public void reducePuttyRepository() {
-//		throw new UnsupportedOperationException();
-		System.out.println("		Leraktam egy ragacsot, csokken a keszlet.");
-	}
-
-	/**
-	 * 
-	 * @return 
-	 */
-	public void reduceOilRepository() {
-//		throw new UnsupportedOperationException();
-		System.out.println("		Leraktam egy olajat, csokken a keszlet.");
-		
-	}
-
-	/**
-	 * 
-	 * @param distance
-	 * @return 
-	 */
-	public void setDistance(double distance) {
+	void reducePuttyRepository() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -48,10 +26,25 @@ public class Robot extends Bot {
 	 * 
 	 * @return 
 	 */
-	public double getDistance() {
-//		throw new UnsupportedOperationException();
-		System.out.println("			Robot tavolsaganak lekerese.");
-		return 0;
+	void reduceOilRepository() {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param distance
+	 * @return 
+	 */
+	void setDistance(double distance) {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @return 
+	 */
+	double getDistance() {
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -60,10 +53,7 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	private void getTheEffectForRobot(Barrier barrier) {
-//		throw new UnsupportedOperationException();
-		System.out.println("			getTheEffectForRobot fgv hivas.");
-		barrier.modifyDisplacement(this);
-		barrier.setState(this);
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -90,10 +80,7 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	private Barrier giveMeTheBarrier(Coordinate coord, TrackPart part) {
-//		throw new UnsupportedOperationException();
-		System.out.println("			Akadaly keresese az elemen.");
-		Barrier b = part.getBarrier(coord);
-		return b;
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -102,22 +89,8 @@ public class Robot extends Bot {
 	 * @param disp
 	 * @return 
 	 */
-//	Alapbol privat de hogy a Helper elerje publicra kell rakni
-	public Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
-//		throw new UnsupportedOperationException();
-		System.out.println("		Robot koord szamolas.");
-		return null;
-	}
-	//dsf
-	
-	@Override
-	public void jump(Track track){
-//		throw new UnsupportedOperationException();
-		System.out.println("		Bot jump() hivason.");
-		calcCoordinate(position, displacement);
-		TrackPart part = track.findAPart(position);
-		Barrier b = giveMeTheBarrier(position, part);
-		getTheEffectForRobot(b);
+	private Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
+		throw new UnsupportedOperationException();
 	}
 
 }
