@@ -27,7 +27,8 @@ public abstract class Bot {
 	 * @return 
 	 */
 	public void modifyDisplacement(Displacement disp) {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		System.out.println("Modositom a robot sebesseget");
 	}
 
 	/**
@@ -36,7 +37,8 @@ public abstract class Bot {
 	 * @return 
 	 */
 	public void setPosition(Coordinate position) {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		System.out.println("Modositom a robot allapotat");
 	}
 
 	/**
@@ -89,7 +91,11 @@ public abstract class Bot {
 	 * @return 
 	 */
 	public void putTheBarrier(Coordinate coord, Barrier barrier, JumpablePart part) {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		System.out.println("Barrier lerakas");
+		part.addBarrier(barrier, coord);
+		barrier.modifyDisplacement(this);
+		barrier.setState(this);
 	}
 
 	/**

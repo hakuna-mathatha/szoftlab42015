@@ -28,8 +28,10 @@ public abstract class TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	void addBarrier(Barrier barrier, Coordinate coord) {
-		throw new UnsupportedOperationException();
+	public void addBarrier(Barrier barrier, Coordinate coord) {
+		//throw new UnsupportedOperationException();
+		System.out.println("Adjunk egy barriert a parthoz");
+		
 	}
 
 	/**

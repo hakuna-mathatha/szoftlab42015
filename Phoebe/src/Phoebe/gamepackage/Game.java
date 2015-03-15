@@ -1,14 +1,15 @@
 package Phoebe.gamepackage;
 
 import java.util.*;
+
 import Phoebe.*;
 import Phoebe.trackpackage.*;
 
 public class Game {
 
-	Collection<Bot> bots;
-	Track track;
-	Control control;
+	public List<Bot> bots;
+	public Track track;
+	public Control control;
 
 	/**
 	 * 
@@ -20,6 +21,7 @@ public class Game {
 		t.create();
 		Robot r1 = new Robot();
 		Robot r2 = new Robot();
+		bots = new ArrayList<Bot>();
 		bots.add(r1);
 		bots.add(r2);
 	}
