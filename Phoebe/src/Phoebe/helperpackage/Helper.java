@@ -31,7 +31,6 @@ public class Helper {
 			System.out.println("Rossz parancs");
 		}
 		
-		
 		//Legyenek adottak, hogy a fuggveny hivasoknal eyek lehessenek a parameterek
 		Coordinate coord = new Coordinate();
 		Displacement disp = new Displacement();
@@ -98,11 +97,11 @@ public class Helper {
 	}
 
 	public static void main(String[] args) {
-		// Inicializálós szakasz:
+		// Inicializï¿½lï¿½s szakasz:
 		g = new Game();
 		g.start();
 
-		// Parancsok lekezelése:
+		// Parancsok lekezelï¿½se:
 		while (Helper.vege != true) {
 			System.out.print("-------------------uj parancs------------------------\n");
 			System.out.println("Add meg a parancsot : ");
