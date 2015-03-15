@@ -18,8 +18,14 @@ public class Helper {
 	public static boolean vege = false;
 	//Legyen statikus a Game peldany igy az egyes parancsoknal elerhetoek a Game ben peldanyositott objektumok. Ehhez azok a Game ban public-ok
 	public static Game g;
+	
+	private enum Commands{
+		exit, put_oil, put_putty, one_round, get_winner, next_position, die, explore
+	}
 
 	public static void kiertekel(String parancs) {
+		
+		Commands comm = Commands.valueOf(parancs);
 		
 		
 		//Legyenek adottak, hogy a fuggveny hivasoknal eyek lehessenek a parameterek
@@ -30,48 +36,48 @@ public class Helper {
 		JumpablePart part1 = new JumpablePart();
 		Robot r = g.bots.get(0);
 		
-		switch (parancs) {
-		case "exit":
+		switch (comm) {
+		case exit:
 			vege = true;
 			break;
-		case "put oil":
+		case put_oil:
 			System.out.println("	Olaj lerakasa.");
 
 			r.putTheBarrier(coord, oil, part1);
 			r.reduceOilRepository();
 			
 			break;
-		case "put putty":
+		case put_putty:
 			System.out.println("	Ragacs lerakasa.");
 			
 			r.putTheBarrier(coord, putty, part1);
 			r.reducePuttyRepository();
 			
 			break;
-		case "one round":
+		case one_round:
 			System.out.println("	Robotok leptetese.");
 			
 			r.jump(g.track);
 			
 			break;
-		case "get winner":
+		case get_winner:
 			System.out.println("	Gyoztes nevenek megadasa.");
 			
 			g.getWinner();
 			
 			break;
-		case "die":
+		case die:
 			System.out.println("	Robot elhagyta a palyat, meghalt.");
 //				Erre kicsit logikat is kene a fuggvenyekbe rakni hogy meg lehessen csinalni. Szerintem most erre nincs szukseg a kodot meost nem kell beadni.
 //			A feladat leirasban az van, hogy a szekvenciakat kell vegig kovetni a szkeleton ban. 
 			break;
-		case "explore":
+		case explore:
 			//Ez az ami a one round lenne csak jobban ki kene fejteni, ezert a kettot egyben csinalom meg. A szekvencian ket reszbe bontva egyszerubb de itt nem lehet,
 			// vagy csak tok felesleges elagazasokkal szetbontani
 			
 			System.out.println("	Palyaelem hatasa a robotra.");
 			break;
-		case "next position":
+		case next_position:
 			System.out.println("	Kovetkezo pozicio");
 			g.bots.get(0).calcCoordinate(coord, disp);
 			break;
