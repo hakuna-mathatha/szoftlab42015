@@ -8,13 +8,8 @@ public class Track {
 	 * 
 	 * @return 
 	 */
-	
-	public Track(){
-		System.out.println("	A palya letrehozasa.");
-	}
-	
 	public void create() {
-		System.out.println("		A palyaelemek letrehozasa a beolvasott adatok alapjan.");
+		throw new UnsupportedOperationException();
 	}
 
 	/**

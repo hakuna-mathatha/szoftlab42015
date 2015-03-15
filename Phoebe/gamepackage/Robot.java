@@ -14,10 +14,6 @@ public class Robot extends Bot {
 	 * 
 	 * @return 
 	 */
-	public Robot(){
-		System.out.println("	Robotpeldany letrehozasa.");
-	}
-	
 	void reducePuttyRepository() {
 		throw new UnsupportedOperationException();
 	}
