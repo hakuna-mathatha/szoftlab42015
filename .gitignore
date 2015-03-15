@@ -1,3 +1,5 @@
 Phoebe/bin/**
 *.class
 .settings
+Phoebe/.idea/*
+Phoebe/Phoebe.iml
