@@ -31,7 +31,7 @@ public class Robot extends Bot {
 	 */
 	public void reduceOilRepository() {
 //		throw new UnsupportedOperationException();
-		System.out.println("		Leraktam egy olajat, csokken a keszlet.");
+		System.out.println("		"+getClass().getName()+":reduceOilRepository");
 		
 	}
 

@@ -92,7 +92,7 @@ public abstract class Bot {
 	 */
 	public void putTheBarrier(Coordinate coord, Barrier barrier, JumpablePart part) {
 		//throw new UnsupportedOperationException();
-		System.out.println("		Barrier lerakas");
+		System.out.println("		"+getClass().getName()+":putTheBarrier");
 		part.addBarrier(barrier, coord);
 		
 	}

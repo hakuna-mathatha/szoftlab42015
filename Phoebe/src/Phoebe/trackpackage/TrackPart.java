@@ -30,7 +30,7 @@ public abstract class TrackPart {
 	 */
 	public void addBarrier(Barrier barrier, Coordinate coord) {
 		//throw new UnsupportedOperationException();
-		System.out.println("		Adjunk egy barriert a parthoz.");
+		System.out.println("				"+getClass().getName()+":addBarrier");
 		
 	}
 
