@@ -4,6 +4,7 @@ import java.io.Console;
 import java.util.Scanner;
 
 import Phoebe.gamepackage.Bot;
+import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
 import Phoebe.trackpackage.Barrier;
@@ -19,20 +20,11 @@ public class Helper {
 	public static Game g;
 
 	public static void kiertekel(String parancs) {
-		// if (parancs.equals("exit")) {
-		// vege = true;
-		// } else if (parancs.equals("put oil")) {
-		// System.out.println("	Olaj lerakasa.");
-		// } else if (parancs.equals("put putty")) {
-		// System.out.println("	Ragacs lerakasa.");
-		// } else if (parancs.equals("one round")) {
-		// System.out.println("	Robotok leptetese.");
-		// } else {
-		// System.out.println("Helytelen parancs.");
-		// }
+		
 		
 		//Legyenek adottak, hogy a fuggveny hivasoknal eyek lehessenek a parameterek
 		Coordinate coord = new Coordinate();
+		Displacement disp = new Displacement();
 		Putty putty = new Putty();
 		Oil oil = new Oil();
 		JumpablePart part1 = new JumpablePart();
@@ -70,10 +62,18 @@ public class Helper {
 			break;
 		case "die":
 			System.out.println("	Robot elhagyta a palyat, meghalt.");
-			
+//				Erre kicsit logikat is kene a fuggvenyekbe rakni hogy meg lehessen csinalni. Szerintem most erre nincs szukseg a kodot meost nem kell beadni.
+//			A feladat leirasban az van, hogy a szekvenciakat kell vegig kovetni a szkeleton ban. 
 			break;
-		case "part effect":
+		case "explore":
+			//Ez az ami a one round lenne csak jobban ki kene fejteni, ezert a kettot egyben csinalom meg. A szekvencian ket reszbe bontva egyszerubb de itt nem lehet,
+			// vagy csak tok felesleges elagazasokkal szetbontani
+			
 			System.out.println("	Palyaelem hatasa a robotra.");
+			break;
+		case "next position":
+			System.out.println("	Kovetkezo pozicio");
+			g.bots.get(0).calcCoordinate(coord, disp);
 			break;
 		default:
 			System.out.println("Helytelen parancs.");

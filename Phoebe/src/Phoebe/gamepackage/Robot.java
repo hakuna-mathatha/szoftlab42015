@@ -102,7 +102,8 @@ public class Robot extends Bot {
 	 * @param disp
 	 * @return 
 	 */
-	private Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
+//	Alapbol privat de hogy a Helper elerje publicra kell rakni
+	public Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
 //		throw new UnsupportedOperationException();
 		System.out.println("Robot koord szamolas");
 		return null;

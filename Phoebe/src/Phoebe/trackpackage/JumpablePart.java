@@ -24,6 +24,9 @@ public class JumpablePart extends TrackPart {
 	public Barrier getBarrier(Coordinate coord) {
 //		throw new UnsupportedOperationException();
 		System.out.println("Vissza adok egy akadalyt");
+		for(Barrier b : barriers){
+			b.containCoord(coord);
+		}
 		return barriers.get(0);
 	}
 

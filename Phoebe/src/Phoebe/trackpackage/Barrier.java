@@ -30,8 +30,11 @@ public abstract class Barrier {
 	 * @param coord
 	 * @return 
 	 */
-	boolean containCoord(Coordinate coord) {
-		throw new UnsupportedOperationException();
+	protected boolean containCoord(Coordinate coord) {
+//		throw new UnsupportedOperationException();
+		System.out.println("Megnezi a Barrier hogy a koordinata hozza tartozik e");
+		return true;
+
 	}
 
 	/**

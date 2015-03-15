@@ -37,7 +37,11 @@ public class Track {
 //		throw new UnsupportedOperationException();
 		System.out.println("Track/findAPart() keresi az elemet");
 		
-		return  new JumpablePart();
+		for(JumpablePart p : trackParts){
+			p.containCoord(coord);
+		}
+		
+		return  trackParts.get(0);
 	}
 
 }
