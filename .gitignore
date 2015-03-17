@@ -3,3 +3,4 @@ Phoebe/bin/**
 .settings
 Phoebe/.idea/*
 Phoebe/Phoebe.iml
+Phoebe/out/*

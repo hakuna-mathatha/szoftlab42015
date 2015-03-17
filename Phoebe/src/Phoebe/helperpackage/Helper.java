@@ -95,11 +95,11 @@ public class Helper {
 	}
 
 	public static void main(String[] args) {
-		// Inicializ·lÛs szakasz:
+		// Inicializ√°l√°s szakasz:
 		g = new Game();
 		g.start();
 
-		// Parancsok lekezelÈse:
+		// Parancsok lekezel√©se:
 		while (Helper.vege != true) {
 			System.out.print("-------------------uj parancs------------------------\n");
 			System.out.println("Add meg a parancsot : ");
