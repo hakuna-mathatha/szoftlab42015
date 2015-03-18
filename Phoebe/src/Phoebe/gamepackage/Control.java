@@ -1,6 +1,6 @@
 package Phoebe.gamepackage;
 
-import Phoebe.*;
+import Phoebe.gamepackage.*;
 
 public class Control {
 
