@@ -20,7 +20,7 @@ public class Helper {
 	public static Game g;
 	
 	private enum Commands{
-		exit, put_oil, put_putty, one_round, get_winner, next_position, die, explore, help
+		exit, put_oil, put_putty, one_round, get_winner, next_position, help
 	}
 
 	public static void kiertekel(String parancs) {
@@ -58,19 +58,7 @@ public class Helper {
 			case get_winner:
 				g.getWinner();
 				break;
-			case die:
-				System.out.println("	Robot elhagyta a palyat, meghalt.");
-//					Erre kicsit logikat is kene a fuggvenyekbe rakni hogy meg lehessen csinalni. Szerintem most erre nincs szukseg a kodot most nem kell beadni.
-//				A feladat leirasban az van, hogy a szekvenciakat kell vegig kovetni a szkeleton ban. 
-				break;
-			case explore:
-				//Ez az ami a one round lenne csak jobban ki kene fejteni, ezert a kettot egyben csinalom meg. A szekvencian ket reszbe bontva egyszerubb de itt nem lehet,
-				// vagy csak tok felesleges elagazasokkal szetbontani
-				
-				System.out.println("	Palyaelem hatasa a robotra.");
-				break;
 			case next_position:
-
 				g.bots.get(0).calcCoordinate(coord, disp);
 				break;
             case help:
@@ -80,8 +68,6 @@ public class Helper {
                  System.out.println("   one_round: You can move your robots");
                  System.out.println("   get_winner: You can get the winner");
                  System.out.println("   next_position: You can get your robot next position");
-                 System.out.println("   explore: You can see what is the effect of the track to your robot");
-                 System.out.println("   die: Your robot left the track and died");
                  System.out.println("   exit: Exit from the program");
                 break;
 			default:
