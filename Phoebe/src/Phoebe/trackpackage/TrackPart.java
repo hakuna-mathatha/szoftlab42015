@@ -57,7 +57,7 @@ public abstract class TrackPart {
 	 */
 	protected boolean containCoord(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Megnezi a palya elem hogy a koordinata hozza tartozik e.");
+		System.out.println("			" + getClass().getName()+":containCoord");
 		
 		return true;
 	}

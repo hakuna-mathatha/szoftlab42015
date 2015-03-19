@@ -20,7 +20,7 @@ public class Helper {
 	public static Game g;
 	
 	private enum Commands{
-		exit, put_oil, put_putty, one_round, get_winner, next_position, die, explore
+		exit, put_oil, put_putty, one_round, get_winner, next_position, die, explore, help
 	}
 
 	public static void kiertekel(String parancs) {
@@ -28,11 +28,11 @@ public class Helper {
 		try{
 			comm = Commands.valueOf(parancs);
 		}catch(Exception e){
-			System.out.println("Rossz parancs");
+			System.out.println("Incorrect Command");
 		}
 		
 		
-		//Legyenek adottak, hogy a fuggveny hivasoknal eyek lehessenek a parameterek
+		//Legyenek adottak, hogy a fuggveny hivasoknal ezek lehessenek a parameterek
 		Coordinate coord = new Coordinate();
 		Displacement disp = new Displacement();
 		Putty putty = new Putty();
@@ -45,34 +45,22 @@ public class Helper {
 				vege = true;
 				break;
 			case put_oil:
-				System.out.println("	Olaj lerakasa.");
-
 				r.putTheBarrier(coord, oil, part1);
 				r.reduceOilRepository();
-				
 				break;
 			case put_putty:
-				System.out.println("	Ragacs lerakasa.");
-				
 				r.putTheBarrier(coord, putty, part1);
 				r.reducePuttyRepository();
-				
 				break;
-			case one_round:
-				System.out.println("	Robotok leptetese.");
-				
+                case one_round:
 				r.jump(g.track);
-				
 				break;
 			case get_winner:
-				System.out.println("	Gyoztes nevenek megadasa.");
-				
 				g.getWinner();
-				
 				break;
 			case die:
 				System.out.println("	Robot elhagyta a palyat, meghalt.");
-//					Erre kicsit logikat is kene a fuggvenyekbe rakni hogy meg lehessen csinalni. Szerintem most erre nincs szukseg a kodot meost nem kell beadni.
+//					Erre kicsit logikat is kene a fuggvenyekbe rakni hogy meg lehessen csinalni. Szerintem most erre nincs szukseg a kodot most nem kell beadni.
 //				A feladat leirasban az van, hogy a szekvenciakat kell vegig kovetni a szkeleton ban. 
 				break;
 			case explore:
@@ -82,11 +70,22 @@ public class Helper {
 				System.out.println("	Palyaelem hatasa a robotra.");
 				break;
 			case next_position:
-				System.out.println("	Kovetkezo pozicio");
+
 				g.bots.get(0).calcCoordinate(coord, disp);
 				break;
+            case help:
+                 System.out.println("You can choose from the following commands:");
+                 System.out.println("   put_oil: You can put oil to the track");
+                 System.out.println("   put_putty: You can put putty to the track");
+                 System.out.println("   one_round: You can move your robots");
+                 System.out.println("   get_winner: You can get the winner");
+                 System.out.println("   next_position: You can get your robot next position");
+                 System.out.println("   explore: You can see what is the effect of the track to your robot");
+                 System.out.println("   die: Your robot left the track and died");
+                 System.out.println("   exit: Exit from the program");
+                break;
 			default:
-				System.out.println("Helytelen parancs.");
+				System.out.println("Incorrect command.");
 				break;
 			}
 		}catch(Exception e){
@@ -101,8 +100,8 @@ public class Helper {
 
 		// Parancsok lekezelése:
 		while (Helper.vege != true) {
-			System.out.print("-------------------uj parancs------------------------\n");
-			System.out.println("Add meg a parancsot : ");
+			System.out.print("-------------------new command------------------------\n");
+			System.out.println("Give the command : ");
 
 			String parancs;
 

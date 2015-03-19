@@ -23,7 +23,7 @@ public class JumpablePart extends TrackPart {
 	 */
 	public Barrier getBarrier(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Vissza adok egy akadalyt.");
+		System.out.println("			"+getClass().getName()+":getBarrier");
 		for(Barrier b : barriers){
 			b.containCoord(coord);
 		}

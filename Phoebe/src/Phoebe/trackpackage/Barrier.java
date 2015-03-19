@@ -32,7 +32,7 @@ public abstract class Barrier {
 	 */
 	protected boolean containCoord(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Megnezi a Barrier hogy a koordinata hozza tartozik e.");
+		System.out.println("			"+getClass().getName()+":containCoord");
 		return true;
 
 	}

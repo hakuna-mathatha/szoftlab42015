@@ -16,12 +16,12 @@ public class Track {
 	 */
 	
 	public Track(){
-		System.out.println("	A palya letrehozasa.");
+		System.out.println("	"+getClass().getName()+":Track");
 		trackParts = new ArrayList<JumpablePart>();
 	}
 	
 	public void create() {
-		System.out.println("		A palyaelemek letrehozasa a beolvasott adatok alapjan.");
+		System.out.println("		"+getClass().getName()+":create");
 		
 		trackParts.add(new JumpablePart());
 		edge = new EdgeofTheTrack();
@@ -35,7 +35,7 @@ public class Track {
 	 */
 	public TrackPart findAPart(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Track/findAPart() keresi az elemet.");
+		System.out.println("			"+getClass().getName()+":findAPart");
 		
 		for(JumpablePart p : trackParts){
 			p.containCoord(coord);
