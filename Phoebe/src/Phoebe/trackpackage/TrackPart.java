@@ -30,8 +30,7 @@ public abstract class TrackPart {
 	 */
 	public void addBarrier(Barrier barrier, Coordinate coord) {
 		//throw new UnsupportedOperationException();
-		System.out.println("				"+getClass().getName()+":addBarrier");
-		
+		System.out.println("\t\t"+getClass().getName()+":addBarrier");
 	}
 
 	/**
@@ -57,7 +56,7 @@ public abstract class TrackPart {
 	 */
 	protected boolean containCoord(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			" + getClass().getName()+":containCoord");
+		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
 		
 		return true;
 	}

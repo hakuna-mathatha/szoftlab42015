@@ -54,6 +54,7 @@ public class Helper {
 				break;
                 case one_round:
 				r.jump(g.track);
+                g.bots.get(0).calcCoordinate(coord, disp);
 				break;
 			case get_winner:
 				g.getWinner();
@@ -62,13 +63,13 @@ public class Helper {
 				g.bots.get(0).calcCoordinate(coord, disp);
 				break;
             case help:
-                 System.out.println("You can choose from the following commands:");
-                 System.out.println("   put_oil: You can put oil to the track");
-                 System.out.println("   put_putty: You can put putty to the track");
-                 System.out.println("   one_round: You can move your robots");
-                 System.out.println("   get_winner: You can get the winner");
-                 System.out.println("   next_position: You can get your robot next position");
-                 System.out.println("   exit: Exit from the program");
+                 System.out.println("\tYou can choose from the following commands:");
+                 System.out.println("\t\tput_oil: You can put oil to the track");
+                 System.out.println("\t\tput_putty: You can put putty to the track");
+                 System.out.println("\t\tone_round: You can move your robots");
+                 System.out.println("\t\tget_winner: You can get the winner");
+                 System.out.println("\t\tnext_position: You can get your robot next position");
+                 System.out.println("\t\texit: Exit from the program");
                 break;
 			default:
 				System.out.println("Incorrect command.");

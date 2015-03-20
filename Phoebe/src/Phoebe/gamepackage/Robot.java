@@ -15,14 +15,14 @@ public class Robot extends Bot {
 	 * @return 
 	 */
 	public Robot(){
-		System.out.println("	Robotpeldany letrehozasa.");
+		System.out.println("\t"+getClass().getName()+":Robot");
 	}
 	
 	
 	
 	public void reducePuttyRepository() {
 //		throw new UnsupportedOperationException();
-		System.out.println("		Leraktam egy ragacsot, csokken a keszlet.");
+		System.out.println("\t"+getClass().getName()+":reducePuttyRepository");
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class Robot extends Bot {
 	 */
 	public void reduceOilRepository() {
 //		throw new UnsupportedOperationException();
-		System.out.println("		"+getClass().getName()+":reduceOilRepository");
+		System.out.println("\t"+getClass().getName()+":reduceOilRepository");
 		
 	}
 
@@ -50,7 +50,7 @@ public class Robot extends Bot {
 	 */
 	public double getDistance() {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Robot tavolsaganak lekerese.");
+		System.out.println("\t\t"+getClass().getName()+":getDistance");
 		return 0;
 	}
 
@@ -61,9 +61,9 @@ public class Robot extends Bot {
 	 */
 	private void getTheEffectForRobot(Barrier barrier) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			getTheEffectForRobot fgv hivas.");
+		System.out.println("\t"+getClass().getName()+":getTheEffectForRobot");
+        barrier.setState(this);
 		barrier.modifyDisplacement(this);
-		barrier.setState(this);
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class Robot extends Bot {
 	 */
 	private Barrier giveMeTheBarrier(Coordinate coord, TrackPart part) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			Akadaly keresese az elemen.");
+		System.out.println("\t"+getClass().getName()+":giveMeTheBarrier");
 		Barrier b = part.getBarrier(coord);
 		return b;
 	}
@@ -105,7 +105,7 @@ public class Robot extends Bot {
 //	Alapbol privat de hogy a Helper elerje publicra kell rakni
 	public Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
 //		throw new UnsupportedOperationException();
-		System.out.println("		Robot koord szamolas.");
+		System.out.println("\t"+getClass().getName()+":calcCoordinate");
 		return null;
 	}
 	//dsf
@@ -113,7 +113,7 @@ public class Robot extends Bot {
 	@Override
 	public void jump(Track track){
 //		throw new UnsupportedOperationException();
-		System.out.println("		Bot jump() hivason.");
+		System.out.println("\t"+getClass().getName()+":jump");
 		calcCoordinate(position, displacement);
 		TrackPart part = track.findAPart(position);
 		Barrier b = giveMeTheBarrier(position, part);

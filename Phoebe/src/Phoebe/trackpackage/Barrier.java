@@ -32,7 +32,7 @@ public abstract class Barrier {
 	 */
 	protected boolean containCoord(Coordinate coord) {
 //		throw new UnsupportedOperationException();
-		System.out.println("			"+getClass().getName()+":containCoord");
+		System.out.println("\t\t\t"+getClass().getName()+":containCoord");
 		return true;
 
 	}

@@ -28,7 +28,7 @@ public abstract class Bot {
 	 */
 	public void modifyDisplacement(Displacement disp) {
 		//throw new UnsupportedOperationException();
-		System.out.println("			Modositom a robot sebesseget.");
+		System.out.println("\t\t\t"+getClass().getName()+":modifyDisplacement");
 	}
 
 	/**
@@ -38,7 +38,7 @@ public abstract class Bot {
 	 */
 	public void setPosition(Coordinate position) {
 		//throw new UnsupportedOperationException();
-		System.out.println("			Modositom a robot allapotat.");
+		System.out.println("\t\t\t"+getClass().getName()+":setPosition");
 	}
 
 	/**
@@ -80,7 +80,9 @@ public abstract class Bot {
 	 * @return 
 	 */
 	public Displacement getDisplacement() {
-		throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        System.out.println("\t\t\t"+getClass().getName()+":getDisplacement");
+        return displacement;
 	}
 
 	/**
@@ -92,7 +94,7 @@ public abstract class Bot {
 	 */
 	public void putTheBarrier(Coordinate coord, Barrier barrier, JumpablePart part) {
 		//throw new UnsupportedOperationException();
-		System.out.println("		"+getClass().getName()+":putTheBarrier");
+		System.out.println("\t"+getClass().getName()+":putTheBarrier");
 		part.addBarrier(barrier, coord);
 		
 	}
@@ -120,7 +122,8 @@ public abstract class Bot {
 	 * @return 
 	 */
 	public void setState(RobotState state) {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+        System.out.println("\t\t\t"+getClass().getName()+":setState");
 	}
 
 	/**

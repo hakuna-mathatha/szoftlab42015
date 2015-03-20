@@ -16,7 +16,7 @@ public class Game {
 	 * @return 
 	 */
 	public Game(){
-		System.out.println("Game peldanyositasa.");
+		System.out.println(getClass().getName()+":Game");
 		track = new Track();
 		track.create();
 		Robot r1 = new Robot();
@@ -46,14 +46,12 @@ public class Game {
 	 */
 	public Bot getWinner() {
 //		throw new UnsupportedOperationException();
-		System.out.println("		Keresem a gyoztest.");
+		System.out.println("\t"+getClass().getName()+":getWinner");
 		
 		for (Robot r : bots){
 			r.getDistance();
 		}
-		
-		System.out.println("		Megvan a gyoztes.");
-		
+
 		return null;
 	}
 
