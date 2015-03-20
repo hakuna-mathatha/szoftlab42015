@@ -18,12 +18,25 @@ public class Helper {
 	public static boolean vege = false;
 	//Legyen statikus a Game peldany igy az egyes parancsoknal elerhetoek a Game ben peldanyositott objektumok. Ehhez azok a Game ban public-ok
 	public static Game g;
-	
-	private enum Commands{
-		exit, put_oil, put_putty, one_round, get_winner, next_position, help
+	Coordinate coord = null;
+	Displacement disp = null;
+	Putty putty = null;
+	Oil oil = null;
+	JumpablePart part1 = null;
+	Robot r = null;
+	private static Helper instance = null;
+
+	public Helper(){}
+
+	public static Helper getInstance(){
+		return instance==null ? instance = new Helper() : instance;
 	}
 
-	public static void kiertekel(String parancs) {
+	private enum Commands{
+		exit, put_oil, put_putty, one_round, get_winner, next_position, help, init
+	}
+
+	public void kiertekel(String parancs) {
 		Commands comm = null;
 		try{
 			comm = Commands.valueOf(parancs);
@@ -33,12 +46,7 @@ public class Helper {
 		
 		
 		//Legyenek adottak, hogy a fuggveny hivasoknal ezek lehessenek a parameterek
-		Coordinate coord = new Coordinate();
-		Displacement disp = new Displacement();
-		Putty putty = new Putty();
-		Oil oil = new Oil();
-		JumpablePart part1 = new JumpablePart();
-		Robot r = g.bots.get(0);
+
 		try{
 			switch (comm) {
 			case exit:
@@ -63,14 +71,30 @@ public class Helper {
 				g.bots.get(0).calcCoordinate(coord, disp);
 				break;
             case help:
-                 System.out.println("\tYou can choose from the following commands:");
-                 System.out.println("\t\tput_oil: You can put oil to the track");
-                 System.out.println("\t\tput_putty: You can put putty to the track");
-                 System.out.println("\t\tone_round: You can move your robots");
-                 System.out.println("\t\tget_winner: You can get the winner");
-                 System.out.println("\t\tnext_position: You can get your robot next position");
-                 System.out.println("\t\texit: Exit from the program");
+				if(coord == null){
+					System.out.println("\t\tinit: First, you need to initialize the Game");
+				}
+				else{
+					System.out.println("\tYou can choose from the following commands:");
+					System.out.println("\t\tput_oil: You can put oil to the track");
+					System.out.println("\t\tput_putty: You can put putty to the track");
+					System.out.println("\t\tone_round: You can move your robots");
+					System.out.println("\t\tget_winner: You can get the winner");
+					System.out.println("\t\tnext_position: You can get your robot next position");
+					System.out.println("\t\texit: Exit from the program");
+				}
                 break;
+			case init:
+				g = new Game();
+				g.start();
+				coord = new Coordinate();
+				disp = new Displacement();
+				putty = new Putty();
+				oil = new Oil();
+				part1 =  new JumpablePart();
+				r = g.bots.get(0);
+				System.out.println("Initialization done!");
+				break;
 			default:
 				System.out.println("Incorrect command.");
 				break;
@@ -82,8 +106,7 @@ public class Helper {
 
 	public static void main(String[] args) {
 		// Inicializálás szakasz:
-		g = new Game();
-		g.start();
+
 
 		// Parancsok lekezelése:
 		while (Helper.vege != true) {
@@ -96,7 +119,7 @@ public class Helper {
 			parancs = scanIn.nextLine();
 
 			if (parancs != null)
-				Helper.kiertekel(parancs);
+				Helper.getInstance().kiertekel(parancs);
 
 		}
 
