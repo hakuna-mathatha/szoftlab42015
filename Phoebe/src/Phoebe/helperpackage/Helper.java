@@ -18,12 +18,12 @@ public class Helper {
 	public static boolean vege = false;
 	//Legyen statikus a Game peldany igy az egyes parancsoknal elerhetoek a Game ben peldanyositott objektumok. Ehhez azok a Game ban public-ok
 	public static Game g;
-	Coordinate coord = null;
-	Displacement disp = null;
-	Putty putty = null;
-	Oil oil = null;
-	JumpablePart part1 = null;
-	Robot r = null;
+	Coordinate coord = new Coordinate();
+	Displacement disp = new Displacement();
+	Putty putty = new Putty();
+	Oil oil = new Oil();
+	JumpablePart part1 = new JumpablePart();
+	Robot r = g.bots.get(0);
 	private static Helper instance = null;
 
 	public Helper(){}
@@ -87,12 +87,7 @@ public class Helper {
 			case init:
 				g = new Game();
 				g.start();
-				coord = new Coordinate();
-				disp = new Displacement();
-				putty = new Putty();
-				oil = new Oil();
-				part1 =  new JumpablePart();
-				r = g.bots.get(0);
+
 				System.out.println("Initialization done!");
 				break;
 			default:
