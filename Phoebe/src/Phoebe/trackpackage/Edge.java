@@ -11,7 +11,6 @@ public class Edge extends Barrier {
 		// TODO Auto-generated method stub
         System.out.println("\t\t"+getClass().getName()+":modifyDisplacement");
         Displacement disp = bot.getDisplacement();
-        //modify disp
         bot.modifyDisplacement(disp);
 	}
 

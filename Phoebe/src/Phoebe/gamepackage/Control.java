@@ -1,61 +1,17 @@
 package Phoebe.gamepackage;
 
-import Phoebe.gamepackage.*;
-
 public class Control {
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void turnLeft(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void turnLeft(Bot bot) {};
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void turnRight(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void turnRight(Bot bot) {};
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void accelerate(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void accelerate(Bot bot) {};
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void slowDown(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void slowDown(Bot bot) {};
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void putOil(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void putOil(Bot bot) {};
 
-	/**
-	 * 
-	 * @param bot
-	 * @return 
-	 */
-	public void putPutty(Bot bot) {
-		throw new UnsupportedOperationException();
-	}
+	public void putPutty(Bot bot) {};
 
 }

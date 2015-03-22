@@ -1,18 +1,14 @@
 package Phoebe.helperpackage;
 
-import java.io.Console;
 import java.util.Scanner;
-
-import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
-import Phoebe.trackpackage.Barrier;
 import Phoebe.trackpackage.Coordinate;
 import Phoebe.trackpackage.JumpablePart;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
-import Phoebe.trackpackage.Track;
+
 
 public class Helper {
 	public static boolean vege = false;
@@ -27,11 +23,10 @@ public class Helper {
 		Commands comm = null;
 		try{
 			comm = Commands.valueOf(parancs);
-		}catch(Exception e){
-			System.out.println("Incorrect Command");
-		}
-		
-		
+		}catch(Exception e) {
+            System.out.println("Incorrect Command");
+        }
+        
 		//Legyenek adottak, hogy a fuggveny hivasoknal ezek lehessenek a parameterek
 		Coordinate coord = new Coordinate();
 		Displacement disp = new Displacement();
@@ -39,6 +34,7 @@ public class Helper {
 		Oil oil = new Oil();
 		JumpablePart part1 = new JumpablePart();
 		Robot r = g.bots.get(0);
+
 		try{
 			switch (comm) {
 			case exit:
@@ -54,7 +50,6 @@ public class Helper {
 				break;
                 case one_round:
 				r.jump(g.track);
-//                g.bots.get(0).calcCoordinate(coord, disp);
 				break;
 			case get_winner:
 				g.getWinner();
@@ -81,7 +76,7 @@ public class Helper {
 	}
 
 	public static void main(String[] args) {
-		// Inicializálás szakasz:
+		// Inicializációs szakasz:
 		g = new Game();
 		g.start();
 
@@ -97,7 +92,6 @@ public class Helper {
 
 			if (parancs != null)
 				Helper.kiertekel(parancs);
-
 		}
 
 		System.exit(0);

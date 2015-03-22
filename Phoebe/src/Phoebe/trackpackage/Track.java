@@ -3,18 +3,11 @@ package Phoebe.trackpackage;
 import java.util.ArrayList;
 import java.util.List;
 
-import Phoebe.gamepackage.Robot;
-
 public class Track {
 
 	EdgeofTheTrack edge;
 	List<JumpablePart> trackParts;
 
-	/**
-	 * 
-	 * @return 
-	 */
-	
 	public Track(){
 		System.out.println("\t"+getClass().getName()+":Track");
 		trackParts = new ArrayList<JumpablePart>();
@@ -28,13 +21,7 @@ public class Track {
 		
 	}
 
-	/**
-	 * 
-	 * @param coord
-	 * @return 
-	 */
 	public TrackPart findAPart(Coordinate coord) {
-//		throw new UnsupportedOperationException();
 		System.out.println("\t\t"+getClass().getName()+":findAPart");
 		
 		for(JumpablePart p : trackParts){

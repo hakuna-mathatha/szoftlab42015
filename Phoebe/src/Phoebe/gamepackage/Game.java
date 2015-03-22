@@ -1,8 +1,6 @@
 package Phoebe.gamepackage;
 
 import java.util.*;
-
-import Phoebe.*;
 import Phoebe.trackpackage.*;
 
 public class Game {
@@ -11,10 +9,6 @@ public class Game {
 	public Track track;
 	public Control control;
 
-	/**
-	 * 
-	 * @return 
-	 */
 	public Game(){
 		System.out.println(getClass().getName()+":Game");
 		track = new Track();
@@ -27,25 +21,13 @@ public class Game {
 	}
 	
 	public void start() {
-//		throw new UnsupportedOperationException();
+
 		System.out.println("Start");
 	}
 
-	/**
-	 * 
-	 * @param robot
-	 * @return 
-	 */
-	private void calcDistance(Bot robot) {
-		throw new UnsupportedOperationException();
-	}
+	private void calcDistance(Bot robot) {};
 
-	/**
-	 * 
-	 * @return 
-	 */
 	public Bot getWinner() {
-//		throw new UnsupportedOperationException();
 		System.out.println("\t"+getClass().getName()+":getWinner");
 		
 		for (Robot r : bots){

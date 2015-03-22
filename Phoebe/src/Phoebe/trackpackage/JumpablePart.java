@@ -12,8 +12,6 @@ public class JumpablePart extends TrackPart {
 		barriers.add(new Oil());
 		barriers.add(new Putty());
 		barriers.add(new Pure());
-		
-//		System.out.println("                     Uj jumpable part");
 	}
 	
 	/**
