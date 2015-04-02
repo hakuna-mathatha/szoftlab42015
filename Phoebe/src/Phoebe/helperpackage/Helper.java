@@ -1,13 +1,12 @@
 package Phoebe.helperpackage;
 
 import java.util.Scanner;
+
+import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
-import Phoebe.trackpackage.Coordinate;
-import Phoebe.trackpackage.JumpablePart;
-import Phoebe.trackpackage.Oil;
-import Phoebe.trackpackage.Putty;
+import Phoebe.trackpackage.*;
 
 
 public class Helper {
@@ -79,6 +78,14 @@ public class Helper {
 		// Inicializációs szakasz:
 		g = new Game();
 		g.start();
+
+
+//JSON típusú fájlból beolvasási példa
+		String baseURL = "C:/Users/Peti/Documents/SourceTree_projects/szoftlab4/Phoebe/data/";
+ 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
+		EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
+ 		System.out.println(c.getX() + " " + c.getY());
+
 
 		// Parancsok lekezelése:
 		while (Helper.vege != true) {
