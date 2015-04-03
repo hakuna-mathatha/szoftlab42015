@@ -6,12 +6,12 @@ public abstract class TrackPart {
 	private double width;
 	private double height;
 
-	double getWidth() {
-		throw new UnsupportedOperationException();
+	public double getWidth() {
+		return width;
 	}
 
-	double getHeight() {
-		throw new UnsupportedOperationException();
+	public double getHeight() {
+		return height;
 	}
 
 	public void addBase(Base barrier, Coordinate coord) {
@@ -27,6 +27,14 @@ public abstract class TrackPart {
 	protected boolean containCoord(Coordinate coord) {
 		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
 		return true;
+	}
+	
+	public void setPosition(Coordinate p){
+		position = p;
+	}
+	
+	public Coordinate getPosition(){
+		return position;
 	}
 
 }

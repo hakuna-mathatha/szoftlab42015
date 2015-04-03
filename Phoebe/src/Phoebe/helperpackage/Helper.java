@@ -81,10 +81,19 @@ public class Helper {
 
 
 //JSON típusú fájlból beolvasási példa
-		String baseURL = "C:/Users/Peti/Documents/SourceTree_projects/szoftlab4/Phoebe/data/";
- 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
-		EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
- 		System.out.println(c.getX() + " " + c.getY());
+		try{
+			
+			String baseURL = System.getProperty("user.dir")+"/data/";
+	 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
+			EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
+			System.out.println("JSON beolvasas proba!!!");
+			System.out.println("Position: "+c.getX() + " " + c.getY());
+	 		System.out.println("Position: "+ edgeofTheTrack1.getPosition().getX() +", "+edgeofTheTrack1.getPosition().getY()+ " High: " + edgeofTheTrack1.getHeight()+" Width: "+edgeofTheTrack1.getHeight());
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Hiba JSON beolvasas");
+		}
+		
 
 
 		// Parancsok lekezelése:

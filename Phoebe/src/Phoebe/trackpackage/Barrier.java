@@ -6,7 +6,7 @@ import Phoebe.gamepackage.Bot;
 public abstract class Barrier extends Base {
 	
 	private Time timeStamp;
-	private Coordinate position;
+	//private Coordinate position;
 
 	public abstract void modifyDisplacement(Bot bot);
 
