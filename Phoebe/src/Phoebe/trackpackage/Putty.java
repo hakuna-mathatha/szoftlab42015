@@ -5,7 +5,8 @@ import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
 public class Putty extends Barrier {
-
+	int countToRemove;
+	
 	@Override
 	public void modifyDisplacement(Bot bot) {
         System.out.println("\t\t"+getClass().getName()+":modifyDisplacement");
@@ -17,5 +18,12 @@ public class Putty extends Barrier {
 	public void setState(Bot bot) {
         System.out.println("\t\t"+getClass().getName()+":setState");
         bot.setState(RobotState.putty);
+	}
+
+	@Override
+	public void stepOn(Bot aBot) {
+		modifyDisplacement(aBot);
+		setState(aBot);
+		
 	}
 }

@@ -1,9 +1,9 @@
 package Phoebe.trackpackage;
-
+import Phoebe.basepackage.*;
 import java.sql.Time;
 import Phoebe.gamepackage.Bot;
 
-public abstract class Barrier {
+public abstract class Barrier extends Base {
 	
 	private Time timeStamp;
 	private Coordinate position;
@@ -12,15 +12,9 @@ public abstract class Barrier {
 
 	public abstract void setState(Bot bot);
 
-	protected boolean containCoord(Coordinate coord) {
+	public boolean isCoordNear(Coordinate coord) {
 		System.out.println("\t\t\t"+getClass().getName()+":containCoord");
 		return true;
 	}
-
-	Coordinate getPosition() {
-		throw new UnsupportedOperationException();
-	}
-
-	void setPosition(Coordinate position) {};
 
 }

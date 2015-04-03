@@ -20,4 +20,11 @@ public class Edge extends Barrier {
         System.out.println("\t\t"+getClass().getName()+":setState");
         bot.setState(RobotState.died);
 	}
+	
+	@Override
+	public void stepOn(Bot aBot) {
+		modifyDisplacement(aBot);
+		setState(aBot);
+		
+	}
 }

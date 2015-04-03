@@ -1,5 +1,5 @@
 package Phoebe.trackpackage;
-
+import Phoebe.basepackage.*;
 public abstract class TrackPart {
 
 	private Coordinate position;
@@ -14,13 +14,15 @@ public abstract class TrackPart {
 		throw new UnsupportedOperationException();
 	}
 
-	public void addBarrier(Barrier barrier, Coordinate coord) {
-		System.out.println("\t\t"+getClass().getName()+":addBarrier");
+	public void addBase(Base barrier, Coordinate coord) {
+		System.out.println("\t\t"+getClass().getName()+":addBase");
 	}
 
-	public abstract Barrier getBarrier(Coordinate coord);
+	public abstract Base getBase(Coordinate coord);
 
-	public void deletBarrier(int Barrier) {};
+	public void removeFromTrackPart(Base aBase) {
+		throw new UnsupportedOperationException();
+	}
 
 	protected boolean containCoord(Coordinate coord) {
 		System.out.println("\t\t\t" + getClass().getName()+":containCoord");

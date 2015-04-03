@@ -1,5 +1,6 @@
 package Phoebe.gamepackage;
 
+import Phoebe.basepackage.Base;
 import Phoebe.trackpackage.*;
 
 public class Robot extends Bot {
@@ -28,23 +29,27 @@ public class Robot extends Bot {
 		return 0;
 	}
 
-	private void getTheEffectForRobot(Barrier barrier) {
+	@Override
+	protected void getTheEffectForRobot(Base barrier) {
 		System.out.println("\t"+getClass().getName()+":getTheEffectForRobot");
-        barrier.setState(this);
-		barrier.modifyDisplacement(this);
+        barrier.stepOn(this);
+		//barrier.setState(this);
+		//barrier.modifyDisplacement(this);
 	}
 
 	public double getVelocityMod(){throw new UnsupportedOperationException();}
 
 	public void setVelocityMod(double velocityMod){};
 
-	private Barrier giveMeTheBarrier(Coordinate coord, TrackPart part) {
+	@Override
+	protected Base giveMeTheBase(Coordinate coord, TrackPart part) {
 		System.out.println("\t"+getClass().getName()+":giveMeTheBarrier");
-		Barrier b = part.getBarrier(coord);
+		Base b = part.getBase(coord);
 		return b;
 	}
 
-//	Alapbol privat de hogy a Helper elerje publicra kell rakni
+	// A Bot ban ez protected
+	@Override
 	public Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
 		System.out.println("\t"+getClass().getName()+":calcCoordinate");
 		return null;
@@ -55,8 +60,14 @@ public class Robot extends Bot {
 		System.out.println("\t"+getClass().getName()+":jump");
 		calcCoordinate(position, displacement);
 		TrackPart part = track.findAPart(position);
-		Barrier b = giveMeTheBarrier(position, part);
+		Base b = giveMeTheBase(position, part);
 		getTheEffectForRobot(b);
+	}
+
+	@Override
+	public void stepOn(Bot aBot) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

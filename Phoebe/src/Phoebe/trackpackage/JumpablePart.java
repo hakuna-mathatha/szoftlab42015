@@ -1,14 +1,16 @@
 package Phoebe.trackpackage;
-
+import Phoebe.basepackage.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import Phoebe.basepackage.Base;
+
 public class JumpablePart extends TrackPart {
 
-	List<Barrier> barriers;
+	List<Base> barriers;
 
 	public JumpablePart(){
-		barriers = new ArrayList<Barrier>();
+		barriers = new ArrayList<Base>();
 		barriers.add(new Oil());
 		barriers.add(new Putty());
 		barriers.add(new Pure());
@@ -19,11 +21,11 @@ public class JumpablePart extends TrackPart {
 	 * @param coord
 	 * @return 
 	 */
-	public Barrier getBarrier(Coordinate coord) {
+	public Base getBase(Coordinate coord) {
 //		throw new UnsupportedOperationException();
 		System.out.println("\t\t"+getClass().getName()+":getBarrier");
-		for(Barrier b : barriers){
-			b.containCoord(coord);
+		for(Base b : barriers){
+			b.isCoordNear(coord);
 		}
 		return barriers.get(0);
 	}
