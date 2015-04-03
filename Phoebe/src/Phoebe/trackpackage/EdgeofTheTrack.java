@@ -13,8 +13,7 @@ public class EdgeofTheTrack extends TrackPart {
 
 	@Override
 	public Base getBase(Coordinate coord) {
-		// TODO Auto-generated method stub
-		return null;
+		return edge;
 	}
 
 }

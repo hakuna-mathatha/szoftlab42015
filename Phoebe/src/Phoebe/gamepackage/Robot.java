@@ -66,7 +66,7 @@ public class Robot extends Bot {
 
 	@Override
 	public void stepOn(Bot aBot) {
-		// TODO Auto-generated method stub
+		System.out.println("Robot stepOn");
 		
 	}
 

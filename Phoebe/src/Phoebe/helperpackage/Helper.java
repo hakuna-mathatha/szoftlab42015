@@ -2,6 +2,7 @@ package Phoebe.helperpackage;
 
 import java.util.Scanner;
 
+import Phoebe.basepackage.Base;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
@@ -88,6 +89,9 @@ public class Helper {
 			EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
 			System.out.println("JSON beolvasas proba!!!");
 			System.out.println("Position: "+c.getX() + " " + c.getY());
+			Base b = edgeofTheTrack1.getBase(new Coordinate());
+			Robot r = g.bots.get(0);
+			b.getType();
 	 		System.out.println("Position: "+ edgeofTheTrack1.getPosition().getX() +", "+edgeofTheTrack1.getPosition().getY()+ " High: " + edgeofTheTrack1.getHeight()+" Width: "+edgeofTheTrack1.getHeight());
 		}catch(Exception e){
 			e.printStackTrace();
