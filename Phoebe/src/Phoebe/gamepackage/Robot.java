@@ -29,24 +29,24 @@ public class Robot extends Bot {
 		return 0;
 	}
 
-	@Override
-	protected void getTheEffectForRobot(Base barrier) {
-		System.out.println("\t"+getClass().getName()+":getTheEffectForRobot");
-        barrier.stepOn(this);
-		//barrier.setState(this);
-		//barrier.modifyDisplacement(this);
-	}
+//	@Override
+//	protected void getTheEffectForRobot(Base barrier) {
+//		System.out.println("\t"+getClass().getName()+":getTheEffectForRobot");
+//        barrier.stepOn(this);
+//		//barrier.setState(this);
+//		//barrier.modifyDisplacement(this);
+//	}
 
 	public double getVelocityMod(){throw new UnsupportedOperationException();}
 
 	public void setVelocityMod(double velocityMod){};
 
-	@Override
-	protected Base giveMeTheBase(Coordinate coord, TrackPart part) {
-		System.out.println("\t"+getClass().getName()+":giveMeTheBarrier");
-		Base b = part.getBase(coord);
-		return b;
-	}
+//	@Override
+//	protected Base giveMeTheBase(Coordinate coord, TrackPart part) {
+//		System.out.println("\t"+getClass().getName()+":giveMeTheBarrier");
+//		Base b = part.getBase(coord);
+//		return b;
+//	}
 
 	// A Bot ban ez protected
 	@Override

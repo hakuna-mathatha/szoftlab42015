@@ -1,6 +1,5 @@
 package Phoebe.helperpackage;
 
-
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
