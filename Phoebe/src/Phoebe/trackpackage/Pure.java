@@ -1,10 +1,15 @@
 package Phoebe.trackpackage;
 
+import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
 public class Pure extends Barrier {
+	
+	public Pure() {
+		type = BaseType.pure;
+	}
 
 	@Override
 	public void modifyDisplacement(Bot bot) {

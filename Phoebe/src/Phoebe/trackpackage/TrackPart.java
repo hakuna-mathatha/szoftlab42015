@@ -14,14 +14,15 @@ public abstract class TrackPart {
 		return height;
 	}
 
-	public void addBase(Base barrier, Coordinate coord) {
-		System.out.println("\t\t"+getClass().getName()+":addBase");
+	public void addBase(Base base, Coordinate coord) {
+		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
 	}
 
 	public abstract Base getBase(Coordinate coord);
 
 	public void removeFromTrackPart(Base aBase) {
-		throw new UnsupportedOperationException();
+		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
+		
 	}
 
 	protected boolean containCoord(Coordinate coord) {
@@ -36,5 +37,7 @@ public abstract class TrackPart {
 	public Coordinate getPosition(){
 		return position;
 	}
+	
+	
 
 }

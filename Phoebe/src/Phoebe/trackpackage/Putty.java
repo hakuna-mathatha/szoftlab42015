@@ -1,11 +1,16 @@
 package Phoebe.trackpackage;
 
+import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
 public class Putty extends Barrier {
 	int countToRemove;
+	
+	public Putty() {
+		type = BaseType.putty;
+	}
 	
 	@Override
 	public void modifyDisplacement(Bot bot) {

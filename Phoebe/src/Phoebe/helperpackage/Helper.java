@@ -41,14 +41,14 @@ public class Helper {
 				vege = true;
 				break;
 			case put_oil:
-				r.putTheBarrier(coord, oil, part1);
-				r.reduceOilRepository();
+				r.putTheBarrier(oil);
+				
 				break;
 			case put_putty:
-				r.putTheBarrier(coord, putty, part1);
-				r.reducePuttyRepository();
+				r.putTheBarrier(putty);
+				
 				break;
-                case one_round:
+            case one_round:
 				r.jump(g.track);
 				break;
 			case get_winner:
@@ -87,7 +87,7 @@ public class Helper {
 			String baseURL = System.getProperty("user.dir")+"/data/";
 	 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
 			EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
-			System.out.println("JSON beolvasas proba!!!");
+			System.out.println("\n*******************JSON beolvasas proba!!!");
 			System.out.println("Position: "+c.getX() + " " + c.getY());
 			Base b = edgeofTheTrack1.getBase(new Coordinate());
 			Robot r = g.bots.get(0);
@@ -98,7 +98,13 @@ public class Helper {
 			System.out.println("Hiba JSON beolvasas");
 		}
 		
-
+		///////////////////////////////////////////Tesztelem hogy szamol a calcCoord()/////////////////
+		System.out.print("\n*******************calcCoordinate fgv proba!!!\n");
+		Robot r = g.bots.get(0);
+		r.setLastPosition(new Coordinate(-0.5,1));
+		Coordinate c = r.calcCoordinate(new Coordinate(1, 1), new Displacement(Math.PI/2, 1));
+		System.out.println("x: "+c.getX() + " y: "+c.getY()+"\n");
+		///////////////////////////////////////////
 
 		// Parancsok lekezelése:
 		while (Helper.vege != true) {

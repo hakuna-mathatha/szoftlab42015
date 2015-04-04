@@ -1,11 +1,16 @@
 package Phoebe.trackpackage;
 
+import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
 public class Edge extends Barrier {
 
+	public Edge() {
+		type = BaseType.edge;
+	}
+	
 	@Override
 	public void modifyDisplacement(Bot bot) {
 		// TODO Auto-generated method stub

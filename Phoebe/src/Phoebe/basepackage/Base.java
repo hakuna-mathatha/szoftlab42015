@@ -5,9 +5,16 @@ import Phoebe.trackpackage.*;
 public abstract class Base {
 	protected Coordinate position;
 	protected BaseType type;
-	protected JumpablePart trackPart;
-	protected JumpablePart bases;
+	protected TrackPart trackPart;
 	
+	public TrackPart getTrackPart() {
+		return trackPart;
+	}
+
+	public void setTrackPart(TrackPart trackPart) {
+		this.trackPart = trackPart;
+	}
+
 	public Base() {
 		
 	}
@@ -23,11 +30,13 @@ public abstract class Base {
 	public abstract void stepOn(Bot aBot);
 
 	public boolean isCoordNear(Coordinate aCoord) {
-		throw new UnsupportedOperationException();
+		System.out.println("\t\t\t" + getClass().getName() + ":isCoordNear");	
+		return true;
 	}
 
-	public void getType() {
-		System.out.println("Base tipus, majd felul kell irni a leszarmazottakban");
+	public BaseType getType() {
+		System.out.println("\t\t" + getClass().getName() + ":getType()");
+		return type;
 	}
 		
 }
