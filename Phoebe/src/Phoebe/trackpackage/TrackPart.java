@@ -25,7 +25,7 @@ public abstract class TrackPart {
 		
 	}
 
-	protected boolean containCoord(Coordinate coord) {
+	public boolean containCoord(Coordinate coord) {
 		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
 		return true;
 	}

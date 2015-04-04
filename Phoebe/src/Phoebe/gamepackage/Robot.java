@@ -122,7 +122,6 @@ public class Robot extends Bot {
 		BaseType type = barrier.getType();
 		
 		if(type.equals(BaseType.oil)){
-
 			if(oilRepository>0){
 				reduceOilRepository();
 ;
@@ -132,7 +131,6 @@ public class Robot extends Bot {
 			}
 			
 		}else if(type.equals(BaseType.putty)){
-			
 			if(puttyReporitory>0){
 				reducePuttyRepository();
 				trackPart.addBase(barrier, position);

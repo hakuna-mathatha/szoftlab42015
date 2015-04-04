@@ -101,8 +101,9 @@ public class Helper {
 		///////////////////////////////////////////Tesztelem hogy szamol a calcCoord()/////////////////
 		System.out.print("\n*******************calcCoordinate fgv proba!!!\n");
 		Robot r = g.bots.get(0);
-		r.setLastPosition(new Coordinate(-0.5,1));
-		Coordinate c = r.calcCoordinate(new Coordinate(1, 1), new Displacement(Math.PI/2, 1));
+		
+		r.setLastPosition(new Coordinate(1,2));
+		Coordinate c = r.calcCoordinate(new Coordinate(3, 1), new Displacement(Math.PI/3, 1));
 		System.out.println("x: "+c.getX() + " y: "+c.getY()+"\n");
 		///////////////////////////////////////////
 

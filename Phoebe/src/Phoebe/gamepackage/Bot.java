@@ -83,19 +83,43 @@ public abstract class Bot extends Base {
 	// Ay elmozdulas az aktualis ponttol nezve van ertemezve.
 	public Coordinate calcCoordinate(Coordinate coord, Displacement disp) {
 		Coordinate coordinate = new Coordinate();
-		// double x = Math.cos(disp.getAngle())*disp.getVelocity();
-		// double y = Math.sin(disp.getAngle())*disp.getVelocity();
+		// Vesszuk az elozo pont es az aktualis pont kulonbseget, akkor kapjuk
+		// az elozo elmozdulas vektort,
+		// es ehez kepest szamoljuk az elfordulast rad ban. Az elmozdulas
+		// magysaga az elozo elmozdulad nagysagaval
+		// megyezik kezdetben es ezt lehet modositani ami egy skalarral valo
+		// szorzas a gomb lenyomasanak fuggvenyeben
 
 		Coordinate direction = new Coordinate();
 		direction.setX(coord.getX() - lastPosition.getX());
 		direction.setY(coord.getY() - lastPosition.getY());
 
 		// System.out.println("x: "+direction.getX() + " y: "+direction.getY());
+		
+		Coordinate dirNorm = new Coordinate();
+		
+		double leng = direction.legth();
+		
+		System.out.println(leng);
+		
+		Coordinate rotation =new Coordinate();
+		
+		rotation.x = (direction.x * Math.cos(disp.getAngle()) - direction.y * Math.sin(disp.getAngle()))
+				* disp.getVelocity();
+		rotation.y = (direction.y * Math.cos(disp.getAngle()) + direction.x * Math.sin(disp.getAngle()))
+				* disp.getVelocity();
+		
+		dirNorm.normal(rotation);
+		
+		coordinate.setX(coord.x+leng*dirNorm.x*disp.getVelocity());
+		coordinate.setY(coord.y+leng*dirNorm.y*disp.getVelocity());
 
-		coordinate.setX((direction.getX() * Math.cos(disp.getAngle()) - direction.getY() * Math.sin(disp.getAngle()))
-				* disp.getVelocity() + coord.getX());
-		coordinate.setY((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle()))
-				* disp.getVelocity() + coord.getY());
+//		coordinate.setX((direction.getX() * Math.cos(disp.getAngle()) - direction.getY() * Math.sin(disp.getAngle()))
+//				* disp.getVelocity() + coord.getX()+leng*dirNorm.getX());
+//		coordinate.setY((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle()))
+//				* disp.getVelocity() + coord.getY()+leng*dirNorm.getY());
+		
+		System.out.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
 
 		System.out.println("\t" + getClass().getName() + ":calcCoordinate");
 

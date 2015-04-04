@@ -8,8 +8,17 @@ public class Track {
 	EdgeofTheTrack edge;
 	List<JumpablePart> trackParts;
 
+	public List<JumpablePart> getTrackParts() {
+		return trackParts;
+	}
+
+	public void setTrackParts(List<JumpablePart> trackParts) {
+		this.trackParts = trackParts;
+	}
+
 	public Track(){
 		System.out.println("\t"+getClass().getName()+":Track");
+		edge = new EdgeofTheTrack();
 		trackParts = new ArrayList<JumpablePart>();
 	}
 	

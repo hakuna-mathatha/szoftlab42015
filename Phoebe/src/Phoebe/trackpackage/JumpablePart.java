@@ -9,6 +9,14 @@ public class JumpablePart extends TrackPart {
 
 	List<Base> barriers;
 
+	public List<Base> getBarriers() {
+		return barriers;
+	}
+
+	public void setBarriers(List<Base> barriers) {
+		this.barriers = barriers;
+	}
+
 	public JumpablePart(){
 		barriers = new ArrayList<Base>();
 		barriers.add(new Oil());
