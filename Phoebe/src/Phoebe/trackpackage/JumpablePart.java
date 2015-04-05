@@ -7,35 +7,59 @@ import Phoebe.basepackage.Base;
 
 public class JumpablePart extends TrackPart {
 
-	List<Base> barriers;
+	private List<Base> bases;
 
-	public List<Base> getBarriers() {
-		return barriers;
+	public List<Base> getBases() {
+
+		return bases;
 	}
 
-	public void setBarriers(List<Base> barriers) {
-		this.barriers = barriers;
+	public void setBases(List<Base> bases) {
+
+		this.bases = bases;
 	}
 
-	public JumpablePart(){
-		barriers = new ArrayList<Base>();
-		barriers.add(new Oil());
-		barriers.add(new Putty());
-		barriers.add(new Pure());
+	public JumpablePart() {}
+
+	public JumpablePart(Coordinate position, double width, double height){
+
+		super(position, width, height);
+		bases = new ArrayList<Base>();
+
+		//bases.add(new Oil());
+		//bases.add(new Putty());
+		//bases.add(new Pure());
 	}
-	
+
 	/**
 	 * 
 	 * @param coord
 	 * @return 
 	 */
 	public Base getBase(Coordinate coord) {
+
 //		throw new UnsupportedOperationException();
 		System.out.println("\t\t"+getClass().getName()+":getBarrier");
-		for(Base b : barriers){
-			b.isCoordNear(coord);
+
+		//keresés az elemek között
+		for(Base b : bases){
+
+			//ha valamelyik hatókörében van, akkor azt visszaadja
+			if(b.isCoordNear(coord))
+				return b;
 		}
-		return barriers.get(0);
+
+		//ha nem esik semmilyen elem hatósugarába, akkor tiszta elemet ad vissza
+		return new Pure();
+	}
+
+	public void addBase(Base base, Coordinate coord) {
+
+		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
+
+		//betesszük a listába az elemet
+		bases.add(base);
+
 	}
 
 }
