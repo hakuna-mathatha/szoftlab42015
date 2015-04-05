@@ -16,6 +16,16 @@ public abstract class TrackPart {
 		return height;
 	}
 
+	public void setPosition(Coordinate p){
+
+		position = p;
+	}
+
+	public Coordinate getPosition(){
+
+		return position;
+	}
+
 	public TrackPart() {}
 
 	public TrackPart(Coordinate position, double width, double height) {
@@ -29,10 +39,7 @@ public abstract class TrackPart {
 
 	public abstract void addBase(Base base, Coordinate coord);
 
-	public void removeFromTrackPart(Base aBase) {
-
-		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
-	}
+	public abstract void removeFromTrackPart(Base aBase);
 
 	public boolean containCoord(Coordinate coord) {
 
@@ -45,24 +52,11 @@ public abstract class TrackPart {
 		double tmpPY = position.getY();
 
 		//ha rajta van a az elemen, akkor a paraméter koordinátái az elem szélei között vannak
-		if (tmpX >= tmpPX && tmpX < (tmpPX + width) && tmpY >= tmpPY && tmpY < (tmpPY + height)) {
+		if (tmpX >= tmpPX && tmpX <= (tmpPX + width) && tmpY <= tmpPY && tmpY >= (tmpPY - height)) {
 			return true;
 		}
 
 		//ha valamelyik koordinátája kilóg az elem tartományából, akkor nincs rajta
 		return false;
 	}
-	
-	public void setPosition(Coordinate p){
-
-		position = p;
-	}
-	
-	public Coordinate getPosition(){
-
-		return position;
-	}
-	
-	
-
 }
