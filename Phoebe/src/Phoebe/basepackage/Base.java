@@ -4,6 +4,11 @@ import Phoebe.trackpackage.*;
 
 public abstract class Base {
 	protected Coordinate position;
+	protected BaseType type;
+	protected TrackPart trackPart;
+	
+
+	
 	public Coordinate getPosition() {
 		return position;
 	}
@@ -12,8 +17,6 @@ public abstract class Base {
 		this.position = position;
 	}
 
-	protected BaseType type;
-	protected TrackPart trackPart;
 	
 	public TrackPart getTrackPart() {
 		return trackPart;
@@ -26,10 +29,6 @@ public abstract class Base {
 	public Base() {
 		
 	}
-
-	
-
-	
 
 	public abstract void stepOn(Bot aBot);
 

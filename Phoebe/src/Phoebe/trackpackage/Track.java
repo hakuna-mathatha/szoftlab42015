@@ -1,7 +1,10 @@
 package Phoebe.trackpackage;
 
 import java.util.ArrayList;
+import Phoebe.basepackage.*;
 import java.util.List;
+
+import Phoebe.helperpackage.JSONHandler;
 
 public class Track {
 
@@ -27,13 +30,21 @@ public class Track {
 	
 	public void create() {
 
-		System.out.println("\t" + getClass().getName() + ":create");
-
-		///??????????
-
-		//trackParts.add(new JumpablePart());
-		//edge = new EdgeofTheTrack();
+		//Csinaltam egy alap palyat. negyzet alaku. csak hogy ha akar valaki akkor lehessen tesztet kitalalni
+		System.out.println("\t"+getClass().getName()+":create");
+		String baseURL = System.getProperty("user.dir")+"/data/";
 		
+		JumpablePart jumpablePart1 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart1.dat",JumpablePart.class);
+		JumpablePart jumpablePart2 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart2.dat",JumpablePart.class);
+		JumpablePart jumpablePart3 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart3.dat",JumpablePart.class);
+		JumpablePart jumpablePart4 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart4.dat",JumpablePart.class);
+		
+		trackParts.add(jumpablePart1);
+		trackParts.add(jumpablePart2);
+		trackParts.add(jumpablePart3);
+		trackParts.add(jumpablePart4);
+		
+		edge = new EdgeofTheTrack();
 	}
 
 	public TrackPart findAPart(Coordinate coord) {

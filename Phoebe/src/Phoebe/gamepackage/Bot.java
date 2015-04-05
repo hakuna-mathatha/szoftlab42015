@@ -15,6 +15,8 @@ public abstract class Bot extends Base {
 	// protected TrackPart actualPart;
 	protected Coordinate nextPosition;
 	protected Coordinate lastPosition;
+	boolean veloMod;
+	boolean directionMod;
 
 	public Coordinate getLastPosition() {
 		System.out.println("\t\t\t" + getClass().getName() + ":getLastPosition");
@@ -24,6 +26,14 @@ public abstract class Bot extends Base {
 	public void setLastPosition(Coordinate lastPosition) {
 		System.out.println("\t\t\t" + getClass().getName() + ":setLastPosition");
 		this.lastPosition = lastPosition;
+	}
+	
+	public boolean isVeloMod() {
+		return veloMod;
+	}
+
+	public void setVeloMod(boolean veloMod) {
+		this.veloMod = veloMod;
 	}
 
 	public abstract void jump(Track track);
@@ -95,31 +105,33 @@ public abstract class Bot extends Base {
 		direction.setY(coord.getY() - lastPosition.getY());
 
 		// System.out.println("x: "+direction.getX() + " y: "+direction.getY());
-		
-		Coordinate dirNorm = new Coordinate();
-		
-		double leng = direction.legth();
-		
-		System.out.println(leng);
-		
-		Coordinate rotation =new Coordinate();
-		
-		rotation.x = (direction.x * Math.cos(disp.getAngle()) - direction.y * Math.sin(disp.getAngle()))
-				* disp.getVelocity();
-		rotation.y = (direction.y * Math.cos(disp.getAngle()) + direction.x * Math.sin(disp.getAngle()))
-				* disp.getVelocity();
-		
-		dirNorm.normal(rotation);
-		
-		coordinate.setX(coord.x+leng*dirNorm.x*disp.getVelocity());
-		coordinate.setY(coord.y+leng*dirNorm.y*disp.getVelocity());
 
-//		coordinate.setX((direction.getX() * Math.cos(disp.getAngle()) - direction.getY() * Math.sin(disp.getAngle()))
-//				* disp.getVelocity() + coord.getX()+leng*dirNorm.getX());
-//		coordinate.setY((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle()))
-//				* disp.getVelocity() + coord.getY()+leng*dirNorm.getY());
-		
-		System.out.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
+		Coordinate dirNorm = new Coordinate();
+
+		double leng = direction.legth();
+
+		System.out.println(leng);
+
+		Coordinate rotation = new Coordinate();
+
+		rotation.x = (direction.x * Math.cos(disp.getAngle()) - direction.y * Math.sin(disp.getAngle()));
+		rotation.y = (direction.y * Math.cos(disp.getAngle()) + direction.x * Math.sin(disp.getAngle()));
+
+		dirNorm.normal(rotation);
+
+		double velo = disp.getVelocity();
+
+		// Ha le van tiltva a sebesseg modositas, akkor a velo=1 legyen mert az
+		// elozo elmozdulas-t nem modosithatja
+		if (veloMod == false)
+			velo = 1;
+
+		coordinate.setX(coord.x + leng * dirNorm.x * velo);
+		coordinate.setY(coord.y + leng * dirNorm.y * velo);
+
+
+		System.out
+				.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
 
 		System.out.println("\t" + getClass().getName() + ":calcCoordinate");
 

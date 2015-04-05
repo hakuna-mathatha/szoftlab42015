@@ -17,15 +17,18 @@ public class Robot extends Bot {
 		oilRepository = 5;
 		distance = 0;
 		velocityMod = 1;
-		displacement = new Displacement((-1)*Math.PI, 1);
+		displacement = new Displacement((-1) * Math.PI, 1);
 		state = RobotState.pure;
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
-		position = new Coordinate(1,1);
-		lastPosition = new Coordinate(0.5,0.5);
+		position = new Coordinate(1, 1);
+		lastPosition = new Coordinate(0.5, 0.5);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart();
-		
+
+		veloMod = true;
+		directionMod = true;
+
 	}
 
 	public void reducePuttyRepository() {
@@ -47,7 +50,6 @@ public class Robot extends Bot {
 		return distance;
 	}
 
-
 	public double getVelocityMod() {
 		return velocityMod;
 	}
@@ -55,8 +57,6 @@ public class Robot extends Bot {
 	public void setVelocityMod(double velocityMod) {
 		this.velocityMod = velocityMod;
 	}
-
-
 
 	@Override
 	public void jump(Track track) {
@@ -79,27 +79,30 @@ public class Robot extends Bot {
 	@Override
 	public void stepOn(Bot aBot) {
 		System.out.println("Robot stepOn");
-
+		// Atlag sebesseget ugy ertelmeztem, hogy a ket elmozdulas vektor
+		// osszege altal kapott vektor hosszanak a fele
 		if (aBot.getType().equals(BaseType.normalRobot)) {
 
 			Displacement fast = new Displacement();
 
 			Coordinate faster = new Coordinate();
-			faster = this.getLastPosition().difCoord(this.getPosition());
+			faster = aBot.getPosition().difCoord(aBot.getLastPosition());
 
 			Coordinate slower = new Coordinate();
-			slower = this.getLastPosition().difCoord(aBot.getPosition());
+			slower = this.getPosition().difCoord(this.getLastPosition());
 
-			Coordinate avg = new Coordinate();
-			avg = slower.addCoord(faster);
+			Coordinate sum = new Coordinate();
+			sum = slower.addCoord(faster);
 
-			double velo = Math.sqrt(Math.pow(avg.getX(), 2) + Math.pow(avg.getY(), 2)) / 2;
+			double velo = sum.legth() / 2;
 
 			fast = aBot.getDisplacement();
 
 			fast.setVelocity(velo);
 
 			aBot.setDisplacement(fast);
+			// Tiltsa le a sebesseg modositas lehetoseget
+			aBot.setVeloMod(false);
 
 			this.trackPart.removeFromTrackPart(this);
 			this.state = RobotState.died;
@@ -115,31 +118,30 @@ public class Robot extends Bot {
 		}
 
 	}
-	
+
 	public void putTheBarrier(Barrier barrier) {
 		System.out.println("\t" + getClass().getName() + ":putTheBarrier");
-		
+
 		BaseType type = barrier.getType();
-		
-		if(type.equals(BaseType.oil)){
-			if(oilRepository>0){
+
+		if (type.equals(BaseType.oil)) {
+			if (oilRepository > 0) {
 				reduceOilRepository();
-;
 				trackPart.addBase(barrier, position);
-			}else{
+				System.out.println(oilRepository);
+			} else {
 				System.out.println("Out of oil");
 			}
-			
-		}else if(type.equals(BaseType.putty)){
-			if(puttyReporitory>0){
+
+		} else if (type.equals(BaseType.putty)) {
+			if (puttyReporitory > 0) {
 				reducePuttyRepository();
 				trackPart.addBase(barrier, position);
-			}else{
+			} else {
 				System.out.println("Out of putty");
 			}
-		
-		}
 
+		}
 
 	}
 

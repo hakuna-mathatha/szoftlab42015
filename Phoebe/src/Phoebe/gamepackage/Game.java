@@ -18,6 +18,7 @@ public class Game {
 		bots = new ArrayList<Robot>();
 		bots.add(r1);
 		bots.add(r2);
+		control = new Control();
 	}
 	
 	public void start() {

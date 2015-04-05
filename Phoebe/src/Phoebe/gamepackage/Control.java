@@ -1,6 +1,11 @@
 package Phoebe.gamepackage;
 
 public class Control {
+	
+	
+	public Control(){
+		
+	}
 
 	public void turnLeft(Bot bot) {};
 
