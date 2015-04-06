@@ -24,7 +24,7 @@ public class Robot extends Bot {
 		position = new Coordinate(1, 1);
 		lastPosition = new Coordinate(0.5, 0.5);
 		type = BaseType.normalRobot;
-		trackPart = new JumpablePart();
+		trackPart = new JumpablePart(new Coordinate(1, 1), 4, 4);
 
 		veloMod = true;
 		directionMod = true;
@@ -127,17 +127,20 @@ public class Robot extends Bot {
 
 		if (type.equals(BaseType.oil)) {
 			if (oilRepository > 0) {
-				reduceOilRepository();
+				System.out.println("Rakok le olajat");
 				trackPart.addBase(barrier, position);
+				reduceOilRepository();
 				System.out.println(oilRepository);
+				
+			
 			} else {
 				System.out.println("Out of oil");
 			}
 
 		} else if (type.equals(BaseType.putty)) {
 			if (puttyReporitory > 0) {
-				reducePuttyRepository();
 				trackPart.addBase(barrier, position);
+				reducePuttyRepository();
 			} else {
 				System.out.println("Out of putty");
 			}

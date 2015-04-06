@@ -54,11 +54,15 @@ public class JumpablePart extends TrackPart {
 	}
 
 	public void addBase(Base base, Coordinate coord) {
-
+		
+		System.out.println("<<<<??????????????");
 		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
-
+		System.out.println("<<<<??????????????");
+//		System.out.println(bases.size());
+		
 		//betesszük a listába az elemet
 		bases.add(base);
+		System.out.println(bases.size());
 
 	}
 
@@ -70,5 +74,6 @@ public class JumpablePart extends TrackPart {
 		if (!(bases.remove(base))) {
 			//itt az elem nem volt a listában, hibakezelés kell
 		}
+		System.out.println(bases.size());
 	}
 }

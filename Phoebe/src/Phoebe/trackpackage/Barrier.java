@@ -1,5 +1,6 @@
 package Phoebe.trackpackage;
 import Phoebe.basepackage.*;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 
@@ -21,6 +22,7 @@ public abstract class Barrier extends Base {
 
 	//ha teljesen feltakarították, vagy lejárt az idje, törli magát a pályáról
 	public void clean() {
+		System.out.println("\t\t\t\t" + getClass().getName() + "clean()");
 		trackPart.removeFromTrackPart(this);
 	}
 }

@@ -44,7 +44,7 @@ public class Helper {
 				Coordinate coord1 = new Coordinate(1, 1);
 				JumpablePart jump = new JumpablePart(coord1, 4, 4);
 				Oil oil1 = new Oil(coord1, jump);
-//				r.putTheBarrier(oil);
+				r.putTheBarrier(oil1);
 				
 				break;
 			case put_putty:

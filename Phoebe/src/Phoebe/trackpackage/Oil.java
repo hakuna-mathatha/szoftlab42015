@@ -21,7 +21,9 @@ public class Oil extends Barrier {
 //		}
 //	};
 
-	public Oil() {}
+	public Oil() {
+		type = BaseType.oil;
+	}
 
 //	public Oil(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
 ////		super(position, type, trackPart, ray);
@@ -37,7 +39,6 @@ public class Oil extends Barrier {
 	
 	
 	public Oil(Coordinate position, TrackPart trackPart) {
-		// super(position, type, trackPart, ray);
 		this.trackPart = trackPart;
 		this.position = position;
 		this.ray = 100;
@@ -48,7 +49,7 @@ public class Oil extends Barrier {
 		timer = new Timer();
 		this.timer.schedule(T, 5 * 1000);
 		// 5 kör után tûnik el az olaj a pályáról
-		countToRemove = 1;
+		//T.cancel();
 	}
 
 	//ha olajba lépünk, nem változtathatjuk a robot sebességét a következõ körig
@@ -71,18 +72,8 @@ public class Oil extends Barrier {
 	void decreaseCountToRemove() {
 		
 		System.out.println("Decrese");
+		this.clean();
 
-		//ha letelt az idõ, akkor eltávolítjuk a pályáról az olajfoltot
-		if (countToRemove == 0) {
-			trackPart.removeFromTrackPart(this);
-			System.out.println("Oil.Remove");
-			return;
-		}
-		//ha még nem járt le az idõ, akkor csökkentjük
-		else {
-			countToRemove--;
-			System.out.println("Oil.countToRemove");
-		}
 	}
 	
 	private class timerer extends TimerTask{
