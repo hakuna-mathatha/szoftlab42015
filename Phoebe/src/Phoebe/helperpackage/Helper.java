@@ -132,11 +132,11 @@ public class Helper {
 
 ////////////TESZT
 
-
+try{
 		JumpablePart testPart = new JumpablePart();
 		System.out.println(testPart.getBases().size());
 
-		Putty putty0 = new Putty();
+		Putty putty0 = new Putty(new Coordinate(1, 1),testPart);
 		Putty putty1 = new Putty();
 		Putty putty2 = new Putty();
 		Putty putty3 = new Putty();
@@ -148,12 +148,15 @@ public class Helper {
 
 		System.out.println(testPart.getBases().size());
 
-//		putty0.clean();
+		putty0.clean();
 
 		System.out.println(testPart.getBases().size());
 
 //		putty0.getTrackPart().removeFromTrackPart(putty0);
-
+}catch(Exception e){
+	System.out.println("Megvan az e");
+	e.printStackTrace();
+}
 		System.exit(0);
 	}
 }

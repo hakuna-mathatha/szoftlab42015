@@ -16,6 +16,8 @@ public class Putty extends Barrier {
 		this.ray = 10;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.putty;
+		trackPart = new JumpablePart();
+		position = new Coordinate(1,1);
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
 
@@ -26,6 +28,12 @@ public class Putty extends Barrier {
 
 		this.position = position;
 		this.trackPart = trackPart;
+		this.type = BaseType.putty;
+		this.ray = 10;
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
+		this.type = BaseType.putty;
+		//4 rálépés után tûnik el a ragacs a pályáról
+		countToRemove = 4;
 
 		System.out.println(getClass().getName() + ":Putty");
 	}
