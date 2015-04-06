@@ -126,37 +126,6 @@ public class Helper {
 				Helper.kiertekel(parancs);
 		}
 
-
-
-
-
-////////////TESZT
-
-try{
-		JumpablePart testPart = new JumpablePart();
-		System.out.println(testPart.getBases().size());
-
-		Putty putty0 = new Putty(new Coordinate(1, 1),testPart);
-		Putty putty1 = new Putty();
-		Putty putty2 = new Putty();
-		Putty putty3 = new Putty();
-
-		testPart.addBase(putty0, new Coordinate(1, 1));
-		testPart.addBase(putty1, new Coordinate(1, 1));
-		testPart.addBase(putty2, new Coordinate(1, 1));
-		testPart.addBase(putty3, new Coordinate(1, 1));
-
-		System.out.println(testPart.getBases().size());
-
-		putty0.clean();
-
-		System.out.println(testPart.getBases().size());
-
-//		putty0.getTrackPart().removeFromTrackPart(putty0);
-}catch(Exception e){
-	System.out.println("Megvan az e");
-	e.printStackTrace();
-}
 		System.exit(0);
 	}
 }
