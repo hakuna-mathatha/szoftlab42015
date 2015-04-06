@@ -28,12 +28,18 @@ public abstract class Bot extends Base {
 		this.lastPosition = lastPosition;
 	}
 	
-	public boolean isVeloMod() {
+	public boolean getVeloMod() {
 		return veloMod;
 	}
 
-	public void setVeloMod(boolean veloMod) {
-		this.veloMod = veloMod;
+	public void setVeloMod(boolean veloMod) { this.veloMod = veloMod; }
+
+	public boolean getDirectionMod() {
+		return directionMod;
+	}
+
+	public void setDirectionMod(boolean directionMod) {
+		this.directionMod = directionMod;
 	}
 
 	public abstract void jump(Track track);

@@ -1,19 +1,26 @@
 package Phoebe.trackpackage;
 import Phoebe.basepackage.*;
 import java.sql.Time;
+import java.sql.Timestamp;
+
 import Phoebe.gamepackage.Bot;
 
 public abstract class Barrier extends Base {
 	
-	private Time timeStamp;
+	private Timestamp timeStamp;
 
-	public abstract void modifyDisplacement(Bot bot);
+	public Barrier() {}
 
-	public abstract void setState(Bot bot);
+	public Barrier(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
 
-	public boolean isCoordNear(Coordinate coord) {
-		System.out.println("\t\t\t"+getClass().getName()+":isCoordNear");
-		return true;
+		super(position, type, trackPart, ray);
+		timeStamp = new Timestamp(System.currentTimeMillis());
 	}
 
+	public abstract void stepOn(Bot bot);
+
+	//ha teljesen feltakarították, vagy lejárt az idje, törli magát a pályáról
+	public void clean() {
+		trackPart.removeFromTrackPart(this);
+	}
 }

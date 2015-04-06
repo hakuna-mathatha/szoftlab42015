@@ -6,28 +6,25 @@ import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
 public class Pure extends Barrier {
-	
-	public Pure() {
+
+	public Pure() {}
+
+	public Pure(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
+
+		super(position, type, trackPart, ray);
 		type = BaseType.pure;
 	}
 
-	@Override
-	public void modifyDisplacement(Bot bot) {
-        System.out.println("\t\t"+getClass().getName()+":modifyDisplacement");
-        Displacement disp = bot.getDisplacement();
-        bot.modifyDisplacement(disp);
-	}
+	//káros hatások lekerülnek
+	public void stepOn(Bot bot) {
 
-	@Override
-	public void setState(Bot bot) {
-        System.out.println("\t\t"+getClass().getName()+":setState");
-        bot.setState(RobotState.pure);
-	}
+		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
-	@Override
-	public void stepOn(Bot aBot) {
-		modifyDisplacement(aBot);
-		setState(aBot);
-		
+		//állapaota pure lesz
+		bot.setState(RobotState.pure);
+		//iránya változtatható
+		bot.setDirectionMod(true);
+		//sebessége változtatható
+		bot.setVeloMod(true);
 	}
 }

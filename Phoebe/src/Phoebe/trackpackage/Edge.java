@@ -7,29 +7,27 @@ import Phoebe.gamepackage.RobotState;
 
 public class Edge extends Barrier {
 
-	public Edge() {
+	public Edge() {}
+
+	public Edge(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
+
+		super(position, type, trackPart, ray);
 		type = BaseType.edge;
 	}
-	
-	@Override
-	public void modifyDisplacement(Bot bot) {
-		// TODO Auto-generated method stub
-        System.out.println("\t\t"+getClass().getName()+":modifyDisplacement");
-        Displacement disp = bot.getDisplacement();
-        bot.modifyDisplacement(disp);
-	}
 
-	@Override
-	public void setState(Bot bot) {
-		// TODO Auto-generated method stub
-        System.out.println("\t\t"+getClass().getName()+":setState");
-        bot.setState(RobotState.died);
-	}
-	
-	@Override
-	public void stepOn(Bot aBot) {
-		modifyDisplacement(aBot);
-		setState(aBot);
-		
+	//letért a pályáról, meghal
+	public void stepOn(Bot bot) {
+
+		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+
+		//állapaota edge lesz
+		bot.setState(RobotState.died);
+		//iránya nem változtatható
+		bot.setDirectionMod(false);
+		//sebessége nem változtatható
+		bot.setVeloMod(false);
+
+		//töröljük a robotot arról a pályaelemrõl, amin tartózkodik, de a Game listájában benne hagyjuk
+		bot.getTrackPart().removeFromTrackPart(bot);
 	}
 }

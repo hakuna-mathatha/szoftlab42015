@@ -1,6 +1,7 @@
 package Phoebe.trackpackage;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
@@ -8,31 +9,56 @@ import Phoebe.gamepackage.RobotState;
 import Phoebe.gamepackage.Displacement;
 
 public class Oil extends Barrier {
-	
-	Timer timer;
-	
-	public Oil() {
-		type = BaseType.oil;
-	}
-	
-	@Override
-	public void modifyDisplacement(Bot bot) {
-        System.out.println("\t\t"+getClass().getName()+":modifyDisplacement");
-        Displacement disp = bot.getDisplacement();
-        bot.modifyDisplacement(disp);
+
+	private Timer timer;
+	private int countToRemove;
+
+	TimerTask deacreaseCount = new TimerTask() {
+		@Override
+		public void run() {
+//			Oil.decreaseCountToRemove();
+		}
+	};
+
+	public Oil() {}
+
+	public Oil(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
+
+		super(position, type, trackPart, ray);
+		type = BaseType.pure;
+		timer = new Timer();
+		this.timer.schedule(deacreaseCount, 5 * 1000);
+		//5 kör után tûnik el az olaj a pályáról
+		countToRemove = 5;
 	}
 
-	@Override
-	public void setState(Bot bot) {
-		System.out.println("\t\t"+getClass().getName()+":setState");
-        bot.setState(RobotState.oil);
-	}
+	//ha olajba lépünk, nem változtathatjuk a robot sebességét a következõ körig
+	public void stepOn(Bot bot) {
 
-	@Override
-	public void stepOn(Bot aBot) {
-		System.out.println("\t\t\t" + getClass().getName() + ":stepOn");
-		modifyDisplacement(aBot);
-		setState(aBot);
+		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+
+		//csak a normál robotra hat
+		if (bot.getType() == BaseType.normalRobot) {
+			//állapaota putty lesz
+			bot.setState(RobotState.oil);
+			//iránya változtatható
+			bot.setDirectionMod(true);
+			//sebessége nem változtatható
+			bot.setVeloMod(false);
+		}
 		
+	}
+
+	void decreaseCountToRemove() {
+
+		//ha letelt az idõ, akkor eltávolítjuk a pályáról az olajfoltot
+		if (countToRemove == 0) {
+			trackPart.removeFromTrackPart(this);
+			return;
+		}
+		//ha még nem járt le az idõ, akkor csökkentjük
+		else {
+			countToRemove--;
+		}
 	}
 }
