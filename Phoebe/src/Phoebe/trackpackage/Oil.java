@@ -73,6 +73,7 @@ public class Oil extends Barrier {
 //			timer.cancel();
 //			timer.purge();
 			cleaner();
+			timer.cancel();
 			System.out.println("time is over");
 //			clean();
 			System.out.println("removed from map");
