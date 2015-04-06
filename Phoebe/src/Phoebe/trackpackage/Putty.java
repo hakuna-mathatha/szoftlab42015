@@ -5,18 +5,29 @@ import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
 
+import java.sql.Timestamp;
+
 public class Putty extends Barrier {
 
 	private int countToRemove;
 
-	public Putty() {}
-
-	public Putty(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
-
-//		super(position, type, trackPart, ray);
-		type = BaseType.putty;
+	public Putty() {
+		this.type = BaseType.putty;
+		this.ray = 10;
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
+		this.type = BaseType.putty;
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
+
+		System.out.println(getClass().getName() + ":Putty");
+	}
+
+	public Putty(Coordinate position, TrackPart trackPart) {
+
+		this.position = position;
+		this.trackPart = trackPart;
+
+		System.out.println(getClass().getName() + ":Putty");
 	}
 
 	public int getCountToRemove() {

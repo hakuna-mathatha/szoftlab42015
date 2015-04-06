@@ -19,7 +19,6 @@ public abstract class Base {
 		this.position = position;
 	}
 
-	
 	public TrackPart getTrackPart() {
 
 		return trackPart;
@@ -28,16 +27,6 @@ public abstract class Base {
 	public void setTrackPart(TrackPart trackPart) {
 
 		this.trackPart = trackPart;
-	}
-
-	public Base() {}
-
-	public Base(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
-
-		this.position = position;
-		this.type = type;
-		this.trackPart = trackPart;
-		this.ray = ray;
 	}
 
 	public abstract void stepOn(Bot bot);

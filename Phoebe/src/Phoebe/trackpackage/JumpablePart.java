@@ -19,23 +19,23 @@ public class JumpablePart extends TrackPart {
 		this.bases = bases;
 	}
 
-	public JumpablePart() {}
+	public JumpablePart() {
+
+		this.bases = new ArrayList<Base>();
+	}
 
 	public JumpablePart(Coordinate position, double width, double height){
 
-		super(position, width, height);
-		bases = new ArrayList<Base>();
+		this.position = position;
+		this.width = width;
+		this.height = height;
 
+		System.out.println("bases list created");
 		//bases.add(new Oil());
 		//bases.add(new Putty());
 		//bases.add(new Pure());
 	}
 
-	/**
-	 * 
-	 * @param coord
-	 * @return 
-	 */
 	public Base getBase(Coordinate coord) {
 
 //		throw new UnsupportedOperationException();
@@ -59,7 +59,6 @@ public class JumpablePart extends TrackPart {
 
 		//betesszük a listába az elemet
 		bases.add(base);
-
 	}
 
 	public void removeFromTrackPart(Base base) {
@@ -67,8 +66,12 @@ public class JumpablePart extends TrackPart {
 		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
 
 		//remove true-val tér vissza, ha sikeresen törölt a listából, false-al, ha nem. ha sikertelen a törlés, hiba van
-		if (!(bases.remove(base))) {
+		if (bases.remove(base)) {
 			//itt az elem nem volt a listában, hibakezelés kell
+			System.out.println("Removed from list");
+		}
+		else {
+			System.out.println("Not removed from list");
 		}
 	}
 }

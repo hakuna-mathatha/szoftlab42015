@@ -2,9 +2,9 @@ package Phoebe.trackpackage;
 import Phoebe.basepackage.*;
 public abstract class TrackPart {
 
-	private Coordinate position;
-	private double width;
-	private double height;
+	protected Coordinate position;
+	protected double width;
+	protected double height;
 
 	public double getWidth() {
 
@@ -24,15 +24,6 @@ public abstract class TrackPart {
 	public Coordinate getPosition(){
 
 		return position;
-	}
-
-	public TrackPart() {}
-
-	public TrackPart(Coordinate position, double width, double height) {
-
-		this.position = position;
-		this.width = width;
-		this.height = height;
 	}
 
 	public abstract Base getBase(Coordinate coord);

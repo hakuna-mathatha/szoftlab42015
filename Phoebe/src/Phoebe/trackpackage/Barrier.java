@@ -9,18 +9,12 @@ public abstract class Barrier extends Base {
 	
 	protected Timestamp timeStamp;
 
-	public Barrier() {}
-
-//	public Barrier(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
-//
-//		super(position, type, trackPart, ray);
-//		timeStamp = new Timestamp(System.currentTimeMillis());
-//	}
-
 	public abstract void stepOn(Bot bot);
 
 	//ha teljesen feltakarították, vagy lejárt az idje, törli magát a pályáról
 	public void clean() {
+		System.out.println("\t\t\t" + getClass().getName() + ":clean");
+
 		trackPart.removeFromTrackPart(this);
 	}
 }
