@@ -62,4 +62,13 @@ public class JumpablePart extends TrackPart {
 
 	}
 
+	public void removeFromTrackPart(Base base) {
+
+		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
+
+		//remove true-val tér vissza, ha sikeresen törölt a listából, false-al, ha nem. ha sikertelen a törlés, hiba van
+		if (!(bases.remove(base))) {
+			//itt az elem nem volt a listában, hibakezelés kell
+		}
+	}
 }
