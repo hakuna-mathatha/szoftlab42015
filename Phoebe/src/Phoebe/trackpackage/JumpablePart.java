@@ -19,13 +19,20 @@ public class JumpablePart extends TrackPart {
 		this.bases = bases;
 	}
 
-	public JumpablePart() {}
+	public JumpablePart() {
+
+		this.bases = new ArrayList<Base>();
+	}
 
 	public JumpablePart(Coordinate position, double width, double height){
 
-		super(position, width, height);
-		bases = new ArrayList<Base>();
+		this.position = position;
+		this.width = width;
+		this.height = height;
+		
+		this.bases = new ArrayList<Base>();
 
+		System.out.println("bases list created");
 		//bases.add(new Oil());
 		//bases.add(new Putty());
 		//bases.add(new Pure());
@@ -55,9 +62,8 @@ public class JumpablePart extends TrackPart {
 
 	public void addBase(Base base, Coordinate coord) {
 		
-		System.out.println("<<<<??????????????");
 		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
-		System.out.println("<<<<??????????????");
+		
 //		System.out.println(bases.size());
 		
 		//betesszük a listába az elemet

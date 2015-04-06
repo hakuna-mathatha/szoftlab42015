@@ -12,44 +12,35 @@ import Phoebe.gamepackage.Displacement;
 public class Oil extends Barrier {
 
 	private Timer timer;
-	private int countToRemove;
-
-//	TimerTask deacreaseCount = new TimerTask() {
-//		@Override
-//		public void run() {
-////			Oil.decreaseCountToRemove();
-//		}
-//	};
 
 	public Oil() {
-		type = BaseType.oil;
+		this.type = BaseType.oil;
+		this.ray = 10;
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
+		this.type = BaseType.oil;
+		this.timer = new Timer();
+		//kell egy task, ami adott idõ után lefut
+		TimerTask tTask = new OilTask();
+		// 5 kör után tûnik el az olaj a pályáról
+		this.timer.schedule(tTask, 2 * 1000);
 	}
 
-//	public Oil(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
-////		super(position, type, trackPart, ray);
-//		
-//		System.out.println("Oil Constructor");
-//		type = BaseType.oil;
-//		TimerTask T = new timerer();
-//		timer = new Timer();
-//		this.timer.schedule(T, 5 * 1000);
-//		//5 kör után tûnik el az olaj a pályáról
-//		countToRemove = 1;
-//	}
-	
-	
 	public Oil(Coordinate position, TrackPart trackPart) {
-		this.trackPart = trackPart;
+
 		this.position = position;
-		this.ray = 100;
-		timeStamp = new Timestamp(System.currentTimeMillis());
-		System.out.println("Oil Constructor");
-		type = BaseType.oil;
-		TimerTask T = new timerer();
-		timer = new Timer();
-		this.timer.schedule(T, 5 * 1000);
+		this.trackPart = trackPart;
+		
+		this.type = BaseType.oil;
+		this.ray = 10;
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
+		this.type = BaseType.oil;
+		this.timer = new Timer();
+		//kell egy task, ami adott idõ után lefut
+		TimerTask tTask = new OilTask();
 		// 5 kör után tûnik el az olaj a pályáról
-		//T.cancel();
+		this.timer.schedule(tTask, 2 * 1000);
+
+		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}
 
 	//ha olajba lépünk, nem változtathatjuk a robot sebességét a következõ körig
@@ -66,22 +57,25 @@ public class Oil extends Barrier {
 			//sebessége nem változtatható
 			bot.setVeloMod(false);
 		}
-		
 	}
 
-	void decreaseCountToRemove() {
-		
-		System.out.println("Decrese");
+	
+	public void cleaner(){
 		this.clean();
-
 	}
 	
-	private class timerer extends TimerTask{
+	private class OilTask extends TimerTask{
 
 		@Override
 		public void run() {
-			decreaseCountToRemove();
-			
+			//ha letelt az idõ, akkor eltûntetjük a pályáról
+			//timer leállítása
+//			timer.cancel();
+//			timer.purge();
+			cleaner();
+			System.out.println("time is over");
+//			clean();
+			System.out.println("removed from map");
 		}
 		
 	}

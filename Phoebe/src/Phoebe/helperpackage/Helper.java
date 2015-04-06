@@ -3,6 +3,7 @@ package Phoebe.helperpackage;
 import java.util.Scanner;
 
 import Phoebe.basepackage.Base;
+import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
@@ -31,7 +32,7 @@ public class Helper {
 		Coordinate coord = new Coordinate();
 		Displacement disp = new Displacement();
 		Putty putty = new Putty();
-		Oil oil = new Oil();
+//		Oil oil = new Oil();
 		JumpablePart part1 = new JumpablePart();
 		Robot r = g.bots.get(0);
 
@@ -74,7 +75,8 @@ public class Helper {
 				break;
 			}
 		}catch(Exception e){
-			
+			System.out.println("Exception in switch case.");
+			e.printStackTrace();
 		}
 	}
 
@@ -123,6 +125,34 @@ public class Helper {
 			if (parancs != null)
 				Helper.kiertekel(parancs);
 		}
+
+
+
+
+
+////////////TESZT
+
+
+		JumpablePart testPart = new JumpablePart();
+		System.out.println(testPart.getBases().size());
+
+		Putty putty0 = new Putty();
+		Putty putty1 = new Putty();
+		Putty putty2 = new Putty();
+		Putty putty3 = new Putty();
+
+		testPart.addBase(putty0, new Coordinate(1, 1));
+		testPart.addBase(putty1, new Coordinate(1, 1));
+		testPart.addBase(putty2, new Coordinate(1, 1));
+		testPart.addBase(putty3, new Coordinate(1, 1));
+
+		System.out.println(testPart.getBases().size());
+
+//		putty0.clean();
+
+		System.out.println(testPart.getBases().size());
+
+//		putty0.getTrackPart().removeFromTrackPart(putty0);
 
 		System.exit(0);
 	}
