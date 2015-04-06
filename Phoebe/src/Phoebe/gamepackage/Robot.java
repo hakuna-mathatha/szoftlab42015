@@ -103,7 +103,8 @@ public class Robot extends Bot {
 			aBot.setDisplacement(fast);
 			// Tiltsa le a sebesseg modositas lehetoseget
 			aBot.setVeloMod(false);
-
+			aBot.setState(RobotState.active);
+			
 			this.trackPart.removeFromTrackPart(this);
 			this.state = RobotState.died;
 
