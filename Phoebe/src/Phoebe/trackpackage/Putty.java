@@ -13,7 +13,7 @@ public class Putty extends Barrier {
 
 	public Putty(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
 
-		super(position, type, trackPart, ray);
+//		super(position, type, trackPart, ray);
 		type = BaseType.putty;
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;

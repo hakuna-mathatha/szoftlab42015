@@ -62,7 +62,7 @@ public class Robot extends Bot {
 	public void jump(Track track) {
 		setState(RobotState.jump);
 		System.out.println("\t" + getClass().getName() + ":jump");
-
+		veloMod = true;
 		setNextPosition(calcCoordinate(position, displacement));
 		setLastPosition(position);
 		setPosition(nextPosition);

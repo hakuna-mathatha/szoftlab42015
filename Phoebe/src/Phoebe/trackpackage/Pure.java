@@ -11,7 +11,7 @@ public class Pure extends Barrier {
 
 	public Pure(Coordinate position, BaseType type, TrackPart trackPart, double ray) {
 
-		super(position, type, trackPart, ray);
+//		super(position, type, trackPart, ray);
 		type = BaseType.pure;
 	}
 

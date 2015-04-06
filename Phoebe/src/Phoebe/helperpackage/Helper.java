@@ -41,7 +41,10 @@ public class Helper {
 				vege = true;
 				break;
 			case put_oil:
-				r.putTheBarrier(oil);
+				Coordinate coord1 = new Coordinate(1, 1);
+				JumpablePart jump = new JumpablePart(coord1, 4, 4);
+				Oil oil1 = new Oil(coord1, jump);
+//				r.putTheBarrier(oil);
 				
 				break;
 			case put_putty:
