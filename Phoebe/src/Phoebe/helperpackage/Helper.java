@@ -34,7 +34,7 @@ public class Helper {
 		Putty putty = new Putty();
 //		Oil oil = new Oil();
 		JumpablePart part1 = new JumpablePart();
-		Robot r = g.bots.get(0);
+		Robot r = g.robots.get(0);
 
 		try{
 			switch (comm) {
@@ -59,7 +59,7 @@ public class Helper {
 				g.getWinner();
 				break;
 			case next_position:
-				g.bots.get(0).calcCoordinate(coord, disp);
+				g.robots.get(0).calcCoordinate(coord, disp);
 				break;
             case help:
                  System.out.println("\tYou can choose from the following commands:");
@@ -95,7 +95,7 @@ public class Helper {
 			System.out.println("\n*******************JSON beolvasas proba!!!");
 			System.out.println("Position: "+c.getX() + " " + c.getY());
 			Base b = edgeofTheTrack1.getBase(new Coordinate());
-			Robot r = g.bots.get(0);
+			Robot r = g.robots.get(0);
 			b.getType();
 	 		System.out.println("Position: "+ edgeofTheTrack1.getPosition().getX() +", "+edgeofTheTrack1.getPosition().getY()+ " High: " + edgeofTheTrack1.getHeight()+" Width: "+edgeofTheTrack1.getHeight());
 		}catch(Exception e){
@@ -105,12 +105,13 @@ public class Helper {
 		
 		///////////////////////////////////////////Tesztelem hogy szamol a calcCoord()/////////////////
 		System.out.print("\n*******************calcCoordinate fgv proba!!!\n");
-		Robot r = g.bots.get(0);
+		Robot r = g.robots.get(0);
 		
 		r.setLastPosition(new Coordinate(1,2));
 		Coordinate c = r.calcCoordinate(new Coordinate(3, 1), new Displacement(Math.PI/3, 1));
 		System.out.println("x: "+c.getX() + " y: "+c.getY()+"\n");
 		///////////////////////////////////////////
+		
 
 		// Parancsok lekezelése:
 		while (Helper.vege != true) {
@@ -126,7 +127,9 @@ public class Helper {
 				Helper.kiertekel(parancs);
 		}
 
-
+		
+		
+		
 
 
 

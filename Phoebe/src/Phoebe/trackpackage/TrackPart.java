@@ -43,7 +43,8 @@ public abstract class TrackPart {
 		double tmpPY = position.getY();
 
 		//ha rajta van a az elemen, akkor a paraméter koordinátái az elem szélei között vannak
-		if (tmpX >= tmpPX && tmpX <= (tmpPX + width) && tmpY <= tmpPY && tmpY >= (tmpPY - height)) {
+		//Itt a szelek gondot okozhatnak. Igaz kicsi a valoszinusege annak hogy pontosan ket elem hatarara erkezzen a robot.
+		if (tmpX >= tmpPX && tmpX < (tmpPX + width) && tmpY <= tmpPY && tmpY >= (tmpPY - height)) {
 			return true;
 		}
 

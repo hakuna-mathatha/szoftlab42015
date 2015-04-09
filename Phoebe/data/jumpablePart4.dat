@@ -2,9 +2,9 @@
 		"barriers":[],
 		"position":
 		{
-			"x":40,
-			"y":39
+			"x":0,
+			"y":12
 		},
-		"width":10,
-		"height":79
+		"width":4,
+		"height":12
 	}
