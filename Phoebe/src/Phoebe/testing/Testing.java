@@ -15,11 +15,11 @@ public class Testing {
 
         System.out.println("Enter the first file's place:");
         Scanner scanIn = new Scanner(System.in);
-        String s1 = scanIn.next();
+        String s1 = scanIn.nextLine();
 
         System.out.println("Enter the second file's place:");
         scanIn = new Scanner(System.in);
-        String s2 = scanIn.next();
+        String s2 = scanIn.nextLine();
 
         BufferedReader bfr = new BufferedReader(new FileReader(s1));
         BufferedReader bfr1 = new BufferedReader(new FileReader(s2));
