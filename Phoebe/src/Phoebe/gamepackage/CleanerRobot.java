@@ -14,6 +14,23 @@ public class CleanerRobot extends Bot {
 	
 	
 	
+	public CleanerRobot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
+		System.out.println("\t" + getClass().getName() + ":Robot");
+
+		displacement = disp1;
+		state = RobotState.pure;
+		// legyen a kiindulo ponttal azonos
+		nextPosition = new Coordinate(1, 1);
+		position = position1;
+		lastPosition = lastpos1;
+		type = BaseType.cleanerRobot;
+		trackPart = new JumpablePart();
+
+		veloMod = true;
+		directionMod = true;
+
+	}
+	
 	public CleanerRobot() {
 		System.out.println("\t" + getClass().getName() + ":Robot");
 

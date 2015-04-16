@@ -40,7 +40,7 @@ public class Oil extends Barrier {
 		// 5 kör után tûnik el az olaj a pályáról
 		this.timer.schedule(tTask, 2 * 1000);
 
-		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}
 
 	//ha olajba lépünk, nem változtathatjuk a robot sebességét a következõ körig

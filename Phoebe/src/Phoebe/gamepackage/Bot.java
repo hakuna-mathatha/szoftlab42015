@@ -79,8 +79,9 @@ public abstract class Bot extends Base {
 	}
 
 	public void setState(RobotState state1) {
-		System.out.println("\t\t\t" + getClass().getName() + ":setState");
+	
 		this.state = state1;
+		System.out.println("\t\t\t" + getClass().getName() + ":setState"+": "+this.state);
 	}
 
 	public RobotState getState() {
@@ -110,13 +111,13 @@ public abstract class Bot extends Base {
 		direction.setX(coord.getX() - lastPosition.getX());
 		direction.setY(coord.getY() - lastPosition.getY());
 
-		// System.out.println("x: "+direction.getX() + " y: "+direction.getY());
+//		 System.out.println("x: "+direction.getX() + " y: "+direction.getY());
 
 		Coordinate dirNorm = new Coordinate();
 
 		double leng = direction.legth();
 
-		System.out.println(leng);
+//		System.out.println(leng);
 
 		Coordinate rotation = new Coordinate();
 
@@ -136,8 +137,8 @@ public abstract class Bot extends Base {
 		coordinate.setY(coord.y + leng * dirNorm.y * velo);
 
 
-		System.out
-				.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
+//		System.out
+//				.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
 
 		System.out.println("\t" + getClass().getName() + ":calcCoordinate");
 

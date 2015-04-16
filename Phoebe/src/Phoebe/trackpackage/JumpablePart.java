@@ -32,7 +32,7 @@ public class JumpablePart extends TrackPart {
 		
 		this.bases = new ArrayList<Base>();
 
-		System.out.println("bases list created");
+//		System.out.println("bases list created");
 		//bases.add(new Oil());
 		//bases.add(new Putty());
 		//bases.add(new Pure());
@@ -68,7 +68,7 @@ public class JumpablePart extends TrackPart {
 		
 		//betesszük a listába az elemet
 		bases.add(base);
-		System.out.println(bases.size());
+//		System.out.println(bases.size());
 
 	}
 
@@ -80,6 +80,6 @@ public class JumpablePart extends TrackPart {
 		if (!(bases.remove(base))) {
 			//itt az elem nem volt a listában, hibakezelés kell
 		}
-		System.out.println(bases.size());
+//		System.out.println(bases.size());
 	}
 }

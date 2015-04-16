@@ -17,7 +17,7 @@ public class Robot extends Bot {
 		oilRepository = 5;
 		distance = 0;
 		velocityMod = 1;
-		displacement = new Displacement((-1) * Math.PI, 1);
+		displacement = new Displacement(0, 1);
 		state = RobotState.pure;
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
@@ -25,6 +25,26 @@ public class Robot extends Bot {
 		lastPosition = new Coordinate(0.5, 0.5);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart(new Coordinate(1, 1), 4, 4);
+
+		veloMod = true;
+		directionMod = true;
+
+	}
+	
+	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
+		System.out.println("\t" + getClass().getName() + ":Robot");
+		puttyReporitory = 5;
+		oilRepository = 5;
+		distance = 0;
+		velocityMod = 1;
+		displacement = disp1;
+		state = RobotState.pure;
+		// legyen a kiindulo ponttal azonos
+		nextPosition = new Coordinate(1, 1);
+		position = position1;
+		lastPosition = lastpos1;
+		type = BaseType.normalRobot;
+		trackPart = new JumpablePart();
 
 		veloMod = true;
 		directionMod = true;
@@ -60,10 +80,10 @@ public class Robot extends Bot {
 
 	@Override
 	public void jump(Track track) {
-		setState(RobotState.jump);
-		System.out.println("\t" + getClass().getName() + ":jump");
+		
+		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
 		veloMod = true;
-		setNextPosition(calcCoordinate(position, displacement));
+		setState(RobotState.jump);
 		setLastPosition(position);
 		setPosition(nextPosition);
 
@@ -72,13 +92,16 @@ public class Robot extends Bot {
 		this.setTrackPart(part);
 		Base b = giveMeTheBase(position, part);
 		part.addBase(this, position);
-
+//		System.out.println("Itt vagyok: "+ position.x+" "+position.y);
+		displacement.angle = 0;
+		displacement.velocity = 1;
 		getTheEffectForRobot(b);
+		
 	}
 
 	@Override
 	public void stepOn(Bot aBot) {
-		System.out.println("Robot stepOn");
+		System.out.println("\t" + getClass().getName() + ":stepOn()");
 		// Atlag sebesseget ugy ertelmeztem, hogy a ket elmozdulas vektor
 		// osszege altal kapott vektor hosszanak a fele
 		if (aBot.getType().equals(BaseType.normalRobot)) {
@@ -99,14 +122,14 @@ public class Robot extends Bot {
 			fast = aBot.getDisplacement();
 
 			fast.setVelocity(velo);
-
+			
 			aBot.setDisplacement(fast);
 			// Tiltsa le a sebesseg modositas lehetoseget
 			aBot.setVeloMod(false);
 			aBot.setState(RobotState.active);
 			
 			this.trackPart.removeFromTrackPart(this);
-			this.state = RobotState.died;
+			this.setState(RobotState.died);
 
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
 			Displacement disp = new Displacement();

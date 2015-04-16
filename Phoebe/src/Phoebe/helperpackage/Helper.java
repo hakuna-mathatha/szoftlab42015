@@ -53,7 +53,7 @@ public class Helper {
 				
 				break;
             case one_round:
-				r.jump(g.track);
+				g.start();
 				break;
 			case get_winner:
 				g.getWinner();
@@ -83,33 +83,33 @@ public class Helper {
 	public static void main(String[] args) {
 		// Inicializációs szakasz:
 		g = new Game();
-		g.start();
+//		g.start();
 
 
 //JSON típusú fájlból beolvasási példa
-		try{
-			
-			String baseURL = System.getProperty("user.dir")+"/data/";
-	 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
-			EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
-			System.out.println("\n*******************JSON beolvasas proba!!!");
-			System.out.println("Position: "+c.getX() + " " + c.getY());
-			Base b = edgeofTheTrack1.getBase(new Coordinate());
-			Robot r = g.robots.get(0);
-			b.getType();
-	 		System.out.println("Position: "+ edgeofTheTrack1.getPosition().getX() +", "+edgeofTheTrack1.getPosition().getY()+ " High: " + edgeofTheTrack1.getHeight()+" Width: "+edgeofTheTrack1.getHeight());
-		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println("Hiba JSON beolvasas");
-		}
+//		try{
+//			
+//			String baseURL = System.getProperty("user.dir")+"/data/";
+//	 		Coordinate c = (Coordinate) JSONHandler.readStream(baseURL+"coordinate.dat",Coordinate.class);
+//			EdgeofTheTrack edgeofTheTrack1 = (EdgeofTheTrack) JSONHandler.readStream(baseURL+"edgeoftrack.dat",EdgeofTheTrack.class);
+//			System.out.println("\n*******************JSON beolvasas proba!!!");
+//			System.out.println("Position: "+c.getX() + " " + c.getY());
+//			Base b = edgeofTheTrack1.getBase(new Coordinate());
+//			Robot r = g.robots.get(0);
+//			b.getType();
+//	 		System.out.println("Position: "+ edgeofTheTrack1.getPosition().getX() +", "+edgeofTheTrack1.getPosition().getY()+ " High: " + edgeofTheTrack1.getHeight()+" Width: "+edgeofTheTrack1.getHeight());
+//		}catch(Exception e){
+//			e.printStackTrace();
+//			System.out.println("Hiba JSON beolvasas");
+//		}
 		
 		///////////////////////////////////////////Tesztelem hogy szamol a calcCoord()/////////////////
-		System.out.print("\n*******************calcCoordinate fgv proba!!!\n");
-		Robot r = g.robots.get(0);
-		
-		r.setLastPosition(new Coordinate(1,2));
-		Coordinate c = r.calcCoordinate(new Coordinate(3, 1), new Displacement(Math.PI/3, 1));
-		System.out.println("x: "+c.getX() + " y: "+c.getY()+"\n");
+//		System.out.print("\n*******************calcCoordinate fgv proba!!!\n");
+//		Robot r = g.robots.get(0);
+//		
+//		r.setLastPosition(new Coordinate(1,2));
+//		Coordinate c = r.calcCoordinate(new Coordinate(3, 1), new Displacement(Math.PI/3, 1));
+//		System.out.println("x: "+c.getX() + " y: "+c.getY()+"\n");
 		///////////////////////////////////////////
 		
 

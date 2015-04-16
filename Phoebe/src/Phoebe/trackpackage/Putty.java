@@ -21,7 +21,7 @@ public class Putty extends Barrier {
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
 
-		System.out.println(getClass().getName() + ":Putty");
+//		System.out.println(getClass().getName() + ":Putty");
 	}
 
 	public Putty(Coordinate position, TrackPart trackPart) {
@@ -35,7 +35,7 @@ public class Putty extends Barrier {
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
 
-		System.out.println(getClass().getName() + ":Putty");
+//		System.out.println(getClass().getName() + ":Putty");
 	}
 
 	public int getCountToRemove() {

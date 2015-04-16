@@ -1,6 +1,7 @@
 package Phoebe.gamepackage;
 
 import java.util.*;
+import java.util.stream.BaseStream;
 
 import Phoebe.basepackage.BaseType;
 import Phoebe.trackpackage.*;
@@ -31,26 +32,38 @@ public class Game {
 	// Majd a valtozasokat fel kell vazetni a diagramokra!!!
 	public void start() {
 
-		System.out.println("Start");
+		System.out.println(getClass().getName() + ":Start()");
 
 		for (Robot rob : robots) {
-			rob.setNextPosition(rob.calcCoordinate(rob.getPosition(), rob.getDisplacement()));
+			if(rob.state.equals(RobotState.died) == true){
+				continue;
+			}else{
+				rob.setNextPosition(rob.calcCoordinate(rob.getPosition(), rob.getDisplacement()));
+			}
+			
 		}
 
 		Collections.sort(robots, new ComparRobots());
 		
-		for(CleanerRobot cleaner : cleaners){
-			cleaner.jump(track);
-		}
+//		for(CleanerRobot cleaner : cleaners){
+//			cleaner.jump(track);
+//		}
 		
 		 for(Robot rob : robots){
-			 rob.jump(track);
+			 if(rob.state.equals(RobotState.died) == true)
+				 continue;
+			 else{
+				 rob.jump(track); 
+			 }
+		
 		 }
 		 
 		 calcDistance();
 	}
 
 	private void calcDistance() {
+		
+		System.out.println(getClass().getName() + ":calcDistance()");
 
 		for (Robot robot : robots) {
 					Coordinate vector = robot.getLastPosition().difCoord(robot.getPosition());
@@ -83,6 +96,8 @@ public class Game {
 		@Override
 		public int compare(Bot o1, Bot o2) {
 
+			System.out.println(getClass().getName() + ":Compare robots velocity");
+			
 			double d1 = o1.getPosition().difCoord(o1.getNextPosition()).legth();
 			double d2 = o2.getPosition().difCoord(o2.getNextPosition()).legth();
 			

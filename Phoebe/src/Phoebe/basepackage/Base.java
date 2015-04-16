@@ -43,6 +43,7 @@ public abstract class Base {
 
 		//ha a koordináták távolsága páronként kisebb, mint a hatósugár, akkor a hatóterületén van (négzet alakú), a határok is számítanak
 		if (Math.abs(tmpX - tmpPX) <= ray && Math.abs(tmpY - tmpPY) <= ray) {
+			System.out.println("TRUE");
 			return true;
 		}
 
