@@ -1,93 +1,189 @@
 package Phoebe.testhelper;
 
+import Phoebe.gamepackage.CleanerRobot;
+import Phoebe.gamepackage.Displacement;
+import Phoebe.gamepackage.Game;
+import Phoebe.gamepackage.Robot;
+import Phoebe.trackpackage.*;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class TestHelper {
-	private enum Command{help, exit, newgame, placeBarrier, placeRobot, placeCleaner, start}
-	public static boolean vege = false;
-	private static Scanner scanInTest;
-	public static String parancs;
-	
-	//a valtozo eldonti hogy a parancsokat konzolon adjuk e be eppen vagy fajlbol olvastuk be
-	public static boolean fajlbol;
-	
-	//a tömb amibe a parancsokat a fajlbol beolvassuk
-	public static List<String> Commands;
-	
-	//megkéne adni szerintem minden objektumot elõre amit használhatunk teszteknél
-	//...
-	
-	public static void initialize(){
-		fajlbol = false;
-		Commands = new ArrayList<String>();
-		//itt példányosítani kéne mindent, a példányok attributumait a tesztek elején kéne mindig állítani megfelelõre	
-	}
-	
-	public static void kiertekel(String parancs) {
-		Command comm = null;
-		// ide kéne valami, ami a paraméterezett parancsból leveszi a paramétereket az alapján beállít néhány segédváltozót
-		//késõbb a segédváltozókkal állítod az objektumok paramértereit a switch case megfelelõ ágában
-		// miután a segédváltozók beállítása megtörtént a parancs legyen egyenlõ a paraméterezés nélküli eredeti parancsal (ami megtalálható a Command-ok között)
-		
-		try{
-			switch (comm) {
-			case exit:
-				vege = true;
-				break;
-			case help:
-                System.out.println("\tYou can choose from the following commands:");
-                System.out.println("\t\texit: Exit from the program");
+
+    private static Robot r1;
+    private static Scanner scanInTest;
+    private static Barrier barrier;
+    private static CleanerRobot cr1;
+
+    private enum Command {help, exit, newgame, placeBarrier, placeRobot, placeCleaner, start}
+
+    public static boolean vege = false;
+    private static Game g;
+
+    //a valtozo eldonti hogy a parancsokat konzolon adjuk e be eppen vagy fajlbol olvastuk be
+    public static boolean fajlbol;
+
+    //a tï¿½mb amibe a parancsokat a fajlbol beolvassuk
+    public static List<String> Commands;
+
+    //megkï¿½ne adni szerintem minden objektumot elï¿½re amit hasznï¿½lhatunk teszteknï¿½l
+    //...
+
+    public static void initialize() {
+        fajlbol = false;
+        Commands = new ArrayList<String>();
+        //itt pï¿½ldï¿½nyosï¿½tani kï¿½ne mindent, a pï¿½ldï¿½nyok attributumait a tesztek elejï¿½n kï¿½ne mindig ï¿½llï¿½tani megfelelï¿½re
+    }
+
+    public static void kiertekel(String parancs) {
+        Command comm = null;
+        try{
+            comm = Command.valueOf(parancs);
+        }catch(Exception e) {
+            System.out.println("Incorrect Command");
+        }
+        // ide kï¿½ne valami, ami a paramï¿½terezett parancsbï¿½l leveszi a paramï¿½tereket az alapjï¿½n beï¿½llï¿½t nï¿½hï¿½ny segï¿½dvï¿½ltozï¿½t
+        //kï¿½sï¿½bb a segï¿½dvï¿½ltozï¿½kkal ï¿½llï¿½tod az objektumok paramï¿½rtereit a switch case megfelelï¿½ ï¿½gï¿½ban
+        // miutï¿½n a segï¿½dvï¿½ltozï¿½k beï¿½llï¿½tï¿½sa megtï¿½rtï¿½nt a parancs legyen egyenlï¿½ a paramï¿½terezï¿½s nï¿½lkï¿½li eredeti parancsal (ami megtalï¿½lhatï¿½ a Command-ok kï¿½zï¿½tt)
+
+        try {
+            switch (comm) {
+                case newgame:
+                   g = new Game();
+                    break;
+                case placeRobot:
+                    createRobot();
+                    System.out.println();
+                    break;
+                case placeBarrier:
+                    createBarrier();
+                    break;
+                case placeCleaner:
+                    createCleaner();
+                case exit:
+                    vege = true;
+                    break;
+                case help:
+                    System.out.println("\tYou can choose from the following commands:");
+                    System.out.println("\t\texit: Exit from the program");
+                    break;
+                default:
+                    System.out.println("Incorrect command.");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Exception in switch case.");
+            e.printStackTrace();
+        }
+    }
+
+    private static void createCleaner() {
+        System.out.println("Give the actual position (form: x;y): ");
+        String[] actual_pos = scanInTest.nextLine().split(";");
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]),Integer.valueOf(actual_pos[1]));
+        System.out.println("Give the displacement (form: x;y): ");
+        String[] disp = scanInTest.nextLine().split(";");
+        Displacement displacement = new Displacement(Integer.valueOf(disp[0]),Integer.valueOf(disp[1]));
+        System.out.println("Give the last position (form: x;y): ");
+        String[] last_pos = scanInTest.nextLine().split(";");
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]),Integer.valueOf(last_pos[1]));
+
+        cr1 = new CleanerRobot(actual_coord,displacement,last_coord);
+    }
+
+    private static void createBarrier() {
+        System.out.println("Give the number of the type (1:putty 2:oil 3:pure 4:edge)");
+        int type = Integer.valueOf(scanInTest.nextLine());
+        switch (type){
+            case 1:
+                barrier = new Putty();
                 break;
-			default:
-				System.out.println("Incorrect command.");
-				break;
-			}
-		}catch(Exception e){
-			System.out.println("Exception in switch case.");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main(String[] args) {
-		initialize();
-		scanInTest = new Scanner(System.in);
-		parancs = scanInTest.nextLine();
-		
-		while (TestHelper.vege != true) {
-			System.out.print("-------------------console/file path:------------------------\n");
-			if(parancs.equals("command")){
-				fajlbol = false;
-				while (TestHelper.vege != true) {
-					System.out.print("-------------------new command------------------------\n");
-					System.out.println("Give the command : ");
-					parancs = scanInTest.nextLine();
-					if (parancs != null)
-						TestHelper.kiertekel(parancs);
-				}		
-			}
-			else if(!parancs.equals(null)){
-				fajlbol = true;
-				try{
-					File f = new File(parancs); 
-					//ha tenyleg elerheto a fajl akkor itt beolvasni
-					
-					//utana sorban kiertekeles
-					for(int i = 0; i < Commands.size(); i++){
-						String c = Commands.get(i);
-						kiertekel(c);						
-					}
-						
-				}
-				catch(Exception e){
-					System.out.println("Cannot acces the file.\n ");
-				}
-			}
-		}
-		
-		System.exit(0);
-	}
-	
+            case 2:
+                barrier = new Oil();
+                break;
+            case 3:
+                barrier = new Pure();
+                break;
+            case 4:
+                barrier = new Edge();
+                break;
+        }
+        System.out.println("Give the position of the barrier (form: x;y):");
+        String[] position = scanInTest.nextLine().split(";");
+        Coordinate coordinate = new Coordinate(Integer.valueOf(position[0]),Integer.valueOf(position[1]));
+        barrier.setPosition(coordinate);
+        System.out.println("Give the start position(x,y), width and height of the trackpart (form: x;y;w;h):");
+        String[] trackpart = scanInTest.nextLine().split(";");
+        TrackPart trackPart = new JumpablePart(new Coordinate(Integer.valueOf(trackpart[0]),Integer.valueOf(trackpart[1])),Double.valueOf(trackpart[2]),Double.valueOf(trackpart[3]));
+        barrier.setPosition(coordinate);
+        barrier.setTrackPart(trackPart);
+    }
+
+    private static void createRobot() {
+        System.out.println("Give the actual position (form: x;y): ");
+        String[] actual_pos = scanInTest.nextLine().split(";");
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]),Integer.valueOf(actual_pos[1]));
+        System.out.println("Give the displacement (form: x;y): ");
+        String[] disp = scanInTest.nextLine().split(";");
+        Displacement displacement = new Displacement(Integer.valueOf(disp[0]),Integer.valueOf(disp[1]));
+        System.out.println("Give the last position (form: x;y): ");
+        String[] last_pos = scanInTest.nextLine().split(";");
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]),Integer.valueOf(last_pos[1]));
+
+        r1 = new Robot(actual_coord,displacement,last_coord);
+    }
+
+    public static void main(String[] args) {
+
+        String parancs;
+
+        initialize();
+        scanInTest = new Scanner(System.in);
+
+
+        System.out.print("From where do you want to run the test:\nconsole/file\n");
+        parancs = scanInTest.nextLine();
+        if (parancs.equals("console")) {
+            fajlbol = false;
+            while (TestHelper.vege != true) {
+                System.out.print("-------------------new command------------------------\n");
+                System.out.println("Give the command : ");
+                parancs = scanInTest.nextLine();
+                if (parancs != null)
+                    TestHelper.kiertekel(parancs);
+            }
+        } else if (parancs.equals("file")) {
+            fajlbol = true;
+            System.out.println("Give the file full path: ");
+            parancs = scanInTest.nextLine();
+            try {
+                File f = new File(parancs);
+                //ha tenyleg elerheto a fajl akkor itt beolvasni
+                BufferedReader br = new BufferedReader(new FileReader(f));
+                String line = br.readLine();
+                while (line != null) {
+                    Commands.add(line);
+                    br.readLine();
+                }
+
+            } catch (Exception e) {
+                System.out.println("Cannot access the file.\n ");
+            }
+            //utana sorban kiertekeles
+            for (String c : Commands) {
+                kiertekel(c);
+            }
+        } else {
+            System.out.print("Incorrect command");
+        }
+
+
+        System.exit(0);
+    }
+
 }
