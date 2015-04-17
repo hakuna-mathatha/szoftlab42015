@@ -37,14 +37,15 @@ public class TestHelper {
     public static void initialize() {
         fajlbol = false;
         Commands = new ArrayList<String>();
+        scanInTest = new Scanner(System.in);
         //itt p�ld�nyos�tani k�ne mindent, a p�ld�nyok attributumait a tesztek elej�n k�ne mindig �ll�tani megfelel�re
     }
 
     public static void kiertekel(String parancs) {
         Command comm = null;
-        try{
+        try {
             comm = Command.valueOf(parancs);
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("Incorrect Command");
         }
         // ide k�ne valami, ami a param�terezett parancsb�l leveszi a param�tereket az alapj�n be�ll�t n�h�ny seg�dv�ltoz�t
@@ -54,7 +55,7 @@ public class TestHelper {
         try {
             switch (comm) {
                 case newgame:
-                   g = new Game();
+                    g = new Game();
                     break;
                 case placeRobot:
                     createRobot();
@@ -81,25 +82,11 @@ public class TestHelper {
             e.printStackTrace();
         }
     }
-
-    private static void createCleaner() {
-        System.out.println("Give the actual position (form: x;y): ");
-        String[] actual_pos = scanInTest.nextLine().split(";");
-        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]),Integer.valueOf(actual_pos[1]));
-        System.out.println("Give the displacement (form: x;y): ");
-        String[] disp = scanInTest.nextLine().split(";");
-        Displacement displacement = new Displacement(Integer.valueOf(disp[0]),Integer.valueOf(disp[1]));
-        System.out.println("Give the last position (form: x;y): ");
-        String[] last_pos = scanInTest.nextLine().split(";");
-        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]),Integer.valueOf(last_pos[1]));
-
-        cr1 = new CleanerRobot(actual_coord,displacement,last_coord);
-    }
-
+//  Megfelelo Barrier letrehozasa, a felhasznalói adatok alapjan
     private static void createBarrier() {
         System.out.println("Give the number of the type (1:putty 2:oil 3:pure 4:edge)");
         int type = Integer.valueOf(scanInTest.nextLine());
-        switch (type){
+        switch (type) {
             case 1:
                 barrier = new Putty();
                 break;
@@ -115,41 +102,63 @@ public class TestHelper {
         }
         System.out.println("Give the position of the barrier (form: x;y):");
         String[] position = scanInTest.nextLine().split(";");
-        Coordinate coordinate = new Coordinate(Integer.valueOf(position[0]),Integer.valueOf(position[1]));
-        barrier.setPosition(coordinate);
+        Coordinate coordinate = new Coordinate(Integer.valueOf(position[0]), Integer.valueOf(position[1]));
+
         System.out.println("Give the start position(x,y), width and height of the trackpart (form: x;y;w;h):");
         String[] trackpart = scanInTest.nextLine().split(";");
-        TrackPart trackPart = new JumpablePart(new Coordinate(Integer.valueOf(trackpart[0]),Integer.valueOf(trackpart[1])),Double.valueOf(trackpart[2]),Double.valueOf(trackpart[3]));
+        TrackPart trackPart = new JumpablePart(new Coordinate(Integer.valueOf(trackpart[0]), Integer.valueOf(trackpart[1])), Double.valueOf(trackpart[2]), Double.valueOf(trackpart[3]));
+
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
     }
 
+    //  Megfelelo Cleaner letrehozasa, a felhasznalói adatok alapjan
+    private static void createCleaner() {
+        System.out.println("Give the actual position (form: x;y): ");
+        String[] actual_pos = scanInTest.nextLine().split(";");
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]), Integer.valueOf(actual_pos[1]));
+
+        System.out.println("Give the displacement (form: x;y): ");
+        String[] disp = scanInTest.nextLine().split(";");
+        Displacement displacement = new Displacement(Integer.valueOf(disp[0]), Integer.valueOf(disp[1]));
+
+        System.out.println("Give the last position (form: x;y): ");
+        String[] last_pos = scanInTest.nextLine().split(";");
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]), Integer.valueOf(last_pos[1]));
+
+        cr1 = new CleanerRobot(actual_coord, displacement, last_coord);
+    }
+
+    //  Megfelelo Robot letrehozasa, a felhasznalói adatok alapjan
     private static void createRobot() {
         System.out.println("Give the actual position (form: x;y): ");
         String[] actual_pos = scanInTest.nextLine().split(";");
-        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]),Integer.valueOf(actual_pos[1]));
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]), Integer.valueOf(actual_pos[1]));
+
         System.out.println("Give the displacement (form: x;y): ");
         String[] disp = scanInTest.nextLine().split(";");
-        Displacement displacement = new Displacement(Integer.valueOf(disp[0]),Integer.valueOf(disp[1]));
+        Displacement displacement = new Displacement(Integer.valueOf(disp[0]), Integer.valueOf(disp[1]));
+
         System.out.println("Give the last position (form: x;y): ");
         String[] last_pos = scanInTest.nextLine().split(";");
-        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]),Integer.valueOf(last_pos[1]));
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]), Integer.valueOf(last_pos[1]));
 
-        r1 = new Robot(actual_coord,displacement,last_coord);
+        r1 = new Robot(actual_coord, displacement, last_coord);
     }
 
     public static void main(String[] args) {
 
         String parancs;
-
         initialize();
-        scanInTest = new Scanner(System.in);
 
 
+//      Eldontes hogy fajlbol vagy consolerol
         System.out.print("From where do you want to run the test:\nconsole/file\n");
         parancs = scanInTest.nextLine();
         if (parancs.equals("console")) {
             fajlbol = false;
+
+//            Ha fajlbol parancsok beolvasasa
             while (TestHelper.vege != true) {
                 System.out.print("-------------------new command------------------------\n");
                 System.out.println("Give the command : ");
@@ -157,10 +166,13 @@ public class TestHelper {
                 if (parancs != null)
                     TestHelper.kiertekel(parancs);
             }
+
         } else if (parancs.equals("file")) {
             fajlbol = true;
             System.out.println("Give the file full path: ");
             parancs = scanInTest.nextLine();
+
+//          Ha fajlbol, fajl sorainak Commandá alakitasa
             try {
                 File f = new File(parancs);
                 //ha tenyleg elerheto a fajl akkor itt beolvasni
@@ -174,14 +186,13 @@ public class TestHelper {
             } catch (Exception e) {
                 System.out.println("Cannot access the file.\n ");
             }
-            //utana sorban kiertekeles
+            //utana sorban kiertekeles Todo: uj szintaxist belevenni ide is
             for (String c : Commands) {
                 kiertekel(c);
             }
         } else {
             System.out.print("Incorrect command");
         }
-
 
         System.exit(0);
     }
