@@ -19,8 +19,12 @@ public class TestHelper {
     private static Scanner scanInTest;
     private static Barrier barrier;
     private static CleanerRobot cr1;
+    private static Track track;
+    private static Robot r2;
+    private static CleanerRobot cr2;
 
     private enum Command {help, exit, newgame, placeBarrier, placeRobot, placeCleaner, start}
+    private enum Type {putty, oil, edge, pure}
 
     public static boolean vege = false;
     private static Game g;
@@ -42,9 +46,10 @@ public class TestHelper {
     }
 
     public static void kiertekel(String parancs) {
+        String[] line = parancs.split(" ");
         Command comm = null;
         try {
-            comm = Command.valueOf(parancs);
+            comm = Command.valueOf(line[0]);
         } catch (Exception e) {
             System.out.println("Incorrect Command");
         }
@@ -56,16 +61,24 @@ public class TestHelper {
             switch (comm) {
                 case newgame:
                     g = new Game();
+                    track = new Track();
+                    track.create();
                     break;
                 case placeRobot:
-                    createRobot();
-                    System.out.println();
+                    createRobot(line[1],line[2],line[3]);
                     break;
                 case placeBarrier:
-                    createBarrier();
+                    createBarrier(line[1],line[2]);
                     break;
                 case placeCleaner:
-                    createCleaner();
+                    createCleaner(line[1],line[2],line[3]);
+                    break;
+                case start:
+                    logStartState();
+                    g.start();
+                    logEndState();
+                    setToDefault();
+                    break;
                 case exit:
                     vege = true;
                     break;
@@ -82,68 +95,88 @@ public class TestHelper {
             e.printStackTrace();
         }
     }
-//  Megfelelo Barrier letrehozasa, a felhasznalói adatok alapjan
-    private static void createBarrier() {
-        System.out.println("Give the number of the type (1:putty 2:oil 3:pure 4:edge)");
-        int type = Integer.valueOf(scanInTest.nextLine());
+//  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban
+    private static void logEndState() {
+    }
+    //  Todo: fájlba kiírni a kezdeti állapotot a 8-as doksiban leírt formátumban
+    private static void logStartState() {
+
+    }
+
+    private static void setToDefault() {
+        r1=null;
+        r2=null;
+        barrier=null;
+        cr1=null;
+        cr2=null;
+    }
+
+    //  Megfelelo Barrier letrehozasa, a felhasznalói adatok alapjan
+    private static void createBarrier(String t, String pos) {
+        Type type = null;
+        try {
+            type = Type.valueOf(t);
+        } catch (Exception e) {
+            System.out.println("Incorrect Command");
+        }
         switch (type) {
-            case 1:
+            case putty:
                 barrier = new Putty();
                 break;
-            case 2:
+            case oil:
                 barrier = new Oil();
                 break;
-            case 3:
+            case pure:
                 barrier = new Pure();
                 break;
-            case 4:
+            case edge:
                 barrier = new Edge();
                 break;
         }
-        System.out.println("Give the position of the barrier (form: x;y):");
-        String[] position = scanInTest.nextLine().split(";");
+        String[] position = pos.split(";");
         Coordinate coordinate = new Coordinate(Integer.valueOf(position[0]), Integer.valueOf(position[1]));
 
-        System.out.println("Give the start position(x,y), width and height of the trackpart (form: x;y;w;h):");
-        String[] trackpart = scanInTest.nextLine().split(";");
-        TrackPart trackPart = new JumpablePart(new Coordinate(Integer.valueOf(trackpart[0]), Integer.valueOf(trackpart[1])), Double.valueOf(trackpart[2]), Double.valueOf(trackpart[3]));
+        TrackPart trackPart = track.findAPart(coordinate);
 
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
     }
 
     //  Megfelelo Cleaner letrehozasa, a felhasznalói adatok alapjan
-    private static void createCleaner() {
-        System.out.println("Give the actual position (form: x;y): ");
-        String[] actual_pos = scanInTest.nextLine().split(";");
-        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]), Integer.valueOf(actual_pos[1]));
+    private static void createCleaner(String actual_pos,String disp,String last_pos) {
+        String[] pos_xy = actual_pos.split(";");
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(pos_xy[0]), Integer.valueOf(pos_xy[1]));
 
-        System.out.println("Give the displacement (form: x;y): ");
-        String[] disp = scanInTest.nextLine().split(";");
-        Displacement displacement = new Displacement(Integer.valueOf(disp[0]), Integer.valueOf(disp[1]));
+        String[] disp_xy = disp.split(";");
+        Displacement displacement = new Displacement(Integer.valueOf(disp_xy[0]), Integer.valueOf(disp_xy[1]));
 
-        System.out.println("Give the last position (form: x;y): ");
-        String[] last_pos = scanInTest.nextLine().split(";");
-        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]), Integer.valueOf(last_pos[1]));
+        String[] last_pos_xy = last_pos.split(";");
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos_xy[0]), Integer.valueOf(last_pos_xy[1]));
 
-        cr1 = new CleanerRobot(actual_coord, displacement, last_coord);
+        if(cr1==null){
+            cr1 = new CleanerRobot(actual_coord, displacement, last_coord);
+        }
+        else {
+            cr2 = new CleanerRobot(actual_coord, displacement, last_coord);
+        }
     }
 
     //  Megfelelo Robot letrehozasa, a felhasznalói adatok alapjan
-    private static void createRobot() {
-        System.out.println("Give the actual position (form: x;y): ");
-        String[] actual_pos = scanInTest.nextLine().split(";");
-        Coordinate actual_coord = new Coordinate(Integer.valueOf(actual_pos[0]), Integer.valueOf(actual_pos[1]));
+    private static void createRobot(String actual_pos,String disp,String last_pos) {
+        String[] pos_xy = actual_pos.split(";");
+        Coordinate actual_coord = new Coordinate(Integer.valueOf(pos_xy[0]), Integer.valueOf(pos_xy[1]));
 
-        System.out.println("Give the displacement (form: x;y): ");
-        String[] disp = scanInTest.nextLine().split(";");
-        Displacement displacement = new Displacement(Integer.valueOf(disp[0]), Integer.valueOf(disp[1]));
+        String[] disp_xy = disp.split(";");
+        Displacement displacement = new Displacement(Integer.valueOf(disp_xy[0]), Integer.valueOf(disp_xy[1]));
 
-        System.out.println("Give the last position (form: x;y): ");
-        String[] last_pos = scanInTest.nextLine().split(";");
-        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos[0]), Integer.valueOf(last_pos[1]));
-
-        r1 = new Robot(actual_coord, displacement, last_coord);
+        String[] last_pos_xy = last_pos.split(";");
+        Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos_xy[0]), Integer.valueOf(last_pos_xy[1]));
+        if(r1==null){
+            r1 = new Robot(actual_coord, displacement, last_coord);
+        }
+        else{
+            r2 = new Robot(actual_coord, displacement, last_coord);
+        }
     }
 
     public static void main(String[] args) {
