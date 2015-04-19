@@ -113,7 +113,7 @@ public class TestHelper {
 //  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban
     private static void logEndState() {
         try {
-            String filename = System.getProperty("user.dir")+"/result/result.txt";
+            String filename = System.getProperty("user.dir")+"/results/result.txt";
             FileWriter fw = new FileWriter(filename, true);
 
             fw.write("\nElvárt eredmény, állapot :\n");
