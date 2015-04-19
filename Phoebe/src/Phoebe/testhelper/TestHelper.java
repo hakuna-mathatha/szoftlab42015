@@ -111,7 +111,7 @@ public class TestHelper {
             }
         } catch (Exception e) {
             System.out.println("Exception in switch case.");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 //  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban

@@ -46,9 +46,9 @@ public class Coordinate {
 	
 	public void dirNormal(Coordinate a, Coordinate b){
 		Coordinate c = b.difCoord(a);
-		double lenght = Math.sqrt(Math.pow(c.x, 2)+Math.pow(c.y, 2));
-		this.x = x/lenght;
-		this.y = y/lenght;
+		double lenght = c.legth();
+		this.x = c.x/lenght;
+		this.y = c.y/lenght;
 		
 	}
 	

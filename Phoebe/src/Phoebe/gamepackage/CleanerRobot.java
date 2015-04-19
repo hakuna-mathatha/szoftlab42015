@@ -62,6 +62,7 @@ public class CleanerRobot extends Bot {
 					distance = tmp;
 					nearestBarrierExist = true;
 					barrier = (Barrier) base;
+					System.out.println("Talaltam Barriert" + barrier.getType());
 				}
 			}
 		}
@@ -116,14 +117,20 @@ public class CleanerRobot extends Bot {
 		// robot a Barrier fele.
 		selectNearestBarrier(aTrack);
 		Coordinate dif = new Coordinate();
+		Coordinate c = this.nearestBarrier.getPosition().difCoord(position);
 		dif.dirNormal(position, this.nearestBarrier.getPosition());
-		dif.multip(10);
-		setNextPosition(position.addCoord(dif));
+		
+		//dif.multip(10);
+		
+		//setNextPosition(position.addCoord(dif));
+		setNextPosition(position.addCoord(c));
 		
 		while(!IsCoordOk){
 			if(! (aTrack.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge))){
 				IsCoordOk = true;
+				System.out.println("Jo lesz a koord");
 			}else{
+				System.out.println("Nem lesz jo a koord");
 				nextPosition.setX((nextPosition.getX() * Math.cos(Math.PI/18) - nextPosition.getY() * Math.sin(Math.PI/18))
 						+ position.getX());
 				nextPosition.setY((nextPosition.getY() * Math.cos(Math.PI/18) + nextPosition.getX() * Math.sin(Math.PI/18))

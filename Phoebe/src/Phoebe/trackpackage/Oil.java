@@ -22,7 +22,7 @@ public class Oil extends Barrier {
 		//kell egy task, ami adott idõ után lefut
 		TimerTask tTask = new OilTask();
 		// 5 kör után tûnik el az olaj a pályáról
-		this.timer.schedule(tTask, 2 * 1000);
+		this.timer.schedule(tTask, 20 * 1000);
 	}
 
 	public Oil(Coordinate position, TrackPart trackPart) {
