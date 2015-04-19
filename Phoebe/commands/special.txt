@@ -1,5 +1,5 @@
 newgame
 placeRobot 4;2 0;1 5;2
 placeCleaner 3;1 0;1 3;0
-placeBarrier putty 3;2
+placeBarrier oil 3;2
 start

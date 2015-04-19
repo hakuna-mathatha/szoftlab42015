@@ -19,10 +19,10 @@ public class Oil extends Barrier {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
-		//kell egy task, ami adott idõ után lefut
+		//kell egy task, ami adott idï¿½ utï¿½n lefut
 		TimerTask tTask = new OilTask();
-		// 5 kör után tûnik el az olaj a pályáról
-		this.timer.schedule(tTask, 2 * 1000);
+		// 5 kï¿½r utï¿½n tï¿½nik el az olaj a pï¿½lyï¿½rï¿½l
+		this.timer.schedule(tTask, 1000000 * 1000);
 	}
 
 	public Oil(Coordinate position, TrackPart trackPart) {
@@ -35,26 +35,26 @@ public class Oil extends Barrier {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
-		//kell egy task, ami adott idõ után lefut
+		//kell egy task, ami adott idï¿½ utï¿½n lefut
 		TimerTask tTask = new OilTask();
-		// 5 kör után tûnik el az olaj a pályáról
+		// 5 kï¿½r utï¿½n tï¿½nik el az olaj a pï¿½lyï¿½rï¿½l
 		this.timer.schedule(tTask, 2 * 1000);
 
 //		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}
 
-	//ha olajba lépünk, nem változtathatjuk a robot sebességét a következõ körig
+	//ha olajba lï¿½pï¿½nk, nem vï¿½ltoztathatjuk a robot sebessï¿½gï¿½t a kï¿½vetkezï¿½ kï¿½rig
 	public void stepOn(Bot bot) {
 
 		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
-		//csak a normál robotra hat
+		//csak a normï¿½l robotra hat
 		if (bot.getType() == BaseType.normalRobot) {
-			//állapaota putty lesz
+			//ï¿½llapaota putty lesz
 			bot.setState(RobotState.oil);
-			//iránya változtatható
+			//irï¿½nya vï¿½ltoztathatï¿½
 			bot.setDirectionMod(true);
-			//sebessége nem változtatható
+			//sebessï¿½ge nem vï¿½ltoztathatï¿½
 			bot.setVeloMod(false);
 		}
 	}
@@ -68,8 +68,8 @@ public class Oil extends Barrier {
 
 		@Override
 		public void run() {
-			//ha letelt az idõ, akkor eltûntetjük a pályáról
-			//timer leállítása
+			//ha letelt az idï¿½, akkor eltï¿½ntetjï¿½k a pï¿½lyï¿½rï¿½l
+			//timer leï¿½llï¿½tï¿½sa
 //			timer.cancel();
 //			timer.purge();
 			cleaner();

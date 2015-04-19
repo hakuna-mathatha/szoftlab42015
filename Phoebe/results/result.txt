@@ -1,16 +1,8 @@
 Start:
 	CleanerRobot1:
-		position: (3,0)
-		displacement: (0,1)
 		position: (3,1)
+		displacement: (0,1)
+		position: (3,0)
 		state: pure
 	Barrier:
-		Type:oil		Position:Phoebe.trackpackage.Coordinate@4459eb14
-Elvárt eredmény, állapot :
-	CleanerRobot1:
-		position: (3,0)
-		displacement: (0,1)
-		lastPosition: (3,0)
-		state: jump
-	Barrier:
-		Type:oil		Position:Phoebe.trackpackage.Coordinate@4459eb14
+		Type:putty		Position:Phoebe.trackpackage.Coordinate@3532ec19
