@@ -1,14 +1,8 @@
 package Phoebe.helperpackage;
 
-import java.util.Scanner;
-
-import Phoebe.basepackage.Base;
-import Phoebe.basepackage.BaseType;
-import Phoebe.gamepackage.Bot;
-import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
-import Phoebe.gamepackage.Robot;
-import Phoebe.trackpackage.*;
+
+import java.util.Scanner;
 
 
 public class Helper {
@@ -28,7 +22,7 @@ public class Helper {
             System.out.println("Incorrect Command");
         }
         
-		//Legyenek adottak, hogy a fuggveny hivasoknal ezek lehessenek a parameterek
+	/*	//Legyenek adottak, hogy a fuggveny hivasoknal ezek lehessenek a parameterek
 		Coordinate coord = new Coordinate();
 		Displacement disp = new Displacement();
 		Putty putty = new Putty();
@@ -77,7 +71,7 @@ public class Helper {
 		}catch(Exception e){
 			System.out.println("Exception in switch case.");
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	public static void main(String[] args) {

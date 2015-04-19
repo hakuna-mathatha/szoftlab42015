@@ -1,14 +1,13 @@
 package Phoebe.testhelper;
 
+import Phoebe.basepackage.Base;
 import Phoebe.gamepackage.CleanerRobot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
 import Phoebe.trackpackage.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,11 +28,15 @@ public class TestHelper {
     public static boolean vege = false;
     private static Game g;
 
+
     //a valtozo eldonti hogy a parancsokat konzolon adjuk e be eppen vagy fajlbol olvastuk be
     public static boolean fajlbol;
 
     //a t�mb amibe a parancsokat a fajlbol beolvassuk
     public static List<String> Commands;
+
+    //Base lista a felhasznalo altal beirt dolgokhoz
+    public static List<Base> bases;
 
     //megk�ne adni szerintem minden objektumot el�re amit haszn�lhatunk tesztekn�l
     //...
@@ -42,6 +45,8 @@ public class TestHelper {
         fajlbol = false;
         Commands = new ArrayList<String>();
         scanInTest = new Scanner(System.in);
+        bases = new ArrayList<Base>();
+
         //itt p�ld�nyos�tani k�ne mindent, a p�ld�nyok attributumait a tesztek elej�n k�ne mindig �ll�tani megfelel�re
     }
 
@@ -97,10 +102,68 @@ public class TestHelper {
     }
 //  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban
     private static void logEndState() {
+
+
     }
     //  Todo: fájlba kiírni a kezdeti állapotot a 8-as doksiban leírt formátumban
     private static void logStartState() {
+        try{
+            File file = new File("results/result.txt");
+            if(!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
 
+            bw.write("Start:\n");
+            for(int i= 0; i<bases.size(); i++){
+                if(bases.contains(r1)){
+                    bw.write("\tNormalRobot1:\n");
+                    bw.write("\t\tposition: " + r1.getPosition() + "\n");
+                    bw.write("\t\tdisplacement: "+r1.getDisplacement()+"\n");
+                    bw.write("\t\tlastPostion: "+r1.getLastPosition()+"\n");
+                    bw.write("\t\tstate: " + r1.getState() +"\n");
+                    bw.write("\t\tveloMod: "+ r1.getVelocityMod()+"\n");
+                    bw.write("\t\tdirectionMod: "+ r1.getDirectionMod()+"\n");
+                    bw.write("\t\toilRepository: "+ r1.getOilRepository()+"\n");
+                    bw.write("\t\tputtyRepository: "+ r1.getPuttyRepository()+"\n");
+                }
+                else if (bases.contains(r2)){
+                    bw.write("\tNormalRobot2:\n");
+                    bw.write("\t\tposition: " + r2.getPosition() + "\n");
+                    bw.write("\t\tdisplacement: "+r2.getDisplacement()+"\n");
+                    bw.write("\t\tlastPostion: "+r2.getLastPosition()+"\n");
+                    bw.write("\t\tstate: " + r2.getState() +"\n");
+                    bw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
+                    bw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
+                    bw.write("\t\toilRepository: "+ r2.getOilRepository()+"\n");
+                    bw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
+                }
+                else if(bases.contains(cr1)){
+                    bw.write("\tCleanerRobot1:\n");
+                    bw.write("\t\tposition: " + cr1.getPosition() + "\n");
+                    bw.write("\t\tdisplacement: "+cr1.getDisplacement()+"\n");
+                    bw.write("\t\tlastPostion: "+cr1.getLastPosition()+"\n");
+                    bw.write("\t\tstate: " + cr1.getState() +"\n");
+                }
+                else if(bases.contains(cr2)){
+                    bw.write("\tCleanerRobot1:\n");
+                    bw.write("\t\tposition: " + cr2.getPosition() + "\n");
+                    bw.write("\t\tdisplacement: "+cr2.getDisplacement()+"\n");
+                    bw.write("\t\tlastPostion: "+cr2.getLastPosition()+"\n");
+                    bw.write("\t\tstate: " + cr2.getState() +"\n");
+                }
+                else if(bases.contains(barrier)){
+                    bw.write("\tBarrier:\n");
+                    bw.write("\t\tType:" + barrier.getType());
+                    bw.write("\t\tPosition:" + barrier.getPosition());
+                }
+            }
+            bw.close();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private static void setToDefault() {
@@ -140,6 +203,7 @@ public class TestHelper {
 
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
+        bases.add(barrier);
     }
 
     //  Megfelelo Cleaner letrehozasa, a felhasznalói adatok alapjan
@@ -155,10 +219,15 @@ public class TestHelper {
 
         if(cr1==null){
             cr1 = new CleanerRobot(actual_coord, displacement, last_coord);
+            bases.add(cr1);
+            g.setCleanersList(cr1);
         }
         else {
             cr2 = new CleanerRobot(actual_coord, displacement, last_coord);
+            bases.add(cr2);
+            g.setCleanersList(cr2);
         }
+
     }
 
     //  Megfelelo Robot letrehozasa, a felhasznalói adatok alapjan
@@ -173,10 +242,16 @@ public class TestHelper {
         Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos_xy[0]), Integer.valueOf(last_pos_xy[1]));
         if(r1==null){
             r1 = new Robot(actual_coord, displacement, last_coord);
+            bases.add(r1);
+            g.setRobotList(r1);
         }
         else{
             r2 = new Robot(actual_coord, displacement, last_coord);
+            bases.add(r2);
+            g.setRobotList(r2);
         }
+
+       // System.out.println(g.getRobotList());
     }
 
     public static void main(String[] args) {
@@ -190,6 +265,7 @@ public class TestHelper {
         parancs = scanInTest.nextLine();
         if (parancs.equals("console")) {
             fajlbol = false;
+
 
 //            Ha fajlbol parancsok beolvasasa
             while (TestHelper.vege != true) {

@@ -1,12 +1,24 @@
 package Phoebe.trackpackage;
-import Phoebe.basepackage.*;
+import Phoebe.basepackage.Base;
+
+import java.util.ArrayList;
+
 public abstract class TrackPart {
 
 	protected Coordinate position;
 	protected double width;
 	protected double height;
+    private ArrayList<Barrier> barriersList;
 
-	public double getWidth() {
+    public void setBarriersList(Barrier barrier) {
+        this.barriersList.add(barrier);
+    }
+
+    public ArrayList<Barrier> getBarriersList() {
+        return barriersList;
+    }
+
+    public double getWidth() {
 
 		return width;
 	}
@@ -36,19 +48,19 @@ public abstract class TrackPart {
 
 		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
 
-		//így kevesebb lekérdezésre van szükség
+		//ï¿½gy kevesebb lekï¿½rdezï¿½sre van szï¿½ksï¿½g
 		double tmpX = coord.getX();
 		double tmpY = coord.getY();
 		double tmpPX = position.getX();
 		double tmpPY = position.getY();
 
-		//ha rajta van a az elemen, akkor a paraméter koordinátái az elem szélei között vannak
+		//ha rajta van a az elemen, akkor a paramï¿½ter koordinï¿½tï¿½i az elem szï¿½lei kï¿½zï¿½tt vannak
 		//Itt a szelek gondot okozhatnak. Igaz kicsi a valoszinusege annak hogy pontosan ket elem hatarara erkezzen a robot.
 		if (tmpX >= tmpPX && tmpX < (tmpPX + width) && tmpY <= tmpPY && tmpY >= (tmpPY - height)) {
 			return true;
 		}
 
-		//ha valamelyik koordinátája kilóg az elem tartományából, akkor nincs rajta
+		//ha valamelyik koordinï¿½tï¿½ja kilï¿½g az elem tartomï¿½nyï¿½bï¿½l, akkor nincs rajta
 		return false;
 	}
 }

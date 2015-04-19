@@ -172,4 +172,12 @@ public class Robot extends Bot {
 
 	}
 
+    public int getOilRepository(){
+        return this.oilRepository;
+    }
+
+    public int getPuttyRepository(){
+        return this.puttyReporitory;
+    }
+
 }

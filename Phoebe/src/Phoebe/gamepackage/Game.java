@@ -1,14 +1,18 @@
 package Phoebe.gamepackage;
 
-import java.util.*;
-import java.util.stream.BaseStream;
+import Phoebe.trackpackage.Coordinate;
+import Phoebe.trackpackage.Track;
 
-import Phoebe.basepackage.BaseType;
-import Phoebe.trackpackage.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+//import java.util.stream.BaseStream;
 
 public class Game {
 
-	public List<Robot> robots;
+	private List<Robot> robots;
 	private List<CleanerRobot> cleaners;
 	public Track track;
 	public Control control;
@@ -17,12 +21,8 @@ public class Game {
 		System.out.println(getClass().getName() + ":Game");
 		track = new Track();
 		track.create();
-		Robot r1 = new Robot();
-		Robot r2 = new Robot();
 		robots = new ArrayList<Robot>();
 		cleaners = new ArrayList<CleanerRobot>();
-		robots.add(r1);
-		robots.add(r2);
 		control = new Control();
 	}
 
@@ -110,5 +110,21 @@ public class Game {
 			}
 		}
 	}
+
+    public List<Robot> getRobotList(){
+        return this.robots;
+    }
+
+    public void setRobotList (Robot robot){
+        this.robots.add(robot);
+    }
+
+    public List<CleanerRobot> getCleanersList(){
+        return this.cleaners;
+    }
+
+    public void setCleanersList (CleanerRobot cleanerRobot){
+        this.cleaners.add(cleanerRobot);
+    }
 
 }
