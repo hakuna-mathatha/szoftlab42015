@@ -8,10 +8,6 @@ public class Testing {
 
     public static void main (String [] args) throws java.io.IOException {
 
-        String sourceText = "";
-        String testResult = "";
-        String y = "", z = "";
-        int line = 1;
 
         String path = "results/result.txt";
 
@@ -24,6 +20,16 @@ public class Testing {
         Scanner scanIn = new Scanner(System.in);
         String s2 = scanIn.nextLine();
         String s2Path = "expectedresults/"+s2+".txt";
+
+        testTwoFile(path,s2Path);
+
+    }
+
+    public static void testTwoFile(String path, String s2Path) {
+        String sourceText = "";
+        String testResult = "";
+        String y = "", z = "";
+        int line = 1;
 
         try {
             BufferedReader bfr = new BufferedReader(new FileReader(path));

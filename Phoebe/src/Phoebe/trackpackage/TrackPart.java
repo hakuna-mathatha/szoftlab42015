@@ -8,7 +8,7 @@ public abstract class TrackPart {
 	protected Coordinate position;
 	protected double width;
 	protected double height;
-    private ArrayList<Barrier> barriersList;
+    private ArrayList<Barrier> barriersList = new ArrayList<Barrier>();
 
     public void setBarriersList(Barrier barrier) {
         this.barriersList.add(barrier);

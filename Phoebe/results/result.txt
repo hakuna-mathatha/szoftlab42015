@@ -1,39 +1,16 @@
 Start:
-	NormalRobot1:
-		position: (2,2)
-		displacement: (0,2)
-		position: (1,2)
+	CleanerRobot1:
+		position: (3,0)
+		displacement: (0,1)
+		position: (3,1)
 		state: pure
-		veloMod: true
-		directionMod: true
-		oilRepository: 5
-		puttyRepository: 5
-	NormalRobot1:
-		position: (2,2)
-		displacement: (0,2)
-		position: (1,2)
-		state: pure
-		veloMod: true
-		directionMod: true
-		oilRepository: 5
-		puttyRepository: 5
-
+	Barrier:
+		Type:oil		Position:Phoebe.trackpackage.Coordinate@4459eb14
 Elvárt eredmény, állapot :
-	NormalRobot1:
-		position: (2,2)
-		displacement: (0,2)
-		position: (1,2)
-		state: pure
-		veloMod: true
-		directionMod: true
-		oilRepository: 5
-		puttyRepository: 5
-	NormalRobot1:
-		position: (2,2)
-		displacement: (0,2)
-		position: (1,2)
-		state: pure
-		veloMod: true
-		directionMod: true
-		oilRepository: 5
-		puttyRepository: 5
+	CleanerRobot1:
+		position: (3,0)
+		displacement: (0,1)
+		lastPosition: (3,0)
+		state: jump
+	Barrier:
+		Type:oil		Position:Phoebe.trackpackage.Coordinate@4459eb14

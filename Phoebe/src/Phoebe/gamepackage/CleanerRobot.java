@@ -8,7 +8,6 @@ import Phoebe.gamepackage.*;
 import Phoebe.basepackage.*;
 
 public class CleanerRobot extends Bot {
-	private Track track;
 	private Barrier nearestBarrier;
 	private boolean nearestBarrierExist;
 	
@@ -49,8 +48,8 @@ public class CleanerRobot extends Bot {
 
 	}
 
-	public void selectNearestBarrier() {
-		List<JumpablePart> list = track.getTrackParts();
+	public void selectNearestBarrier(Track aTrack) {
+		List<JumpablePart> list = aTrack.getTrackParts();
 		double distance = 10000;
 		Barrier barrier = null;
 
@@ -95,14 +94,14 @@ public class CleanerRobot extends Bot {
 		setState(RobotState.jump);
 		System.out.println("\t" + getClass().getName() + ":jump");
 		
-		calcNextPosition();
+		calcNextPosition(aTrack);
 
 		//setNextPosition(calcCoordinate(position, displacement));
 		setLastPosition(position);
 		setPosition(nextPosition);
 
 		trackPart.removeFromTrackPart(this);
-		TrackPart part = track.findAPart(position);
+		TrackPart part = aTrack.findAPart(position);
 		this.setTrackPart(part);
 		Base b = giveMeTheBase(position, part);
 		part.addBase(this, position);
@@ -111,17 +110,18 @@ public class CleanerRobot extends Bot {
 
 	}
 
-	public void calcNextPosition() {
+	public void calcNextPosition(Track aTrack) {
 		boolean IsCoordOk = false;
 		// A robot pozicio es a Barrier kozotti egyenesen 10 egyseget lep a
 		// robot a Barrier fele.
+		selectNearestBarrier(aTrack);
 		Coordinate dif = new Coordinate();
 		dif.dirNormal(position, this.nearestBarrier.getPosition());
 		dif.multip(10);
 		setNextPosition(position.addCoord(dif));
 		
 		while(!IsCoordOk){
-			if(! (track.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge))){
+			if(! (aTrack.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge))){
 				IsCoordOk = true;
 			}else{
 				nextPosition.setX((nextPosition.getX() * Math.cos(Math.PI/18) - nextPosition.getY() * Math.sin(Math.PI/18))

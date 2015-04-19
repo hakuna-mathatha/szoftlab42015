@@ -130,7 +130,7 @@ public class TestHelper {
                     else {
                         fw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
                         fw.write("\t\tdisplacement: (" + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
-                        fw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
+                        fw.write("\t\tlastPosition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r1.getState() + "\n");
                         fw.write("\t\tveloMod: " + r1.getVeloMod() + "\n");
                         fw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
@@ -146,7 +146,7 @@ public class TestHelper {
                     else{
                         fw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
                         fw.write("\t\tdisplacement: (" + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
-                        fw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
+                        fw.write("\t\tlastPosition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r2.getState() +"\n");
                         fw.write("\t\tveloMod: "+ r2.getVeloMod()+"\n");
                         fw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
@@ -162,7 +162,7 @@ public class TestHelper {
                     else{
                         fw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
                         fw.write("\t\tdisplacement: (" + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
-                        fw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
+                        fw.write("\t\tlastPosition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr1.getState() +"\n");
                     }
                 }
@@ -174,7 +174,7 @@ public class TestHelper {
                     else {
                         fw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
                         fw.write("\t\tdisplacement: (" + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
-                        fw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
+                        fw.write("\t\tlastPosition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr2.getState() + "\n");
                     }
                 }
@@ -299,7 +299,7 @@ public class TestHelper {
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
 
-        track.findAPart(coordinate).addBase(barrier,coordinate);
+        ((JumpablePart)track.findAPart(coordinate)).getBases().add(barrier);
         bases.add(barrier);
 
     }

@@ -43,9 +43,9 @@ public class Game {
 
 		Collections.sort(robots, new ComparRobots());
 		
-//		for(CleanerRobot cleaner : cleaners){
-//			cleaner.jump(track);
-//		}
+		for(CleanerRobot cleaner : cleaners){
+			cleaner.jump(track);
+		}
 		
 		 for(Robot rob : robots){
 			 if(rob.state.equals(RobotState.died) == true)

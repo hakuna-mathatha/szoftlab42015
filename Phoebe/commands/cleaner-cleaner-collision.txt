@@ -1,4 +1,5 @@
 newgame
 placeCleaner 2;2 0;1 1;2
 placeCleaner 4;2 0;1 5;2
+placeBarrier oil 3;2
 start
