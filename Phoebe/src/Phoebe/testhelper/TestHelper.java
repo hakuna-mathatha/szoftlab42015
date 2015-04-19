@@ -250,7 +250,7 @@ public class TestHelper {
                 else if(bases.get(i).equals(barrier)){
                     bw.write("\tBarrier:\n");
                     bw.write("\t\tType:" + barrier.getType());
-                    bw.write("\t\tPosition:" + barrier.getPosition());
+                    bw.write("\t\tPosition:" + barrier.getPosition().getX()+ ","+ barrier.getPosition().getY());
                 }
             }
             bw.close();
