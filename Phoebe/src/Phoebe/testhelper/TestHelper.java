@@ -124,9 +124,9 @@ public class TestHelper {
                         fw.write("state: "+r1.getState()+"\n");
                     }
                     else {
-                        fw.write("\t\tposition: " + r1.getPosition() + "\n");
-                        fw.write("\t\tdisplacement: " + r1.getDisplacement() + "\n");
-                        fw.write("\t\tlastPostion: " + r1.getLastPosition() + "\n");
+                        fw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
+                        fw.write("\t\tdisplacement: " + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r1.getState() + "\n");
                         fw.write("\t\tveloMod: " + r1.getVelocityMod() + "\n");
                         fw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
@@ -140,9 +140,9 @@ public class TestHelper {
                         fw.write("state: "+r2.getState()+"\n");
                     }
                     else{
-                        fw.write("\t\tposition: " + r2.getPosition() + "\n");
-                        fw.write("\t\tdisplacement: "+r2.getDisplacement()+"\n");
-                        fw.write("\t\tlastPostion: "+r2.getLastPosition()+"\n");
+                        fw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
+                        fw.write("\t\tdisplacement: " + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r2.getState() +"\n");
                         fw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
                         fw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
@@ -156,9 +156,9 @@ public class TestHelper {
                         fw.write("state: "+cr1.getState()+"\n");
                     }
                     else{
-                        fw.write("\t\tposition: " + cr1.getPosition() + "\n");
-                        fw.write("\t\tdisplacement: "+cr1.getDisplacement()+"\n");
-                        fw.write("\t\tlastPostion: "+cr1.getLastPosition()+"\n");
+                        fw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
+                        fw.write("\t\tdisplacement: " + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr1.getState() +"\n");
                     }
                 }
@@ -168,9 +168,9 @@ public class TestHelper {
                         fw.write("state: "+cr2.getState()+"\n");
                     }
                     else {
-                        fw.write("\t\tposition: " + cr2.getPosition() + "\n");
-                        fw.write("\t\tdisplacement: " + cr2.getDisplacement() + "\n");
-                        fw.write("\t\tlastPostion: " + cr2.getLastPosition() + "\n");
+                        fw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
+                        fw.write("\t\tdisplacement: " + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr2.getState() + "\n");
                     }
                 }
@@ -209,9 +209,9 @@ public class TestHelper {
             for(int i= 0; i<bases.size(); i++){
                 if(bases.contains(r1)){
                     bw.write("\tNormalRobot1:\n");
-                    bw.write("\t\tposition: " + r1.getPosition() + "\n");
-                    bw.write("\t\tdisplacement: "+r1.getDisplacement()+"\n");
-                    bw.write("\t\tlastPostion: "+r1.getLastPosition()+"\n");
+                    fw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
+                    fw.write("\t\tdisplacement: " + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
+                    fw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + r1.getState() +"\n");
                     bw.write("\t\tveloMod: "+ r1.getVelocityMod()+"\n");
                     bw.write("\t\tdirectionMod: "+ r1.getDirectionMod()+"\n");
@@ -220,9 +220,9 @@ public class TestHelper {
                 }
                 else if (bases.contains(r2)){
                     bw.write("\tNormalRobot2:\n");
-                    bw.write("\t\tposition: " + r2.getPosition() + "\n");
-                    bw.write("\t\tdisplacement: "+r2.getDisplacement()+"\n");
-                    bw.write("\t\tlastPostion: "+r2.getLastPosition()+"\n");
+                    fw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
+                    fw.write("\t\tdisplacement: " + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
+                    fw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + r2.getState() +"\n");
                     bw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
                     bw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
@@ -231,16 +231,16 @@ public class TestHelper {
                 }
                 else if(bases.contains(cr1)){
                     bw.write("\tCleanerRobot1:\n");
-                    bw.write("\t\tposition: " + cr1.getPosition() + "\n");
-                    bw.write("\t\tdisplacement: "+cr1.getDisplacement()+"\n");
-                    bw.write("\t\tlastPostion: "+cr1.getLastPosition()+"\n");
+                    fw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
+                    fw.write("\t\tdisplacement: " + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
+                    fw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr1.getState() +"\n");
                 }
                 else if(bases.contains(cr2)){
                     bw.write("\tCleanerRobot2:\n");
-                    bw.write("\t\tposition: " + cr2.getPosition() + "\n");
-                    bw.write("\t\tdisplacement: "+cr2.getDisplacement()+"\n");
-                    bw.write("\t\tlastPostion: "+cr2.getLastPosition()+"\n");
+                    fw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
+                    fw.write("\t\tdisplacement: " + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
+                    fw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr2.getState() +"\n");
                 }
                 else if(bases.contains(barrier)){
