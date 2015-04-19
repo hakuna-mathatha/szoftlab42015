@@ -68,21 +68,21 @@ public class TestHelper {
                     g.setTrack(track);
                     break;
                 case placeRobot:
-                    if(line[1]!=null&&line[2]!=null&&line[3]!=null){
+                    if(line.length==4){
                         createRobot(line[1],line[2],line[3]);
                     }else {
                         System.out.println("Give the all parameters of the Robot");
                     }
                     break;
                 case placeBarrier:
-                    if(line[1]!=null&&line[2]!=null) {
+                    if(line.length==3) {
                         createBarrier(line[1], line[2]);
                     }else {
                         System.out.println("Give the all parameters of the Barrier");
                     }
                     break;
                 case placeCleaner:
-                    if(line[1]!=null&&line[2]!=null&&line[3]!=null) {
+                    if(line.length==4) {
                         createCleaner(line[1], line[2], line[3]);
                     }else {
                         System.out.println("Give the all parameters of the Cleaner");
