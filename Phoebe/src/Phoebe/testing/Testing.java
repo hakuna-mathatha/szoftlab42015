@@ -9,7 +9,7 @@ public class Testing {
     public static void main (String [] args) throws java.io.IOException {
 
 
-        String path = "results/result.txt";
+        String path = System.getProperty("user.dir")+"/results/result.txt";
 
 
         //System.out.println("Enter the first file's place:");
