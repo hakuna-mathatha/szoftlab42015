@@ -1,5 +1,7 @@
 package Phoebe.trackpackage;
 import Phoebe.basepackage.*;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,17 +49,19 @@ public class JumpablePart extends TrackPart {
 
 //		throw new UnsupportedOperationException();
 		System.out.println("\t\t"+getClass().getName()+":getBarrier");
-
+		
 		//keresés az elemek között
+		Timestamp timestamp = new Timestamp(0);
+		Base base = new Pure();
 		for(Base b : bases){
 
 			//ha valamelyik hatókörében van, akkor azt visszaadja
-			if(b.isCoordNear(coord))
-				return b;
+			if(b.isCoordNear(coord) && b.getTimeStamp().compareTo(timestamp)>0)
+			 base =  b;
 		}
 
 		//ha nem esik semmilyen elem hatósugarába, akkor tiszta elemet ad vissza
-		return new Pure();
+		return base;
 	}
 
 	public void addBase(Base base, Coordinate coord) {
@@ -67,6 +71,7 @@ public class JumpablePart extends TrackPart {
 //		System.out.println(bases.size());
 		
 		//betesszük a listába az elemet
+		base.setTimeStamp(new Timestamp(System.currentTimeMillis()));
 		bases.add(base);
 //		System.out.println(bases.size());
 

@@ -38,7 +38,7 @@ public class Oil extends Barrier {
 		//kell egy task, ami adott id� ut�n lefut
 		TimerTask tTask = new OilTask();
 		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
-		this.timer.schedule(tTask, 2 * 1000);
+		this.timer.schedule(tTask, 1000000 * 1000);
 
 //		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}

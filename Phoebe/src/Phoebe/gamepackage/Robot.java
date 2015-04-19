@@ -1,5 +1,7 @@
 package Phoebe.gamepackage;
 
+import java.sql.Timestamp;
+
 import Phoebe.basepackage.Base;
 import Phoebe.basepackage.BaseType;
 import Phoebe.trackpackage.*;
@@ -25,7 +27,7 @@ public class Robot extends Bot {
 		lastPosition = new Coordinate(0.5, 0.5);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart(new Coordinate(1, 1), 4, 4);
-
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
 
@@ -45,7 +47,7 @@ public class Robot extends Bot {
 		lastPosition = lastpos1;
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart();
-
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
 

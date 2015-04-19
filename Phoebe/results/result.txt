@@ -1,8 +1,34 @@
 Start:
-	CleanerRobot1:
-		position: (3,1)
+	NormalRobot1:
+		position: (2,2)
 		displacement: (0,1)
-		position: (3,0)
+		lastPosition: (1,1)
 		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
 	Barrier:
-		Type:putty		Position:Phoebe.trackpackage.Coordinate@3532ec19
+		Type:oil
+		position: (3.0,3.0)
+	CleanerRobot1:
+		position: (1,2)
+		displacement: (0,1)
+		lastPosition: (3,3)
+		state: pure
+
+Elvárt eredmény, állapot :
+	NormalRobot1:
+		position: (3,3)
+		displacement: (0,1)
+		lastPosition: (2,2)
+		state: active
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+	Barrier:
+		Type:oil
+		position: (3.0,3.0)
+	CleanerRobot1:
+		state: died

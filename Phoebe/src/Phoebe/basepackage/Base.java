@@ -1,4 +1,6 @@
 package Phoebe.basepackage;
+import java.sql.Timestamp;
+
 import Phoebe.gamepackage.*;
 import Phoebe.trackpackage.*;
 
@@ -8,6 +10,16 @@ public abstract class Base {
 	protected BaseType type;
 	protected TrackPart trackPart;
 	protected double ray;
+	
+	protected Timestamp timeStamp;
+
+	public Timestamp getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Timestamp timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
 	public Coordinate getPosition() {
 

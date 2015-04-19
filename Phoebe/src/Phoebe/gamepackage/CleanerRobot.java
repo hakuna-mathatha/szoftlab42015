@@ -1,5 +1,6 @@
 package Phoebe.gamepackage;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import Phoebe.trackpackage.*;
@@ -24,7 +25,7 @@ public class CleanerRobot extends Bot {
 		lastPosition = lastpos1;
 		type = BaseType.cleanerRobot;
 		trackPart = new JumpablePart();
-
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
 
@@ -42,7 +43,7 @@ public class CleanerRobot extends Bot {
 		lastPosition = new Coordinate(0.5, 0.5);
 		type = BaseType.cleanerRobot;
 		trackPart = new JumpablePart();
-
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
 
@@ -74,7 +75,8 @@ public class CleanerRobot extends Bot {
 		System.out.println("Robot stepOn");
 
 		if (aBot.getType().equals(BaseType.normalRobot)) {
-
+			
+			aBot.setState(RobotState.active);
 			this.trackPart.removeFromTrackPart(this);
 			trackPart.addBase(new Oil(), position);
 			this.state = RobotState.died;

@@ -9,7 +9,7 @@ import Phoebe.gamepackage.Bot;
 
 public abstract class Barrier extends Base {
 
-	protected Timestamp timeStamp;
+	
 
 	public abstract void stepOn(Bot bot);
 
