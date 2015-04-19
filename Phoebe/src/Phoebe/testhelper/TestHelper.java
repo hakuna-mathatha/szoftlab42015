@@ -1,10 +1,7 @@
 package Phoebe.testhelper;
 
 import Phoebe.basepackage.Base;
-import Phoebe.gamepackage.CleanerRobot;
-import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Game;
-import Phoebe.gamepackage.Robot;
+import Phoebe.gamepackage.*;
 import Phoebe.trackpackage.*;
 
 import java.io.*;
@@ -102,6 +99,86 @@ public class TestHelper {
     }
 //  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban
     private static void logEndState() {
+        try {
+            String filename = "/result/result.txt";
+            FileWriter fw = new FileWriter(filename, true);
+
+            fw.write("\nElvárt eredmény, állapot :\n");
+            for(int i= 0; i<bases.size(); i++){
+                if(bases.contains(r1)){
+                    fw.write("\tNormalRobot1:\n");
+                    if(r1.getState().equals(RobotState.died)){
+                        fw.write("state: "+r1.getState()+"\n");
+                    }
+                    else {
+                        fw.write("\t\tposition: " + r1.getPosition() + "\n");
+                        fw.write("\t\tdisplacement: " + r1.getDisplacement() + "\n");
+                        fw.write("\t\tlastPostion: " + r1.getLastPosition() + "\n");
+                        fw.write("\t\tstate: " + r1.getState() + "\n");
+                        fw.write("\t\tveloMod: " + r1.getVelocityMod() + "\n");
+                        fw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
+                        fw.write("\t\toilRepository: " + r1.getOilRepository() + "\n");
+                        fw.write("\t\tputtyRepository: " + r1.getPuttyRepository() + "\n");
+                    }
+                }
+                else if (bases.contains(r2)){
+                    fw.write("\tNormalRobot2:\n");
+                    if(r2.getState().equals(RobotState.died)){
+                        fw.write("state: "+r2.getState()+"\n");
+                    }
+                    else{
+                        fw.write("\t\tposition: " + r2.getPosition() + "\n");
+                        fw.write("\t\tdisplacement: "+r2.getDisplacement()+"\n");
+                        fw.write("\t\tlastPostion: "+r2.getLastPosition()+"\n");
+                        fw.write("\t\tstate: " + r2.getState() +"\n");
+                        fw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
+                        fw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
+                        fw.write("\t\toilRepository: "+ r2.getOilRepository()+"\n");
+                        fw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
+                    }
+                }
+                else if(bases.contains(cr1)){
+                    fw.write("\tCleanerRobot1:\n");
+                    if(cr1.getState().equals(RobotState.died)){
+                        fw.write("state: "+cr1.getState()+"\n");
+                    }
+                    else{
+                        fw.write("\t\tposition: " + cr1.getPosition() + "\n");
+                        fw.write("\t\tdisplacement: "+cr1.getDisplacement()+"\n");
+                        fw.write("\t\tlastPostion: "+cr1.getLastPosition()+"\n");
+                        fw.write("\t\tstate: " + cr1.getState() +"\n");
+                    }
+                }
+                else if(bases.contains(cr2)){
+                    fw.write("\tCleanerRobot2:\n");
+                    if(cr2.getState().equals(RobotState.died)){
+                        fw.write("state: "+cr2.getState()+"\n");
+                    }
+                    else {
+                        fw.write("\t\tposition: " + cr2.getPosition() + "\n");
+                        fw.write("\t\tdisplacement: " + cr2.getDisplacement() + "\n");
+                        fw.write("\t\tlastPostion: " + cr2.getLastPosition() + "\n");
+                        fw.write("\t\tstate: " + cr2.getState() + "\n");
+                    }
+                }
+                else if(bases.contains(barrier)){
+                    fw.write("\tBarrier:\n");
+                    fw.write("\t\tType:" + barrier.getType());
+                    fw.write("\t\tPosition:" + barrier.getPosition());
+                }
+                else{
+                    fw.write("\tBase:\n");
+                    fw.write("\t\tType: pure");
+                }
+
+            }
+            fw.close();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -147,7 +224,7 @@ public class TestHelper {
                     bw.write("\t\tstate: " + cr1.getState() +"\n");
                 }
                 else if(bases.contains(cr2)){
-                    bw.write("\tCleanerRobot1:\n");
+                    bw.write("\tCleanerRobot2:\n");
                     bw.write("\t\tposition: " + cr2.getPosition() + "\n");
                     bw.write("\t\tdisplacement: "+cr2.getDisplacement()+"\n");
                     bw.write("\t\tlastPostion: "+cr2.getLastPosition()+"\n");
@@ -204,6 +281,7 @@ public class TestHelper {
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
         bases.add(barrier);
+
     }
 
     //  Megfelelo Cleaner letrehozasa, a felhasznalói adatok alapjan

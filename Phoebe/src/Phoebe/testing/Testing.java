@@ -13,17 +13,21 @@ public class Testing {
         String y = "", z = "";
         int line = 1;
 
-        System.out.println("Enter the first file's place:");
-        Scanner scanIn = new Scanner(System.in);
-        String s1 = scanIn.nextLine();
+        String path = "results/result.txt";
 
-        System.out.println("Enter the second file's place:");
-        scanIn = new Scanner(System.in);
+
+        //System.out.println("Enter the first file's place:");
+        //Scanner scanIn = new Scanner(System.in);
+       // String s1 = scanIn.nextLine();
+
+        System.out.println("Enter the file's name you want to compare:");
+        Scanner scanIn = new Scanner(System.in);
         String s2 = scanIn.nextLine();
+        String s2Path = "expectedresults/"+s2+".txt";
 
         try {
-            BufferedReader bfr = new BufferedReader(new FileReader(s1));
-            BufferedReader bfr1 = new BufferedReader(new FileReader(s2));
+            BufferedReader bfr = new BufferedReader(new FileReader(path));
+            BufferedReader bfr1 = new BufferedReader(new FileReader(s2Path));
 
             while (((z = bfr1.readLine()) != null) && ((y = bfr.readLine()) != null)) {
 
