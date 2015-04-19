@@ -1,0 +1,39 @@
+Start:
+	NormalRobot1:
+		position: (2,2)
+		displacement: (0,2)
+		position: (1,2)
+		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+	NormalRobot1:
+		position: (2,2)
+		displacement: (0,2)
+		position: (1,2)
+		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+
+Elvárt eredmény, állapot :
+	NormalRobot1:
+		position: (2,2)
+		displacement: (0,2)
+		position: (1,2)
+		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+	NormalRobot1:
+		position: (2,2)
+		displacement: (0,2)
+		position: (1,2)
+		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5

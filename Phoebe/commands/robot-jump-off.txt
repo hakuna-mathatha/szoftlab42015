@@ -1,0 +1,3 @@
+newgame
+placeRobot: 3;1 0;100 2;1
+start

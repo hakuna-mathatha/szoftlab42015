@@ -99,6 +99,10 @@ public class TestHelper {
                     break;
                 case help:
                     System.out.println("\tYou can choose from the following commands:");
+                    System.out.println("\t\tnewgame: Starting a new game. This has to be the first command");
+                    System.out.println("\t\tplaceRobot: Put robot to the track. You have to give its position, displacement, lastPosition. Format: placeRobot 2;2 0;2 1;2");
+                    System.out.println("\t\tplaceCleaner: Put cleanerrobot to the track. You have to give its position, displacement, lastPosition. Format: placeCleaner 2;1 0;1 0;0");
+                    System.out.println("\t\tplaceBarrier: Put barrier to the track. You have to give which barrier you want(oil or putty) and its coordinate. Format: placeBarrier oil 2;1 ");
                     System.out.println("\t\texit: Exit from the program");
                     break;
                 default:
@@ -125,10 +129,10 @@ public class TestHelper {
                     }
                     else {
                         fw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
-                        fw.write("\t\tdisplacement: " + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tdisplacement: (" + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
                         fw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r1.getState() + "\n");
-                        fw.write("\t\tveloMod: " + r1.getVelocityMod() + "\n");
+                        fw.write("\t\tveloMod: " + r1.getVeloMod() + "\n");
                         fw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
                         fw.write("\t\toilRepository: " + r1.getOilRepository() + "\n");
                         fw.write("\t\tputtyRepository: " + r1.getPuttyRepository() + "\n");
@@ -141,10 +145,10 @@ public class TestHelper {
                     }
                     else{
                         fw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
-                        fw.write("\t\tdisplacement: " + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tdisplacement: (" + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
                         fw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + r2.getState() +"\n");
-                        fw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
+                        fw.write("\t\tveloMod: "+ r2.getVeloMod()+"\n");
                         fw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
                         fw.write("\t\toilRepository: "+ r2.getOilRepository()+"\n");
                         fw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
@@ -157,7 +161,7 @@ public class TestHelper {
                     }
                     else{
                         fw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
-                        fw.write("\t\tdisplacement: " + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tdisplacement: (" + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
                         fw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr1.getState() +"\n");
                     }
@@ -169,7 +173,7 @@ public class TestHelper {
                     }
                     else {
                         fw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
-                        fw.write("\t\tdisplacement: " + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
+                        fw.write("\t\tdisplacement: (" + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
                         fw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                         fw.write("\t\tstate: " + cr2.getState() + "\n");
                     }
@@ -209,38 +213,38 @@ public class TestHelper {
             for(int i= 0; i<bases.size(); i++){
                 if(bases.contains(r1)){
                     bw.write("\tNormalRobot1:\n");
-                    fw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
-                    fw.write("\t\tdisplacement: " + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
-                    fw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
+                    bw.write("\t\tdisplacement: (" + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)r1.getLastPosition().getX() +","+(int)r1.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + r1.getState() +"\n");
-                    bw.write("\t\tveloMod: "+ r1.getVelocityMod()+"\n");
+                    bw.write("\t\tveloMod: "+ r1.getVeloMod()+"\n");
                     bw.write("\t\tdirectionMod: "+ r1.getDirectionMod()+"\n");
                     bw.write("\t\toilRepository: "+ r1.getOilRepository()+"\n");
                     bw.write("\t\tputtyRepository: "+ r1.getPuttyRepository()+"\n");
                 }
                 else if (bases.contains(r2)){
                     bw.write("\tNormalRobot2:\n");
-                    fw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
-                    fw.write("\t\tdisplacement: " + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
-                    fw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
+                    bw.write("\t\tdisplacement: (" + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)r2.getLastPosition().getX() +","+(int)r2.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + r2.getState() +"\n");
-                    bw.write("\t\tveloMod: "+ r2.getVelocityMod()+"\n");
+                    bw.write("\t\tveloMod: "+ r2.getVeloMod()+"\n");
                     bw.write("\t\tdirectionMod: "+ r2.getDirectionMod()+"\n");
                     bw.write("\t\toilRepository: "+ r2.getOilRepository()+"\n");
                     bw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
                 }
                 else if(bases.contains(cr1)){
                     bw.write("\tCleanerRobot1:\n");
-                    fw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
-                    fw.write("\t\tdisplacement: " + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
-                    fw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
+                    bw.write("\t\tdisplacement: (" + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr1.getState() +"\n");
                 }
                 else if(bases.contains(cr2)){
                     bw.write("\tCleanerRobot2:\n");
-                    fw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
-                    fw.write("\t\tdisplacement: " + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
-                    fw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
+                    bw.write("\t\tdisplacement: (" + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
+                    bw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr2.getState() +"\n");
                 }
                 else if(bases.contains(barrier)){
@@ -337,7 +341,7 @@ public class TestHelper {
         if(r1==null){
             r1 = new Robot(actual_coord, displacement, last_coord);
             bases.add(r1);
-            g.setRobotList(r1);
+            //g.getRobotList().add(r1);
         }
         else{
             r2 = new Robot(actual_coord, displacement, last_coord);
