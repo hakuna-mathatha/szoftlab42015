@@ -122,7 +122,7 @@ public class TestHelper {
 
             fw.write("\nElvárt eredmény, állapot :\n");
             for(int i= 0; i<bases.size(); i++){
-                if(bases.contains(r1)){
+                if(bases.get(i).equals(r1)){
                     fw.write("\tNormalRobot1:\n");
                     if(r1.getState().equals(RobotState.died)){
                         fw.write("state: "+r1.getState()+"\n");
@@ -138,7 +138,7 @@ public class TestHelper {
                         fw.write("\t\tputtyRepository: " + r1.getPuttyRepository() + "\n");
                     }
                 }
-                else if (bases.contains(r2)){
+                else if (bases.get(i).equals(r2)){
                     fw.write("\tNormalRobot2:\n");
                     if(r2.getState().equals(RobotState.died)){
                         fw.write("state: "+r2.getState()+"\n");
@@ -154,7 +154,7 @@ public class TestHelper {
                         fw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
                     }
                 }
-                else if(bases.contains(cr1)){
+                else if(bases.get(i).equals(cr1)){
                     fw.write("\tCleanerRobot1:\n");
                     if(cr1.getState().equals(RobotState.died)){
                         fw.write("state: "+cr1.getState()+"\n");
@@ -166,7 +166,7 @@ public class TestHelper {
                         fw.write("\t\tstate: " + cr1.getState() +"\n");
                     }
                 }
-                else if(bases.contains(cr2)){
+                else if(bases.get(i).equals(cr2)){
                     fw.write("\tCleanerRobot2:\n");
                     if(cr2.getState().equals(RobotState.died)){
                         fw.write("state: "+cr2.getState()+"\n");
@@ -178,7 +178,7 @@ public class TestHelper {
                         fw.write("\t\tstate: " + cr2.getState() + "\n");
                     }
                 }
-                else if(bases.contains(barrier)){
+                else if(bases.get(i).equals(barrier)){
                     fw.write("\tBarrier:\n");
                     fw.write("\t\tType:" + barrier.getType());
                     fw.write("\t\tPosition:" + barrier.getPosition());
@@ -211,7 +211,7 @@ public class TestHelper {
 
             bw.write("Start:\n");
             for(int i= 0; i<bases.size(); i++){
-                if(bases.contains(r1)){
+                if(bases.get(i).equals(r1)){
                     bw.write("\tNormalRobot1:\n");
                     bw.write("\t\tposition: (" + (int)r1.getPosition().getX() +","+(int)r1.getPosition().getY()+ ")\n");
                     bw.write("\t\tdisplacement: (" + (int)r1.getDisplacement().getAngle()+"," +(int)r1.getDisplacement().getVelocity()+ ")\n");
@@ -222,7 +222,7 @@ public class TestHelper {
                     bw.write("\t\toilRepository: "+ r1.getOilRepository()+"\n");
                     bw.write("\t\tputtyRepository: "+ r1.getPuttyRepository()+"\n");
                 }
-                else if (bases.contains(r2)){
+                else if (bases.get(i).equals(r2)){
                     bw.write("\tNormalRobot2:\n");
                     bw.write("\t\tposition: (" + (int)r2.getPosition().getX() +","+(int)r2.getPosition().getY()+ ")\n");
                     bw.write("\t\tdisplacement: (" + (int)r2.getDisplacement().getAngle()+"," +(int)r2.getDisplacement().getVelocity()+ ")\n");
@@ -233,21 +233,21 @@ public class TestHelper {
                     bw.write("\t\toilRepository: "+ r2.getOilRepository()+"\n");
                     bw.write("\t\tputtyRepository: "+ r2.getPuttyRepository()+"\n");
                 }
-                else if(bases.contains(cr1)){
+                else if(bases.get(i).equals(cr1)){
                     bw.write("\tCleanerRobot1:\n");
                     bw.write("\t\tposition: (" + (int)cr1.getPosition().getX() +","+(int)cr1.getPosition().getY()+ ")\n");
                     bw.write("\t\tdisplacement: (" + (int)cr1.getDisplacement().getAngle()+"," +(int)cr1.getDisplacement().getVelocity()+ ")\n");
                     bw.write("\t\tposition: (" + (int)cr1.getLastPosition().getX() +","+(int)cr1.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr1.getState() +"\n");
                 }
-                else if(bases.contains(cr2)){
+                else if(bases.get(i).equals(cr2)){
                     bw.write("\tCleanerRobot2:\n");
                     bw.write("\t\tposition: (" + (int)cr2.getPosition().getX() +","+(int)cr2.getPosition().getY()+ ")\n");
                     bw.write("\t\tdisplacement: (" + (int)cr2.getDisplacement().getAngle()+"," +(int)cr2.getDisplacement().getVelocity()+ ")\n");
                     bw.write("\t\tposition: (" + (int)cr2.getLastPosition().getX() +","+(int)cr2.getLastPosition().getY()+ ")\n");
                     bw.write("\t\tstate: " + cr2.getState() +"\n");
                 }
-                else if(bases.contains(barrier)){
+                else if(bases.get(i).equals(barrier)){
                     bw.write("\tBarrier:\n");
                     bw.write("\t\tType:" + barrier.getType());
                     bw.write("\t\tPosition:" + barrier.getPosition());
@@ -326,6 +326,7 @@ public class TestHelper {
             g.setCleanersList(cr2);
         }
 
+
     }
 
     //  Megfelelo Robot letrehozasa, a felhasznalói adatok alapjan
@@ -341,7 +342,7 @@ public class TestHelper {
         if(r1==null){
             r1 = new Robot(actual_coord, displacement, last_coord);
             bases.add(r1);
-            //g.getRobotList().add(r1);
+            g.getRobotList().add(r1);
         }
         else{
             r2 = new Robot(actual_coord, displacement, last_coord);
@@ -349,7 +350,6 @@ public class TestHelper {
             g.setRobotList(r2);
         }
 
-       // System.out.println(g.getRobotList());
     }
 
     public static void main(String[] args) {
