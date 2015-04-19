@@ -65,15 +65,28 @@ public class TestHelper {
                     g = new Game();
                     track = new Track();
                     track.create();
+                    g.setTrack(track);
                     break;
                 case placeRobot:
-                    createRobot(line[1],line[2],line[3]);
+                    if(line[1]!=null&&line[2]!=null&&line[3]!=null){
+                        createRobot(line[1],line[2],line[3]);
+                    }else {
+                        System.out.println("Give the all parameters of the Robot");
+                    }
                     break;
                 case placeBarrier:
-                    createBarrier(line[1],line[2]);
+                    if(line[1]!=null&&line[2]!=null) {
+                        createBarrier(line[1], line[2]);
+                    }else {
+                        System.out.println("Give the all parameters of the Barrier");
+                    }
                     break;
                 case placeCleaner:
-                    createCleaner(line[1],line[2],line[3]);
+                    if(line[1]!=null&&line[2]!=null&&line[3]!=null) {
+                        createCleaner(line[1], line[2], line[3]);
+                    }else {
+                        System.out.println("Give the all parameters of the Cleaner");
+                    }
                     break;
                 case start:
                     logStartState();
@@ -100,7 +113,7 @@ public class TestHelper {
 //  Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt formátumban
     private static void logEndState() {
         try {
-            String filename = "/result/result.txt";
+            String filename = System.getProperty("user.dir")+"/result/result.txt";
             FileWriter fw = new FileWriter(filename, true);
 
             fw.write("\nElvárt eredmény, állapot :\n");
@@ -185,7 +198,7 @@ public class TestHelper {
     //  Todo: fájlba kiírni a kezdeti állapotot a 8-as doksiban leírt formátumban
     private static void logStartState() {
         try{
-            File file = new File("results/result.txt");
+            File file = new File(System.getProperty("user.dir")+"/results/result.txt");
             if(!file.exists()) {
                 file.createNewFile();
             }
@@ -249,6 +262,7 @@ public class TestHelper {
         barrier=null;
         cr1=null;
         cr2=null;
+        bases=null;
     }
 
     //  Megfelelo Barrier letrehozasa, a felhasznalói adatok alapjan
@@ -280,6 +294,8 @@ public class TestHelper {
 
         barrier.setPosition(coordinate);
         barrier.setTrackPart(trackPart);
+
+        track.findAPart(coordinate).addBase(barrier,coordinate);
         bases.add(barrier);
 
     }
@@ -367,7 +383,7 @@ public class TestHelper {
                 String line = br.readLine();
                 while (line != null) {
                     Commands.add(line);
-                    br.readLine();
+                    line = br.readLine();
                 }
 
             } catch (Exception e) {

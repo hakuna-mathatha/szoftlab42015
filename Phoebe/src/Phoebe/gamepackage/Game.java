@@ -14,13 +14,11 @@ public class Game {
 
 	private List<Robot> robots;
 	private List<CleanerRobot> cleaners;
-	public Track track;
+	private Track track;
 	public Control control;
 
 	public Game() {
 		System.out.println(getClass().getName() + ":Game");
-		track = new Track();
-		track.create();
 		robots = new ArrayList<Robot>();
 		cleaners = new ArrayList<CleanerRobot>();
 		control = new Control();
@@ -90,6 +88,12 @@ public class Game {
 		return winner;
 	}
 
+	public void setTrack(Track track) {
+		this.track = track;
+	}
+	public Track getTrack() {
+		return track;
+	}
 	// Kell hogy a robotok rendezesehez meg legyen az osszehasonlitasi alap
 	private class ComparRobots implements Comparator<Bot> {
 
