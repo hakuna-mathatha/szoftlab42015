@@ -164,7 +164,7 @@ public class TestHelper {
 			}
 		} catch (Exception e) {
 			System.out.println("Exception in switch case.");
-			 e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
@@ -378,13 +378,13 @@ public class TestHelper {
 				fajlbol = false;
 
 				// Ha fajlbol parancsok beolvasasa
-				 while (TestHelper.vege != true) {
-				System.out.print("-------------------new command------------------------\n");
-				System.out.println("Give the command : ");
-				parancs = scanInTest.nextLine();
-				if (parancs != null)
-					TestHelper.kiertekel(parancs);
-				 }
+				while (TestHelper.vege != true) {
+					System.out.print("-------------------new command------------------------\n");
+					System.out.println("Give the command : ");
+					parancs = scanInTest.nextLine();
+					if (parancs != null)
+						TestHelper.kiertekel(parancs);
+				}
 
 			} else if (parancs.equals("file")) {
 				fajlbol = true;
@@ -394,7 +394,6 @@ public class TestHelper {
 				// Ha fajlbol, fajl sorainak Commandá alakitasa
 				try {
 					File f = new File(parancs);
-					System.out.println(parancs);
 					// ha tenyleg elerheto a fajl akkor itt beolvasni
 					BufferedReader br = new BufferedReader(new FileReader(f));
 
@@ -412,12 +411,12 @@ public class TestHelper {
 				for (String c : Commands) {
 					kiertekel(c);
 				}
-				
+
 				Scanner scanIn = new Scanner(System.in);
-		        System.out.println("Press any key for EXIT");
-		        String exit = scanIn.nextLine();
-		        vege = true;
-		        
+				System.out.println("Press any key for EXIT");
+				String exit = scanIn.nextLine();
+				vege = true;
+
 			} else {
 				System.out.print("Incorrect command\n");
 			}
