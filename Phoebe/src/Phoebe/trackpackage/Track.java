@@ -23,7 +23,7 @@ public class Track {
 
 	public Track(){
 
-		System.out.println("\t"+getClass().getName()+":Track");
+//		System.out.println("\t"+getClass().getName()+":Track");
 		edge = new EdgeofTheTrack();
 		trackParts = new ArrayList<JumpablePart>();
 	}
@@ -31,9 +31,9 @@ public class Track {
 	public void create() {
 
 		//Csinaltam egy alap palyat. negyzet alaku. csak hogy ha akar valaki akkor lehessen tesztet kitalalni
-		System.out.println("\t"+getClass().getName()+":create");
+//		System.out.println("\t"+getClass().getName()+":create");
 		String baseURL = System.getProperty("user.dir")+"/data/";
-		System.out.println(baseURL);
+//		System.out.println(baseURL);
 		try{
 		JumpablePart jumpablePart1 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart1.dat",JumpablePart.class);
 		JumpablePart jumpablePart2 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart2.dat",JumpablePart.class);
@@ -55,7 +55,7 @@ public class Track {
 
 	public TrackPart findAPart(Coordinate coord) {
 
-		System.out.println("\t\t"+getClass().getName()+":findAPart");
+//		System.out.println("\t\t"+getClass().getName()+":findAPart");
 
 		//keresés az elemek között
 		for(JumpablePart p : trackParts){

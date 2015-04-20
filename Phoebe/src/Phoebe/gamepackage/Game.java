@@ -18,7 +18,7 @@ public class Game {
 	public Control control;
 
 	public Game() {
-		System.out.println(getClass().getName() + ":Game");
+//		System.out.println(getClass().getName() + ":Game");
 		robots = new ArrayList<Robot>();
 		cleaners = new ArrayList<CleanerRobot>();
 		control = new Control();
@@ -30,7 +30,7 @@ public class Game {
 	// Majd a valtozasokat fel kell vazetni a diagramokra!!!
 	public void start() {
 
-		System.out.println(getClass().getName() + ":Start()");
+//		System.out.println(getClass().getName() + ":Start()");
 
 		for (Robot rob : robots) {
 			if(rob.state.equals(RobotState.died) == true){
@@ -61,7 +61,7 @@ public class Game {
 
 	private void calcDistance() {
 		
-		System.out.println(getClass().getName() + ":calcDistance()");
+//		System.out.println(getClass().getName() + ":calcDistance()");
 
 		for (Robot robot : robots) {
 					Coordinate vector = robot.getLastPosition().difCoord(robot.getPosition());
@@ -72,7 +72,7 @@ public class Game {
 	}
 
 	public Bot getWinner() {
-		System.out.println("\t" + getClass().getName() + ":getWinner");
+//		System.out.println("\t" + getClass().getName() + ":getWinner");
 
 		Robot winner = robots.get(0);
 		double max = winner.getDistance();
@@ -100,7 +100,7 @@ public class Game {
 		@Override
 		public int compare(Bot o1, Bot o2) {
 
-			System.out.println(getClass().getName() + ":Compare robots velocity");
+//			System.out.println(getClass().getName() + ":Compare robots velocity");
 			
 			double d1 = o1.getPosition().difCoord(o1.getNextPosition()).legth();
 			double d2 = o2.getPosition().difCoord(o2.getNextPosition()).legth();

@@ -15,7 +15,7 @@ public class CleanerRobot extends Bot {
 	
 	
 	public CleanerRobot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
-		System.out.println("\t" + getClass().getName() + ":Robot");
+//		System.out.println("\t" + getClass().getName() + ":Robot");
 
 		displacement = disp1;
 		state = RobotState.pure;
@@ -32,7 +32,7 @@ public class CleanerRobot extends Bot {
 	}
 	
 	public CleanerRobot() {
-		System.out.println("\t" + getClass().getName() + ":Robot");
+//		System.out.println("\t" + getClass().getName() + ":Robot");
 
 
 		displacement = new Displacement((-1) * Math.PI, 1);
@@ -63,7 +63,7 @@ public class CleanerRobot extends Bot {
 					distance = tmp;
 					nearestBarrierExist = true;
 					barrier = (Barrier) base;
-					System.out.println("Talaltam Barriert" + barrier.getType());
+//					System.out.println("Talaltam Barriert" + barrier.getType());
 				}
 			}
 		}
@@ -72,7 +72,7 @@ public class CleanerRobot extends Bot {
 	}
 
 	public void stepOn(Bot aBot) {
-		System.out.println("Robot stepOn");
+//		System.out.println("Robot stepOn");
 
 		if (aBot.getType().equals(BaseType.normalRobot)) {
 			
@@ -95,7 +95,7 @@ public class CleanerRobot extends Bot {
 
 	public void jump(Track aTrack) {
 		setState(RobotState.jump);
-		System.out.println("\t" + getClass().getName() + ":jump");
+//		System.out.println("\t" + getClass().getName() + ":jump");
 		
 		calcNextPosition(aTrack);
 
@@ -130,9 +130,9 @@ public class CleanerRobot extends Bot {
 		while(!IsCoordOk){
 			if(! (aTrack.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge))){
 				IsCoordOk = true;
-				System.out.println("Jo lesz a koord");
+//				System.out.println("Jo lesz a koord");
 			}else{
-				System.out.println("Nem lesz jo a koord");
+//				System.out.println("Nem lesz jo a koord");
 				nextPosition.setX((nextPosition.getX() * Math.cos(Math.PI/18) - nextPosition.getY() * Math.sin(Math.PI/18))
 						+ position.getX());
 				nextPosition.setY((nextPosition.getY() * Math.cos(Math.PI/18) + nextPosition.getX() * Math.sin(Math.PI/18))

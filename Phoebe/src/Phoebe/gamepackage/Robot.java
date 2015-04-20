@@ -14,7 +14,7 @@ public class Robot extends Bot {
 	private double velocityMod;
 
 	public Robot() {
-		System.out.println("\t" + getClass().getName() + ":Robot");
+//		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
 		distance = 0;
@@ -34,7 +34,7 @@ public class Robot extends Bot {
 	}
 	
 	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
-		System.out.println("\t" + getClass().getName() + ":Robot");
+//		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
 		distance = 0;
@@ -54,12 +54,12 @@ public class Robot extends Bot {
 	}
 
 	public void reducePuttyRepository() {
-		System.out.println("\t\t\t" + getClass().getName() + ":reducePuttyRepository");
+//		System.out.println("\t\t\t" + getClass().getName() + ":reducePuttyRepository");
 		--puttyReporitory;
 	}
 
 	public void reduceOilRepository() {
-		System.out.println("\t\t\t" + getClass().getName() + ":reduceOilRepository");
+//		System.out.println("\t\t\t" + getClass().getName() + ":reduceOilRepository");
 		--oilRepository;
 	}
 
@@ -68,7 +68,7 @@ public class Robot extends Bot {
 	}
 
 	public double getDistance() {
-		System.out.println("\t\t" + getClass().getName() + ":getDistance");
+//		System.out.println("\t\t" + getClass().getName() + ":getDistance");
 		return distance;
 	}
 
@@ -83,7 +83,7 @@ public class Robot extends Bot {
 	@Override
 	public void jump(Track track) {
 		
-		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
+//		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
 		veloMod = true;
 		setState(RobotState.jump);
 		setLastPosition(position);
@@ -103,7 +103,7 @@ public class Robot extends Bot {
 
 	@Override
 	public void stepOn(Bot aBot) {
-		System.out.println("\t" + getClass().getName() + ":stepOn()");
+//		System.out.println("\t" + getClass().getName() + ":stepOn()");
 		// Atlag sebesseget ugy ertelmeztem, hogy a ket elmozdulas vektor
 		// osszege altal kapott vektor hosszanak a fele
 		if (aBot.getType().equals(BaseType.normalRobot)) {
@@ -146,7 +146,7 @@ public class Robot extends Bot {
 	}
 
 	public void putTheBarrier(Barrier barrier) {
-		System.out.println("\t" + getClass().getName() + ":putTheBarrier");
+//		System.out.println("\t" + getClass().getName() + ":putTheBarrier");
 
 		BaseType type = barrier.getType();
 
@@ -159,7 +159,7 @@ public class Robot extends Bot {
 				
 			
 			} else {
-				System.out.println("Out of " + barrier.getType());
+//				System.out.println("Out of " + barrier.getType());
 			}
 
 		} else if (type.equals(BaseType.putty)) {

@@ -46,7 +46,7 @@ public class Oil extends Barrier {
 	//ha olajba l�p�nk, nem v�ltoztathatjuk a robot sebess�g�t a k�vetkez� k�rig
 	public void stepOn(Bot bot) {
 
-		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
 		//csak a norm�l robotra hat
 		if (bot.getType() == BaseType.normalRobot) {
@@ -74,9 +74,9 @@ public class Oil extends Barrier {
 //			timer.purge();
 			cleaner();
 			timer.cancel();
-			System.out.println("time is over");
+//			System.out.println("time is over");
 //			clean();
-			System.out.println("removed from map");
+//			System.out.println("removed from map");
 		}
 		
 	}

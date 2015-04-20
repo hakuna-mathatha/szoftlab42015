@@ -46,7 +46,7 @@ public abstract class TrackPart {
 
 	public boolean containCoord(Coordinate coord) {
 
-		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
+//		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
 
 		//�gy kevesebb lek�rdez�sre van sz�ks�g
 		double tmpX = coord.getX();

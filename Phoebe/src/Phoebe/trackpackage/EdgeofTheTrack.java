@@ -21,14 +21,14 @@ public class EdgeofTheTrack extends TrackPart {
 	public void addBase(Base base, Coordinate coord) {
 
 		//soha nem fog hívódni, ezért nincs törzse
-		System.out.println("\t\t\t\t" + getClass().getName() + ":addBase");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":addBase");
 
 	}
 
 	public void removeFromTrackPart(Base aBase) {
 
 		//soha nem fog hívódni, ezért nincs törzse
-		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
+//		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
 	}
 
 }

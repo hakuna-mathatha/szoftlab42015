@@ -19,12 +19,12 @@ public abstract class Bot extends Base {
 	boolean directionMod;
 
 	public Coordinate getLastPosition() {
-		System.out.println("\t\t\t" + getClass().getName() + ":getLastPosition");
+//		System.out.println("\t\t\t" + getClass().getName() + ":getLastPosition");
 		return lastPosition;
 	}
 
 	public void setLastPosition(Coordinate lastPosition) {
-		System.out.println("\t\t\t" + getClass().getName() + ":setLastPosition");
+//		System.out.println("\t\t\t" + getClass().getName() + ":setLastPosition");
 		this.lastPosition = lastPosition;
 	}
 	
@@ -45,43 +45,43 @@ public abstract class Bot extends Base {
 	public abstract void jump(Track track);
 
 	public void modifyDisplacement(Displacement disp) {
-		System.out.println("\t\t\t" + getClass().getName() + ":modifyDisplacement");
+//		System.out.println("\t\t\t" + getClass().getName() + ":modifyDisplacement");
 	}
 
 	public void setPosition(Coordinate position1) {
-		System.out.println("\t\t\t" + getClass().getName() + ":setPosition");
+//		System.out.println("\t\t\t" + getClass().getName() + ":setPosition");
 		this.position = position1;
 	}
 
 	public Coordinate getPosition() {
-		System.out.println("\t\t\t" + getClass().getName() + ":getPosition");
+//		System.out.println("\t\t\t" + getClass().getName() + ":getPosition");
 		return position;
 	}
 
 	public Coordinate getNextPosition() {
-		System.out.println("\t\t\t" + getClass().getName() + ":getNextPosition");
+		//System.out.println("\t\t\t" + getClass().getName() + ":getNextPosition");
 		return nextPosition;
 	}
 
 	public void setNextPosition(Coordinate nextPosition1) {
-		System.out.println("\t\t\t" + getClass().getName() + ":setNextPosition");
+//		System.out.println("\t\t\t" + getClass().getName() + ":setNextPosition");
 		this.nextPosition = nextPosition1;
 	};
 
 	public void setDisplacement(Displacement displacement1) {
-		System.out.println("\t\t\t" + getClass().getName() + ":setDisplacement");
+//		System.out.println("\t\t\t" + getClass().getName() + ":setDisplacement");
 		this.displacement = displacement1;
 	}
 
 	public Displacement getDisplacement() {
-		System.out.println("\t\t\t" + getClass().getName() + ":getDisplacement");
+//		System.out.println("\t\t\t" + getClass().getName() + ":getDisplacement");
 		return displacement;
 	}
 
 	public void setState(RobotState state1) {
 	
 		this.state = state1;
-		System.out.println("\t\t\t" + getClass().getName() + ":setState"+": "+this.state);
+//		System.out.println("\t\t\t" + getClass().getName() + ":setState"+": "+this.state);
 	}
 
 	public RobotState getState() {
@@ -92,7 +92,7 @@ public abstract class Bot extends Base {
 	public abstract void stepOn(Bot aBot);
 
 	protected void getTheEffectForRobot(Base barrier) {
-		System.out.println("\t" + getClass().getName() + ":getTheEffectForRobot");
+//		System.out.println("\t" + getClass().getName() + ":getTheEffectForRobot");
 		barrier.stepOn(this);
 
 	}
@@ -140,13 +140,13 @@ public abstract class Bot extends Base {
 //		System.out
 //				.println((direction.getY() * Math.cos(disp.getAngle()) + direction.getX() * Math.sin(disp.getAngle())));
 
-		System.out.println("\t" + getClass().getName() + ":calcCoordinate");
+//		System.out.println("\t" + getClass().getName() + ":calcCoordinate");
 
 		return coordinate;
 	}
 
 	protected Base giveMeTheBase(Coordinate coord, TrackPart part) {
-		System.out.println("\t" + getClass().getName() + ":giveMeTheBarrier");
+//		System.out.println("\t" + getClass().getName() + ":giveMeTheBarrier");
 		Base base = part.getBase(coord);
 		return base;
 	}

@@ -45,7 +45,7 @@ public abstract class Base {
 
 	public boolean isCoordNear(Coordinate coord) {
 
-		System.out.println("\t\t\t" + getClass().getName() + ":isCoordNear");
+//		System.out.println("\t\t\t" + getClass().getName() + ":isCoordNear");
 
 		//így kevesebb lekérdezésre van szükség
 		double tmpX = coord.getX();
@@ -55,7 +55,7 @@ public abstract class Base {
 
 		//ha a koordináták távolsága páronként kisebb, mint a hatósugár, akkor a hatóterületén van (négzet alakú), a határok is számítanak
 		if (Math.abs(tmpX - tmpPX) <= ray && Math.abs(tmpY - tmpPY) <= ray) {
-			System.out.println("TRUE");
+//			System.out.println("TRUE");
 			return true;
 		}
 
@@ -65,7 +65,7 @@ public abstract class Base {
 
 	public BaseType getType() {
 
-		System.out.println("\t\t" + getClass().getName() + ":getType()");
+//		System.out.println("\t\t" + getClass().getName() + ":getType()");
 		return type;
 	}
 		

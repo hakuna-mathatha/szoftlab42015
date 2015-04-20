@@ -49,7 +49,7 @@ public class Putty extends Barrier {
 	//ha ragacsba lépünk, felezõdik a sebesség, és nem változtathatjuk sebességet a következõ körig
 	public void stepOn(Bot bot) {
 
-		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
 		//csökkentjük a tartósságát
 		countToRemove--;

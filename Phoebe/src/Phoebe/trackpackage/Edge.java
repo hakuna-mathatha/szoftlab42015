@@ -25,7 +25,7 @@ public class Edge extends Barrier {
 	//letért a pályáról, megáll, meghal
 	public void stepOn(Bot bot) {
 
-		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
 		//állapaota edge lesz
 		bot.setState(RobotState.died);

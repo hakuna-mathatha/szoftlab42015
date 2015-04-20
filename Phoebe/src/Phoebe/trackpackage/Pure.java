@@ -25,7 +25,7 @@ public class Pure extends Barrier {
 	//káros hatások lekerülnek
 	public void stepOn(Bot bot) {
 
-		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
+//		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
 		//állapaota pure lesz
 		bot.setState(RobotState.pure);

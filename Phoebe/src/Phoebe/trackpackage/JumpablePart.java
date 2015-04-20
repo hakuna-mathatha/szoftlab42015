@@ -48,7 +48,7 @@ public class JumpablePart extends TrackPart {
 	public Base getBase(Coordinate coord) {
 
 //		throw new UnsupportedOperationException();
-		System.out.println("\t\t"+getClass().getName()+":getBarrier");
+//		System.out.println("\t\t"+getClass().getName()+":getBarrier");
 		
 		//keresés az elemek között
 		Timestamp timestamp = new Timestamp(0);
@@ -66,7 +66,7 @@ public class JumpablePart extends TrackPart {
 
 	public void addBase(Base base, Coordinate coord) {
 		
-		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
+//		System.out.println("\t\t\t\t"+getClass().getName()+":addBase");
 		
 //		System.out.println(bases.size());
 		
@@ -79,7 +79,7 @@ public class JumpablePart extends TrackPart {
 
 	public void removeFromTrackPart(Base base) {
 
-		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
+//		System.out.println("\t\t\t" + getClass().getName() + ":removeFromTrackPart");
 
 		//remove true-val tér vissza, ha sikeresen törölt a listából, false-al, ha nem. ha sikertelen a törlés, hiba van
 		if (!(bases.remove(base))) {
