@@ -17,7 +17,7 @@ public class Testing {
 //        Scanner scanIn = new Scanner(System.in);
 //        String s1 = scanIn.nextLine();
 
-        System.out.println("Enter the file's name you want to compare:");
+        System.out.println("Enter the file's name you want to compare(just the name, don't need type):");
         Scanner scanIn = new Scanner(System.in);
         String s2 = scanIn.nextLine();
         

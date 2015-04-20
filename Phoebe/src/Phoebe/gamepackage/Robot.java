@@ -112,20 +112,29 @@ public class Robot extends Bot {
 
 			Coordinate faster = new Coordinate();
 			faster = aBot.getPosition().difCoord(aBot.getLastPosition());
+			
+			System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");
+			
 
 			Coordinate slower = new Coordinate();
 			slower = this.getPosition().difCoord(this.getLastPosition());
+			System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");
 
 			Coordinate sum = new Coordinate();
 			sum = slower.addCoord(faster);
-
+			System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");
 			double velo = sum.legth() / 2;
-
+			System.out.println("Velo: "+velo);
+			
 			fast = aBot.getDisplacement();
 
 			fast.setVelocity(velo);
 			
 			aBot.setDisplacement(fast);
+			
+			System.out.println(aBot.getDisplacement().getVelocity());
+		
+			
 			// Tiltsa le a sebesseg modositas lehetoseget
 			aBot.setVeloMod(false);
 			aBot.setState(RobotState.active);

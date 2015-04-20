@@ -185,12 +185,12 @@ public class TestHelper {
 					if (r1.getState().equals(RobotState.died)) {
 						fw.write("\t\tstate: " + r1.getState() + "\n");
 					} else {
-						fw.write("\t\tposition: (" + (int) r1.getPosition().getX() + ","
-								+ (int) r1.getPosition().getY() + ")\n");
-						fw.write("\t\tdisplacement: (" + (int) r1.getDisplacement().getAngle() + ","
-								+ (int) r1.getDisplacement().getVelocity() + ")\n");
-						fw.write("\t\tlastPosition: (" + (int) r1.getLastPosition().getX() + ","
-								+ (int) r1.getLastPosition().getY() + ")\n");
+						fw.write("\t\tposition: (" +  r1.getPosition().getX() + ","
+								+  r1.getPosition().getY() + ")\n");
+						fw.write("\t\tdisplacement: (" +  r1.getDisplacement().getAngle() + ","
+								+  r1.getDisplacement().getVelocity() + ")\n");
+						fw.write("\t\tlastPosition: (" +  r1.getLastPosition().getX() + ","
+								+  r1.getLastPosition().getY() + ")\n");
 						fw.write("\t\tstate: " + r1.getState() + "\n");
 						fw.write("\t\tveloMod: " + r1.getVeloMod() + "\n");
 						fw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
@@ -203,12 +203,12 @@ public class TestHelper {
 					if (cr1.getState().equals(RobotState.died)) {
 						fw.write("\t\tstate: " + cr1.getState() + "\n");
 					} else {
-						fw.write("\t\tposition: (" + (int) cr1.getPosition().getX() + ","
-								+ (int) cr1.getPosition().getY() + ")\n");
-						fw.write("\t\tdisplacement: (" + (int) cr1.getDisplacement().getAngle() + ","
-								+ (int) cr1.getDisplacement().getVelocity() + ")\n");
-						fw.write("\t\tlastPosition: (" + (int) cr1.getLastPosition().getX() + ","
-								+ (int) cr1.getLastPosition().getY() + ")\n");
+						fw.write("\t\tposition: (" +  cr1.getPosition().getX() + ","
+								+  cr1.getPosition().getY() + ")\n");
+						fw.write("\t\tdisplacement: (" +  cr1.getDisplacement().getAngle() + ","
+								+  cr1.getDisplacement().getVelocity() + ")\n");
+						fw.write("\t\tlastPosition: (" +  cr1.getLastPosition().getX() + ","
+								+  cr1.getLastPosition().getY() + ")\n");
 						fw.write("\t\tstate: " + cr1.getState() + "\n");
 					}
 				} else if (bases.get(i).getType().equals(BaseType.edge) || bases.get(i).getType().equals(BaseType.pure)
@@ -250,12 +250,12 @@ public class TestHelper {
 				if (bases.get(i).getType().equals(BaseType.normalRobot)) {
 					r1 = (Robot) bases.get(i);
 					bw.write("\tNormalRobot" + nRN++ + ":\n");
-					bw.write("\t\tposition: (" + (int) r1.getPosition().getX() + "," + (int) r1.getPosition().getY()
+					bw.write("\t\tposition: (" +  r1.getPosition().getX() + "," +  r1.getPosition().getY()
 							+ ")\n");
-					bw.write("\t\tdisplacement: (" + (int) r1.getDisplacement().getAngle() + ","
-							+ (int) r1.getDisplacement().getVelocity() + ")\n");
-					bw.write("\t\tlastPosition: (" + (int) r1.getLastPosition().getX() + ","
-							+ (int) r1.getLastPosition().getY() + ")\n");
+					bw.write("\t\tdisplacement: (" +  r1.getDisplacement().getAngle() + ","
+							+  r1.getDisplacement().getVelocity() + ")\n");
+					bw.write("\t\tlastPosition: (" +  r1.getLastPosition().getX() + ","
+							+  r1.getLastPosition().getY() + ")\n");
 					bw.write("\t\tstate: " + r1.getState() + "\n");
 					bw.write("\t\tveloMod: " + r1.getVeloMod() + "\n");
 					bw.write("\t\tdirectionMod: " + r1.getDirectionMod() + "\n");
@@ -264,12 +264,12 @@ public class TestHelper {
 				} else if (bases.get(i).getType().equals(BaseType.cleanerRobot)) {
 					cr1 = (CleanerRobot) bases.get(i);
 					bw.write("\tCleanerRobot" + nRN++ + ":\n");
-					bw.write("\t\tposition: (" + (int) cr1.getPosition().getX() + "," + (int) cr1.getPosition().getY()
+					bw.write("\t\tposition: (" +  cr1.getPosition().getX() + "," +  cr1.getPosition().getY()
 							+ ")\n");
-					bw.write("\t\tdisplacement: (" + (int) cr1.getDisplacement().getAngle() + ","
-							+ (int) cr1.getDisplacement().getVelocity() + ")\n");
-					bw.write("\t\tlastPosition: (" + (int) cr1.getLastPosition().getX() + ","
-							+ (int) cr1.getLastPosition().getY() + ")\n");
+					bw.write("\t\tdisplacement: (" +  cr1.getDisplacement().getAngle() + ","
+							+  cr1.getDisplacement().getVelocity() + ")\n");
+					bw.write("\t\tlastPosition: (" +  cr1.getLastPosition().getX() + ","
+							+  cr1.getLastPosition().getY() + ")\n");
 					bw.write("\t\tstate: " + cr1.getState() + "\n");
 				} else if (bases.get(i).getType().equals(BaseType.edge) || bases.get(i).getType().equals(BaseType.pure)
 						|| bases.get(i).getType().equals(BaseType.oil) || bases.get(i).getType().equals(BaseType.putty)) {
