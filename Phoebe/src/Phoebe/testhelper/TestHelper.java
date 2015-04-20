@@ -372,46 +372,48 @@ public class TestHelper {
 
 		// Eldontes hogy fajlbol vagy consolerol
 		System.out.print("From where do you want to run the test:\nconsole/file\n");
-		parancs = scanInTest.nextLine();
-		if (parancs.equals("console")) {
-			fajlbol = false;
+		while (TestHelper.vege != true) {
+			parancs = scanInTest.nextLine();
+			if (parancs.equals("console")) {
+				fajlbol = false;
 
-			// Ha fajlbol parancsok beolvasasa
-			while (TestHelper.vege != true) {
+				// Ha fajlbol parancsok beolvasasa
+				 while (TestHelper.vege != true) {
 				System.out.print("-------------------new command------------------------\n");
 				System.out.println("Give the command : ");
 				parancs = scanInTest.nextLine();
 				if (parancs != null)
 					TestHelper.kiertekel(parancs);
-			}
+				 }
 
-		} else if (parancs.equals("file")) {
-			fajlbol = true;
-			System.out.println("Give the file full path: ");
-			parancs = scanInTest.nextLine();
+			} else if (parancs.equals("file")) {
+				fajlbol = true;
+				System.out.println("Give the file full path: ");
+				parancs = scanInTest.nextLine();
 
-			// Ha fajlbol, fajl sorainak Commandá alakitasa
-			try {
-				File f = new File(parancs);
-				// ha tenyleg elerheto a fajl akkor itt beolvasni
-				BufferedReader br = new BufferedReader(new FileReader(f));
-				String line = br.readLine();
-				while (line != null) {
-					Commands.add(line);
-					line = br.readLine();
+				// Ha fajlbol, fajl sorainak Commandá alakitasa
+				try {
+					File f = new File(parancs);
+					// ha tenyleg elerheto a fajl akkor itt beolvasni
+					BufferedReader br = new BufferedReader(new FileReader(f));
+					String line = br.readLine();
+					while (line != null) {
+						Commands.add(line);
+						line = br.readLine();
+					}
+
+				} catch (Exception e) {
+					System.out.println("Cannot access the file.\n ");
 				}
+				// utana sorban kiertekeles Todo: uj szintaxist belevenni ide is
+				for (String c : Commands) {
+					kiertekel(c);
+				}
+			} else {
+				System.out.print("Incorrect command\n");
+			}
 
-			} catch (Exception e) {
-				System.out.println("Cannot access the file.\n ");
-			}
-			// utana sorban kiertekeles Todo: uj szintaxist belevenni ide is
-			for (String c : Commands) {
-				kiertekel(c);
-			}
-		} else {
-			System.out.print("Incorrect command");
 		}
-
 		System.exit(0);
 	}
 
