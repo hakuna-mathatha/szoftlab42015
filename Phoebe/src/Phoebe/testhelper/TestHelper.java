@@ -143,7 +143,7 @@ public class TestHelper {
 				logEndState();
 				setToDefault();
 				Testing.TestStart();
-				break;
+				return;
 			case exit:
 				vege = true;
 				break;
@@ -164,7 +164,7 @@ public class TestHelper {
 			}
 		} catch (Exception e) {
 			System.out.println("Exception in switch case.");
-			// e.printStackTrace();
+			 e.printStackTrace();
 		}
 	}
 
@@ -409,6 +409,7 @@ public class TestHelper {
 				for (String c : Commands) {
 					kiertekel(c);
 				}
+				vege = true;
 			} else {
 				System.out.print("Incorrect command\n");
 			}

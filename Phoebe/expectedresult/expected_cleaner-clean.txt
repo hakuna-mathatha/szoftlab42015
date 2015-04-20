@@ -1,8 +1,8 @@
 Start:
 	CleanerRobot1:
-		position: (3,1)
+		position: (2,2)
 		displacement: (0,1)
-		lastPosition: (3,0)
+		lastPosition: (1,2)
 		state: pure
 	Barrier:
 		Type: oil
@@ -12,7 +12,7 @@ Elvárt eredmény, állapot :
 	CleanerRobot1:
 		position: (3,2)
 		displacement: (0,1)
-		lastPosition: (3,1)
+		lastPosition: (2,2)
 		state: jump
 	Barrier:
 		Type: oil

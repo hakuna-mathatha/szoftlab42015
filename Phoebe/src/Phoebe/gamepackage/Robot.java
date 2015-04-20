@@ -152,10 +152,10 @@ public class Robot extends Bot {
 
 		if (type.equals(BaseType.oil)) {
 			if (oilRepository > 0) {
-				System.out.println("Rakok le olajat");
+//				System.out.println("Rakok le olajat");
 				trackPart.addBase(barrier, position);
 				reduceOilRepository();
-				System.out.println(oilRepository);
+//				System.out.println(oilRepository);
 				
 			
 			} else {
@@ -167,7 +167,7 @@ public class Robot extends Bot {
 				trackPart.addBase(barrier, position);
 				reducePuttyRepository();
 			} else {
-				System.out.println("Out of putty");
+//				System.out.println("Out of putty");
 			}
 
 		}
