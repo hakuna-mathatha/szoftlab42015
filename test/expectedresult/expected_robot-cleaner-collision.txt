@@ -1,0 +1,34 @@
+Start:
+	NormalRobot1:
+		position: (2,2)
+		displacement: (0,2)
+		lastPosition: (1,2)
+		state: pure
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+	CleanerRobot2:
+		position: (2,1)
+		displacement: (0,1)
+		lastPosition: (0,0)
+		state: pure
+	Barrier:
+		Type: oil
+		position: (4.0,2.0)
+
+Elvárt eredmény, állapot :
+	NormalRobot1:
+		position: (4,2)
+		displacement: (0,1)
+		lastPosition: (2,2)
+		state: active
+		veloMod: true
+		directionMod: true
+		oilRepository: 5
+		puttyRepository: 5
+	CleanerRobot1:
+		state: died
+	Barrier:
+		Type: oil
+		position: (4.0,2.0)
