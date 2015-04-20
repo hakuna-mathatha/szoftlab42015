@@ -33,7 +33,8 @@ public class Track {
 		//Csinaltam egy alap palyat. negyzet alaku. csak hogy ha akar valaki akkor lehessen tesztet kitalalni
 		System.out.println("\t"+getClass().getName()+":create");
 		String baseURL = System.getProperty("user.dir")+"/data/";
-		
+		System.out.println(baseURL);
+		try{
 		JumpablePart jumpablePart1 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart1.dat",JumpablePart.class);
 		JumpablePart jumpablePart2 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart2.dat",JumpablePart.class);
 		JumpablePart jumpablePart3 = (JumpablePart) JSONHandler.readStream(baseURL+"jumpablePart3.dat",JumpablePart.class);
@@ -43,6 +44,11 @@ public class Track {
 		trackParts.add(jumpablePart2);
 		trackParts.add(jumpablePart3);
 		trackParts.add(jumpablePart4);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 		
 		edge = new EdgeofTheTrack();
 	}

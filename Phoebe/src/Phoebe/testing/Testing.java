@@ -6,23 +6,32 @@ import java.util.Scanner;
 
 public class Testing {
 
-    public static void main (String [] args) throws java.io.IOException {
+    public static void TestStart () throws java.io.IOException {
 
 
-        String path = System.getProperty("user.dir")+"/results/result.txt";
+        String path = System.getProperty("user.dir")+"\\"+"results\\result.txt";
+        //System.out.println(path);
 
 
-        //System.out.println("Enter the first file's place:");
-        //Scanner scanIn = new Scanner(System.in);
-       // String s1 = scanIn.nextLine();
+//        System.out.println("Enter the first file's place:");
+//        Scanner scanIn = new Scanner(System.in);
+//        String s1 = scanIn.nextLine();
 
         System.out.println("Enter the file's name you want to compare:");
         Scanner scanIn = new Scanner(System.in);
         String s2 = scanIn.nextLine();
-        String s2Path = "expectedresults/"+s2+".txt";
-
+        
+        String s2Path = System.getProperty("user.dir")+"\\expectedresult\\" +s2+ ".txt";
+       // System.out.println(s2Path);
+        
+//        Scanner scanIn = new Scanner(System.in);
+//        String path = scanIn.nextLine();
+//        String s2Path = scanIn.nextLine();
+//        
+//        
         testTwoFile(path,s2Path);
-
+        
+   
     }
 
     public static void testTwoFile(String path, String s2Path) {
@@ -37,12 +46,12 @@ public class Testing {
 
             while (((z = bfr1.readLine()) != null) && ((y = bfr.readLine()) != null)) {
 
-                if ((z.charAt(0) - (int) '9') <= 0)
-                    z = z.substring(z.indexOf(" "));
+//                if ((z.charAt(0) - (int) '9') <= 0)
+//                    z = z.substring(z.indexOf(" "));
                 testResult += z;
 
-                if ((y.charAt(0) - (int) '9') <= 0)
-                    y = y.substring(y.indexOf(" "));
+//                if ((y.charAt(0) - (int) '9') <= 0)
+//                    y = y.substring(y.indexOf(" "));
                 sourceText += y;
 
 
@@ -68,7 +77,8 @@ public class Testing {
             bfr.close();
             bfr1.close();
         } catch (Exception e) {
-            //System.out.println(e.getMessage());
+           // System.out.println(e.getMessage());
+           // e.printStackTrace();
             System.out.println("File cannot found");
         }
     }

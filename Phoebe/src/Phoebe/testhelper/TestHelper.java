@@ -3,6 +3,7 @@ package Phoebe.testhelper;
 import Phoebe.basepackage.Base;
 import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.*;
+import Phoebe.testing.Testing;
 import Phoebe.trackpackage.*;
 
 import java.io.*;
@@ -141,6 +142,7 @@ public class TestHelper {
 				g.start();
 				logEndState();
 				setToDefault();
+				Testing.TestStart();
 				break;
 			case exit:
 				vege = true;

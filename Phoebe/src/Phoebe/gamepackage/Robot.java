@@ -140,7 +140,7 @@ public class Robot extends Bot {
 			disp.setVelocity(velocity * (-1));
 
 			aBot.setDisplacement(disp);
-
+			
 		}
 
 	}
