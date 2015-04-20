@@ -107,6 +107,7 @@ public class TestHelper {
 
 				boolean isRobot = false;
 				Robot robot = new Robot();
+
 				int i = 0;
 				for (Base base : bases) {
 					i++;
@@ -128,7 +129,6 @@ public class TestHelper {
 						System.out.println("Give the all parameters of the Barrier");
 						break;
 					}
-
 					robot.putTheBarrier(barrier);
 					bases.add(barrier);
 				} else {
@@ -169,6 +169,8 @@ public class TestHelper {
 	// Todo: fájlba kiírni a vég állapotot a 8-as doksiban leírt
 	// formátumban
 	private static void logEndState() {
+		int nRN, cRN;
+		nRN = cRN = 1;
 		try {
 			String filename = System.getProperty("user.dir") + "/results/result.txt";
 			FileWriter fw = new FileWriter(filename, true);
@@ -176,7 +178,7 @@ public class TestHelper {
 			fw.write("\nElvárt eredmény, állapot :\n");
 			for (int i = 0; i < bases.size(); i++) {
 				if (bases.get(i).getType().equals(BaseType.normalRobot)) {
-					fw.write("\tNormalRobot1:\n");
+					fw.write("\tNormalRobot" + nRN++ + ":\n");
 					r1 = (Robot) bases.get(i);
 					if (r1.getState().equals(RobotState.died)) {
 						fw.write("\t\tstate: " + r1.getState() + "\n");
@@ -195,7 +197,7 @@ public class TestHelper {
 					}
 				} else if (bases.get(i).getType().equals(BaseType.cleanerRobot)) {
 					cr1 = (CleanerRobot) bases.get(i);
-					fw.write("\tCleanerRobot1:\n");
+					fw.write("\tCleanerRobot" + cRN++ + ":\n");
 					if (cr1.getState().equals(RobotState.died)) {
 						fw.write("\t\tstate: " + cr1.getState() + "\n");
 					} else {
@@ -231,6 +233,8 @@ public class TestHelper {
 	// Todo: fájlba kiírni a kezdeti állapotot a 8-as doksiban leírt
 	// formátumban
 	private static void logStartState() {
+		int nRN, cRN;
+		nRN = cRN = 1;
 		try {
 			File file = new File(System.getProperty("user.dir") + "/results/result.txt");
 			if (!file.exists()) {
@@ -243,7 +247,7 @@ public class TestHelper {
 			for (int i = 0; i < bases.size(); i++) {
 				if (bases.get(i).getType().equals(BaseType.normalRobot)) {
 					r1 = (Robot) bases.get(i);
-					bw.write("\tNormalRobot1:\n");
+					bw.write("\tNormalRobot" + nRN++ + ":\n");
 					bw.write("\t\tposition: (" + (int) r1.getPosition().getX() + "," + (int) r1.getPosition().getY()
 							+ ")\n");
 					bw.write("\t\tdisplacement: (" + (int) r1.getDisplacement().getAngle() + ","
@@ -257,7 +261,7 @@ public class TestHelper {
 					bw.write("\t\tputtyRepository: " + r1.getPuttyRepository() + "\n");
 				} else if (bases.get(i).getType().equals(BaseType.cleanerRobot)) {
 					cr1 = (CleanerRobot) bases.get(i);
-					bw.write("\tCleanerRobot1:\n");
+					bw.write("\tCleanerRobot" + nRN++ + ":\n");
 					bw.write("\t\tposition: (" + (int) cr1.getPosition().getX() + "," + (int) cr1.getPosition().getY()
 							+ ")\n");
 					bw.write("\t\tdisplacement: (" + (int) cr1.getDisplacement().getAngle() + ","

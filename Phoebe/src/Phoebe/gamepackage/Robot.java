@@ -159,7 +159,7 @@ public class Robot extends Bot {
 				
 			
 			} else {
-				System.out.println("Out of oil");
+				System.out.println("Out of " + barrier.getType());
 			}
 
 		} else if (type.equals(BaseType.putty)) {
