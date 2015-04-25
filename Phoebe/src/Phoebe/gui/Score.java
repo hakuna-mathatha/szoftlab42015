@@ -18,7 +18,7 @@ public class Score extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-//        Pálya betöltése
+
         JPanel panel11 = new JPanel();
         panel11.setLayout(new FlowLayout());
         JLabel player1 = new JLabel("Player1");
