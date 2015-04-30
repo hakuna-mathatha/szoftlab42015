@@ -8,24 +8,32 @@ public class Main {
     private static Menu menu;
     private static NewGameMenu newGameMenu;
     private static Score score;
+    private static PlayTheGame playTheGame;
 
     public static void main(String[] args){
         menu = new Menu("Főmenü");
         newGameMenu = new NewGameMenu("Új játék");
         score = new Score("Végeredmény");
-//        menu.pack();
+        playTheGame = new PlayTheGame("Phoebe");
         menu.setVisible(true);
     }
     public static void newGame(){
         menu.setVisible(false);
         newGameMenu.setVisible(true);
     }
-    public static void startGame(){
-        newGameMenu.setVisible(false);
-        score.setVisible(true);
-    }
+
     public static void backToMainMenu(){
         score.setVisible(false);
         menu.setVisible(true);
     }
+
+    public static void PlayTheGame(){
+        newGameMenu.setVisible(false);
+        playTheGame.setVisible(true);
+    }
+    public static void scoreGame(){
+        playTheGame.setVisible(false);
+        score.setVisible(true);
+    }
+
 }

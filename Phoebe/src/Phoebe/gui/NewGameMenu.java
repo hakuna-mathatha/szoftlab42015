@@ -60,7 +60,7 @@ public class NewGameMenu extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Main.startGame();
+            Main.PlayTheGame();
             String map = (String)comboBox.getSelectedItem();
         }
     }

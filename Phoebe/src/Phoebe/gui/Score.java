@@ -38,7 +38,7 @@ public class Score extends JFrame {
         JButton btn_back= new JButton("Vissza a főmenübe");
         btn_back.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_back);
-        //      Kilépés gomb
+        // Kilépés gomb
         JButton btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_exit);
@@ -57,9 +57,7 @@ public class Score extends JFrame {
     }
     private class ExitListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
+        public void actionPerformed(ActionEvent e) {System.exit(0);}
     }
 
     private class BackListener implements ActionListener {
