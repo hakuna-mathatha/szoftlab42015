@@ -6,6 +6,15 @@ import java.util.ArrayList;
 public abstract class TrackPart {
 
 	protected Coordinate position;
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
 	protected double width;
 	protected double height;
     private ArrayList<Barrier> barriersList = new ArrayList<Barrier>();
@@ -18,13 +27,12 @@ public abstract class TrackPart {
         return barriersList;
     }
 
-    public double getWidth() {
 
+    public double getWidth() {
 		return width;
 	}
 
 	public double getHeight() {
-
 		return height;
 	}
 
