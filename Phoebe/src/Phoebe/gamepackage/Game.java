@@ -41,7 +41,7 @@ public class Game {
 			
 		}
 
-		Collections.sort(robots, new ComparRobots());
+		Collections.sort(robots, new CompareRobots());
 		
 		for(CleanerRobot cleaner : cleaners){
 			cleaner.jump(track);
@@ -95,7 +95,7 @@ public class Game {
 		return track;
 	}
 	// Kell hogy a robotok rendezesehez meg legyen az osszehasonlitasi alap
-	private class ComparRobots implements Comparator<Bot> {
+	private class CompareRobots implements Comparator<Bot> {
 
 		@Override
 		public int compare(Bot o1, Bot o2) {

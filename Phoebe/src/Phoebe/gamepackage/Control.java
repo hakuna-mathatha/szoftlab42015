@@ -1,10 +1,13 @@
 package Phoebe.gamepackage;
 
+import Phoebe.gui.View;
+
 public class Control {
 	
-	
+	protected View view;
+
 	public Control(){
-		
+		view = new View();
 	}
 
 	public void turnLeft(Bot bot) {};

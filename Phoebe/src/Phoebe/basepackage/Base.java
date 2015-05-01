@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import Phoebe.gamepackage.*;
 import Phoebe.trackpackage.*;
 
-public abstract class Base {
+public abstract class Base extends Observable {
 
 	protected Coordinate position;
 	protected BaseType type;
@@ -12,6 +12,10 @@ public abstract class Base {
 	protected double ray;
 	
 	protected Timestamp timeStamp;
+
+	public Coordinate getPosition() { return position; }
+
+	public void setPosition(Coordinate position) { this.position = position; }
 
 	public Timestamp getTimeStamp() {
 		return timeStamp;
@@ -21,25 +25,9 @@ public abstract class Base {
 		this.timeStamp = timeStamp;
 	}
 
-	public Coordinate getPosition() {
+	public TrackPart getTrackPart() { return trackPart; }
 
-		return position;
-	}
-
-	public void setPosition(Coordinate position) {
-
-		this.position = position;
-	}
-
-	public TrackPart getTrackPart() {
-
-		return trackPart;
-	}
-
-	public void setTrackPart(TrackPart trackPart) {
-
-		this.trackPart = trackPart;
-	}
+	public void setTrackPart(TrackPart trackPart) { this.trackPart = trackPart; }
 
 	public abstract void stepOn(Bot bot);
 
