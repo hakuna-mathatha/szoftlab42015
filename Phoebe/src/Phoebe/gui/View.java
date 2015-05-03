@@ -8,26 +8,74 @@ import java.util.Iterator;
  */
 public class View {
 
-    protected static ArrayList<Painter> painters;
+	protected static ArrayList<Painter> painters;
 
-    public View() {
-        painters = new ArrayList<Painter>();
+	private static Menu menu;
+	private static NewGameMenu newGameMenu;
+	
+
+	private static Score score;
+	private static PlayTheGame playTheGame;
+
+	public View() {
+		painters = new ArrayList<Painter>();
+
+		menu = new Menu("Fõmenü");
+		newGameMenu = new NewGameMenu("Új játék");
+		score = new Score("Végeredmény");
+		menu.setVisible(true);
+	}
+	
+	
+	public static NewGameMenu getNewGameMenu() {
+		return newGameMenu;
+	}
+
+	public static void setNewGameMenu(NewGameMenu newGameMenu) {
+		View.newGameMenu = newGameMenu;
+	}
+
+	protected static void addToList(Painter painter) {
+		painters.add(painter);
+	}
+	
+	
+	public static void newGame(){
+        menu.setVisible(false);
+        newGameMenu.setVisible(true);
     }
 
-    protected static void addToList(Painter painter) {
-        painters.add(painter);
+    public static void backToMainMenu(){
+        score.setVisible(false);
+        menu.setVisible(true);
     }
 
-    protected void drawImage() {
-        for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
-            Painter painter = iterator.next();
-            if (!painter.hasObservable()) {
-                iterator.remove();
-            }
-            else {
-                painter.onPaint();
-            }
-        }
+    public static void PlayTheGame(){
+        newGameMenu.setVisible(false);
+        playTheGame.setVisible(true);
     }
+    public static void scoreGame(){
+        playTheGame.setVisible(false);
+        score.setVisible(true);
+    }
+
+	public static PlayTheGame getPlayTheGame() {
+		return playTheGame;
+	}
+
+	public static void setPlayTheGame(PlayTheGame playTheGame) {
+		View.playTheGame = playTheGame;
+	}
+
+	protected void drawImage() {
+		for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
+			Painter painter = iterator.next();
+			if (!painter.hasObservable()) {
+				iterator.remove();
+			} else {
+				painter.onPaint();
+			}
+		}
+	}
 
 }

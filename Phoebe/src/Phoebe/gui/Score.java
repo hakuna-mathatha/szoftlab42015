@@ -2,6 +2,7 @@ package Phoebe.gui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,6 +55,7 @@ public class Score extends JFrame {
 
         btn_exit.addActionListener(new ExitListener());
         btn_back.addActionListener(new BackListener());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     private class ExitListener implements ActionListener {
         @Override
@@ -63,7 +65,8 @@ public class Score extends JFrame {
     private class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Main.backToMainMenu();
+//            Main.backToMainMenu();
+        	View.backToMainMenu();
         }
     }
 }

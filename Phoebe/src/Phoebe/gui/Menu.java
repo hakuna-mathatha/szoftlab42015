@@ -2,6 +2,7 @@ package Phoebe.gui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +36,7 @@ public class Menu extends JFrame {
 //      Gomb listenerek
         btn_exit.addActionListener(new ExitListener());
         btn_newgame.addActionListener(new NewGameListener());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 
@@ -48,7 +50,8 @@ public class Menu extends JFrame {
     private class NewGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Main.newGame();
+//            Main.newGame();
+        	View.newGame();
         }
     }
 }

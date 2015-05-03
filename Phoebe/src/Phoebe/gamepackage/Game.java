@@ -1,5 +1,6 @@
 package Phoebe.gamepackage;
 
+import Phoebe.Controller.Control;
 import Phoebe.trackpackage.Coordinate;
 import Phoebe.trackpackage.Track;
 
@@ -17,12 +18,40 @@ public class Game {
 	private Track track;
 	public Control control;
 
+	
+
 	public Game() {
 //		System.out.println(getClass().getName() + ":Game");
 		robots = new ArrayList<Robot>();
+		robots.add(new Robot());
+		robots.add(new Robot());
 		cleaners = new ArrayList<CleanerRobot>();
-		control = new Control();
+		
 	}
+	
+	public Control getControl() {
+		return control;
+	}
+
+	public void setControl(Control control) {
+		this.control = control;
+	}
+	
+	public List<Robot> getRobotList(){
+        return this.robots;
+    }
+
+    public void setRobotList (Robot robot){
+        this.robots.add(robot);
+    }
+
+    public List<CleanerRobot> getCleanersList(){
+        return this.cleaners;
+    }
+
+    public void setCleanersList (CleanerRobot cleanerRobot){
+        this.cleaners.add(cleanerRobot);
+    }
 
 	// Lehet jobb lenne ket kulon listaban a robotokat meg a cleanereket, mert
 	// nem egyszerre hivodnak meg. A kis robotokat gyorsabban kell leptetni.
@@ -115,20 +144,6 @@ public class Game {
 		}
 	}
 
-    public List<Robot> getRobotList(){
-        return this.robots;
-    }
-
-    public void setRobotList (Robot robot){
-        this.robots.add(robot);
-    }
-
-    public List<CleanerRobot> getCleanersList(){
-        return this.cleaners;
-    }
-
-    public void setCleanersList (CleanerRobot cleanerRobot){
-        this.cleaners.add(cleanerRobot);
-    }
+    
 
 }

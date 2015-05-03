@@ -68,7 +68,7 @@ public abstract class Bot extends Base {
 		this.nextPosition = nextPosition1;
 	};
 
-	public void setDisplacement(Displacement displacement1) {
+	public synchronized void setDisplacement(Displacement displacement1) {
 //		System.out.println("\t\t\t" + getClass().getName() + ":setDisplacement");
 		this.displacement = displacement1;
 	}
