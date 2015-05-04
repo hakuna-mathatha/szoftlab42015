@@ -84,7 +84,7 @@ public class View {
 		View.playTheGame = playTheGame;
 	}
 
-	protected void drawImage() {
+	public void drawImage() {
 		for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {

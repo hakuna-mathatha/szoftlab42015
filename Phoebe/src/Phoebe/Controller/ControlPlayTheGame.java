@@ -3,6 +3,9 @@ package Phoebe.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.Console;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -154,10 +157,10 @@ public class ControlPlayTheGame {
 		String s = e.getActionCommand();
 		System.out.println(s);
 		if (s == null) {
-			System.out.println("2.");
+			System.out.println("1.");
 			bot = game.getRobotList().get(1);
 		} else {
-			System.out.println("1.");
+			System.out.println("2.");
 			bot = game.getRobotList().get(0);
 		}
 
@@ -177,10 +180,13 @@ public class ControlPlayTheGame {
 		JButton score = View.getPlayTheGame().getBtn_score();
 		score.addActionListener(new ScoreListener());
 	}
+	
+	
 
 	private class ScoreListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Control.getTimer().cancel();
 			View.scoreGame();
 		}
 
@@ -242,4 +248,6 @@ public class ControlPlayTheGame {
 			System.exit(0);
 		}
 	}
+	
+
 }

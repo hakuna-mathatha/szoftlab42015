@@ -30,7 +30,7 @@ public class Control {
 	private ControlMenu controlMenu;
 	private ControlScore controlScore;
 	private ControlNewGameMenu controlNewGameMenu;
-	private Timer timer;
+	private static Timer timer;
 
 	public Control() {
 		controlPlayGame = new ControlPlayTheGame(game);
@@ -38,6 +38,10 @@ public class Control {
 		controlScore = new ControlScore();
 		controlNewGameMenu = new ControlNewGameMenu(this);
 		addTheControlLogic();
+	}
+	
+	public static Timer getTimer() {
+		return timer;
 	}
 
 	public ControlPlayTheGame getControlPlayGame() {
@@ -71,19 +75,30 @@ public class Control {
 	}
 
 	public void startNewGame() {
-		this.game = new Game();
-		this.game.setControl(this);
-		controlPlayGame.setGame(game);
-		game.getTrack().create();
+		
+		inicializeGame();
 
 		PlayTheGame playTheGame = new PlayTheGame("Phoebe");
 
 		View.setPlayTheGame(playTheGame);
 		controlPlayGame.addPlayTheGameListener();
+		startTimerForRounds();
+	}
+	
+	public void inicializeGame(){
+		this.game = new Game();
+		this.game.setControl(this);
+		controlPlayGame.setGame(game);
+		game.getTrack().create();
 		
+		game.addRobotToTheGame(new Displacement(0.1, 1), 1);
+		game.addRobotToTheGame(new Displacement(-0.1, 1), 2);
+	}
+	
+	public void startTimerForRounds(){
 		TimerTask roundTimer = new TimerForTheRounds();
 		this.timer = new Timer();
-		this.timer.schedule(roundTimer, 2 * 1000, 5*1000);
+		this.timer.schedule(roundTimer, 2 * 1000, 10*1000);
 	}
 	
 	private class TimerForTheRounds extends TimerTask{
@@ -91,6 +106,8 @@ public class Control {
 		@Override
 		public void run() {
 			game.start();
+			view.drawImage();
+			
 		}
 		
 	}

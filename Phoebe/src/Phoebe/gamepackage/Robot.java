@@ -21,7 +21,7 @@ public class Robot extends Bot {
 		oilRepository = 5;
 		distance = 0;
 		velocityMod = 1;
-		displacement = new Displacement(0, 1);
+		displacement = new Displacement(0.1, 1);
 		state = RobotState.pure;
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
@@ -114,6 +114,7 @@ public class Robot extends Bot {
 	public void setVelocityMod(double velocityMod) {
 		this.velocityMod = velocityMod;
 	}
+	
 
 	@Override
 	public void jump(Track track) {
