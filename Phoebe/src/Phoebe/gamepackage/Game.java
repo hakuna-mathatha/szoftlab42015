@@ -24,8 +24,8 @@ public class Game {
 //		System.out.println(getClass().getName() + ":Game");
 		track = new Track();
 		robots = new ArrayList<Robot>();
-		robots.add(new Robot(1));
-		robots.add(new Robot(new Displacement(0, 0.9),2));
+//		robots.add(new Robot(1));
+//		robots.add(new Robot(new Displacement(-0.1, 1),2));
 		cleaners = new ArrayList<CleanerRobot>();
 		
 	}
@@ -52,6 +52,12 @@ public class Game {
 
     public void setCleanersList (CleanerRobot cleanerRobot){
         this.cleaners.add(cleanerRobot);
+    }
+    
+    public void addRobotToTheGame(Displacement disp, int id){
+    	Robot robot = new Robot(disp, id);
+    	robot.setTrackPart(track.findAPart(robot.getPosition()));
+    	robots.add(robot);
     }
 
 	// Lehet jobb lenne ket kulon listaban a robotokat meg a cleanereket, mert
