@@ -107,7 +107,7 @@ public class TestHelper {
 				Barrier barrier = null;
 
 				boolean isRobot = false;
-				Robot robot = new Robot();
+				Robot robot = new Robot(1);
 
 				int i = 0;
 				for (Base base : bases) {
@@ -359,7 +359,7 @@ public class TestHelper {
 		String[] last_pos_xy = last_pos.split(";");
 		Coordinate last_coord = new Coordinate(Integer.valueOf(last_pos_xy[0]), Integer.valueOf(last_pos_xy[1]));
 
-		r1 = new Robot(actual_coord, displacement, last_coord);
+		r1 = new Robot(actual_coord, displacement, last_coord, 1);
 		bases.add(r1);
 		g.getRobotList().add(r1);
 

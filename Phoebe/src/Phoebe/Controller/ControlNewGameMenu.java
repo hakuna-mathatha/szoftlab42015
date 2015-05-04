@@ -26,17 +26,6 @@ public class ControlNewGameMenu {
 		exit.addActionListener(new ExitListener());
 	}
 	
-	private void startNewGame() {
-		Control.setGame(new Game());
-        Control.getGame().setControl(control);
-        Control.getControlPlayGame().setGame(Control.getGame());
-        
-        PlayTheGame playTheGame = new PlayTheGame("Phoebe");
-        
-        View.setPlayTheGame(playTheGame);
-        
-        Control.getControlPlayGame().addPlayTheGameListener();
-	}
 
 	   private class LoadNewGameListener implements ActionListener {
 
@@ -47,11 +36,12 @@ public class ControlNewGameMenu {
 
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	        	
+	        	// Azt majd meg kene csinalni hogy tobb palya kozul is lehessen valasztani, kezdetnek az is jo 
+	        	// ha mar egyre mukodik.
 	            String map = (String)comboBox.getSelectedItem();
 	            
-	    		startNewGame();
-	    		
+	            control.startNewGame();
+	
 	            View.PlayTheGame();
 	        }
 	    }

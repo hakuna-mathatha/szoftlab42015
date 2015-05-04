@@ -12,8 +12,10 @@ public class Robot extends Bot {
 	private int oilRepository;
 	private double distance;
 	private double velocityMod;
+	int id;
 
-	public Robot() {
+
+	public Robot(int id) {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
@@ -30,10 +32,12 @@ public class Robot extends Bot {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
+		this.id=id;
+		
 
 	}
 	
-	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
+	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1, int id) {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
@@ -50,7 +54,38 @@ public class Robot extends Bot {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
+		this.id=id;
 
+	}
+	
+	public Robot(Displacement disp1, int id) {
+//		System.out.println("\t" + getClass().getName() + ":Robot");
+		puttyReporitory = 5;
+		oilRepository = 5;
+		distance = 0;
+		velocityMod = 1;
+		displacement = disp1;
+		state = RobotState.pure;
+		// legyen a kiindulo ponttal azonos
+		nextPosition = new Coordinate(1, 1);
+		position = new Coordinate(1, 1);
+		lastPosition = new Coordinate(0.5, 0.5);
+		type = BaseType.normalRobot;
+		trackPart = new JumpablePart();
+		this.timeStamp = new Timestamp(System.currentTimeMillis());
+		veloMod = true;
+		directionMod = true;
+		this.id=id;
+
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void reducePuttyRepository() {
@@ -94,7 +129,9 @@ public class Robot extends Bot {
 		this.setTrackPart(part);
 		Base b = giveMeTheBase(position, part);
 		part.addBase(this, position);
-//		System.out.println("Itt vagyok: "+ position.x+" "+position.y);
+		
+		System.out.println("Itt vagyok: "+ position.x+" "+position.y+" "+id);
+		
 		displacement.angle = 0;
 		displacement.velocity = 1;
 		getTheEffectForRobot(b);

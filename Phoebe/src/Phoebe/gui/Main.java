@@ -15,7 +15,6 @@ public class Main {
     	View view = new View();
     	Control control = new Control();
  
-    	
     	control.setView(view);
     	
     }

@@ -22,9 +22,10 @@ public class Game {
 
 	public Game() {
 //		System.out.println(getClass().getName() + ":Game");
+		track = new Track();
 		robots = new ArrayList<Robot>();
-		robots.add(new Robot());
-		robots.add(new Robot());
+		robots.add(new Robot(1));
+		robots.add(new Robot(new Displacement(0, 0.9),2));
 		cleaners = new ArrayList<CleanerRobot>();
 		
 	}
@@ -77,6 +78,7 @@ public class Game {
 		}
 		
 		 for(Robot rob : robots){
+			 System.out.println(rob.getId()+" "+rob.getState());
 			 if(rob.state.equals(RobotState.died) == true)
 				 continue;
 			 else{

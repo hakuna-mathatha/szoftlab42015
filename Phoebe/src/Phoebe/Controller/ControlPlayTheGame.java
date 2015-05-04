@@ -17,14 +17,13 @@ import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
 
 public class ControlPlayTheGame {
-	
+
 	private Game game = null;
 
-	public ControlPlayTheGame(Game game){
+	public ControlPlayTheGame(Game game) {
 		this.game = game;
 	}
-	
-	
+
 	public Game getGame() {
 		return game;
 	}
@@ -32,52 +31,56 @@ public class ControlPlayTheGame {
 	public void setGame(Game game) {
 		this.game = game;
 	}
-	
+
 	public void turnLeft(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle()+1);
+		d.setAngle(d.getAngle() + 1);
 		bot.setDisplacement(d);
-	
-		System.out.println("left"+ " "+bot.getDisplacement().getAngle());
+
+		System.out.println("left" + " " + bot.getDisplacement().getAngle());
 	};
 
 	public void turnRight(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle()-1);
+		d.setAngle(d.getAngle() - 1);
 		bot.setDisplacement(d);
-	
-		System.out.println("right"+ " "+bot.getDisplacement().getAngle());
+
+		System.out.println("right" + " " + bot.getDisplacement().getAngle());
 	};
 
 	public void accelerate(Robot bot) {
-		Displacement d = bot.getDisplacement();
-		d.setVelocity(d.getVelocity()+1);
-		bot.setDisplacement(d);
-	
-		System.out.println("acc"+ " "+bot.getDisplacement().getVelocity());
+		if (bot.getVeloMod()) {
+			Displacement d = bot.getDisplacement();
+			d.setVelocity(d.getVelocity() + 1);
+			bot.setDisplacement(d);
+		}
+
+		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
 	};
 
 	public void slowDown(Robot bot) {
-		Displacement d = bot.getDisplacement();
-		d.setVelocity(d.getVelocity()-1);
-		bot.setDisplacement(d);
-	
-		System.out.println("slow"+ " "+bot.getDisplacement().getVelocity());
+		if (bot.getVeloMod()) {
+			Displacement d = bot.getDisplacement();
+			d.setVelocity(d.getVelocity() - 1);
+			bot.setDisplacement(d);
+		}
+
+		System.out.println("slow" + " " + bot.getDisplacement().getVelocity());
 	};
 
 	public void putOil(Robot bot) {
 		Oil oil = new Oil();
 		bot.putTheBarrier(oil);
-		System.out.println("oil"+ " "+bot.getOilRepository());
+		System.out.println("oil" + " " + bot.getOilRepository());
 	};
 
 	public void putPutty(Robot bot) {
 		Putty putty = new Putty();
 		bot.putTheBarrier(putty);
-		System.out.println("putty"+ " "+bot.getPuttyRepository());
+		System.out.println("putty" + " " + bot.getPuttyRepository());
 	};
 
-	private void addAccListener(){
+	private void addAccListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 
 		KeyEvent acc = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_W, KeyEvent.CHAR_UNDEFINED);
@@ -88,8 +91,8 @@ public class ControlPlayTheGame {
 
 		jPanel.getActionMap().put("accelerate", new AccelerateListener());
 	}
-	
-	private void addSlowListener(){
+
+	private void addSlowListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent slow = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_S, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent slow2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
@@ -100,8 +103,8 @@ public class ControlPlayTheGame {
 		jPanel.getActionMap().put("slow", new SlowDownListener());
 
 	}
-	
-	private void addTurnRightListener(){
+
+	private void addTurnRightListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent right = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_D, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent right2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
@@ -111,8 +114,8 @@ public class ControlPlayTheGame {
 
 		jPanel.getActionMap().put("right", new TurnRightListener());
 	}
-	
-	private void addTurnLeftListener(){
+
+	private void addTurnLeftListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent left = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_A, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent left2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
@@ -122,8 +125,8 @@ public class ControlPlayTheGame {
 
 		jPanel.getActionMap().put("left", new TurnLeftListener());
 	}
-	
-	private void addPutOilListener(){
+
+	private void addPutOilListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent putOil = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_Q, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent putOil2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_END, KeyEvent.CHAR_UNDEFINED);
@@ -133,34 +136,34 @@ public class ControlPlayTheGame {
 
 		jPanel.getActionMap().put("putoil", new PutOilListener());
 	}
-	
-	private void addPutPuttyListener(){
+
+	private void addPutPuttyListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent putPutty = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_E, KeyEvent.CHAR_UNDEFINED);
-		KeyEvent putPutty2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_PAGE_DOWN, KeyEvent.CHAR_UNDEFINED);
+		KeyEvent putPutty2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_PAGE_DOWN,
+				KeyEvent.CHAR_UNDEFINED);
 
 		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putPutty), "putputty");
 		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putPutty2), "putputty");
 
 		jPanel.getActionMap().put("putputty", new PutPuttyListener());
 	}
-	
-	public Robot chooseRobot(ActionEvent e){
+
+	public Robot chooseRobot(ActionEvent e) {
 		Robot bot;
 		String s = e.getActionCommand();
 		System.out.println(s);
-		if(s==null){
+		if (s == null) {
 			System.out.println("2.");
 			bot = game.getRobotList().get(1);
-		}
-		else{
+		} else {
 			System.out.println("1.");
 			bot = game.getRobotList().get(0);
 		}
-		
+
 		return bot;
 	}
-	
+
 	public void addPlayTheGameListener() {
 		addAccListener();
 		addSlowListener();
@@ -168,24 +171,23 @@ public class ControlPlayTheGame {
 		addTurnLeftListener();
 		addPutOilListener();
 		addPutPuttyListener();
-		
+
 		JButton exit = View.getPlayTheGame().getBtn_exit();
 		exit.addActionListener(new ExitListener());
 		JButton score = View.getPlayTheGame().getBtn_score();
 		score.addActionListener(new ScoreListener());
 	}
-	
-	
-	private class ScoreListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        	View.scoreGame();
-        }
 
-    }
-	
+	private class ScoreListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			View.scoreGame();
+		}
+
+	}
+
 	private class AccelerateListener extends AbstractAction {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
@@ -193,7 +195,6 @@ public class ControlPlayTheGame {
 			accelerate(bot);
 		}
 	}
-	
 
 	private class SlowDownListener extends AbstractAction {
 		@Override
@@ -202,7 +203,7 @@ public class ControlPlayTheGame {
 			slowDown(bot);
 		}
 	}
-	
+
 	private class TurnRightListener extends AbstractAction {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -210,7 +211,7 @@ public class ControlPlayTheGame {
 			turnRight(bot);
 		}
 	}
-	
+
 	private class TurnLeftListener extends AbstractAction {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -218,7 +219,7 @@ public class ControlPlayTheGame {
 			turnLeft(bot);
 		}
 	}
-	
+
 	private class PutOilListener extends AbstractAction {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -226,7 +227,7 @@ public class ControlPlayTheGame {
 			putOil(bot);
 		}
 	}
-	
+
 	private class PutPuttyListener extends AbstractAction {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -234,11 +235,11 @@ public class ControlPlayTheGame {
 			putPutty(bot);
 		}
 	}
-	
-	private class ExitListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-    }
+
+	private class ExitListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
+	}
 }
