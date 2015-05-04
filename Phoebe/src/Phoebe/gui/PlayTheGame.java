@@ -28,7 +28,10 @@ import static java.awt.BorderLayout.*;
  * Created by Zsuuuzsu on 2015.04.30..
  */
 public class PlayTheGame extends JFrame{
-	JPanel jPanel;
+	private JPanel jPanel;
+	private JButton btn_score;
+	
+	private JButton btn_exit;
     //Ez lenne ahol megy a jatek
     public PlayTheGame(String title){
         super(title);
@@ -53,14 +56,12 @@ public class PlayTheGame extends JFrame{
         //Vegeredmenygomb
         JPanel jPanel2 = new JPanel();
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
-        JButton btn_score=new JButton("Végeredmény");
+        btn_score=new JButton("Végeredmény");
         btn_score.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btn_score.addActionListener(new ScoreListener());
         jPanel2.add(btn_score);
         //Kilepes gomb
-        JButton btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btn_exit.addActionListener(new ExitListener());
         jPanel2.add(btn_exit);
         jPanel.add(jPanel2);
         
@@ -74,7 +75,28 @@ public class PlayTheGame extends JFrame{
         
     }
     
-    
+    public JButton getBtn_score() {
+		return btn_score;
+	}
+
+
+
+	public void setBtn_score(JButton btn_score) {
+		this.btn_score = btn_score;
+	}
+
+
+
+	public JButton getBtn_exit() {
+		return btn_exit;
+	}
+
+
+
+	public void setBtn_exit(JButton btn_exit) {
+		this.btn_exit = btn_exit;
+	}
+
     
     public JPanel getjPanel() {
 		return jPanel;
@@ -83,21 +105,6 @@ public class PlayTheGame extends JFrame{
 	public void setjPanel(JPanel jPanel) {
 		this.jPanel = jPanel;
 	}
-
-
-
-	private class ExitListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {System.exit(0);}
-    }
-
-    private class ScoreListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        	View.scoreGame();
-        }
-
-    }
 
 }
 

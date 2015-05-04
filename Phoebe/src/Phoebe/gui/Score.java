@@ -11,7 +11,10 @@ import java.awt.event.ActionListener;
  * Created by Peti on 2015.04.25..
  */
 public class Score extends JFrame {
-    public Score(String title){
+	private JButton btn_back;
+	private JButton btn_exit;
+    
+	public Score(String title){
         super(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(250, 250);
@@ -36,11 +39,11 @@ public class Score extends JFrame {
 
         JPanel panel13 = new JPanel();
         panel13.setLayout(new FlowLayout());
-        JButton btn_back= new JButton("Vissza a főmenübe");
+        btn_back= new JButton("Vissza a főmenübe");
         btn_back.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_back);
         // Kilépés gomb
-        JButton btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_exit);
 
@@ -53,20 +56,22 @@ public class Score extends JFrame {
 
         super.add(panel, BorderLayout.CENTER);
 
-        btn_exit.addActionListener(new ExitListener());
-        btn_back.addActionListener(new BackListener());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    private class ExitListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {System.exit(0);}
-    }
+	
+	public JButton getBtn_back() {
+		return btn_back;
+	}
+	public void setBtn_back(JButton btn_back) {
+		this.btn_back = btn_back;
+	}
+	public JButton getBtn_exit() {
+		return btn_exit;
+	}
+	public void setBtn_exit(JButton btn_exit) {
+		this.btn_exit = btn_exit;
+	}
 
-    private class BackListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-//            Main.backToMainMenu();
-        	View.backToMainMenu();
-        }
-    }
+
+
 }

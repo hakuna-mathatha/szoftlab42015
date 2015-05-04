@@ -15,6 +15,7 @@ public class NewGameMenu extends JFrame {
 	private String[] maps = { "Pálya_1", "Pálya_2", "Pálya_3", "Pálya_4", "Pálya_5" };
 	JButton btn_loadmap;
 	JComboBox<String> comboBox;
+	JButton btn_exit;
 
 	public NewGameMenu(String title) {
 		super(title);
@@ -35,19 +36,23 @@ public class NewGameMenu extends JFrame {
 		panel.add(panel11);
 
 		// Kilépés gomb
-		JButton btn_exit = new JButton("Kilépés");
+		btn_exit = new JButton("Kilépés");
 		btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(btn_exit);
 		EmptyBorder border = new EmptyBorder(80, 0, 0, 0);
 		panel.setBorder(border);
 
-		super.add(panel, BorderLayout.CENTER);
-
-	
-		btn_exit.addActionListener(new ExitListener());
-		
+		super.add(panel, BorderLayout.CENTER);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+	}
+	
+	public JButton getBtn_exit() {
+		return btn_exit;
+	}
+
+	public void setBtn_exit(JButton btn_exit) {
+		this.btn_exit = btn_exit;
 	}
 
 	public JComboBox<String> getComboBox() {
@@ -64,13 +69,6 @@ public class NewGameMenu extends JFrame {
 
 	public void setBtn_loadmap(JButton btn_loadmap) {
 		this.btn_loadmap = btn_loadmap;
-	}
-
-	private class ExitListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
-		}
 	}
 
 }

@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
  * Created by Peti on 2015.04.25..
  */
 public class Menu extends JFrame {
+	JButton btn_newgame;
+	JButton btn_exit;
     public Menu(String title) {
 //      Megjelenés
         super(title);
@@ -21,11 +23,11 @@ public class Menu extends JFrame {
         JPanel panel = new JPanel();
 //      Új játék gomb
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        JButton btn_newgame= new JButton("Új játék");
+        btn_newgame= new JButton("Új játék");
         btn_newgame.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn_newgame);
 //      Kilépés gomb
-        JButton btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn_exit);
         EmptyBorder border = new EmptyBorder(80, 0, 0, 0);
@@ -33,25 +35,20 @@ public class Menu extends JFrame {
 
         super.add(panel, BorderLayout.CENTER);
 
-//      Gomb listenerek
-        btn_exit.addActionListener(new ExitListener());
-        btn_newgame.addActionListener(new NewGameListener());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
+	public JButton getBtn_newgame() {
+		return btn_newgame;
+	}
+	public void setBtn_newgame(JButton btn_newgame) {
+		this.btn_newgame = btn_newgame;
+	}
+	public JButton getBtn_exit() {
+		return btn_exit;
+	}
+	public void setBtn_exit(JButton btn_exit) {
+		this.btn_exit = btn_exit;
+	}
 
-
-    private class ExitListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-    }
-
-    private class NewGameListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-//            Main.newGame();
-        	View.newGame();
-        }
-    }
 }

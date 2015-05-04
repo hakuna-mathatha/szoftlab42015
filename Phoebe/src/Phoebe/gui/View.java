@@ -12,8 +12,6 @@ public class View {
 
 	private static Menu menu;
 	private static NewGameMenu newGameMenu;
-	
-
 	private static Score score;
 	private static PlayTheGame playTheGame;
 
@@ -24,6 +22,25 @@ public class View {
 		newGameMenu = new NewGameMenu("Új játék");
 		score = new Score("Végeredmény");
 		menu.setVisible(true);
+	}
+	
+	public static Menu getMenu() {
+		return menu;
+	}
+
+
+	public static void setMenu(Menu menu) {
+		View.menu = menu;
+	}
+
+
+	public static Score getScore() {
+		return score;
+	}
+
+
+	public static void setScore(Score score) {
+		View.score = score;
 	}
 	
 	
