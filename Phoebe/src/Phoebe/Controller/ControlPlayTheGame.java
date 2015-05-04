@@ -13,6 +13,8 @@ import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
 import Phoebe.gui.View;
+import Phoebe.trackpackage.Oil;
+import Phoebe.trackpackage.Putty;
 
 public class ControlPlayTheGame {
 	
@@ -64,11 +66,15 @@ public class ControlPlayTheGame {
 	};
 
 	public void putOil(Robot bot) {
-
+		Oil oil = new Oil();
+		bot.putTheBarrier(oil);
+		System.out.println("oil"+ " "+bot.getOilRepository());
 	};
 
 	public void putPutty(Robot bot) {
-
+		Putty putty = new Putty();
+		bot.putTheBarrier(putty);
+		System.out.println("putty"+ " "+bot.getPuttyRepository());
 	};
 
 	private void addAccListener(){
@@ -117,9 +123,32 @@ public class ControlPlayTheGame {
 		jPanel.getActionMap().put("left", new TurnLeftListener());
 	}
 	
+	private void addPutOilListener(){
+		JPanel jPanel = View.getPlayTheGame().getjPanel();
+		KeyEvent putOil = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_Q, KeyEvent.CHAR_UNDEFINED);
+		KeyEvent putOil2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_END, KeyEvent.CHAR_UNDEFINED);
+
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putOil), "putoil");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putOil2), "putoil");
+
+		jPanel.getActionMap().put("putoil", new PutOilListener());
+	}
+	
+	private void addPutPuttyListener(){
+		JPanel jPanel = View.getPlayTheGame().getjPanel();
+		KeyEvent putPutty = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_E, KeyEvent.CHAR_UNDEFINED);
+		KeyEvent putPutty2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_PAGE_DOWN, KeyEvent.CHAR_UNDEFINED);
+
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putPutty), "putputty");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putPutty2), "putputty");
+
+		jPanel.getActionMap().put("putputty", new PutPuttyListener());
+	}
+	
 	public Robot chooseRobot(ActionEvent e){
 		Robot bot;
 		String s = e.getActionCommand();
+		System.out.println(s);
 		if(s==null){
 			System.out.println("2.");
 			bot = game.getRobotList().get(1);
@@ -137,6 +166,8 @@ public class ControlPlayTheGame {
 		addSlowListener();
 		addTurnRightListener();
 		addTurnLeftListener();
+		addPutOilListener();
+		addPutPuttyListener();
 		
 		JButton exit = View.getPlayTheGame().getBtn_exit();
 		exit.addActionListener(new ExitListener());
@@ -185,6 +216,22 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			turnLeft(bot);
+		}
+	}
+	
+	private class PutOilListener extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Robot bot = chooseRobot(arg0);
+			putOil(bot);
+		}
+	}
+	
+	private class PutPuttyListener extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Robot bot = chooseRobot(arg0);
+			putPutty(bot);
 		}
 	}
 	
