@@ -2,27 +2,9 @@ package Phoebe.gui;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-
-import org.w3c.dom.views.AbstractView;
-
-
-
-
-
-
-
-
-import Phoebe.Controller.Control;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.CENTER;
 
 /**
  * Created by Zsuuuzsu on 2015.04.30..
@@ -48,8 +30,8 @@ public class PlayTheGame extends JFrame{
         //Jatekter
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.BLACK);
-        JPanel jPanel1 = new JPanel();
-        
+        DrawPanel jPanel1 = new DrawPanel();
+
         jPanel1.setBorder(blackline);
         jPanel.add(jPanel1);
 

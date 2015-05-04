@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by Kövesdi on 2015.05.01..
+ * Created by Kï¿½vesdi on 2015.05.01..
  */
 public class View {
 
@@ -18,9 +18,9 @@ public class View {
 	public View() {
 		painters = new ArrayList<Painter>();
 
-		menu = new Menu("Fõmenü");
-		newGameMenu = new NewGameMenu("Új játék");
-		score = new Score("Végeredmény");
+		menu = new Menu("FÅ‘menï¿½");
+		newGameMenu = new NewGameMenu("ï¿½j jï¿½tï¿½k");
+		score = new Score("Vï¿½geredmï¿½ny");
 		menu.setVisible(true);
 	}
 	
@@ -84,7 +84,7 @@ public class View {
 		View.playTheGame = playTheGame;
 	}
 
-	protected void drawImage() {
+	public static void drawImage() {
 		for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
@@ -94,5 +94,4 @@ public class View {
 			}
 		}
 	}
-
 }
