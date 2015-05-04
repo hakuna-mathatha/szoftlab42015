@@ -66,11 +66,6 @@ public class PlayTheGame extends JFrame{
         jPanel.add(jPanel2);
         
         super.add(jPanel, CENTER);
-        
-        System.out.println(btn_score.requestFocusInWindow());
-      
-        
-        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
