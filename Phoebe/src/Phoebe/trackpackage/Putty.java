@@ -82,6 +82,9 @@ public class Putty extends Barrier {
 		// ha ez volt az utlsó rálépés, akkor eltûnik a pályáról
 		if (countToRemove == 0) {
 			trackPart.removeFromTrackPart(this);
+
+			//Observer leválasztása
+			detachObserver();
 		}
 	}
 }

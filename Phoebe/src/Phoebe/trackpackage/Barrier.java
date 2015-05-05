@@ -18,7 +18,9 @@ public abstract class Barrier extends Base {
 	public synchronized void clean() {
 //		System.out.println("\t\t\t" + getClass().getName() + ":clean");
 
-				trackPart.removeFromTrackPart(this);
+		trackPart.removeFromTrackPart(this);
+		//Observer leválasztása
+		detachObserver();
 
 	}
 }
