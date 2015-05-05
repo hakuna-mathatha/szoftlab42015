@@ -41,7 +41,7 @@ public class Track {
 
     private void fromRawData() {
         String baseURL = System.getProperty("user.dir") + "/data/raw/";
-
+        
         JumpablePart jumpablePart1 = (JumpablePart) readFromFile(baseURL + "jumpablePart1.dat", new JumpablePart());
         JumpablePart jumpablePart2 = (JumpablePart) readFromFile(baseURL + "jumpablePart2.dat", new JumpablePart());
         JumpablePart jumpablePart3 = (JumpablePart) readFromFile(baseURL + "jumpablePart3.dat", new JumpablePart());

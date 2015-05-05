@@ -150,19 +150,15 @@ public class View {
 	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawTrackParts(Graphics g) {
 		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
-			if (!painter.hasObservable()) {
-				iterator.remove();
-			} else {
-				painter.onPaint(g);
-			}
+			TrackPartPainter painter = iterator.next();
+			painter.onPaint(g);
 		}
 	}
 
 	//Barriereket tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBarriers(Graphics g) {
 		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
+			BarrierPainter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
 			} else {
@@ -174,7 +170,7 @@ public class View {
 	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBots(Graphics g) {
 		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
+			BotPainter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
 			} else {

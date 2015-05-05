@@ -26,6 +26,7 @@ public abstract class Painter extends Observer {
             image = ImageIO.read(new File(imageUrl));
         }
         catch (IOException e) {
+            System.out.println("Error at opening picture");
         }
     }
 
