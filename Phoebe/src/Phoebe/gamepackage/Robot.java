@@ -37,7 +37,7 @@ public class Robot extends Bot {
 		this.id=id;
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	
@@ -61,7 +61,7 @@ public class Robot extends Bot {
 		this.id=id;
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	
@@ -76,19 +76,16 @@ public class Robot extends Bot {
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
 		position = new Coordinate(1, 1);
-		lastPosition = new Coordinate(0.5, 0.5);
+		lastPosition = new Coordinate(-5, -5);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart();
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
-		
-		
-		
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	
@@ -138,7 +135,7 @@ public class Robot extends Bot {
 	@Override
 	public void jump(Track track) {
 		
-//		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
+		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
 		veloMod = true;
 		setState(RobotState.jump);
 		setLastPosition(position);
@@ -156,6 +153,12 @@ public class Robot extends Bot {
 		displacement.velocity = 1;
 		getTheEffectForRobot(b);
 		
+		defaultNextPosition();
+		
+	}
+	
+	public void defaultNextPosition(){
+		setNextPosition(calcCoordinate(position, displacement));
 	}
 
 	@Override

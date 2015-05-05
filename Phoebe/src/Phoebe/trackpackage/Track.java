@@ -41,7 +41,7 @@ public class Track {
 
     private void fromRawData() {
         String baseURL = System.getProperty("user.dir") + "/data/raw/";
-
+        
         JumpablePart jumpablePart1 = (JumpablePart) readFromFile(baseURL + "jumpablePart1.dat", new JumpablePart());
         JumpablePart jumpablePart2 = (JumpablePart) readFromFile(baseURL + "jumpablePart2.dat", new JumpablePart());
         JumpablePart jumpablePart3 = (JumpablePart) readFromFile(baseURL + "jumpablePart3.dat", new JumpablePart());
@@ -122,17 +122,21 @@ public class Track {
 
     public TrackPart findAPart(Coordinate coord) {
 
-//		System.out.println("\t\t"+getClass().getName()+":findAPart");
+		System.out.println("\t\t"+getClass().getName()+":findAPart");
 
         //keres�s az elemek k�z�tt
         for (JumpablePart p : trackParts) {
 
             //ha valamelyiken rajta van, akkor azt visszaadja
-            if (p.containCoord(coord))
+            if (p.containCoord(coord)){
+            	System.out.println("Talalt");
                 return p;
+            }
         }
 
         //ha egyiken sem volt rajta, akkor let�rt a p�ly�r�l
+    	System.out.println("Szakadek");
+
         return edge;
 
         //return  trackParts.get(0);

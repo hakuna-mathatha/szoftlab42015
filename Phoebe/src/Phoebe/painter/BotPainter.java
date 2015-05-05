@@ -1,5 +1,6 @@
 package Phoebe.painter;
 
+
 import Phoebe.gui.View;
 
 /**
@@ -10,6 +11,6 @@ public class BotPainter extends BasePainter {
     //hozzáadás a View-beli BotPainters listához
     public BotPainter(String imageUrl) {
         super(imageUrl);
-        View.getBotPainters().add(this);
+        View.addToBotPainters(this);
     }
 }

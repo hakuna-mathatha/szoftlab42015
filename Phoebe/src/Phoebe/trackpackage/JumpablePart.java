@@ -30,7 +30,6 @@ public class JumpablePart extends TrackPart {
 		height = 0;
 
 		this.bases = new ArrayList<Base>();
-		System.out.println("jumpable");
 		//Painter hozzáadása
 		TrackPartPainter trackPartPainter = new TrackPartPainter(System.getProperty("user.dir") + "\\resources\\track_v1.png");
 		attachObserver(trackPartPainter);

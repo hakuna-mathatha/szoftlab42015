@@ -20,14 +20,11 @@ public class TrackPartPainter extends Painter {
 	public TrackPartPainter(String imageUrl) {
 		super(imageUrl);
 //		 this.observable = observable;
-		System.out.println("letrejon");
 		View.getTrackPartPainters().add(this);
 	}
 
 	// konkrét rajzolásért felelõs metódus
 	public void onPaint(Graphics g) {
-
-		System.out.println("pppppppppppppppppppppppppppppppp");
 		JumpablePart j = (JumpablePart) observable;
 		double x = j.getPosition().getX();
 		double y = j.getPosition().getY();

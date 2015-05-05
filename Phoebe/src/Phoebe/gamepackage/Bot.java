@@ -116,6 +116,7 @@ public abstract class Bot extends Base {
 		Coordinate dirNorm = new Coordinate();
 
 		double leng = direction.legth();
+//		leng = 1;
 
 //		System.out.println(leng);
 
@@ -132,9 +133,9 @@ public abstract class Bot extends Base {
 		// elozo elmozdulas-t nem modosithatja
 		if (veloMod == false)
 			velo = 1;
-
-		coordinate.setX(coord.x + leng * dirNorm.x * velo);
-		coordinate.setY(coord.y + leng * dirNorm.y * velo);
+		leng = leng+velo;
+		coordinate.setX(coord.x + leng * dirNorm.x );
+		coordinate.setY(coord.y + leng * dirNorm.y );
 
 
 //		System.out

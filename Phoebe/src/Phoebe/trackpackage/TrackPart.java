@@ -66,7 +66,7 @@ public abstract class TrackPart extends Phoebe.basepackage.Observable {
 
 		//ha rajta van a az elemen, akkor a param�ter koordin�t�i az elem sz�lei k�z�tt vannak
 		//Itt a szelek gondot okozhatnak. Igaz kicsi a valoszinusege annak hogy pontosan ket elem hatarara erkezzen a robot.
-		if (tmpX >= tmpPX && tmpX < (tmpPX + width) && tmpY <= tmpPY && tmpY >= (tmpPY - height)) {
+		if ((tmpX >= tmpPX && tmpX < (tmpPX + width)) && (tmpY >= tmpPY && tmpY < (tmpPY + height))) {
 			return true;
 		}
 

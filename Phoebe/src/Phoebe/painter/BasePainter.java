@@ -16,7 +16,7 @@ public class BasePainter extends Painter {
     //elemeknek a középpontját tartjuk nyilván, ezért a képet el kell tolni balra és fel
     //képek egyforma méretûek, ezért lehet egységesen kezelni õket
     protected Coordinate calculatePicturePosition(Coordinate coordinate) {
-        Coordinate result = new Coordinate(coordinate.getX() - View.scale * 50, coordinate.getY() + View.scale * 50);
+        Coordinate result = new Coordinate(coordinate.getX() - View.scale * 50, coordinate.getY() - View.scale * 50);
         return result;
     }
 

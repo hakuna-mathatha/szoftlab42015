@@ -31,10 +31,10 @@ public class Control {
 
 	protected View view;
 	private Game game = null;
-	private ControlPlayTheGame controlPlayTheGame;
-	private ControlMenu controlMenu;
-	private ControlScore controlScore;
-	private ControlNewGameMenu controlNewGameMenu;
+	private static ControlPlayTheGame controlPlayTheGame;
+	private static ControlMenu controlMenu;
+	private static ControlScore controlScore;
+	private static ControlNewGameMenu controlNewGameMenu;
 	private static Timer timer;
 
 	public Control() {
@@ -44,6 +44,15 @@ public class Control {
 		controlNewGameMenu = new ControlNewGameMenu(this);
 		addTheControlLogic();
 	}
+	
+	public static ControlPlayTheGame getControlPlayTheGame() {
+		return controlPlayTheGame;
+	}
+
+	public static void setControlPlayTheGame(ControlPlayTheGame controlPlayTheGame) {
+		Control.controlPlayTheGame = controlPlayTheGame;
+	}
+
 	
 	public static Timer getTimer() {
 		return timer;
@@ -109,7 +118,7 @@ public class Control {
 	public void startTimerForRounds(){
 		TimerTask roundTimer = new TimerForTheRounds();
 		this.timer = new Timer();
-		this.timer.schedule(roundTimer, 1 * 1000, 15*1000);
+		this.timer.schedule(roundTimer, 1 * 1000, 7*1000);
 	}
 	
 	private class TimerForTheRounds extends TimerTask{

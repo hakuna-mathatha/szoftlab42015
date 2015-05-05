@@ -46,7 +46,6 @@ public class View {
 	}
 	
 	public static ArrayList<TrackPartPainter> getTrackPartPainters() {
-		System.out.println("adom");
 		return trackPartPainters;
 	}
 
@@ -112,12 +111,12 @@ public class View {
 	}
 
 	//Painter hozzáadása a BarrierPainter listájához
-	protected static void addToBarrierPainters(BarrierPainter barrierPainter) {
+	public static void addToBarrierPainters(BarrierPainter barrierPainter) {
 		barrierPainters.add(barrierPainter);
 	}
 
 	//Painter hozzáadása a BotPainterek listájához
-	protected static void addToBotPainters(BotPainter botPainter) {
+	public static void addToBotPainters(BotPainter botPainter) {
 		botPainters.add(botPainter);
 	}
 	
@@ -156,8 +155,6 @@ public class View {
 
 	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawTrackParts(Graphics g) {
-		System.out.println("trackPart lista meret");
-		System.out.println(trackPartPainters.size());
 		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()){
@@ -171,8 +168,6 @@ public class View {
 
 	//Barriereket tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBarriers(Graphics g) {
-//		System.out.println("fffffffffffffffffffffffffff");
-//		System.out.println(barrierPainters.size());
 		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
@@ -187,8 +182,6 @@ public class View {
 
 	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBots(Graphics g) {
-		System.out.println("bot lista meret");
-		System.out.println(botPainters.size());
 		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
