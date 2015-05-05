@@ -200,6 +200,7 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent e) {
 			Control.getTimer().cancel();
 			View.scoreGame();
+			
 		}
 
 	}
@@ -212,6 +213,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			accelerate(bot);
 			View.getDrawPanel().repaint();
+			System.out.println("accccccccccccccccccccccccccccccccccccccccc");
 
 		}
 	}
@@ -232,6 +234,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			turnRight(bot);
 			View.getDrawPanel().repaint();
+			System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 			
 		}
 	}

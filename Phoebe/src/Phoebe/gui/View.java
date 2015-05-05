@@ -147,39 +147,55 @@ public class View {
 	public static void setPlayTheGame(PlayTheGame playTheGame) {
 		View.playTheGame = playTheGame;
 	}
+	
+	public void reStart(){
+		trackPartPainters = new ArrayList<TrackPartPainter>();
+		barrierPainters = new ArrayList<BarrierPainter>();
+		botPainters = new ArrayList<BotPainter>();
+	}
 
 	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawTrackParts(Graphics g) {
+		System.out.println("fffffffffffffffffffffffffff");
+		System.out.println(trackPartPainters.size());
 		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
-			if (!painter.hasObservable()) {
+			if (!painter.hasObservable()){
 				iterator.remove();
-			} else {
+			} else{
 				painter.onPaint(g);
+//				System.out.println("neeeemaaaaaa");
 			}
 		}
 	}
 
 	//Barriereket tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBarriers(Graphics g) {
+//		System.out.println("fffffffffffffffffffffffffff");
+//		System.out.println(barrierPainters.size());
 		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
 			} else {
 				painter.onPaint(g);
+//				System.out.println("neeeemaaaaaa");
+
 			}
 		}
 	}
 
 	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBots(Graphics g) {
+//		System.out.println("fffffffffffffffffffffffffff");
+//		System.out.println(botPainters.size());
 		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
 			} else {
 				painter.onPaint(g);
+
 			}
 		}
 	}

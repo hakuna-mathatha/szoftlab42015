@@ -80,7 +80,7 @@ public class Control {
 	}
 
 	public void startNewGame() {
-		
+		view.reStart();
 		inicializeGame();
 
 		PlayTheGame playTheGame = new PlayTheGame("Phoebe");
@@ -103,11 +103,7 @@ public class Control {
 		
 		game.addRobotToTheGame(new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Displacement(-0.1, 1), 2);
-//		proba
-//		Robot r1 = game.getRobotList().get(0);
-//		Robot r2 = game.getRobotList().get(1);
-		
-		
+
 	}
 	
 	public void startTimerForRounds(){

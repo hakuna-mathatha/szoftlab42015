@@ -27,6 +27,7 @@ public class DrawPanel extends JPanel {
         super.paintComponent(g);
        
 
-        view.drawImage(g);
+        View.drawImage(g);
+
     }
 }

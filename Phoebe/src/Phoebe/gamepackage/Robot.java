@@ -14,7 +14,7 @@ public class Robot extends Bot {
 	private double distance;
 	private double velocityMod;
 	private int id;
-	private static int i = 0;
+	
 
 
 	public Robot(int id) {
@@ -65,7 +65,7 @@ public class Robot extends Bot {
 		attachObserver(robotPainter);
 	}
 	
-	public Robot(Displacement disp1) {
+	public Robot(Displacement disp1, int id) {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
@@ -82,7 +82,7 @@ public class Robot extends Bot {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
-		this.id=++i;
+		this.id=id;
 		
 		
 		

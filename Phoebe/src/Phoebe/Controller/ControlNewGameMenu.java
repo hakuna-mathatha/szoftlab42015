@@ -43,6 +43,7 @@ public class ControlNewGameMenu {
 	            control.startNewGame();
 	
 	            View.PlayTheGame();
+	            View.getDrawPanel().repaint();
 	        }
 	    }
 	   
