@@ -23,7 +23,6 @@ public class View {
 	//listák az azonos típusú Paintereknek
 	private static ArrayList<TrackPartPainter> trackPartPainters;
 	private static ArrayList<BarrierPainter> barrierPainters;
-	
 	private static ArrayList<BotPainter> botPainters;
 
 	private static Menu menu;
@@ -47,6 +46,7 @@ public class View {
 	}
 	
 	public static ArrayList<TrackPartPainter> getTrackPartPainters() {
+		System.out.println("adom");
 		return trackPartPainters;
 	}
 
@@ -156,7 +156,7 @@ public class View {
 
 	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawTrackParts(Graphics g) {
-		System.out.println("fffffffffffffffffffffffffff");
+		System.out.println("trackPart lista meret");
 		System.out.println(trackPartPainters.size());
 		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
@@ -187,8 +187,8 @@ public class View {
 
 	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
 	public static void drawBots(Graphics g) {
-//		System.out.println("fffffffffffffffffffffffffff");
-//		System.out.println(botPainters.size());
+		System.out.println("bot lista meret");
+		System.out.println(botPainters.size());
 		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {

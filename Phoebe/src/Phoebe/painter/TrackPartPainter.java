@@ -19,8 +19,9 @@ public class TrackPartPainter extends Painter {
 	// hozzáadás a View-beli trackPartPainters listához
 	public TrackPartPainter(String imageUrl) {
 		super(imageUrl);
-		// this.observable = observable;
-//		View.getTrackPartPainters().add(this);
+//		 this.observable = observable;
+		System.out.println("letrejon");
+		View.getTrackPartPainters().add(this);
 	}
 
 	// konkrét rajzolásért felelõs metódus

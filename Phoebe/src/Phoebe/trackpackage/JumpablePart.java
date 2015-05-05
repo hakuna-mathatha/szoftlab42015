@@ -24,8 +24,16 @@ public class JumpablePart extends TrackPart {
 	}
 
 	public JumpablePart() {
+		
+		position = new Coordinate();
+		width = 0;
+		height = 0;
 
 		this.bases = new ArrayList<Base>();
+		System.out.println("jumpable");
+		//Painter hozzáadása
+		TrackPartPainter trackPartPainter = new TrackPartPainter(System.getProperty("user.dir") + "\\resources\\track_v1.png");
+		attachObserver(trackPartPainter);
 	}
 
 	public JumpablePart(Coordinate position, double width, double height){
@@ -38,7 +46,6 @@ public class JumpablePart extends TrackPart {
 
 		//Painter hozzáadása
 		TrackPartPainter trackPartPainter = new TrackPartPainter(System.getProperty("user.dir") + "\\resources\\track_v1.png");
-		View.getTrackPartPainters().add(trackPartPainter);
 		attachObserver(trackPartPainter);
 
 //		System.out.println("bases list created");

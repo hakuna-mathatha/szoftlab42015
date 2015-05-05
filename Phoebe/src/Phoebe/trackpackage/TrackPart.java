@@ -8,18 +8,18 @@ import java.util.Observable;
 public abstract class TrackPart extends Phoebe.basepackage.Observable {
 
 	protected Coordinate position;
-
-	public void setWidth(double width) {
+	protected double width;
+	protected double height;
+    private ArrayList<Barrier> barriersList = new ArrayList<Barrier>();
+    
+    
+    public void setWidth(double width) {
 		this.width = width;
 	}
 
 	public void setHeight(double height) {
 		this.height = height;
 	}
-
-	protected double width;
-	protected double height;
-    private ArrayList<Barrier> barriersList = new ArrayList<Barrier>();
 
     public void setBarriersList(Barrier barrier) {
         this.barriersList.add(barrier);
