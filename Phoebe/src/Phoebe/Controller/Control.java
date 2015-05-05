@@ -76,7 +76,7 @@ public class Control {
 
 	public void startNewGame() {
 		
-		inicializeGame();
+		initializeGame();
 
 		PlayTheGame playTheGame = new PlayTheGame("Phoebe");
 
@@ -85,14 +85,15 @@ public class Control {
 		startTimerForRounds();
 	}
 	
-	public void inicializeGame(){
+	public void initializeGame(){
 		this.game = new Game();
 		this.game.setControl(this);
 		controlPlayGame.setGame(game);
 		game.getTrack().create();
-		
+
 		game.addRobotToTheGame(new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Displacement(-0.1, 1), 2);
+
 	}
 	
 	public void startTimerForRounds(){

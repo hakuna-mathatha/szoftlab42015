@@ -16,7 +16,7 @@ public class DrawPanel extends JPanel {
         g.setColor(Color.CYAN);
         g.fillRect(10, 10, 100, 200);
 
-        for(int i = 0; i<View.painters.size(); i++){
+        for(int i = 0; i<View.botPainters.size(); i++){
             View.drawImage();
         }
     }

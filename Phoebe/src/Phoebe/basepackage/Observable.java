@@ -8,13 +8,20 @@ import Phoebe.gui.Observer;
  */
 public class Observable {
 
+    //megfigyelõ
     private Observer observer;
 
+    //itt még nem tartozik hozzá megfigyelõ
+    public Observable() { this.observer = null; }
+
+    //paraméterként kapott emgfigyelõvel való összekapcsolás
     public void attachObserver(Observer observer) {
         this.observer = observer;
+        this.observer.attachObservable(this);
     }
 
-    public void detachObserver(Observer observer) {
+    //megfigyelõ leválasztása
+    public void detachObserver() {
         this.observer.detachObservable();
         this.observer = null;
     }

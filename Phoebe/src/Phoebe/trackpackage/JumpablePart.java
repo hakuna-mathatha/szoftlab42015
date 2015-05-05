@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Phoebe.basepackage.Base;
+import Phoebe.gui.TrackPartPainter;
 
 public class JumpablePart extends TrackPart {
 
@@ -33,6 +34,10 @@ public class JumpablePart extends TrackPart {
 		this.height = height;
 		
 		this.bases = new ArrayList<Base>();
+
+		//Painter hozzáadása
+		TrackPartPainter trackPartPainter = new TrackPartPainter(System.getProperty("user.dir") + "\\resources\\track_v1.png");
+		attachObserver(trackPartPainter);
 
 //		System.out.println("bases list created");
 		//bases.add(new Oil());

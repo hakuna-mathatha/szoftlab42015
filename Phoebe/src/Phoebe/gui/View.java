@@ -1,14 +1,23 @@
 package Phoebe.gui;
 
+import Phoebe.trackpackage.Track;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by Kï¿½vesdi on 2015.05.01..
+ * Created by Kövesdi on 2015.05.01..
  */
 public class View {
 
-	protected static ArrayList<Painter> painters;
+	//itt tartjuk nyilván, hogy mennyivel kell változtatni a képek méretét,
+	//BasePainter használja
+	public static int scale = 1;
+
+	//listák az azonos típusú Paintereknek
+	protected static ArrayList<TrackPartPainter> trackPartPainters;
+	protected static ArrayList<BarrierPainter> barrierPainters;
+	protected static ArrayList<BotPainter> botPainters;
 
 	private static Menu menu;
 	private static NewGameMenu newGameMenu;
@@ -16,7 +25,9 @@ public class View {
 	private static PlayTheGame playTheGame;
 
 	public View() {
-		painters = new ArrayList<Painter>();
+		trackPartPainters = new ArrayList<TrackPartPainter>();
+		barrierPainters = new ArrayList<BarrierPainter>();
+		botPainters = new ArrayList<BotPainter>();
 
 		menu = new Menu("FÅ‘menï¿½");
 		newGameMenu = new NewGameMenu("ï¿½j jï¿½tï¿½k");
@@ -52,10 +63,20 @@ public class View {
 		View.newGameMenu = newGameMenu;
 	}
 
-	protected static void addToList(Painter painter) {
-		painters.add(painter);
+	//Painter hozzáadása a TrackPartPainterek listájához
+	protected static void addToTrackPartPainters(TrackPartPainter trackPartPainter) {
+		trackPartPainters.add(trackPartPainter);
 	}
-	
+
+	//Painter hozzáadása a BarrierPainter listájához
+	protected static void addToBarrierPainters(BarrierPainter barrierPainter) {
+		barrierPainters.add(barrierPainter);
+	}
+
+	//Painter hozzáadása a BotPainterek listájához
+	protected static void addToBotPainters(BotPainter botPainter) {
+		botPainters.add(botPainter);
+	}
 	
 	public static void newGame(){
         menu.setVisible(false);
@@ -84,9 +105,9 @@ public class View {
 		View.playTheGame = playTheGame;
 	}
 
-
-	public static void drawImage() {
-		for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
+	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
+	public static void drawTrackParts() {
+		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
@@ -94,5 +115,36 @@ public class View {
 				painter.onPaint();
 			}
 		}
+	}
+
+	//Barriereket tartlamazó listán iterálás, karbantartás, rajzolás
+	public static void drawBarriers() {
+		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
+			Painter painter = iterator.next();
+			if (!painter.hasObservable()) {
+				iterator.remove();
+			} else {
+				painter.onPaint();
+			}
+		}
+	}
+
+	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
+	public static void drawBots() {
+		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
+			Painter painter = iterator.next();
+			if (!painter.hasObservable()) {
+				iterator.remove();
+			} else {
+				painter.onPaint();
+			}
+		}
+	}
+
+	//elemek kirajzolása, nincs kitakarás
+	public static void drawImage() {
+		drawTrackParts();
+		drawBarriers();
+		drawBots();
 	}
 }

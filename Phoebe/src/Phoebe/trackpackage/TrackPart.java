@@ -1,9 +1,11 @@
 package Phoebe.trackpackage;
 import Phoebe.basepackage.Base;
+import Phoebe.gui.TrackPartPainter;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public abstract class TrackPart {
+public abstract class TrackPart extends Phoebe.basepackage.Observable {
 
 	protected Coordinate position;
 

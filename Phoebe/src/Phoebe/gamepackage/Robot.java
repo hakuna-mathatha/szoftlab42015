@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import Phoebe.basepackage.Base;
 import Phoebe.basepackage.BaseType;
+import Phoebe.gui.RobotPainter;
 import Phoebe.trackpackage.*;
 
 public class Robot extends Bot {
@@ -33,8 +34,10 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
-		
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1, int id) {
@@ -56,6 +59,9 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=id;
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 	public Robot(Displacement disp1, int id) {
@@ -77,6 +83,9 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=id;
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 

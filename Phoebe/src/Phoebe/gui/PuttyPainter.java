@@ -5,10 +5,10 @@ import Phoebe.basepackage.Observable;
 /**
  * Created by Kövesdi on 2015.05.01..
  */
-public class PuttyPainter extends BasePainter {
+public class PuttyPainter extends BarrierPainter {
 
-    public PuttyPainter(Observable observable, String imageUrl) {
-        super(observable, imageUrl);
+    public PuttyPainter(String imageUrl) {
+        super(imageUrl);
     }
 
 }

@@ -5,10 +5,7 @@ import Phoebe.basepackage.Observable;
 /**
  * Created by Kövesdi on 2015.05.01..
  */
-public class OilPainter extends BasePainter {
+public class OilPainter extends BarrierPainter {
 
-    public OilPainter(Observable observable, String imageUrl) {
-        super(observable, imageUrl);
-    }
-
+    public OilPainter(String imageUrl) { super(imageUrl); }
 }

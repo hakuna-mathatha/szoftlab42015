@@ -8,27 +8,19 @@ import java.awt.*;
 /**
  * Created by Kövesdi on 2015.05.01..
  */
-public class Painter extends Observer {
+public abstract class Painter extends Observer {
 
+    //kirajzolandó kép
     protected Image image;
-    protected int scale;
 
-    public Painter(Observable observable, int scale, String imageUrl) {
-        super(observable);
-        this.scale = scale;
-        openPicture(imageUrl);
-        View.addToList(this);
-    }
+    //csak a kép elérési útjára van szükség
+    public Painter(String imageUrl) { openPicture(imageUrl); }
 
+    //kép betöltése
     protected void openPicture(String imageUrl) {
         image = Toolkit.getDefaultToolkit().getImage(imageUrl);
     }
 
-    protected Coordinate calculatePicturePosition(Coordinate coordinate) {
-        Coordinate result = new Coordinate(coordinate.getX() - scale * 50, coordinate.getY() + scale * 50);
-        return result;
-    }
-
-    protected void onPaint() {}
-
+    //konkrét rajzolásért felelõs metódus, a leszármazottak valósítják meg
+    protected abstract void onPaint();
 }

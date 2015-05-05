@@ -1,6 +1,7 @@
 package Phoebe.gamepackage;
 
 import Phoebe.Controller.Control;
+import Phoebe.gui.RobotPainter;
 import Phoebe.trackpackage.Coordinate;
 import Phoebe.trackpackage.Track;
 

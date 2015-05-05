@@ -8,8 +8,6 @@ import Phoebe.basepackage.Observable;
  */
 public class RobotPainterB extends RobotPainter {
 
-    public RobotPainterB(Observable observable, String imageUrl) {
-        super(observable, imageUrl);
-    }
+    public RobotPainterB(String imageUrl) { super(imageUrl); }
 
 }
