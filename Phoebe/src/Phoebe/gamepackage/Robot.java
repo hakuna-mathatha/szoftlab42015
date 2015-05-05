@@ -199,6 +199,9 @@ public class Robot extends Bot {
 			this.trackPart.removeFromTrackPart(this);
 			this.setState(RobotState.died);
 
+			//Observer leválasztása
+			detachObserver();
+
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
 			Displacement disp = new Displacement();
 			disp = aBot.getDisplacement();

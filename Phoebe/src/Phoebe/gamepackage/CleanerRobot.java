@@ -87,6 +87,9 @@ public class CleanerRobot extends Bot {
 			trackPart.addBase(new Oil(), position);
 			this.state = RobotState.died;
 
+			//Observer leválasztása
+			detachObserver();
+
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
 			Displacement disp = new Displacement();
 			disp = aBot.getDisplacement();
