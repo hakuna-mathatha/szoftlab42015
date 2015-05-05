@@ -28,7 +28,7 @@ public class Accelerate2 extends IControlKeys {
 			bot.calcNextPosition();
 		}
 
-		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
+//		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
 		
 	}
 	

@@ -55,8 +55,8 @@ public class Game {
         this.cleaners.add(cleanerRobot);
     }
     
-    public void addRobotToTheGame(Displacement disp, int id){
-    	Robot robot = new Robot(disp,id);
+    public void addRobotToTheGame(Coordinate position,Displacement disp, int id){
+    	Robot robot = new Robot(position,disp,id);
     	robot.setTrackPart(track.findAPart(robot.getPosition()));
     	robots.add(robot);
     }

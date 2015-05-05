@@ -29,7 +29,7 @@ public class SlowDown extends IControlKeys {
 			bot.calcNextPosition();
 		}
 
-		System.out.println("slow" + " " + bot.getDisplacement().getVelocity());
+//		System.out.println("slow" + " " + bot.getDisplacement().getVelocity());
 		
 	}
 

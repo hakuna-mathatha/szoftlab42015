@@ -26,6 +26,7 @@ import Phoebe.gui.PlayTheGame;
 import Phoebe.gui.View;
 import Phoebe.painter.DrawPanel;
 import Phoebe.painter.RobotPainter;
+import Phoebe.trackpackage.Coordinate;
 
 public class Control {
 
@@ -110,8 +111,8 @@ public class Control {
 		controlPlayTheGame.setGame(game);
 		game.getTrack().create();
 		
-		game.addRobotToTheGame(new Displacement(0.1, 1), 1);
-		game.addRobotToTheGame(new Displacement(-0.1, 1), 2);
+		game.addRobotToTheGame(new Coordinate(100,5),new Displacement(0.1, 1), 1);
+		game.addRobotToTheGame(new Coordinate(5,100),new Displacement(-0.1, 1), 1);
 
 	}
 	

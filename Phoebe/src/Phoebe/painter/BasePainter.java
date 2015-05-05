@@ -20,6 +20,7 @@ public class BasePainter extends Painter {
 //        Coordinate result = new Coordinate(coordinate.getX() - View.scale * 50, coordinate.getY() - View.scale * 50);
     	Coordinate result = new Coordinate(coordinate.getX() - image.getWidth() * View.scale*0.5/2, coordinate.getY() - image.getHeight() * View.scale*0.5/2);
         return result;
+       
     }
 
     //konkrét rajzolásért felelõs metódus
@@ -30,7 +31,5 @@ public class BasePainter extends Painter {
     	
 		g.drawImage(image, (int)coord.getX(), (int)coord.getY(), (int)(image.getWidth() * View.scale*0.5), (int)(image.getHeight() * View.scale*0.5), null);
     	
-		
-		System.out.println(image.getWidth()+" "+image.getHeight());
     }
 }

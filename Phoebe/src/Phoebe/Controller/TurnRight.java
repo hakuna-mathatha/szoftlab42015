@@ -25,7 +25,7 @@ public class TurnRight extends IControlKeys {
 		bot.setDisplacement(d);
 		bot.calcNextPosition();
 
-		System.out.println("right" + " " + bot.getDisplacement().getAngle());
+//		System.out.println("right" + " " + bot.getDisplacement().getAngle());
 		
 	}
 

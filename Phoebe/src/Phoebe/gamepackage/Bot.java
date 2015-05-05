@@ -118,7 +118,7 @@ public abstract class Bot extends Base {
 		double leng = direction.legth();
 //		leng = 1;
 
-//		System.out.println(leng);
+		System.out.println(leng);
 
 		Coordinate rotation = new Coordinate();
 
@@ -128,12 +128,14 @@ public abstract class Bot extends Base {
 		dirNorm.normal(rotation);
 
 		double velo = disp.getVelocity();
-
+		System.out.println("velo"+" "+velo);
 		// Ha le van tiltva a sebesseg modositas, akkor a velo=1 legyen mert az
 		// elozo elmozdulas-t nem modosithatja
-		if (veloMod == false)
-			velo = 1;
+//		if (veloMod == false)
+//			velo = 1;
 		leng = leng+velo;
+		System.out.println(leng);
+
 		coordinate.setX(coord.x + leng * dirNorm.x );
 		coordinate.setY(coord.y + leng * dirNorm.y );
 

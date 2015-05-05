@@ -65,7 +65,7 @@ public class Robot extends Bot {
 		attachObserver(robotPainter);
 	}
 	
-	public Robot(Displacement disp1, int id) {
+	public Robot(Coordinate position1,Displacement disp1, int id) {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
@@ -75,7 +75,7 @@ public class Robot extends Bot {
 		state = RobotState.pure;
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
-		position = new Coordinate(1, 1);
+		position = position1;
 		lastPosition = new Coordinate(-5, -5);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart();
@@ -83,6 +83,7 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
+		this.ray = 15;
 
 		//Painter hozzáadása
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
@@ -135,7 +136,7 @@ public class Robot extends Bot {
 	@Override
 	public void jump(Track track) {
 		
-		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
+//		System.out.println("\n"+"\t" + getClass().getName() + ":jump");
 		veloMod = true;
 		setState(RobotState.jump);
 		setLastPosition(position);
@@ -147,11 +148,17 @@ public class Robot extends Bot {
 		Base b = giveMeTheBase(position, part);
 		part.addBase(this, position);
 		
-		System.out.println("Itt vagyok: "+ position.x+" "+position.y+" "+id);
+//		System.out.println("Itt vagyok: "+ position.x+" "+position.y+" "+id);
 		
 		displacement.angle = 0;
 		displacement.velocity = 1;
+		
+		System.out.println(displacement.getVelocity()+"********************");
+		
 		getTheEffectForRobot(b);
+		
+		System.out.println(displacement.getVelocity()+"********************");
+
 		
 		defaultNextPosition();
 		

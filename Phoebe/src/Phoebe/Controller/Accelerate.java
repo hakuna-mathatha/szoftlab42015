@@ -29,7 +29,7 @@ public class Accelerate extends IControlKeys {
 			bot.calcNextPosition();
 		}
 
-		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
+//		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
 //		ControlPlayTheGame.AccelerateListener a = Control.getControlPlayTheGame().new AccelerateListener();
 	
 	}

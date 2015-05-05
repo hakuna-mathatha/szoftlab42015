@@ -3,6 +3,7 @@ package Phoebe.trackpackage;
 import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
+import Phoebe.gamepackage.Robot;
 import Phoebe.gamepackage.RobotState;
 import Phoebe.painter.PuttyPainter;
 
@@ -14,7 +15,7 @@ public class Putty extends Barrier {
 
 	public Putty() {
 		this.type = BaseType.putty;
-		this.ray = 10;
+		this.ray = 50.5;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.putty;
 		trackPart = new JumpablePart();
@@ -34,7 +35,7 @@ public class Putty extends Barrier {
 		this.position = position;
 		this.trackPart = trackPart;
 		this.type = BaseType.putty;
-		this.ray = 10;
+		this.ray = 50.5;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.putty;
 		//4 rálépés után tûnik el a ragacs a pályáról
@@ -72,11 +73,13 @@ public class Putty extends Barrier {
 			//sebessége nem változtatható
 			bot.setVeloMod(false);
 			//robot elmozdulásának lekérése
-			Displacement displacement = bot.getDisplacement();
+//			Displacement displacement = bot.getDisplacement();
 			//elmozdulás hosszának felére csökkentése
-			displacement.setVelocity(displacement.getVelocity() / 2);
+//			displacement.setVelocity(displacement.getVelocity() / 2);
 			//új elmozdulás visszaállítása
-			bot.setDisplacement(displacement);
+			bot.setDisplacement(modifyVelo(bot));
+			
+			System.out.println("putttty********************");
 		}
 
 		// ha ez volt az utlsó rálépés, akkor eltûnik a pályáról
@@ -86,5 +89,23 @@ public class Putty extends Barrier {
 			//Observer leválasztása
 			detachObserver();
 		}
+	}
+	
+	public Displacement modifyVelo(Bot bot){
+			
+			Robot robot = (Robot)bot;
+			
+			
+			Coordinate direction = new Coordinate();
+			direction.setX(robot.getPosition().getX() - robot.getLastPosition().getX());
+			direction.setY(robot.getPosition().getY() - robot.getLastPosition().getY());
+			double leng = direction.legth();
+			System.out.println("putttty********************"+leng);
+			Displacement displacement = robot.getDisplacement();
+			
+			displacement.setVelocity(leng / (-2));
+			System.out.println("putttty********************"+displacement.getVelocity());
+			return displacement;
+		
 	}
 }

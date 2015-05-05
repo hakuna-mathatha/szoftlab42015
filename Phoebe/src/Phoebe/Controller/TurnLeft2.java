@@ -24,7 +24,7 @@ public class TurnLeft2 extends IControlKeys {
 		bot.setDisplacement(d);
 		bot.calcNextPosition();
 
-		System.out.println("left" + " " + bot.getDisplacement().getAngle());
+//		System.out.println("left" + " " + bot.getDisplacement().getAngle());
 
 	}
 

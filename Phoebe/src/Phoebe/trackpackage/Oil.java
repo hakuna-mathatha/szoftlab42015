@@ -36,7 +36,7 @@ public class Oil extends Barrier {
 		this.trackPart = trackPart;
 		
 		this.type = BaseType.oil;
-		this.ray = 1;
+		this.ray = 50.5;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
