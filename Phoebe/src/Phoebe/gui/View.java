@@ -1,7 +1,12 @@
 package Phoebe.gui;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import Phoebe.painter.Painter;
 
 /**
  * Created by K�vesdi on 2015.05.01..
@@ -14,6 +19,7 @@ public class View {
 	private static NewGameMenu newGameMenu;
 	private static Score score;
 	private static PlayTheGame playTheGame;
+	private static DrawPanel drawPanel = null;
 
 	public View() {
 		painters = new ArrayList<Painter>();
@@ -22,6 +28,14 @@ public class View {
 		newGameMenu = new NewGameMenu("�j j�t�k");
 		score = new Score("V�geredm�ny");
 		menu.setVisible(true);
+	}
+	
+	public static DrawPanel getDrawPanel() {
+		return drawPanel;
+	}
+
+	public static void setDrawPanel(DrawPanel drawPanel) {
+		View.drawPanel = drawPanel;
 	}
 	
 	public static Menu getMenu() {
@@ -52,7 +66,7 @@ public class View {
 		View.newGameMenu = newGameMenu;
 	}
 
-	protected static void addToList(Painter painter) {
+	public static void addToList(Painter painter) {
 		painters.add(painter);
 	}
 	
@@ -83,16 +97,22 @@ public class View {
 	public static void setPlayTheGame(PlayTheGame playTheGame) {
 		View.playTheGame = playTheGame;
 	}
+	
+	
+	
 
 
-	public static void drawImage() {
+	public void drawImage(Graphics g) {
 		for (Iterator<Painter> iterator = painters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
 			if (!painter.hasObservable()) {
 				iterator.remove();
 			} else {
-				painter.onPaint();
+				painter.onPaint(g);
 			}
 		}
+		
+		
+
 	}
 }

@@ -2,6 +2,7 @@ package Phoebe.gui;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
 import java.awt.*;
 
 import static java.awt.BorderLayout.CENTER;
@@ -12,7 +13,8 @@ import static java.awt.BorderLayout.CENTER;
 public class PlayTheGame extends JFrame{
 	private JPanel jPanel;
 	private JButton btn_score;
-	
+	private DrawPanel drawPanel;
+
 	private JButton btn_exit;
     //Ez lenne ahol megy a jatek
     public PlayTheGame(String title){
@@ -30,10 +32,11 @@ public class PlayTheGame extends JFrame{
         //Jatekter
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.BLACK);
-        DrawPanel jPanel1 = new DrawPanel();
+        drawPanel = new DrawPanel();
+        
 
-        jPanel1.setBorder(blackline);
-        jPanel.add(jPanel1);
+        drawPanel.setBorder(blackline);
+        jPanel.add(drawPanel);
 
         //Vegeredmenygomb
         JPanel jPanel2 = new JPanel();
@@ -51,6 +54,17 @@ public class PlayTheGame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
+    
+    public DrawPanel getDrawPanel() {
+		return drawPanel;
+	}
+
+	public void setDrawPanel(DrawPanel jPanel1) {
+		this.drawPanel = jPanel1;
+	}
+    
+
+
     
     public JButton getBtn_score() {
 		return btn_score;

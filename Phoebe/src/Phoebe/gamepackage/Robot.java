@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import Phoebe.basepackage.Base;
 import Phoebe.basepackage.BaseType;
+import Phoebe.painter.RobotPainter;
 import Phoebe.trackpackage.*;
 
 public class Robot extends Bot {
@@ -12,7 +13,8 @@ public class Robot extends Bot {
 	private int oilRepository;
 	private double distance;
 	private double velocityMod;
-	int id;
+	private int id;
+	private static int i = 0;
 
 
 	public Robot(int id) {
@@ -58,7 +60,7 @@ public class Robot extends Bot {
 
 	}
 	
-	public Robot(Displacement disp1, int id) {
+	public Robot(Displacement disp1) {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
 		puttyReporitory = 5;
 		oilRepository = 5;
@@ -75,7 +77,10 @@ public class Robot extends Bot {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		veloMod = true;
 		directionMod = true;
-		this.id=id;
+		this.id=++i;
+		
+		RobotPainter p = new RobotPainter(this, " ");
+		
 
 	}
 	
@@ -114,6 +119,12 @@ public class Robot extends Bot {
 	public void setVelocityMod(double velocityMod) {
 		this.velocityMod = velocityMod;
 	}
+	
+	public void calcNextPosition(){
+		setNextPosition(calcCoordinate(position, displacement));
+	}
+	
+	
 	
 
 	@Override

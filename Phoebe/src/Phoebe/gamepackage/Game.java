@@ -55,7 +55,7 @@ public class Game {
     }
     
     public void addRobotToTheGame(Displacement disp, int id){
-    	Robot robot = new Robot(disp, id);
+    	Robot robot = new Robot(disp);
     	robot.setTrackPart(track.findAPart(robot.getPosition()));
     	robots.add(robot);
     }

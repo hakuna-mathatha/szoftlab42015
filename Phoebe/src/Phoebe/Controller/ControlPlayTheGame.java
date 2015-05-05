@@ -1,5 +1,7 @@
 package Phoebe.Controller;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,6 +17,7 @@ import javax.swing.KeyStroke;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
+import Phoebe.gui.DrawLine;
 import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
@@ -37,16 +40,18 @@ public class ControlPlayTheGame {
 
 	public void turnLeft(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle() + 1);
+		d.setAngle(d.getAngle() - 0.1);
 		bot.setDisplacement(d);
+		bot.calcNextPosition();
 
 		System.out.println("left" + " " + bot.getDisplacement().getAngle());
 	};
 
 	public void turnRight(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle() - 1);
+		d.setAngle(d.getAngle() + 0.1);
 		bot.setDisplacement(d);
+		bot.calcNextPosition();
 
 		System.out.println("right" + " " + bot.getDisplacement().getAngle());
 	};
@@ -54,8 +59,9 @@ public class ControlPlayTheGame {
 	public void accelerate(Robot bot) {
 		if (bot.getVeloMod()) {
 			Displacement d = bot.getDisplacement();
-			d.setVelocity(d.getVelocity() + 1);
+			d.setVelocity(d.getVelocity() + 5);
 			bot.setDisplacement(d);
+			bot.calcNextPosition();
 		}
 
 		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
@@ -64,8 +70,9 @@ public class ControlPlayTheGame {
 	public void slowDown(Robot bot) {
 		if (bot.getVeloMod()) {
 			Displacement d = bot.getDisplacement();
-			d.setVelocity(d.getVelocity() - 1);
+			d.setVelocity(d.getVelocity() - 5);
 			bot.setDisplacement(d);
+			bot.calcNextPosition();
 		}
 
 		System.out.println("slow" + " " + bot.getDisplacement().getVelocity());
@@ -158,10 +165,16 @@ public class ControlPlayTheGame {
 		System.out.println(s);
 		if (s == null) {
 			System.out.println("1.");
-			bot = game.getRobotList().get(1);
+			if(game.getRobotList().get(1).getId() == 1)
+				bot = game.getRobotList().get(1);
+			else
+				bot = game.getRobotList().get(0);
 		} else {
 			System.out.println("2.");
-			bot = game.getRobotList().get(0);
+			if(game.getRobotList().get(1).getId() == 2)
+				bot = game.getRobotList().get(1);
+			else
+				bot = game.getRobotList().get(0);
 		}
 
 		return bot;
@@ -199,6 +212,8 @@ public class ControlPlayTheGame {
 
 			Robot bot = chooseRobot(arg0);
 			accelerate(bot);
+			View.getDrawPanel().repaint();
+
 		}
 	}
 
@@ -207,6 +222,8 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			slowDown(bot);
+			View.getDrawPanel().repaint();
+			
 		}
 	}
 
@@ -215,6 +232,8 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			turnRight(bot);
+			View.getDrawPanel().repaint();
+			
 		}
 	}
 
@@ -223,6 +242,8 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			turnLeft(bot);
+			View.getDrawPanel().repaint();
+			
 		}
 	}
 
