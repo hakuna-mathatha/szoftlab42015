@@ -37,7 +37,7 @@ public class Robot extends Bot {
 		this.id=id;
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	
@@ -61,7 +61,7 @@ public class Robot extends Bot {
 		this.id=id;
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	
@@ -83,12 +83,9 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=++i;
-		
-		
-		
 
 		//Painter hozzáadása
-		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
 	

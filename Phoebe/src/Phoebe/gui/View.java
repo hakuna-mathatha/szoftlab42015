@@ -18,12 +18,11 @@ public class View {
 
 	//itt tartjuk nyilván, hogy mennyivel kell változtatni a képek méretét,
 	//BasePainter használja
-	public static int scale = 1;
+	public static double scale = 0.5;
 
 	//listák az azonos típusú Paintereknek
 	private static ArrayList<TrackPartPainter> trackPartPainters;
 	private static ArrayList<BarrierPainter> barrierPainters;
-	
 	private static ArrayList<BotPainter> botPainters;
 
 	private static Menu menu;
@@ -107,17 +106,17 @@ public class View {
 	}
 
 	//Painter hozzáadása a TrackPartPainterek listájához
-	protected static void addToTrackPartPainters(TrackPartPainter trackPartPainter) {
+	public static void addToTrackPartPainters(TrackPartPainter trackPartPainter) {
 		trackPartPainters.add(trackPartPainter);
 	}
 
 	//Painter hozzáadása a BarrierPainter listájához
-	protected static void addToBarrierPainters(BarrierPainter barrierPainter) {
+	public static void addToBarrierPainters(BarrierPainter barrierPainter) {
 		barrierPainters.add(barrierPainter);
 	}
 
 	//Painter hozzáadása a BotPainterek listájához
-	protected static void addToBotPainters(BotPainter botPainter) {
+	public static void addToBotPainters(BotPainter botPainter) {
 		botPainters.add(botPainter);
 	}
 	

@@ -10,6 +10,6 @@ public class BarrierPainter extends BasePainter {
     //hozzáadás a View-beli barrierPainters listához
     public BarrierPainter(String imageUrl) {
         super(imageUrl);
-        View.getBarrierPainters().add(this);
+        View.addToBarrierPainters(this);
     }
 }

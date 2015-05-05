@@ -3,7 +3,11 @@ package Phoebe.painter;
 import Phoebe.basepackage.Observable;
 import Phoebe.trackpackage.Coordinate;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Kövesdi on 2015.05.01..
@@ -11,14 +15,18 @@ import java.awt.*;
 public abstract class Painter extends Observer {
 
     //kirajzolandó kép
-    protected Image image;
+    protected BufferedImage image;
 
     //csak a kép elérési útjára van szükség
     public Painter(String imageUrl) { openPicture(imageUrl); }
 
     //kép betöltése
     protected void openPicture(String imageUrl) {
-        image = Toolkit.getDefaultToolkit().getImage(imageUrl);
+        try {
+            image = ImageIO.read(new File(imageUrl));
+        }
+        catch (IOException e) {
+        }
     }
 
     //konkrét rajzolásért felelõs metódus, a leszármazottak valósítják meg
