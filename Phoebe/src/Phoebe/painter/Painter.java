@@ -19,7 +19,7 @@ public abstract class Painter extends Observer {
 
     //csak a kép elérési útjára van szükség
     public Painter(String imageUrl) {
-//    	openPicture(imageUrl); 
+    	openPicture(imageUrl); 
     }
 
     //kép betöltése
