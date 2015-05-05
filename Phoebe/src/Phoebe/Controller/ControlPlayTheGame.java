@@ -17,7 +17,6 @@ import javax.swing.KeyStroke;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
-import Phoebe.gui.DrawLine;
 import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
@@ -40,7 +39,7 @@ public class ControlPlayTheGame {
 
 	public void turnLeft(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle() - 0.1);
+		d.setAngle(d.getAngle() - 0.05);
 		bot.setDisplacement(d);
 		bot.calcNextPosition();
 
@@ -49,7 +48,7 @@ public class ControlPlayTheGame {
 
 	public void turnRight(Robot bot) {
 		Displacement d = bot.getDisplacement();
-		d.setAngle(d.getAngle() + 0.1);
+		d.setAngle(d.getAngle() + 0.05);
 		bot.setDisplacement(d);
 		bot.calcNextPosition();
 

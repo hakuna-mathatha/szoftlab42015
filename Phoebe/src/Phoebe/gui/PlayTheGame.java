@@ -3,6 +3,8 @@ package Phoebe.gui;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import Phoebe.painter.DrawPanel;
+
 import java.awt.*;
 
 import static java.awt.BorderLayout.CENTER;

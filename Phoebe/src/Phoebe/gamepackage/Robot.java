@@ -35,8 +35,10 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
-		
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 	public Robot(Coordinate position1, Displacement disp1, Coordinate lastpos1, int id) {
@@ -58,6 +60,9 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=id;
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 	public Robot(Displacement disp1) {
@@ -79,9 +84,12 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=++i;
 		
-		RobotPainter p = new RobotPainter(this, " ");
+		
 		
 
+		//Painter hozzáadása
+		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1");
+		attachObserver(robotPainter);
 	}
 	
 

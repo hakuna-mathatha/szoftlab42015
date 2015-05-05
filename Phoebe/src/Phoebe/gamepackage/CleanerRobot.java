@@ -3,6 +3,7 @@ package Phoebe.gamepackage;
 import java.sql.Timestamp;
 import java.util.List;
 
+import Phoebe.painter.CleanerPainter;
 import Phoebe.trackpackage.*;
 import Phoebe.basepackage.*;
 import Phoebe.gamepackage.*;
@@ -29,11 +30,13 @@ public class CleanerRobot extends Bot {
 		veloMod = true;
 		directionMod = true;
 
+		//Painter hozzáadása
+		CleanerPainter cleanerPainter = new CleanerPainter(System.getProperty("user.dir")+"\\resources\\cleaner1_v1.png");
+		attachObserver(cleanerPainter);
 	}
 	
 	public CleanerRobot() {
 //		System.out.println("\t" + getClass().getName() + ":Robot");
-
 
 		displacement = new Displacement((-1) * Math.PI, 1);
 		state = RobotState.pure;
@@ -47,6 +50,9 @@ public class CleanerRobot extends Bot {
 		veloMod = true;
 		directionMod = true;
 
+		//Painter hozzáadása
+		CleanerPainter cleanerPainter = new CleanerPainter(System.getProperty("user.dir")+"\\resources\\cleaner1_v1.png");
+		attachObserver(cleanerPainter);
 	}
 
 	public void selectNearestBarrier(Track aTrack) {

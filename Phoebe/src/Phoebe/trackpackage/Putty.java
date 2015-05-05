@@ -4,6 +4,7 @@ import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.RobotState;
+import Phoebe.painter.PuttyPainter;
 
 import java.sql.Timestamp;
 
@@ -21,6 +22,10 @@ public class Putty extends Barrier {
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
 
+		//Painter hozzáadása
+		PuttyPainter puttyPainter = new PuttyPainter(System.getProperty("user.dir") + "\\resources\\spill1_v1.png");
+		attachObserver(puttyPainter);
+
 //		System.out.println(getClass().getName() + ":Putty");
 	}
 
@@ -34,6 +39,10 @@ public class Putty extends Barrier {
 		this.type = BaseType.putty;
 		//4 rálépés után tûnik el a ragacs a pályáról
 		countToRemove = 4;
+
+		//Painter hozzáadása
+		PuttyPainter puttyPainter = new PuttyPainter(System.getProperty("user.dir") + "\\resources\\spill1_v1.png");
+		attachObserver(puttyPainter);
 
 //		System.out.println(getClass().getName() + ":Putty");
 	}

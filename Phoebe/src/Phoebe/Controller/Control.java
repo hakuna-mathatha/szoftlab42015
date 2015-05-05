@@ -22,10 +22,9 @@ import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
-import Phoebe.gui.DrawLine;
-import Phoebe.gui.DrawPanel;
 import Phoebe.gui.PlayTheGame;
 import Phoebe.gui.View;
+import Phoebe.painter.DrawPanel;
 import Phoebe.painter.RobotPainter;
 
 public class Control {
@@ -114,7 +113,7 @@ public class Control {
 	public void startTimerForRounds(){
 		TimerTask roundTimer = new TimerForTheRounds();
 		this.timer = new Timer();
-		this.timer.schedule(roundTimer, 2 * 1000, 15*1000);
+		this.timer.schedule(roundTimer, 1 * 1000, 15*1000);
 	}
 	
 	private class TimerForTheRounds extends TimerTask{

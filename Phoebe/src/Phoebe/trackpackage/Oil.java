@@ -8,6 +8,7 @@ import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.RobotState;
 import Phoebe.gamepackage.Displacement;
+import Phoebe.painter.OilPainter;
 
 public class Oil extends Barrier {
 
@@ -23,6 +24,10 @@ public class Oil extends Barrier {
 		TimerTask tTask = new OilTask();
 		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
 		this.timer.schedule(tTask, 1000000 * 1000);
+
+		//Painter hozzáadása
+		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");
+		attachObserver(oilPainter);
 	}
 
 	public Oil(Coordinate position, TrackPart trackPart) {
@@ -39,6 +44,10 @@ public class Oil extends Barrier {
 		TimerTask tTask = new OilTask();
 		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
 		this.timer.schedule(tTask, 1000000 * 1000);
+
+		//Painter hozzáadása
+		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");
+		attachObserver(oilPainter);
 
 //		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}
