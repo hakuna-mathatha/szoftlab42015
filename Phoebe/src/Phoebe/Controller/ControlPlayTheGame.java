@@ -19,6 +19,7 @@ import javax.swing.KeyStroke;
 import Phoebe.gamepackage.Displacement;
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
+import Phoebe.gamepackage.RobotState;
 import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
@@ -47,14 +48,18 @@ public class ControlPlayTheGame {
 	}
 
 	public void putOil(Robot bot) {
-		Oil oil = new Oil(bot.getPosition(), bot.getTrackPart());
-		bot.putTheBarrier(oil);
+            if(bot.getState() != RobotState.died){
+                    Oil oil = new Oil(bot.getPosition(), bot.getTrackPart());
+                    bot.putTheBarrier(oil);
+                }
 		// System.out.println("oil" + " " + bot.getOilRepository());
 	};
 
 	public void putPutty(Robot bot) {
-		Putty putty = new Putty(bot.getPosition(), bot.getTrackPart());
-		bot.putTheBarrier(putty);
+            if(bot.getState() != RobotState.died){
+                    Putty putty = new Putty(bot.getPosition(), bot.getTrackPart());
+                    bot.putTheBarrier(putty);
+            }
 		// System.out.println("putty" + " " + bot.getPuttyRepository());
 	};
 
