@@ -83,7 +83,7 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
-		this.ray = 15;
+		this.ray = 30;
 
 		//Painter hozzáadása
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
