@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -112,7 +113,7 @@ public class Control {
 		game.getTrack().create();
 		
 		game.addRobotToTheGame(new Coordinate(100,5),new Displacement(0.1, 1), 1);
-		game.addRobotToTheGame(new Coordinate(5,100),new Displacement(-0.1, 1), 1);
+		game.addRobotToTheGame(new Coordinate(5,100),new Displacement(-0.1, 1), 2);
 
 	}
 	
@@ -122,12 +123,13 @@ public class Control {
 		this.timer.schedule(roundTimer, 1 * 1000, 7*1000);
 	}
 	
+
+	
 	private class TimerForTheRounds extends TimerTask{
 
 		@Override
 		public void run() {
-			game.start();
-//			
+			game.start();	
 			View.getDrawPanel().repaint();
 			
 		}

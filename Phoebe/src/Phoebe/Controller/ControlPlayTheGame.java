@@ -26,9 +26,14 @@ import Phoebe.trackpackage.Putty;
 public class ControlPlayTheGame {
 
 	private Game game = null;
-	
+
 	private Set<IControlKeys> controlKeys;
+
 	
+
+	public Set<IControlKeys> getControlKeys() {
+		return controlKeys;
+	}
 
 	public ControlPlayTheGame(Game game) {
 		this.game = game;
@@ -46,37 +51,51 @@ public class ControlPlayTheGame {
 	public void putOil(Robot bot) {
 		Oil oil = new Oil(bot.getPosition(), bot.getTrackPart());
 		bot.putTheBarrier(oil);
-//		System.out.println("oil" + " " + bot.getOilRepository());
+		// System.out.println("oil" + " " + bot.getOilRepository());
 	};
 
 	public void putPutty(Robot bot) {
 		Putty putty = new Putty(bot.getPosition(), bot.getTrackPart());
 		bot.putTheBarrier(putty);
-//		System.out.println("putty" + " " + bot.getPuttyRepository());
+		// System.out.println("putty" + " " + bot.getPuttyRepository());
 	};
 
-
-
 	public Robot chooseRobot(ActionEvent e) {
-		Robot bot;
+		Robot bot = null;
 		String s = e.getActionCommand();
 		System.out.println(s);
 		if (s == null) {
-			System.out.println("1.");
-			if(game.getRobotList().get(1).getId() == 1)
-				bot = game.getRobotList().get(1);
-			else
-				bot = game.getRobotList().get(0);
+			for (Robot b : game.getRobotList()) {
+				if (b.getId() == 1){
+					System.out.println("1. robot ");
+					bot = b;
+				}
+			}
+		
 		} else {
 			System.out.println("2.");
-			if(game.getRobotList().get(1).getId() == 2)
-				bot = game.getRobotList().get(1);
-			else
-				bot = game.getRobotList().get(0);
-		}
+			for (Robot b : game.getRobotList()) {
+				if (b.getId() == 2){
+					System.out.println("2.robot ");
+					bot = b;
+				}
+			}
 
+		}
 		return bot;
 	}
+	
+	public void callConrtrolModifier(Robot bot, IControlKeys c){
+		c.setBot(bot);
+
+		controlKeys.add(c);
+
+		for (IControlKeys i : controlKeys) {
+			i.modifier();
+		}
+	}
+	
+	
 
 	public void addPlayTheGameListener() {
 		RegistrateControlListeners registrate = new RegistrateControlListeners();
@@ -87,187 +106,221 @@ public class ControlPlayTheGame {
 		JButton score = View.getPlayTheGame().getBtn_score();
 		score.addActionListener(new ScoreListener());
 	}
-	
-	
 
 	private class ScoreListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Control.getTimer().cancel();
 			View.scoreGame();
-			
+
 		}
 
 	}
 
-	protected class AccelerateListener extends AbstractAction {
-
+	
+	protected class AccelerateListener1 extends AbstractAction {
+		IControlKeys acc = Accelerate.getInstance();
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-
 			Robot bot = chooseRobot(arg0);
-			IControlKeys acc;
-			if(bot.getId()==1){
-				acc = Accelerate.getInstance();
-			}else{
-				acc = Accelerate2.getInstance();
-			}
-			acc.setBot(bot);
+			IControlKeys acc = Accelerate.getInstance();
 			
-			controlKeys.add(acc);
-			
-			for(IControlKeys i : controlKeys){
-				i.modifier();
-			}
-			
+			callConrtrolModifier(bot, acc);
 			View.getDrawPanel().repaint();
+			
 
 		}
-	}
-	
-	protected class AccelerateListenerDelet extends AbstractAction {
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-
-			Robot bot = chooseRobot(arg0);
-			IControlKeys acc;
-			if(bot.getId()==1){
-				acc = Accelerate.getInstance();
-			}else{
-				acc = Accelerate2.getInstance();
-			}
-			
-			controlKeys.remove(acc);
-			
-		}
-	}
-
-	protected class SlowDownListener extends AbstractAction {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-
-			Robot bot = chooseRobot(arg0);
-			IControlKeys slow;
-			if(bot.getId()==1){
-				slow = SlowDown.getInstance();
-			}else{
-				slow = SlowDown2.getInstance();
-			}
-			slow.setBot(bot);
-			
-			controlKeys.add(slow);
-			
-			for(IControlKeys i : controlKeys){
-				i.modifier();
-			}
-			
-			View.getDrawPanel().repaint();
-
-		}
-	}
-	
-	
-	protected class SlowDownListenerDelet extends AbstractAction {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-
-			Robot bot = chooseRobot(arg0);
-			IControlKeys slow;
-			if(bot.getId()==1){
-				slow = SlowDown.getInstance();
-			}else{
-				slow = SlowDown2.getInstance();
-			}
-			
-			controlKeys.remove(slow);
-			
 		
-
-		}
+	
 	}
 
-	protected class TurnRightListener extends AbstractAction {
+	protected class AccelerateListener2 extends AbstractAction {
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
-			IControlKeys turnright;
-			if(bot.getId()==1){
-				turnright = TurnRight.getInstance();
-			}else{
-				turnright = TurnRight2.getInstance();
-			}
-			turnright.setBot(bot);
+			IControlKeys acc = Accelerate2.getInstance();
 			
-			controlKeys.add(turnright);
-			
-			for(IControlKeys i : controlKeys){
-				i.modifier();
-			}
-			
+			callConrtrolModifier(bot, acc);
+
 			View.getDrawPanel().repaint();
-			
-		}
-	}
-	
-	
-	
-	protected class TurnRightListenerDelet extends AbstractAction {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			Robot bot = chooseRobot(arg0);
-			IControlKeys turnright;
-			if(bot.getId()==1){
-				turnright = TurnRight.getInstance();
-			}else{
-				turnright = TurnRight2.getInstance();
-			}
-			
-			controlKeys.remove(turnright);
-			
-		}
-	}
-	
-	
-	
-	
 
-	protected class TurnLeftListener extends AbstractAction {
+		}
+	}
+
+	protected class AccelerateListenerDelet1 extends AbstractAction {
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+
+
+			IControlKeys acc;
+			acc = Accelerate.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+
+	protected class AccelerateListenerDelet2 extends AbstractAction {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			IControlKeys acc;
+			acc = Accelerate2.getInstance();
+
+			controlKeys.remove(acc);
+
+
+		}
+	}
+
+	protected class SlowDownListener1 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
 			Robot bot = chooseRobot(arg0);
-			IControlKeys turnleft;
-			if(bot.getId()==1){
-				turnleft = TurnLeft.getInstance();
-			}else{
-				turnleft = TurnLeft2.getInstance();
-			}
-			turnleft.setBot(bot);
-			
-			controlKeys.add(turnleft);
-			
-			for(IControlKeys i : controlKeys){
-				i.modifier();
-			}
-			
+			IControlKeys slow = SlowDown.getInstance();
+
+			callConrtrolModifier(bot,slow);
+
 			View.getDrawPanel().repaint();
-			
+
 		}
 	}
 	
-	protected class TurnLeftListenerDelet extends AbstractAction {
+	protected class SlowDownListener2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			Robot bot = chooseRobot(arg0);
+			IControlKeys slow = SlowDown2.getInstance();
+
+			callConrtrolModifier(bot, slow);
+
+			View.getDrawPanel().repaint();
+
+		}
+	}
+
+	protected class SlowDownListenerDelet1 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			IControlKeys acc;
+			acc = SlowDown.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+	
+	protected class SlowDownListenerDelet2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			IControlKeys acc;
+			acc = SlowDown2.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+
+	protected class TurnRightListener1 extends AbstractAction {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
-			IControlKeys turnleft;
-			if(bot.getId()==1){
-				turnleft = TurnLeft.getInstance();
-			}else{
-				turnleft = TurnLeft2.getInstance();
-			}
+			IControlKeys turnright = TurnRight.getInstance();
 			
-			controlKeys.remove(turnleft);
+			callConrtrolModifier(bot, turnright);
+
+			View.getDrawPanel().repaint();
+
+		}
+	}
+	
+	protected class TurnRightListener2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Robot bot = chooseRobot(arg0);
+			IControlKeys turnright = TurnRight2.getInstance();
 			
+			callConrtrolModifier(bot, turnright);
+
+			View.getDrawPanel().repaint();
+
+		}
+	}
+
+	protected class TurnRightListenerDelet1 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			IControlKeys acc;
+			acc = TurnRight.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+	
+	protected class TurnRightListenerDelet2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			IControlKeys acc;
+			acc = TurnRight2.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+
+	protected class TurnLeftListener1 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Robot bot = chooseRobot(arg0);
+			IControlKeys turnright = TurnLeft.getInstance();
+			
+			callConrtrolModifier(bot, turnright);
+
+			View.getDrawPanel().repaint();
+
+		}
+	}
+	
+	protected class TurnLeftListener2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Robot bot = chooseRobot(arg0);
+			IControlKeys turnright = TurnLeft2.getInstance();
+			
+			callConrtrolModifier(bot, turnright);
+
+			View.getDrawPanel().repaint();
+
+		}
+	}
+
+	protected class TurnLeftListenerDelet1 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			IControlKeys acc;
+			acc = TurnLeft.getInstance();
+
+			controlKeys.remove(acc);
+
+		}
+	}
+	
+	protected class TurnLeftListenerDelet2 extends AbstractAction {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			IControlKeys acc;
+			acc = TurnLeft2.getInstance();
+
+			controlKeys.remove(acc);
+
 		}
 	}
 
@@ -296,6 +349,5 @@ public class ControlPlayTheGame {
 			System.exit(0);
 		}
 	}
-	
 
 }

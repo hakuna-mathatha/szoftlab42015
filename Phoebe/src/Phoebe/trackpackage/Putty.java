@@ -93,7 +93,7 @@ public class Putty extends Barrier {
 	
 	public Displacement modifyVelo(Bot bot){
 			
-			Robot robot = (Robot)bot;
+			Bot robot = bot;
 			
 			
 			Coordinate direction = new Coordinate();

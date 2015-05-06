@@ -1,11 +1,10 @@
 package Phoebe.Controller;
 
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-
-
 
 import Phoebe.gui.View;
 
@@ -16,22 +15,24 @@ public class RegistrateControlListeners {
 		KeyEvent acc = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_W, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent acc2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc), "accelerate");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc2), "accelerate");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc), "accelerate1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc2), "accelerate2");
 
-		jPanel.getActionMap().put("accelerate", Control.getControlPlayTheGame().new AccelerateListener());
+		jPanel.getActionMap().put("accelerate1", Control.getControlPlayTheGame().new AccelerateListener1());
+		jPanel.getActionMap().put("accelerate2", Control.getControlPlayTheGame().new AccelerateListener2());
 	}
-	
+
 	private void addAccListenerDelet() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 
 		KeyEvent acc = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_W, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent acc2 = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc), "acceleratedel");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc2), "acceleratedel");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc), "acceleratedel1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(acc2), "acceleratedel2");
 
-		jPanel.getActionMap().put("acceleratedel", Control.getControlPlayTheGame().new AccelerateListenerDelet());
+		jPanel.getActionMap().put("acceleratedel1", Control.getControlPlayTheGame().new AccelerateListenerDelet1());
+		jPanel.getActionMap().put("acceleratedel2", Control.getControlPlayTheGame().new AccelerateListenerDelet2());
 	}
 
 	private void addSlowListener() {
@@ -39,22 +40,24 @@ public class RegistrateControlListeners {
 		KeyEvent slow = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_S, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent slow2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow), "slow");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow2), "slow");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow), "slow1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow2), "slow2");
 
-		jPanel.getActionMap().put("slow", Control.getControlPlayTheGame().new SlowDownListener());
+		jPanel.getActionMap().put("slow1", Control.getControlPlayTheGame().new SlowDownListener1());
+		jPanel.getActionMap().put("slow2", Control.getControlPlayTheGame().new SlowDownListener2());
 
 	}
-	
+
 	private void addSlowListenerDelet() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent slow = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_S, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent slow2 = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow), "slowdel");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow2), "slowdel");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow), "slowdel1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(slow2), "slowdel2");
 
-		jPanel.getActionMap().put("slowdel", Control.getControlPlayTheGame().new SlowDownListenerDelet());
+		jPanel.getActionMap().put("slowdel1", Control.getControlPlayTheGame().new SlowDownListenerDelet1());
+		jPanel.getActionMap().put("slowdel2", Control.getControlPlayTheGame().new SlowDownListenerDelet2());
 
 	}
 
@@ -63,21 +66,23 @@ public class RegistrateControlListeners {
 		KeyEvent right = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_D, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent right2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right), "right");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right2), "right");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right), "right1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right2), "right2");
 
-		jPanel.getActionMap().put("right", Control.getControlPlayTheGame().new TurnRightListener());
+		jPanel.getActionMap().put("right1", Control.getControlPlayTheGame().new TurnRightListener1());
+		jPanel.getActionMap().put("right2", Control.getControlPlayTheGame().new TurnRightListener2());
 	}
-	
+
 	private void addTurnRightListenerDelet() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent right = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_D, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent right2 = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right), "rightdel");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right2), "rightdel");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right), "rightdel1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(right2), "rightdel2");
 
-		jPanel.getActionMap().put("rightdel", Control.getControlPlayTheGame().new TurnRightListenerDelet());
+		jPanel.getActionMap().put("rightdel1", Control.getControlPlayTheGame().new TurnRightListenerDelet1());
+		jPanel.getActionMap().put("rightdel2", Control.getControlPlayTheGame().new TurnRightListenerDelet2());
 	}
 
 	private void addTurnLeftListener() {
@@ -85,27 +90,30 @@ public class RegistrateControlListeners {
 		KeyEvent left = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_A, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent left2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left), "left");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left2), "left");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left), "left1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left2), "left2");
 
-		jPanel.getActionMap().put("left",Control.getControlPlayTheGame().new TurnLeftListener());
+		jPanel.getActionMap().put("left1", Control.getControlPlayTheGame().new TurnLeftListener1());
+		jPanel.getActionMap().put("left2", Control.getControlPlayTheGame().new TurnLeftListener2());
 	}
-	
+
 	private void addTurnLeftListenerDelet() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent left = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_A, KeyEvent.CHAR_UNDEFINED);
 		KeyEvent left2 = new KeyEvent(jPanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
 
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left), "leftdel");
-		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left2), "leftdel");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left), "leftdel1");
+		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(left2), "leftdel2");
 
-		jPanel.getActionMap().put("leftdel", Control.getControlPlayTheGame().new TurnLeftListenerDelet());
+		jPanel.getActionMap().put("leftdel1", Control.getControlPlayTheGame().new TurnLeftListenerDelet1());
+		jPanel.getActionMap().put("leftdel2", Control.getControlPlayTheGame().new TurnLeftListenerDelet2());
 	}
 
 	private void addPutOilListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent putOil = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_Q, KeyEvent.CHAR_UNDEFINED);
-		KeyEvent putOil2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_END, KeyEvent.CHAR_UNDEFINED);
+		KeyEvent putOil2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, InputEvent.SHIFT_DOWN_MASK, KeyEvent.VK_SHIFT,
+				KeyEvent.CHAR_UNDEFINED);
 
 		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putOil), "putoil");
 		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putOil2), "putoil");
@@ -116,7 +124,7 @@ public class RegistrateControlListeners {
 	private void addPutPuttyListener() {
 		JPanel jPanel = View.getPlayTheGame().getjPanel();
 		KeyEvent putPutty = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_E, KeyEvent.CHAR_UNDEFINED);
-		KeyEvent putPutty2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_PAGE_DOWN,
+		KeyEvent putPutty2 = new KeyEvent(jPanel, KeyEvent.KEY_PRESSED, 0, InputEvent.CTRL_DOWN_MASK, KeyEvent.VK_CONTROL,
 				KeyEvent.CHAR_UNDEFINED);
 
 		jPanel.getInputMap().put(KeyStroke.getKeyStrokeForEvent(putPutty), "putputty");
@@ -124,9 +132,8 @@ public class RegistrateControlListeners {
 
 		jPanel.getActionMap().put("putputty", Control.getControlPlayTheGame().new PutPuttyListener());
 	}
-	
-	
-	public void addAllTheListeners(){
+
+	public void addAllTheListeners() {
 		addAccListener();
 		addSlowListener();
 		addTurnRightListener();

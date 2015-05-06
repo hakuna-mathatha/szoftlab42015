@@ -175,29 +175,8 @@ public class Robot extends Bot {
 		// osszege altal kapott vektor hosszanak a fele
 		if (aBot.getType().equals(BaseType.normalRobot)) {
 
-			Displacement fast = new Displacement();
-
-			Coordinate faster = new Coordinate();
-			faster = aBot.getPosition().difCoord(aBot.getLastPosition());
 			
-			System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");
-			
-
-			Coordinate slower = new Coordinate();
-			slower = this.getPosition().difCoord(this.getLastPosition());
-			System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");
-
-			Coordinate sum = new Coordinate();
-			sum = slower.addCoord(faster);
-			System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");
-			double velo = sum.legth() / 2;
-			System.out.println("Velo: "+velo);
-			
-			fast = aBot.getDisplacement();
-
-			fast.setVelocity(velo);
-			
-			aBot.setDisplacement(fast);
+			aBot.setDisplacement(modifyVeloRpbot_Robot(aBot));
 			
 			System.out.println(aBot.getDisplacement().getVelocity());
 		
@@ -222,6 +201,41 @@ public class Robot extends Bot {
 			
 		}
 
+	}
+	
+	public Displacement modifyVeloRpbot_Robot(Bot robot){
+		
+		Displacement fast = new Displacement();
+
+		Coordinate faster = new Coordinate();
+		faster = robot.getPosition().difCoord(robot.getLastPosition());
+		
+		System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");
+		
+
+		Coordinate slower = new Coordinate();
+		slower = this.getPosition().difCoord(this.getLastPosition());
+		System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");
+
+		Coordinate sum = new Coordinate();
+		sum = slower.addCoord(faster);
+		System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");
+		double velo = sum.legth() / 2;
+		System.out.println("Velo: "+velo);
+		
+		
+		Coordinate direction = new Coordinate();
+		direction.setX(robot.getPosition().getX() - robot.getLastPosition().getX());
+		direction.setY(robot.getPosition().getY() - robot.getLastPosition().getY());
+		double leng = direction.legth();
+		
+		System.out.println(robot.getDisplacement().getVelocity());
+		
+		Displacement displacement = robot.getDisplacement();
+		displacement.setVelocity(-1*(leng-velo));
+		
+		
+		return displacement;
 	}
 
 	public void putTheBarrier(Barrier barrier) {
