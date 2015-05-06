@@ -38,11 +38,11 @@ public abstract class Base extends Observable {
 		//így kevesebb lekérdezésre van szükség
 		double tmpX = coord.getX();
 		double tmpY = coord.getY();
-		double tmpPX = position.getX()+ray/2;
-		double tmpPY = position.getY()+ray/2;
+		double tmpPX = position.getX();
+		double tmpPY = position.getY();
 
 		//ha a koordináták távolsága páronként kisebb, mint a hatósugár, akkor a hatóterületén van (négzet alakú), a határok is számítanak
-		if (Math.abs(tmpX - tmpPX) <= ray && Math.abs(tmpY - tmpPY) <= ray) {
+		if (Math.abs(tmpX - tmpPX) < ray && Math.abs(tmpY - tmpPY) < ray) {
 //		if ((tmpX >= tmpPX && tmpX < (tmpPX + ray)) && (tmpY >= tmpPY && tmpY < (tmpPY + ray))) {
 			return true;
 		}
@@ -55,6 +55,16 @@ public abstract class Base extends Observable {
 
 //		System.out.println("\t\t" + getClass().getName() + ":getType()");
 		return type;
+	}
+	
+	public synchronized void clean() {
+//		System.out.println("\t\t\t" + getClass().getName() + ":clean");
+
+		
+		//Observer leválasztása
+		detachObserver();
+		trackPart.removeFromTrackPart(this);
+
 	}
 		
 }

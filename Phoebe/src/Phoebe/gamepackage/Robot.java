@@ -76,7 +76,7 @@ public class Robot extends Bot {
 		// legyen a kiindulo ponttal azonos
 		nextPosition = new Coordinate(1, 1);
 		position = position1;
-		lastPosition = new Coordinate(-5, -5);
+		lastPosition = new Coordinate(10, 10);
 		type = BaseType.normalRobot;
 		trackPart = new JumpablePart();
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
@@ -259,6 +259,7 @@ public class Robot extends Bot {
 			if (puttyReporitory > 0) {
 				trackPart.addBase(barrier, position);
 				reducePuttyRepository();
+				System.out.println("Putt putty");
 			} else {
 //				System.out.println("Out of putty");
 			}

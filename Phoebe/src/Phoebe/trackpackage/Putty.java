@@ -80,14 +80,17 @@ public class Putty extends Barrier {
 			bot.setDisplacement(modifyVelo(bot));
 			
 			System.out.println("putttty********************");
+		}else if(bot.getType() == BaseType.cleanerRobot){
+			this.clean();
 		}
 
 		// ha ez volt az utlsó rálépés, akkor eltûnik a pályáról
 		if (countToRemove == 0) {
-			trackPart.removeFromTrackPart(this);
-
-			//Observer leválasztása
-			detachObserver();
+//			trackPart.removeFromTrackPart(this);
+//
+//			//Observer leválasztása
+//			detachObserver();
+			this.clean();
 		}
 	}
 	

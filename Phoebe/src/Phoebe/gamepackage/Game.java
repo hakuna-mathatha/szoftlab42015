@@ -3,6 +3,7 @@ package Phoebe.gamepackage;
 import Phoebe.Controller.Control;
 import Phoebe.painter.RobotPainter;
 import Phoebe.trackpackage.Coordinate;
+import Phoebe.trackpackage.Putty;
 import Phoebe.trackpackage.Track;
 
 import java.util.ArrayList;
@@ -59,16 +60,42 @@ public class Game {
     	Robot robot = new Robot(position,disp,id);
     	robot.setTrackPart(track.findAPart(robot.getPosition()));
     	robots.add(robot);
+    	robot.putTheBarrier(new Putty(robot.getPosition(), robot.getTrackPart()));
     }
 
 	// Lehet jobb lenne ket kulon listaban a robotokat meg a cleanereket, mert
 	// nem egyszerre hivodnak meg. A kis robotokat gyorsabban kell leptetni.
 	// Ki kell talalni hogy ugaraljank a tick-re figyelni kellene valami szamlalot hogy mikor ugorjon a nagy robot.
 	// Majd a valtozasokat fel kell vazetni a diagramokra!!!
-	public void start() {
+	public synchronized void start() {
 
 //		System.out.println(getClass().getName() + ":Start()");
 
+		setRobotsNextPosition();
+
+		Collections.sort(robots, new CompareRobots());
+		
+//		startTheCleaners();
+		
+		 startTheRobots();
+		 
+		 calcDistance();
+	}
+	
+	public synchronized void startTheCleaners(){
+		for(int i=0; i<cleaners.size();i++){
+			CleanerRobot cleaner = cleaners.get(i);
+			cleaner.selectNearestBarrier(track);
+			if(cleaner.getNearestBarrier() == null){
+				cleaner.clean();
+				cleaners.remove(i);
+				continue;
+			}
+			cleaner.jump(track);
+		}
+	}
+	
+	public void setRobotsNextPosition(){
 		for (Robot rob : robots) {
 			if(rob.state.equals(RobotState.died) == true){
 				continue;
@@ -77,14 +104,10 @@ public class Game {
 			}
 			
 		}
-
-		Collections.sort(robots, new CompareRobots());
-		
-		for(CleanerRobot cleaner : cleaners){
-			cleaner.jump(track);
-		}
-		
-		 for(Robot rob : robots){
+	}
+	
+	public void startTheRobots(){
+		for(Robot rob : robots){
 			 System.out.println(rob.getId()+" "+rob.getState());
 			 if(rob.state.equals(RobotState.died) == true)
 				 continue;
@@ -93,8 +116,6 @@ public class Game {
 			 }
 		
 		 }
-		 
-		 calcDistance();
 	}
 
 	private void calcDistance() {

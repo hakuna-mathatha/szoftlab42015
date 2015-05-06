@@ -65,6 +65,8 @@ public class Oil extends Barrier {
 			bot.setDirectionMod(true);
 			//sebess�ge nem v�ltoztathat�
 			bot.setVeloMod(false);
+		}else if(bot.getType() == BaseType.cleanerRobot){
+			clean();
 		}
 	}
 
@@ -88,5 +90,16 @@ public class Oil extends Barrier {
 //			System.out.println("removed from map");
 		}
 		
+	}
+	
+	public synchronized void clean() {
+//		System.out.println("\t\t\t" + getClass().getName() + ":clean");
+
+		
+		//Observer leválasztása
+		timer.cancel();
+		detachObserver();
+		trackPart.removeFromTrackPart(this);
+
 	}
 }

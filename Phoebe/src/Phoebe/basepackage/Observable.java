@@ -22,6 +22,7 @@ public class Observable {
 
     //megfigyelõ leválasztása
     public void detachObserver() {
+    	System.out.println("Detach call*************************************************************");
         this.observer.detachObservable();
         this.observer = null;
     }
