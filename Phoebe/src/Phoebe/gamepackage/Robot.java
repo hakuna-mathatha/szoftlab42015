@@ -36,7 +36,7 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=id;
 
-		//Painter hozzáadása
+		//Painter hozzï¿½adï¿½sa
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
@@ -60,7 +60,7 @@ public class Robot extends Bot {
 		directionMod = true;
 		this.id=id;
 
-		//Painter hozzáadása
+		//Painter hozzï¿½adï¿½sa
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
@@ -85,7 +85,7 @@ public class Robot extends Bot {
 		this.id=id;
 		this.ray = 30;
 
-		//Painter hozzáadása
+		//Painter hozzï¿½adï¿½sa
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);
 	}
@@ -188,7 +188,7 @@ public class Robot extends Bot {
 			this.trackPart.removeFromTrackPart(this);
 			this.setState(RobotState.died);
 
-			//Observer leválasztása
+			//Observer levï¿½lasztï¿½sa
 			detachObserver();
 
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
@@ -244,7 +244,7 @@ public class Robot extends Bot {
 		BaseType type = barrier.getType();
 
 		if (type.equals(BaseType.oil)) {
-			if (oilRepository > 0) {
+			if ((oilRepository > 0) && ((getState() != RobotState.died))) {
 //				System.out.println("Rakok le olajat");
 				trackPart.addBase(barrier, position);
 				reduceOilRepository();
@@ -256,7 +256,7 @@ public class Robot extends Bot {
 			}
 
 		} else if (type.equals(BaseType.putty)) {
-			if (puttyReporitory > 0) {
+			if ((puttyReporitory > 0 ) && (getState() != RobotState.died)) {
 				trackPart.addBase(barrier, position);
 				reducePuttyRepository();
 			} else {
