@@ -22,25 +22,26 @@ public class Edge extends Barrier {
 		this.trackPart = trackPart;
 	}
 
-	//letért a pályáról, megáll, meghal
+	//letï¿½rt a pï¿½lyï¿½rï¿½l, megï¿½ll, meghal
 	public void stepOn(Bot bot) {
 
 //		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
 
-		//állapaota edge lesz
+		//ï¿½llapaota edge lesz
 		bot.setState(RobotState.died);
-		//iránya nem változtatható
+		//irï¿½nya nem vï¿½ltoztathatï¿½
 		bot.setDirectionMod(false);
-		//sebessége nem változtatható
+		//sebessï¿½ge nem vï¿½ltoztathatï¿½
 		bot.setVeloMod(false);
-		//robot elmozdulásának lekérése
+		//robot elmozdulï¿½sï¿½nak lekï¿½rï¿½se
 		Displacement displacement = bot.getDisplacement();
-		//elmozdulás lenullázása
+		//elmozdulï¿½s lenullï¿½zï¿½sa
 		displacement.setVelocity(0);
-		//új elmozdulás visszaállítása
+		//ï¿½j elmozdulï¿½s visszaï¿½llï¿½tï¿½sa
 		bot.setDisplacement(displacement);
 
-		//töröljük a robotot arról a pályaelemrõl, amin tartózkodik, de a Game listájában benne hagyjuk
+		//tï¿½rï¿½ljï¿½k a robotot arrï¿½l a pï¿½lyaelemrï¿½l, amin tartï¿½zkodik, de a Game listï¿½jï¿½ban benne hagyjuk
 		bot.getTrackPart().removeFromTrackPart(bot);
+                bot.detachObserver();
 	}
 }

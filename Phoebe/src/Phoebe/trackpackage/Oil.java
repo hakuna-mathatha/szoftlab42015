@@ -23,7 +23,7 @@ public class Oil extends Barrier {
 		//kell egy task, ami adott id� ut�n lefut
 		TimerTask tTask = new OilTask();
 		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
-		this.timer.schedule(tTask, 1000000 * 1000);
+		this.timer.schedule(tTask, 30 * 1000);
 
 		//Painter hozzáadása
 		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");
@@ -43,7 +43,7 @@ public class Oil extends Barrier {
 		//kell egy task, ami adott id� ut�n lefut
 		TimerTask tTask = new OilTask();
 		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
-		this.timer.schedule(tTask, 1000000 * 1000);
+		this.timer.schedule(tTask, 30 * 1000);
 
 		//Painter hozzáadása
 		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");

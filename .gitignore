@@ -4,3 +4,5 @@ Phoebe/bin/**
 Phoebe/.idea/*
 Phoebe/Phoebe.iml
 Phoebe/out/*
+/Phoebe/nbproject/private/
+/Phoebe/build/
