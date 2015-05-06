@@ -24,7 +24,7 @@ public class Accelerate extends IControlKeys {
 	public void modifier() {
 		if (bot.getVeloMod()) {
 			Displacement d = bot.getDisplacement();
-			d.setVelocity(d.getVelocity() + 5);
+			d.setVelocity(d.getVelocity() + 3);
 			bot.setDisplacement(d);
 			bot.calcNextPosition();
 		}

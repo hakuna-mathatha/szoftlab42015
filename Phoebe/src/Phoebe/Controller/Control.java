@@ -123,13 +123,7 @@ public class Control {
 		this.timer.schedule(roundTimer, 1 * 1000, 7*1000);
 	}
 	
-	public void aaa(){
-		new Thread(){
-			public void run(){
-				
-			}
-		}.start();
-	}
+	
 
 	
 	private class TimerForTheRounds extends TimerTask{
