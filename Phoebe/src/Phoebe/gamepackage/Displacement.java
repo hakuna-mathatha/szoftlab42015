@@ -1,15 +1,10 @@
 package Phoebe.gamepackage;
 
 public class Displacement {
-
-	// A szog radianban 
-	public double angle;
-	//Az elmozdulas vektor hossza
-	public double velocity;
+	public double angle;   // A szog radianban
+	public double velocity;	//Az elmozdulas vektor hossza
 	
-	public Displacement(){
-		
-	}
+	public Displacement(){}
 	
 	public Displacement(double ang, double velo){
 		angle = ang;
@@ -28,7 +23,4 @@ public class Displacement {
 	public void setVelocity(double velocity) {
 		this.velocity = velocity;
 	}
-	
-	
-
 }

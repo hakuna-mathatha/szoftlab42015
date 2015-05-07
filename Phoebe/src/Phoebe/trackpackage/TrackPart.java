@@ -1,9 +1,6 @@
 package Phoebe.trackpackage;
 import Phoebe.basepackage.Base;
-import Phoebe.painter.TrackPartPainter;
-
 import java.util.ArrayList;
-import java.util.Observable;
 
 public abstract class TrackPart extends Phoebe.basepackage.Observable {
 
@@ -11,7 +8,6 @@ public abstract class TrackPart extends Phoebe.basepackage.Observable {
 	protected double width;
 	protected double height;
     private ArrayList<Barrier> barriersList = new ArrayList<Barrier>();
-    
     
     public void setWidth(double width) {
 		this.width = width;
@@ -29,7 +25,6 @@ public abstract class TrackPart extends Phoebe.basepackage.Observable {
         return barriersList;
     }
 
-
     public double getWidth() {
 		return width;
 	}
@@ -39,12 +34,10 @@ public abstract class TrackPart extends Phoebe.basepackage.Observable {
 	}
 
 	public void setPosition(Coordinate p){
-
 		position = p;
 	}
 
 	public Coordinate getPosition(){
-
 		return position;
 	}
 
@@ -56,21 +49,18 @@ public abstract class TrackPart extends Phoebe.basepackage.Observable {
 
 	public boolean containCoord(Coordinate coord) {
 
-//		System.out.println("\t\t\t" + getClass().getName()+":containCoord");
-
-		//�gy kevesebb lek�rdez�sre van sz�ks�g
+		//kevesebb lekerzdezesre van szukseg
 		double tmpX = coord.getX();
 		double tmpY = coord.getY();
 		double tmpPX = position.getX();
 		double tmpPY = position.getY();
 
-		//ha rajta van a az elemen, akkor a param�ter koordin�t�i az elem sz�lei k�z�tt vannak
+		//ha rajta van a az elemen, akkor a parameter koordinatai az elem szelei kozott vannak
 		//Itt a szelek gondot okozhatnak. Igaz kicsi a valoszinusege annak hogy pontosan ket elem hatarara erkezzen a robot.
 		if ((tmpX >= tmpPX && tmpX < (tmpPX + width)) && (tmpY >= tmpPY && tmpY < (tmpPY + height))) {
 			return true;
 		}
-
-		//ha valamelyik koordin�t�ja kil�g az elem tartom�ny�b�l, akkor nincs rajta
+		//ha valamelyik koordinataja kilog az elem tartomanyabol, akkor nincs rajta
 		return false;
 	}
 }

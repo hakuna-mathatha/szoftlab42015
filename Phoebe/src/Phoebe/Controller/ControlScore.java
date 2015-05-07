@@ -1,10 +1,8 @@
 package Phoebe.Controller;
-
+import Phoebe.gui.View;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import Phoebe.gui.View;
 
 public class ControlScore {
 	

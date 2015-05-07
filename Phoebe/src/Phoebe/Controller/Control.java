@@ -1,37 +1,14 @@
 package Phoebe.Controller;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.List;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.AbstractAction;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-import javax.swing.text.rtf.RTFEditorKit;
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-
-import Phoebe.gamepackage.CleanerRobot;
-import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Game;
-import Phoebe.gamepackage.Robot;
-import Phoebe.gamepackage.RobotState;
+import Phoebe.gamepackage.*;
 import Phoebe.gui.PlayTheGame;
 import Phoebe.gui.View;
 import Phoebe.painter.DrawPanel;
-import Phoebe.painter.RobotPainter;
 import Phoebe.trackpackage.Coordinate;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Control {
 
@@ -101,15 +78,10 @@ public class Control {
 	public void startNewGame() {
 		view.reStart();
 		inicializeGame();
-
 		PlayTheGame playTheGame = new PlayTheGame("Phoebe");
-
 		view.setDrawPanel(playTheGame.getDrawPanel());
-
 		DrawPanel.setView(view);
-
 		View.setPlayTheGame(playTheGame);
-
 		controlPlayTheGame.addPlayTheGameListener();
 		 startTimerForRounds();
 		startTimerForRoundsCleaner();
@@ -120,15 +92,12 @@ public class Control {
 		this.game.setControl(this);
 		controlPlayTheGame.setGame(game);
 		game.getTrack().create();
-
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
-
 		CleanerRobot clean = new CleanerRobot();
 		clean.setTrackPart(game.getTrack().findAPart(clean.getPosition()));
 		clean.selectNearestBarrier(game.getTrack());
 		game.getCleanersList().add(clean);
-
 	}
 
 	public void startTimerForRounds() {
@@ -139,15 +108,12 @@ public class Control {
 
 	public void whenToStopTheTimer() {
 		boolean died = true;
-
 		List<Robot> robots = game.getRobotList();
-
 		for (int i = 0; i < robots.size(); i++) {
 			if (!robots.get(i).getState().equals(RobotState.died)) {
 				died = false;
 			}
 		}
-
 		if (died && game.getCleanersList().size() == 0) {
 			timer.cancel();
 			Control.getTimer().cancel();
@@ -159,13 +125,10 @@ public class Control {
 
 		@Override
 		public void run() {
-
 			game.start();
 			View.getDrawPanel().repaint();
 			whenToStopTheTimer();
-
 		}
-
 	}
 
 	public void startTimerForRoundsCleaner() {
@@ -190,9 +153,6 @@ public class Control {
 				game.startTheCleaners();
 				View.getDrawPanel().repaint();
 			}
-
 		}
-
 	}
-
 }

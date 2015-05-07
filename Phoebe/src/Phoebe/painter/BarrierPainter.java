@@ -1,13 +1,12 @@
 package Phoebe.painter;
-
 import Phoebe.gui.View;
 
 /**
- * Created by Kövesdi on 2015.05.05..
+ * Created by Kï¿½vesdi on 2015.05.05..
  */
 public class BarrierPainter extends BasePainter {
 
-    //hozzáadás a View-beli barrierPainters listához
+    //hozzaadas a View-beli barrierPainters listahoz
     public BarrierPainter(String imageUrl) {
         super(imageUrl);
         View.addToBarrierPainters(this);

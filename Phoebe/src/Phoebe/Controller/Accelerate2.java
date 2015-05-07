@@ -1,7 +1,5 @@
 package Phoebe.Controller;
-
 import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Robot;
 
 public class Accelerate2 extends IControlKeys {
 
@@ -16,8 +14,6 @@ public class Accelerate2 extends IControlKeys {
 			acc = new Accelerate2();
 		return acc;
 	}
-	
-
 
 	@Override
 	public void modifier() {
@@ -27,10 +23,5 @@ public class Accelerate2 extends IControlKeys {
 			bot.setDisplacement(d);
 			bot.calcNextPosition();
 		}
-
-//		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
-		
 	}
-	
-
 }

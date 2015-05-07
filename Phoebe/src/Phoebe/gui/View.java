@@ -1,44 +1,31 @@
 package Phoebe.gui;
 
-import Phoebe.painter.BarrierPainter;
-import Phoebe.painter.BotPainter;
-import Phoebe.painter.DrawPanel;
-import Phoebe.painter.Painter;
-import Phoebe.painter.TrackPartPainter;
-import Phoebe.trackpackage.Track;
+import Phoebe.painter.*;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by Kövesdi on 2015.05.01..
+ * Created by Kï¿½vesdi on 2015.05.01..
  */
 public class View {
+	public static int scale = 1;  //annak nyilvantartasa, hogy mennyivel kell valtoztatni a kep meretet a BasePainter hasznalja
 
-	//itt tartjuk nyilván, hogy mennyivel kell változtatni a képek méretét,
-	//BasePainter használja
-	public static int scale = 1;
-
-	//listák az azonos típusú Paintereknek
+	//listak az azonos tipusu Paintereknek
 	private static ArrayList<TrackPartPainter> trackPartPainters;
 	private static ArrayList<BarrierPainter> barrierPainters;
 	private static ArrayList<BotPainter> botPainters;
-
 	private static Menu menu;
 	private static NewGameMenu newGameMenu;
 	private static Score score;
 	private static PlayTheGame playTheGame;
-	
 	private static DrawPanel drawPanel;
-
-	
 
 	public View() {
 		trackPartPainters = new ArrayList<TrackPartPainter>();
 		barrierPainters = new ArrayList<BarrierPainter>();
 		botPainters = new ArrayList<BotPainter>();
-
 		menu = new Menu("FÅ‘menï¿½");
 		newGameMenu = new NewGameMenu("ï¿½j jï¿½tï¿½k");
 		score = new Score("Vï¿½geredmï¿½ny");
@@ -81,21 +68,17 @@ public class View {
 		return menu;
 	}
 
-
 	public static void setMenu(Menu menu) {
 		View.menu = menu;
 	}
-
 
 	public static Score getScore() {
 		return score;
 	}
 
-
 	public static void setScore(Score score) {
 		View.score = score;
 	}
-	
 	
 	public static NewGameMenu getNewGameMenu() {
 		return newGameMenu;
@@ -105,17 +88,17 @@ public class View {
 		View.newGameMenu = newGameMenu;
 	}
 
-	//Painter hozzáadása a TrackPartPainterek listájához
+	//Painter hozzaadasa TrackPartPainterek listajahoz
 	protected static void addToTrackPartPainters(TrackPartPainter trackPartPainter) {
 		trackPartPainters.add(trackPartPainter);
 	}
 
-	//Painter hozzáadása a BarrierPainter listájához
+	//Painter hozzadasa a BarrierPainter listajahoz
 	public static void addToBarrierPainters(BarrierPainter barrierPainter) {
 		barrierPainters.add(barrierPainter);
 	}
 
-	//Painter hozzáadása a BotPainterek listájához
+	//Painter hozzaadasa a BotPainterek listajahoz
 	public static void addToBotPainters(BotPainter botPainter) {
 		botPainters.add(botPainter);
 	}
@@ -153,7 +136,7 @@ public class View {
 		botPainters = new ArrayList<BotPainter>();
 	}
 
-	//TrackPartokat tartlamazó listán iterálás, karbantartás, rajzolás
+	//TrackPartokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawTrackParts(Graphics g) {
 		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
@@ -161,12 +144,11 @@ public class View {
 				iterator.remove();
 			} else{
 				painter.onPaint(g);
-//				System.out.println("neeeemaaaaaa");
 			}
 		}
 	}
 
-	//Barriereket tartlamazó listán iterálás, karbantartás, rajzolás
+	//Barriereket tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBarriers(Graphics g) {
 		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
@@ -174,13 +156,11 @@ public class View {
 				iterator.remove();
 			} else {
 				painter.onPaint(g);
-//				System.out.println("neeeemaaaaaa");
-
 			}
 		}
 	}
 
-	//Botokat tartlamazó listán iterálás, karbantartás, rajzolás
+	//Botokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBots(Graphics g) {
 		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
@@ -188,12 +168,11 @@ public class View {
 				iterator.remove();
 			} else {
 				painter.onPaint(g);
-
 			}
 		}
 	}
 
-	//elemek kirajzolása, nincs kitakarás
+	//elemek kirajzolasa, nincs kitakaras
 	public static void drawImage(Graphics g) {
 		drawTrackParts(g);
 		drawBarriers(g);

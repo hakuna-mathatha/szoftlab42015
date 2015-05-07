@@ -5,9 +5,7 @@ public class Coordinate {
 	public double x;
 	public double y;
 	
-	public Coordinate() {
-		// TODO Auto-generated constructor stub
-	}
+	public Coordinate() {}
 	
 	public Coordinate(double x1, double y1){
 		x=x1;
@@ -49,15 +47,12 @@ public class Coordinate {
 		double lenght = c.legth();
 		this.x = c.x/lenght;
 		this.y = c.y/lenght;
-		
 	}
 	
 	public void normal(Coordinate a){
 		double lenght = Math.sqrt(Math.pow(a.x, 2)+Math.pow(a.y, 2));
-		Coordinate tmp = new Coordinate();
 		this.x = a.x/lenght;
 		this.y = a.y/lenght;
-		
 	}
 	
 	public void multip(double d){

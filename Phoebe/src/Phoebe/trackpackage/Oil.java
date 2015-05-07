@@ -1,14 +1,11 @@
 package Phoebe.trackpackage;
-
-import java.sql.Timestamp;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import Phoebe.basepackage.BaseType;
 import Phoebe.gamepackage.Bot;
 import Phoebe.gamepackage.RobotState;
-import Phoebe.gamepackage.Displacement;
 import Phoebe.painter.OilPainter;
+import java.sql.Timestamp;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Oil extends Barrier {
 
@@ -20,56 +17,42 @@ public class Oil extends Barrier {
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
-		//kell egy task, ami adott id� ut�n lefut
-		TimerTask tTask = new OilTask();
-		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
-		this.timer.schedule(tTask, 30 * 1000);
+		TimerTask tTask = new OilTask();   //task, ami adott ido utan lefut
+		this.timer.schedule(tTask, 30 * 1000);   //5 kor utan eltunik az olaj a palyarol
 
-		//Painter hozzáadása
+		//Painter hozzaadasa
 		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");
 		attachObserver(oilPainter);
 	}
 
 	public Oil(Coordinate position, TrackPart trackPart) {
-
 		this.position = position;
 		this.trackPart = trackPart;
-		
 		this.type = BaseType.oil;
 		this.ray = 50.5;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
-		//kell egy task, ami adott id� ut�n lefut
-		TimerTask tTask = new OilTask();
-		// 5 k�r ut�n t�nik el az olaj a p�ly�r�l
-		this.timer.schedule(tTask, 30 * 1000);
+		TimerTask tTask = new OilTask();          //task, ami adott ido utan lefut
+		this.timer.schedule(tTask, 30 * 1000);    //5 kor utan eltunik az olaj a palyarol
 
-		//Painter hozzáadása
+		//Painter hozzaadasa
 		OilPainter oilPainter = new OilPainter(System.getProperty("user.dir") + "\\resources\\spill0_v1.png");
 		attachObserver(oilPainter);
-
-//		System.out.println("\t\t\t\t" + getClass().getName() + ":Oil");
 	}
 
-	//ha olajba l�p�nk, nem v�ltoztathatjuk a robot sebess�g�t a k�vetkez� k�rig
+	//ha olajba lepunk, nem valtoztathatjuk a robot sebesseget a kovetkezo korig
 	public void stepOn(Bot bot) {
-
-//		System.out.println("\t\t\t\t" + getClass().getName() + ":stepOn");
-
-		//csak a norm�l robotra hat
+		//csak a normal robotra hat
 		if (bot.getType() == BaseType.normalRobot) {
 			//�llapaota putty lesz
 			bot.setState(RobotState.oil);
-			//ir�nya v�ltoztathat�
-			bot.setDirectionMod(true);
-			//sebess�ge nem v�ltoztathat�
-			bot.setVeloMod(false);
+			bot.setDirectionMod(true);      //iranya valtoztathato
+			bot.setVeloMod(false);          //sebessege nem valtoztathato
 		}else if(bot.getType() == BaseType.cleanerRobot){
 			clean();
 		}
 	}
-
 	
 	public void cleaner(){
 		this.clean();
@@ -79,27 +62,14 @@ public class Oil extends Barrier {
 
 		@Override
 		public void run() {
-			//ha letelt az id�, akkor elt�ntetj�k a p�ly�r�l
-			//timer le�ll�t�sa
-//			timer.cancel();
-//			timer.purge();
-			cleaner();
-			timer.cancel();
-//			System.out.println("time is over");
-//			clean();
-//			System.out.println("removed from map");
+			cleaner();            //ha letelt az ido az olaj eltunik a palyarol
+			timer.cancel();       //timer leallitasa
 		}
-		
 	}
 	
 	public synchronized void clean() {
-//		System.out.println("\t\t\t" + getClass().getName() + ":clean");
-
-		
-		//Observer leválasztása
 		timer.cancel();
-		detachObserver();
+		detachObserver();   //observer levalasztas
 		trackPart.removeFromTrackPart(this);
-
 	}
 }

@@ -1,10 +1,7 @@
 package Phoebe.Controller;
-
 import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Robot;
 
 public class SlowDown extends IControlKeys {
-	
 
 	private static SlowDown slow = null;
 	
@@ -18,21 +15,13 @@ public class SlowDown extends IControlKeys {
 		return slow;
 	}
 
-
 	@Override
 	public void modifier() {
-	
 		if (bot.getVeloMod()) {
 			Displacement d = bot.getDisplacement();
 			d.setVelocity(d.getVelocity() - 3);
 			bot.setDisplacement(d);
 			bot.calcNextPosition();
 		}
-
-//		System.out.println("slow" + " " + bot.getDisplacement().getVelocity());
-		
 	}
-
-	
-
 }

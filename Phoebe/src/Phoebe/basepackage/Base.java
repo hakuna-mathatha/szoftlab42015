@@ -1,8 +1,8 @@
 package Phoebe.basepackage;
+import Phoebe.gamepackage.Bot;
+import Phoebe.trackpackage.Coordinate;
+import Phoebe.trackpackage.TrackPart;
 import java.sql.Timestamp;
-
-import Phoebe.gamepackage.*;
-import Phoebe.trackpackage.*;
 
 public abstract class Base extends Observable {
 
@@ -33,38 +33,25 @@ public abstract class Base extends Observable {
 
 	public boolean isCoordNear(Coordinate coord) {
 
-//		System.out.println("\t\t\t" + getClass().getName() + ":isCoordNear");
-
-		//így kevesebb lekérdezésre van szükség
+		//kevesebb lekerdezesre van szukseg
 		double tmpX = coord.getX();
 		double tmpY = coord.getY();
 		double tmpPX = position.getX();
 		double tmpPY = position.getY();
 
-		//ha a koordináták távolsága páronként kisebb, mint a hatósugár, akkor a hatóterületén van (négzet alakú), a határok is számítanak
+		//ha a koordinatak tavolsaga paronkent kisebb, mint a hatosugar, akkor a hatarteruleten van (negyzet alaku), a hatarok is szamitanak
 		if (Math.abs(tmpX - tmpPX) < ray && Math.abs(tmpY - tmpPY) < ray) {
-//		if ((tmpX >= tmpPX && tmpX < (tmpPX + ray)) && (tmpY >= tmpPY && tmpY < (tmpPY + ray))) {
 			return true;
 		}
-
-		//ha messzebb vannak egymástól, akkor nincs kölcsönhatás
-		return false;
+		return false;           //ha messzebb vannak egymastol nincs kolcsonhatas
 	}
 
 	public BaseType getType() {
-
-//		System.out.println("\t\t" + getClass().getName() + ":getType()");
 		return type;
 	}
 	
 	public synchronized void clean() {
-//		System.out.println("\t\t\t" + getClass().getName() + ":clean");
-
-		
-		//Observer leválasztása
-		detachObserver();
+        detachObserver();      //Observer levalasztasa
 		trackPart.removeFromTrackPart(this);
-
 	}
-		
 }

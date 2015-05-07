@@ -1,11 +1,7 @@
 package Phoebe.painter;
-
-import Phoebe.basepackage.Observable;
-
 /**
- * Created by Kövesdi on 2015.05.01..
+ * Created by Kï¿½vesdi on 2015.05.01..
  */
 public class CleanerPainter extends BotPainter {
-
     public CleanerPainter(String imageUrl) { super(imageUrl); }
 }

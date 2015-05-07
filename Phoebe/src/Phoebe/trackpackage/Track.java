@@ -1,7 +1,5 @@
 package Phoebe.trackpackage;
-
 import Phoebe.helperpackage.JSONHandler;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,27 +13,20 @@ public class Track {
     private List<JumpablePart> trackParts;
 
     public List<JumpablePart> getTrackParts() {
-
         return trackParts;
     }
 
     public void setTrackParts(List<JumpablePart> trackParts) {
-
         this.trackParts = trackParts;
     }
 
     public Track() {
-
-//		System.out.println("\t"+getClass().getName()+":Track");
         edge = new EdgeofTheTrack();
         trackParts = new ArrayList<JumpablePart>();
     }
 
     public void create() {
-
         //Csinaltam egy alap palyat. negyzet alaku. csak hogy ha akar valaki akkor lehessen tesztet kitalalni
-//		System.out.println("\t"+getClass().getName()+":create");
-//		fromJson();
         fromRawData();
     }
 
@@ -100,7 +91,6 @@ public class Track {
 
     private void fromJson() {
         String baseURL = System.getProperty("user.dir") + "/data/JSONs/";
-//		System.out.println(baseURL);
         try {
             JumpablePart jumpablePart1 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart1.dat", JumpablePart.class);
             JumpablePart jumpablePart2 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart2.dat", JumpablePart.class);
@@ -115,8 +105,6 @@ public class Track {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         edge = new EdgeofTheTrack();
     }
 
@@ -124,22 +112,16 @@ public class Track {
 
 		System.out.println("\t\t"+getClass().getName()+":findAPart");
 
-        //keres�s az elemek k�z�tt
+        //kereses az elemek kozott
         for (JumpablePart p : trackParts) {
-
             //ha valamelyiken rajta van, akkor azt visszaadja
             if (p.containCoord(coord)){
-            	System.out.println("Talalt");
+            	System.out.println("Talalt");    //kivenni
                 return p;
             }
         }
-
-        //ha egyiken sem volt rajta, akkor let�rt a p�ly�r�l
-    	System.out.println("Szakadek");
-
+        //ha egyiken sem volt rajta, akkor letert a palyarol
+    	System.out.println("Szakadek");   //kivenni
         return edge;
-
-        //return  trackParts.get(0);
     }
-
 }

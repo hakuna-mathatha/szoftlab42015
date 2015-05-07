@@ -1,34 +1,33 @@
 package Phoebe.painter;
-
 import Phoebe.basepackage.Observable;
 
 /**
- * Created by Kövesdi on 2015.05.01..
+ * Created by Kï¿½vesdi on 2015.05.01..
  */
 public class Observer {
 
     //megfigyelt elem
     protected Observable observable;
 
-    //itt még nem tartozik hozzá megfigyelt elem
+    //itt meg nem tartozik hozza megfigyelt elem
     public Observer() { this.observable = null; }
 
-    //hozzákapcsoljuk a paraméterként kapott elemet
+    //hozzakapcsoljuk a parameterkent kapott elemet
     public void attachObservable(Observable observable) {
         this.observable = observable;
     }
 
-    //leválasztjuk a megfigyelt elemet
+    //levalasztjuk a megfigyelt elemet
     public void detachObservable() {
         observable = null;
     }
 
-    //ha van megfigyelt eleme true-val tér vissza
+    //ha van megfigyelt eleme true-val ter vissza
     public boolean hasObservable() {
         return (this.observable == null) ? false : true;
     }
 
-    //megfigyelt elem lekérdezése
+    //megfigyelt elem lekerdezese
     protected Observable getObservable() {
         return this.observable;
     }

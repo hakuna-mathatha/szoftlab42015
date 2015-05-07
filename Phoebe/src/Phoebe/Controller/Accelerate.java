@@ -1,9 +1,5 @@
 package Phoebe.Controller;
-
-
 import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Robot;
-import Phoebe.gui.View;
 
 public class Accelerate extends IControlKeys {
 
@@ -18,7 +14,6 @@ public class Accelerate extends IControlKeys {
 			acc = new Accelerate();
 		return acc;
 	}
-	
 
 	@Override
 	public void modifier() {
@@ -28,11 +23,5 @@ public class Accelerate extends IControlKeys {
 			bot.setDisplacement(d);
 			bot.calcNextPosition();
 		}
-
-//		System.out.println("acc" + " " + bot.getDisplacement().getVelocity());
-//		ControlPlayTheGame.AccelerateListener a = Control.getControlPlayTheGame().new AccelerateListener();
-	
 	}
-	
-
 }

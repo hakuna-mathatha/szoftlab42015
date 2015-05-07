@@ -1,14 +1,11 @@
 package Phoebe.painter;
-
-
 import Phoebe.gui.View;
-
 /**
- * Created by Kövesdi on 2015.05.05..
+ * Created by Kï¿½vesdi on 2015.05.05..
  */
 public class BotPainter extends BasePainter {
 
-    //hozzáadás a View-beli BotPainters listához
+    //hozzaadas a View-beli BotPainters listahoz
     public BotPainter(String imageUrl) {
         super(imageUrl);
         View.addToBotPainters(this);

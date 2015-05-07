@@ -1,7 +1,6 @@
 package Phoebe.Controller;
-
 import Phoebe.gamepackage.Displacement;
-import Phoebe.gamepackage.Robot;
+
 
 public class TurnRight2 extends IControlKeys {
 
@@ -17,18 +16,11 @@ public class TurnRight2 extends IControlKeys {
 		return turnright;
 	}
 
-
 	@Override
 	public void modifier() {
 		Displacement d = bot.getDisplacement();
 		d.setAngle(d.getAngle() + 0.05);
 		bot.setDisplacement(d);
 		bot.calcNextPosition();
-
-//		System.out.println("right" + " " + bot.getDisplacement().getAngle());
-		
 	}
-
-	
-
 }

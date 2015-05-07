@@ -1,5 +1,4 @@
 package Phoebe.Controller;
-
 import Phoebe.gamepackage.Robot;
 
 public abstract class IControlKeys {

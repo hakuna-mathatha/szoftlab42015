@@ -1,35 +1,23 @@
 package Phoebe.gamepackage;
-
 import Phoebe.Controller.Control;
-import Phoebe.painter.RobotPainter;
 import Phoebe.trackpackage.Coordinate;
 import Phoebe.trackpackage.Putty;
 import Phoebe.trackpackage.Track;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-//import java.util.stream.BaseStream;
-
 public class Game {
-
 	private List<Robot> robots;
 	private List<CleanerRobot> cleaners;
 	private Track track;
 	public Control control;
 
-	
-
 	public Game() {
-//		System.out.println(getClass().getName() + ":Game");
 		track = new Track();
 		robots = new ArrayList<Robot>();
-//		robots.add(new Robot(1));
-//		robots.add(new Robot(new Displacement(-0.1, 1),2));
 		cleaners = new ArrayList<CleanerRobot>();
-		
 	}
 	
 	public Control getControl() {
@@ -63,23 +51,11 @@ public class Game {
     	robot.putTheBarrier(new Putty(robot.getPosition(), robot.getTrackPart()));
     }
 
-	// Lehet jobb lenne ket kulon listaban a robotokat meg a cleanereket, mert
-	// nem egyszerre hivodnak meg. A kis robotokat gyorsabban kell leptetni.
-	// Ki kell talalni hogy ugaraljank a tick-re figyelni kellene valami szamlalot hogy mikor ugorjon a nagy robot.
-	// Majd a valtozasokat fel kell vazetni a diagramokra!!!
 	public synchronized void start() {
-
-//		System.out.println(getClass().getName() + ":Start()");
-
 		setRobotsNextPosition();
-
 		Collections.sort(robots, new CompareRobots());
-		
-//		startTheCleaners();
-		
-		 startTheRobots();
-		 
-		 calcDistance();
+		startTheRobots();
+		calcDistance();
 	}
 	
 	public synchronized void startTheCleaners(){
@@ -102,7 +78,6 @@ public class Game {
 			}else{
 				rob.setNextPosition(rob.calcCoordinate(rob.getPosition(), rob.getDisplacement()));
 			}
-			
 		}
 	}
 	
@@ -114,14 +89,10 @@ public class Game {
 			 else{
 				 rob.jump(track); 
 			 }
-		
 		 }
 	}
 
 	private void calcDistance() {
-		
-//		System.out.println(getClass().getName() + ":calcDistance()");
-
 		for (Robot robot : robots) {
 					Coordinate vector = robot.getLastPosition().difCoord(robot.getPosition());
 					double length = vector.legth();
@@ -131,11 +102,8 @@ public class Game {
 	}
 
 	public Bot getWinner() {
-//		System.out.println("\t" + getClass().getName() + ":getWinner");
-
 		Robot winner = robots.get(0);
 		double max = winner.getDistance();
-
 		for (Robot robot : robots) {
 				double tmp = robot.getDistance();
 				if (tmp > max) {
@@ -143,7 +111,6 @@ public class Game {
 					winner = robot;
 				}
 		}
-
 		return winner;
 	}
 
@@ -153,17 +120,13 @@ public class Game {
 	public Track getTrack() {
 		return track;
 	}
+
 	// Kell hogy a robotok rendezesehez meg legyen az osszehasonlitasi alap
 	private class CompareRobots implements Comparator<Bot> {
-
 		@Override
 		public int compare(Bot o1, Bot o2) {
-
-//			System.out.println(getClass().getName() + ":Compare robots velocity");
-			
 			double d1 = o1.getPosition().difCoord(o1.getNextPosition()).legth();
 			double d2 = o2.getPosition().difCoord(o2.getNextPosition()).legth();
-			
 			if(d1-d2>0){
 				return 1;
 			}else if(d1-d2<0){
@@ -173,7 +136,4 @@ public class Game {
 			}
 		}
 	}
-
-    
-
 }

@@ -1,11 +1,7 @@
 package Phoebe.gui;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by Peti on 2015.04.25..
@@ -19,7 +15,6 @@ public class Score extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(250, 250);
         setResizable(false);
-
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
@@ -50,12 +45,9 @@ public class Score extends JFrame {
         panel.add(panel11);
         panel.add(panel12);
         panel.add(panel13);
-
         EmptyBorder border = new EmptyBorder(40, 0, 0, 0);
         panel.setBorder(border);
-
         super.add(panel, BorderLayout.CENTER);
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 	
@@ -71,7 +63,4 @@ public class Score extends JFrame {
 	public void setBtn_exit(JButton btn_exit) {
 		this.btn_exit = btn_exit;
 	}
-
-
-
 }

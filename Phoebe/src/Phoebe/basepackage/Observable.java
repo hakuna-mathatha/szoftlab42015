@@ -1,28 +1,25 @@
 package Phoebe.basepackage;
 
 import Phoebe.painter.Observer;
-import Phoebe.trackpackage.Coordinate;
 
 /**
- * Created by Kövesdi on 2015.05.01..
+ * Created by Kï¿½vesdi on 2015.05.01..
  */
 public class Observable {
+    private Observer observer;  //megfigyelo
 
-    //megfigyelõ
-    private Observer observer;
-
-    //itt még nem tartozik hozzá megfigyelõ
+    //itt meg nem tartozik hozza megfigyelo
     public Observable() { this.observer = null; }
 
-    //paraméterként kapott emgfigyelõvel való összekapcsolás
+    //parameterkent kapott megfigyelovel valo osszekapcsolas
     public void attachObserver(Observer observer) {
         this.observer = observer;
         this.observer.attachObservable(this);
     }
 
-    //megfigyelõ leválasztása
+    //megfigyelo levalasztasa
     public void detachObserver() {
-    	System.out.println("Detach call*************************************************************");
+    	System.out.println("Detach call*************************************************************"); //majd kivenni ha nem kell
         this.observer.detachObservable();
         this.observer = null;
     }
