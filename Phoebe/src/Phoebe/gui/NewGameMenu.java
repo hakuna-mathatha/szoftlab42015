@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class NewGameMenu extends JFrame {
 
-	private String[] maps = { "Pálya_1", "Pálya_2", "Pálya_3", "Pálya_4", "Pálya_5" };
+	private String[] maps = { "Pálya_1", "Pálya_2" };
 	JButton btn_loadmap;
 	JComboBox<String> comboBox;
 	JButton btn_exit;

@@ -79,7 +79,7 @@ public class TestHelper {
 			case newgame:
 				g = new Game();
 				track = new Track();
-				track.create();
+//				track.create();
 				g.setTrack(track);
 				break;
 			case placeRobot:
