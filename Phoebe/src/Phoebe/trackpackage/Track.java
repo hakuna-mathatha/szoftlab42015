@@ -120,8 +120,11 @@ public class Track {
             ((JumpablePart) type).setWidth(width);
         }else if (type.getClass()==Oil.class){
             ((Oil)type).setPosition(coord);
+            ((Oil)type).setTrackPart(findAPart(coord));
+            
         }else{
             ((Putty)type).setPosition(coord);
+            ((Putty)type).setTrackPart(findAPart(coord));
         }
         return type;
     }

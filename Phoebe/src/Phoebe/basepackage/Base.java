@@ -40,7 +40,7 @@ public abstract class Base extends Observable {
 		double tmpPY = position.getY();
 
 		//ha a koordinatak tavolsaga paronkent kisebb, mint a hatosugar, akkor a hatarteruleten van (negyzet alaku), a hatarok is szamitanak
-		if (Math.abs(tmpX - tmpPX) < ray && Math.abs(tmpY - tmpPY) < ray) {
+		if (Math.abs(tmpX - tmpPX) < ray/2 && Math.abs(tmpY - tmpPY) < ray/2) {
 			return true;
 		}
 		return false;           //ha messzebb vannak egymastol nincs kolcsonhatas

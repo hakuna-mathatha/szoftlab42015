@@ -9,11 +9,12 @@ import java.util.List;
 public class CleanerRobot extends Bot {
 	private Barrier nearestBarrier;
 	private boolean nearestBarrierExist;
+	private Coordinate purpose;
 
 	public CleanerRobot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
 		displacement = disp1;
 		state = RobotState.pure;
-		nextPosition = new Coordinate(2, 1); // legyen a kiindulo ponttal azonos
+		nextPosition = new Coordinate(0, 1); // legyen a kiindulo ponttal azonos
 		position = position1;
 		lastPosition = lastpos1;
 		type = BaseType.cleanerRobot;
@@ -28,7 +29,7 @@ public class CleanerRobot extends Bot {
 	}
 	
 	public CleanerRobot() {
-		displacement = new Displacement((-1) * Math.PI/18, 50);
+		displacement = new Displacement(2, 1);
 		state = RobotState.pure;
 		nextPosition = new Coordinate(300, 300);	// legyen a kiindulo ponttal azonos
 		position = new Coordinate(305, 305);
@@ -58,7 +59,7 @@ public class CleanerRobot extends Bot {
 		Barrier barrier = null;
 
 		for (JumpablePart parts : list) {
-			System.out.println("Base ek"+ parts.getBases().size());     //kivenni
+			System.out.println("Basek "+ parts.getBases().size());     //kivenni
 			for (Base base : parts.getBases()) {
 				double tmp = Math.sqrt(Math.pow((position.getX() - base.getPosition().getX()), 2)
 						+ Math.pow((position.getY() - base.getPosition().getY()), 2));
@@ -103,39 +104,32 @@ public class CleanerRobot extends Bot {
 		part.addBase(this, position);
 		getTheEffectForRobot(b);
 	}
-
-	public void calcNextPosition(Track aTrack) {
+	
+	public void findTheNewPoint(Track aTrack){
 		boolean IsCoordOk = false;
-		// A robot pozicio es a Barrier kozotti egyenesen 10 egyseget lep a robot a Barrier fele.
-		selectNearestBarrier(aTrack);
-		Coordinate dif = new Coordinate();
 		Barrier b = this.nearestBarrier;
 		if(b==null)
 			return;
-		Coordinate c = b.getPosition().difCoord(position);
-		dif.dirNormal(position, this.nearestBarrier.getPosition());
-		Coordinate dirNorm = dif;
-		dif.multip(100);
-		System.out.println("Nextkkkkkkkkkkkkkkkkkkk: "+nextPosition.getX()+" "+nextPosition.getY());   //kivenni
-		setNextPosition(position.addCoord(dif));
 
+		Coordinate direction = b.getPosition().difCoord(position);
+		
 		while(!IsCoordOk){
-			if(! (aTrack.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge))){
+			if((!(aTrack.findAPart(nextPosition).getBase(nextPosition).getType().equals(BaseType.edge)))){
 				IsCoordOk = true;
 				this.displacement.setAngle(2);
 				System.out.println("Jo lesz a koord");  //kivenni
 			}else{
 				System.out.println("Nem lesz jo a koord");  //kivenni
-				this.displacement.setAngle(-2);
-				Coordinate direction = new Coordinate();
-				direction.setX(nextPosition.getX() - lastPosition.getX());
-				direction.setY(nextPosition.getY() - lastPosition.getY());
+				this.displacement.setAngle(-1.1);
+//				Coordinate direction = new Coordinate();
+//				direction.setX(nextPosition.getX() - lastPosition.getX());
+//				direction.setY(nextPosition.getY() - lastPosition.getY());
 				double leng = direction.legth();
 				Coordinate rotation = new Coordinate();
 
 				rotation.x = (direction.x * Math.cos(displacement.angle) - direction.y * Math.sin(displacement.angle));
 				rotation.y = (direction.y * Math.cos(displacement.angle) + direction.x * Math.sin(displacement.angle));
-				dirNorm = new Coordinate();
+				Coordinate dirNorm = new Coordinate();
 				dirNorm.normal(rotation);
 
 				double velo = displacement.getVelocity();
@@ -147,8 +141,42 @@ public class CleanerRobot extends Bot {
 				coordinate.setX(nextPosition.x + leng * dirNorm.x );
 				coordinate.setY(nextPosition.y + leng * dirNorm.y );
 				nextPosition=coordinate;
-				System.out.println("Next: "+nextPosition.getX()+" "+nextPosition.getY());
+				
+				
+				
 			}
 		}
+	}
+
+	public void calcNextPosition(Track aTrack) {
+		boolean IsCoordOk = false;
+		// A robot pozicio es a Barrier kozotti egyenesen 10 egyseget lep a robot a Barrier fele.
+		selectNearestBarrier(aTrack);
+		Coordinate dif = new Coordinate();
+		Barrier b = this.nearestBarrier;
+		if(b==null)
+			return;
+		Coordinate c = b.getPosition().difCoord(position);
+	
+		dif.dirNormal(position, this.nearestBarrier.getPosition());
+		Coordinate dirNorm = dif;
+		dif.multip(5);
+//		if(c.legth()<100)
+//			setNextPosition(position.addCoord(c));
+//		else
+			setNextPosition(position.addCoord(dif));
+		
+		System.out.println("Nextkkkkkkkkkkkkkkkkkkk: "+nextPosition.getX()+" "+nextPosition.getY());   //kivenni
+		findTheNewPoint(aTrack);
+
+
+	}
+
+	public Coordinate getPurpose() {
+		return purpose;
+	}
+
+	public void setPurpose(Coordinate purpose) {
+		this.purpose = purpose;
 	}
 }

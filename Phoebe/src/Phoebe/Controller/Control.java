@@ -134,7 +134,7 @@ public class Control {
 	public void startTimerForRoundsCleaner() {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
-		this.timerCleaner.schedule(roundTimer, 1 * 1000, 2500);
+		this.timerCleaner.schedule(roundTimer, 1 * 1000, 200);
 	}
 
 	public boolean whenToStopTheTimerCleaner(){
