@@ -78,7 +78,7 @@ public class ControlPlayTheGame {
 
 	protected static boolean t = false;
 
-	public static void aaa() {
+	public static void controlListCycle() {
 		new Thread() {
 			public void run() {
 				while (controlKeys.size() > 0) {
@@ -110,7 +110,12 @@ public class ControlPlayTheGame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Control.getTimer().cancel();
+			View.getScore().getPlayer1_score().setText("Megy?");
+			View.getScore().getPlayer2_score().setText("Megy hat");
+			
+			
 			View.scoreGame();
+			
 		}
 	}
 
@@ -123,7 +128,7 @@ public class ControlPlayTheGame {
 			IControlKeys acc = Accelerate.getInstance();
 
 			callConrtrolModifier(bot, acc);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -135,7 +140,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys acc = Accelerate2.getInstance();
 			callConrtrolModifier(bot, acc);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 
 		}
@@ -167,7 +172,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys slow = SlowDown.getInstance();
 			callConrtrolModifier(bot, slow);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -178,7 +183,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys slow = SlowDown2.getInstance();
 			callConrtrolModifier(bot, slow);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -207,7 +212,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys turnright = TurnRight.getInstance();
 			callConrtrolModifier(bot, turnright);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -218,7 +223,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys turnright = TurnRight2.getInstance();
 			callConrtrolModifier(bot, turnright);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -247,7 +252,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys turnright = TurnLeft.getInstance();
 			callConrtrolModifier(bot, turnright);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -258,7 +263,7 @@ public class ControlPlayTheGame {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys turnright = TurnLeft2.getInstance();
 			callConrtrolModifier(bot, turnright);
-			aaa();
+			controlListCycle();
 			View.getDrawPanel().repaint();
 		}
 	}

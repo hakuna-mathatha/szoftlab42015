@@ -9,6 +9,9 @@ import java.awt.*;
 public class Score extends JFrame {
 	private JButton btn_back;
 	private JButton btn_exit;
+	
+	private JLabel player1_score;
+	private JLabel player2_score;
     
 	public Score(String title){
         super(title);
@@ -21,14 +24,14 @@ public class Score extends JFrame {
         JPanel panel11 = new JPanel();
         panel11.setLayout(new FlowLayout());
         JLabel player1 = new JLabel("Player1");
-        JLabel player1_score = new JLabel("125");
+        player1_score = new JLabel("125");
         panel11.add(player1);
         panel11.add(player1_score);
 
         JPanel panel12 = new JPanel();
         panel12.setLayout(new FlowLayout());
         JLabel player2 = new JLabel("Player2");
-        JLabel player2_score = new JLabel("200");
+        player2_score = new JLabel("200");
         panel12.add(player2);
         panel12.add(player2_score);
 
@@ -51,6 +54,23 @@ public class Score extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 	
+	public void setPlayer1_score(JLabel player1_score) {
+		this.player1_score = player1_score;
+	}
+	
+	public void setPlayer2_score(JLabel player2_score) {
+		this.player2_score = player2_score;
+	}
+
+	
+	public JLabel getPlayer1_score() {
+		return player1_score;
+	}
+
+	public JLabel getPlayer2_score() {
+		return player2_score;
+	}
+
 	public JButton getBtn_back() {
 		return btn_back;
 	}
