@@ -6,6 +6,8 @@ import Phoebe.gui.View;
 import Phoebe.painter.DrawPanel;
 import Phoebe.trackpackage.Coordinate;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,6 +22,8 @@ public class Control {
 	private static ControlNewGameMenu controlNewGameMenu;
 	private static Timer timer;
 	private static Timer timerCleaner;
+	private Timer time;
+	private int gametime;
 
 	public Control() {
 		controlPlayTheGame = new ControlPlayTheGame(game);
@@ -83,8 +87,10 @@ public class Control {
 		DrawPanel.setView(view);
 		View.setPlayTheGame(playTheGame);
 		controlPlayTheGame.addPlayTheGameListener();
-		 startTimerForRounds();
+		
+		startTimerForRounds();
 		startTimerForRoundsCleaner();
+		startTheTime();
 	}
 
 	public void inicializeGame(int index) {
@@ -116,8 +122,10 @@ public class Control {
 		}
 		if (died && game.getCleanersList().size() == 0) {
 			timer.cancel();
-			Control.getTimer().cancel();
-			View.scoreGame();
+			time.cancel();
+			View.getPlayTheGame().getTime().setText("GAME OVER");
+			// View.scoreGame();
+
 		}
 	}
 
@@ -137,8 +145,8 @@ public class Control {
 		this.timerCleaner.schedule(roundTimer, 1 * 1000, 200);
 	}
 
-	public boolean whenToStopTheTimerCleaner(){
-		if(game.getCleanersList().size()==0 ){
+	public boolean whenToStopTheTimerCleaner() {
+		if (game.getCleanersList().size() == 0) {
 			timerCleaner.cancel();
 			return true;
 		}
@@ -154,5 +162,25 @@ public class Control {
 				View.getDrawPanel().repaint();
 			}
 		}
+	}
+	
+	public void startTheTime() {
+		gametime = 0;
+		GameTime gameTime = new GameTime();
+		this.time = new Timer();
+		time.schedule(gameTime, 0,1000);
+		
+	}
+	
+	
+	private class GameTime extends TimerTask{
+
+		@Override
+		public void run() {
+			gametime++;
+			View.getPlayTheGame().getTime().setText(gametime+"");
+			
+		}
+		
 	}
 }

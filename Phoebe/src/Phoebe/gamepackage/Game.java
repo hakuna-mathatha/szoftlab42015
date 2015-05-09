@@ -94,14 +94,16 @@ public class Game {
 
 	private void calcDistance() {
 		for (Robot robot : robots) {
+			if(!robot.getState().equals(RobotState.died)){
 					Coordinate vector = robot.getLastPosition().difCoord(robot.getPosition());
 					double length = vector.legth();
 					double distance = length + robot.getDistance();
 					robot.setDistance(distance);
+			}
 		}
 	}
 
-	public Bot getWinner() {
+	public Robot getWinner() {
 		Robot winner = robots.get(0);
 		double max = winner.getDistance();
 		for (Robot robot : robots) {

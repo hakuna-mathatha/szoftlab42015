@@ -14,8 +14,9 @@ public class PlayTheGame extends JFrame{
 	private JButton btn_score;
 	private DrawPanel drawPanel;
 	private JButton btn_exit;
+	private JLabel time;
 
-    public PlayTheGame(String title){
+	public PlayTheGame(String title){
         super(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600,600);
@@ -27,8 +28,15 @@ public class PlayTheGame extends JFrame{
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.BLACK);
         drawPanel = new DrawPanel();
+       
         drawPanel.setBorder(blackline);
         jPanel.add(drawPanel);
+        
+        //Time
+        time = new JLabel("00:00");
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.NONE;
+        time.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //Vegeredmenygomb
         JPanel jPanel2 = new JPanel();
@@ -40,13 +48,19 @@ public class PlayTheGame extends JFrame{
         btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel2.add(btn_exit);
+        jPanel2.add(time);
         jPanel.add(jPanel2);
         super.add(jPanel, CENTER);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public DrawPanel getDrawPanel() {
 		return drawPanel;
+	}
+    
+    public JLabel getTime() {
+		return time;
 	}
 
 	public void setDrawPanel(DrawPanel jPanel1) {

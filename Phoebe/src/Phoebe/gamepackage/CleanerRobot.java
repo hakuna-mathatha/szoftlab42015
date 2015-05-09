@@ -31,8 +31,8 @@ public class CleanerRobot extends Bot {
 	public CleanerRobot() {
 		displacement = new Displacement(2, 1);
 		state = RobotState.pure;
-		nextPosition = new Coordinate(300, 300);	// legyen a kiindulo ponttal azonos
-		position = new Coordinate(305, 305);
+		nextPosition = new Coordinate(480, 480);	// legyen a kiindulo ponttal azonos
+		position = new Coordinate(420, 420);
 		lastPosition = new Coordinate(310, 310);
 		type = BaseType.cleanerRobot;
 		trackPart = new JumpablePart();
