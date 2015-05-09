@@ -28,7 +28,7 @@ public class PlayTheGame extends JFrame{
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.BLACK);
         drawPanel = new DrawPanel();
-       
+        drawPanel.setBackground(new Color(0,153,0));
         drawPanel.setBorder(blackline);
         jPanel.add(drawPanel);
         
