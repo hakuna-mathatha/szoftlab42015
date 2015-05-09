@@ -148,7 +148,7 @@ public class View {
 		}
 	}
 
-	//Barriereket tartlamazo listan iteralas, karbantartas, rajzolas
+//	Barriereket tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBarriers(Graphics g) {
 		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
 			Painter painter = iterator.next();
@@ -159,6 +159,17 @@ public class View {
 			}
 		}
 	}
+	
+//	public static void drawBarriers(Graphics g) {
+//		for (int i=0; i<barrierPainters.size();i++) {
+//			Painter painter = barrierPainters.get(i);
+//			if (!painter.hasObservable()) {
+//				barrierPainters.remove(i);
+//			} else {
+//				painter.onPaint(g);
+//			}
+//		}
+//	}
 
 	//Botokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBots(Graphics g) {

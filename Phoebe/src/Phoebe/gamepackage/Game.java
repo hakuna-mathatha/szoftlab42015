@@ -62,12 +62,18 @@ public class Game {
 		for(int i=0; i<cleaners.size();i++){
 			CleanerRobot cleaner = cleaners.get(i);
 			cleaner.selectNearestBarrier(track);
-			if(cleaner.getNearestBarrier() == null){
+			if(cleaner.getNearestBarrier() == null ){
 				cleaner.clean();
 				cleaners.remove(i);
 				continue;
 			}
-			cleaner.jump(track);
+//			System.out.println("Cleaner ciklus");
+			if(cleaner.getState().equals(RobotState.died)){
+				cleaners.remove(i);
+			}else{
+				cleaner.jump(track);
+			}
+			
 		}
 	}
 	

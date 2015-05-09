@@ -1,5 +1,6 @@
 package Phoebe.Controller;
 import Phoebe.gamepackage.Displacement;
+import Phoebe.trackpackage.Coordinate;
 
 public class Accelerate extends IControlKeys {
 
@@ -17,7 +18,9 @@ public class Accelerate extends IControlKeys {
 
 	@Override
 	public void modifier() {
-		if (bot.getVeloMod()) {
+		Coordinate c = bot.getPosition().difCoord(bot.getNextPosition());
+		double l = c.legth();
+		if (bot.getVeloMod() && l<150) {
 			Displacement d = bot.getDisplacement();
 			d.setVelocity(d.getVelocity() + 3);
 			bot.setDisplacement(d);

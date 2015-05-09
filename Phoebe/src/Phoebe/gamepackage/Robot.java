@@ -129,9 +129,9 @@ public class Robot extends Bot {
 		part.addBase(this, position);
 		displacement.angle = 0;
 		displacement.velocity = 1;
-		System.out.println(displacement.getVelocity()+"********************");   //kivenni
+//		System.out.println(displacement.getVelocity()+"********************");   //kivenni
 		getTheEffectForRobot(b);
-		System.out.println(displacement.getVelocity()+"********************");    //kivenni
+//		System.out.println(displacement.getVelocity()+"********************");    //kivenni
 		defaultNextPosition();
 	}
 	
@@ -145,7 +145,7 @@ public class Robot extends Bot {
 		// osszege altal kapott vektor hosszanak a fele
 		if (aBot.getType().equals(BaseType.normalRobot)) {
 			aBot.setDisplacement(modifyVeloRpbot_Robot(aBot));
-			System.out.println(aBot.getDisplacement().getVelocity());   //kivenni
+			
 			// Tiltsa le a sebesseg modositas lehetoseget
 			aBot.setVeloMod(false);
 			aBot.setState(RobotState.active);
@@ -154,6 +154,7 @@ public class Robot extends Bot {
 			//Observer levalasztasa
 			detachObserver();
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
+			System.out.println("ra ugrott");   //kivenni
 			Displacement disp = new Displacement();
 			disp = aBot.getDisplacement();
 			double velocity = aBot.getDisplacement().getVelocity();
@@ -166,20 +167,20 @@ public class Robot extends Bot {
 		Displacement fast = new Displacement();
 		Coordinate faster = new Coordinate();
 		faster = robot.getPosition().difCoord(robot.getLastPosition());
-		System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");   ///kivenni
+//		System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");   ///kivenni
 		Coordinate slower = new Coordinate();
 		slower = this.getPosition().difCoord(this.getLastPosition());
-		System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");  //kivenni
+//		System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");  //kivenni
 		Coordinate sum = new Coordinate();
 		sum = slower.addCoord(faster);
-		System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");  //kivenni
+//		System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");  //kivenni
 		double velo = sum.legth() / 2;
-		System.out.println("Velo: "+velo);   //kivenni
+//		System.out.println("Velo: "+velo);   //kivenni
 		Coordinate direction = new Coordinate();
 		direction.setX(robot.getPosition().getX() - robot.getLastPosition().getX());
 		direction.setY(robot.getPosition().getY() - robot.getLastPosition().getY());
 		double leng = direction.legth();
-		System.out.println(robot.getDisplacement().getVelocity());  //kivenni
+//		System.out.println(robot.getDisplacement().getVelocity());  //kivenni
 		Displacement displacement = robot.getDisplacement();
 		displacement.setVelocity(-1*(leng-velo));
 		return displacement;

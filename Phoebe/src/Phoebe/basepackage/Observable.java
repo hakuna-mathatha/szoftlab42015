@@ -19,7 +19,7 @@ public class Observable {
 
     //megfigyelo levalasztasa
     public void detachObserver() {
-    	System.out.println("Detach call*************************************************************"); //majd kivenni ha nem kell
+//    	System.out.println("Detach call*************************************************************"); //majd kivenni ha nem kell
         this.observer.detachObservable();
         this.observer = null;
     }

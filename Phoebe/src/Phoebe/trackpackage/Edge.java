@@ -28,6 +28,6 @@ public class Edge extends Barrier {
 		displacement.setVelocity(0);            //elmozdulas lenullazasa
 		bot.setDisplacement(displacement);      //uj elmozdulas visszaallitasa
 		bot.getTrackPart().removeFromTrackPart(bot);//taroljukk a robotot arrol a palyaelemrol, amin tartozkodik, de a Game listajaban benne hagyjuk
-                bot.detachObserver();
+        bot.detachObserver();
 	}
 }

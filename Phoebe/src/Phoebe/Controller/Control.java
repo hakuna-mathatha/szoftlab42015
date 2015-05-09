@@ -5,6 +5,7 @@ import Phoebe.gui.PlayTheGame;
 import Phoebe.gui.View;
 import Phoebe.painter.DrawPanel;
 import Phoebe.trackpackage.Coordinate;
+import Phoebe.trackpackage.TrackPart;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -87,7 +88,6 @@ public class Control {
 		DrawPanel.setView(view);
 		View.setPlayTheGame(playTheGame);
 		controlPlayTheGame.addPlayTheGameListener();
-		
 		startTimerForRounds();
 		startTimerForRoundsCleaner();
 		startTheTime();
@@ -100,8 +100,12 @@ public class Control {
 		game.getTrack().create(index);
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
+		
+		
 		CleanerRobot clean = new CleanerRobot();
-		clean.setTrackPart(game.getTrack().findAPart(clean.getPosition()));
+		TrackPart t = game.getTrack().findAPart(clean.getPosition());
+		t.addBase(clean, clean.getPosition());
+		clean.setTrackPart(t);
 		clean.selectNearestBarrier(game.getTrack());
 		game.getCleanersList().add(clean);
 	}
@@ -142,13 +146,15 @@ public class Control {
 	public void startTimerForRoundsCleaner() {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
-		this.timerCleaner.schedule(roundTimer, 1 * 1000, 200);
+		this.timerCleaner.schedule(roundTimer, 1 * 1000, 500);
+		
 	}
 
 	public boolean whenToStopTheTimerCleaner() {
 		if (game.getCleanersList().size() == 0) {
 			timerCleaner.cancel();
 			return true;
+			
 		}
 		return false;
 	}
@@ -161,6 +167,7 @@ public class Control {
 				game.startTheCleaners();
 				View.getDrawPanel().repaint();
 			}
+
 		}
 	}
 	

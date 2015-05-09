@@ -54,19 +54,19 @@ public class ControlPlayTheGame {
 	public Robot chooseRobot(ActionEvent e) {
 		Robot bot = null;
 		String s = e.getActionCommand();
-		System.out.println(s);
+//		System.out.println(s);
 		if (s == null) {
 			for (Robot b : game.getRobotList()) {
 				if (b.getId() == 1) {
-					System.out.println("1. robot ");
+//					System.out.println("1. robot ");
 					bot = b;
 				}
 			}
 		} else {
-			System.out.println("2.");
+//			System.out.println("2.");
 			for (Robot b : game.getRobotList()) {
 				if (b.getId() == 2) {
-					System.out.println("2.robot ");
+//					System.out.println("2.robot ");
 					bot = b;
 				}
 			}
