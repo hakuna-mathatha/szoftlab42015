@@ -8,6 +8,7 @@ public abstract class Barrier extends Base {
 
 	public synchronized void clean() {
 		trackPart.removeFromTrackPart(this);
+		System.out.println("REMOVE");
 		detachObserver();   //Observer levalasztasa
 	}
 }

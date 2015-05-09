@@ -28,8 +28,8 @@ public class ControlNewGameMenu {
         public void actionPerformed(ActionEvent e) {
 	        // Azt majd meg kene csinalni hogy tobb palya kozul is lehessen valasztani, kezdetnek az is jo
 	        // ha mar egyre mukodik.
-            String map = (String)comboBox.getSelectedItem();
-            control.startNewGame();
+            int index = comboBox.getSelectedIndex();
+            control.startNewGame(index);
             View.PlayTheGame();
             View.getDrawPanel().repaint();
         }

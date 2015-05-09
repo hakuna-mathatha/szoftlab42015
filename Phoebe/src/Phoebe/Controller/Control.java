@@ -76,9 +76,9 @@ public class Control {
 		controlScore.addScoreListener();
 	}
 
-	public void startNewGame() {
+	public void startNewGame(int index) {
 		view.reStart();
-		inicializeGame();
+		inicializeGame(index);
 		PlayTheGame playTheGame = new PlayTheGame("Phoebe");
 		view.setDrawPanel(playTheGame.getDrawPanel());
 		DrawPanel.setView(view);
@@ -88,11 +88,11 @@ public class Control {
 		startTimerForRoundsCleaner();
 	}
 
-	public void inicializeGame() {
+	public void inicializeGame(int index) {
 		this.game = new Game();
 		this.game.setControl(this);
 		controlPlayTheGame.setGame(game);
-		game.getTrack().create();
+		game.getTrack().create(index);
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
 		CleanerRobot clean = new CleanerRobot();
@@ -135,7 +135,7 @@ public class Control {
 	public void startTimerForRoundsCleaner() {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
-		this.timerCleaner.schedule(roundTimer, 1 * 1000, 2500);
+		this.timerCleaner.schedule(roundTimer, 1 * 1000, 200);
 	}
 
 	public boolean whenToStopTheTimerCleaner(){

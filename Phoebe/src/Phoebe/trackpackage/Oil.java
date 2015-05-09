@@ -13,7 +13,7 @@ public class Oil extends Barrier {
 
 	public Oil() {
 		this.type = BaseType.oil;
-		this.ray = 1;
+		this.ray = 50.5;
 		this.timeStamp = new Timestamp(System.currentTimeMillis());
 		this.type = BaseType.oil;
 		this.timer = new Timer();
@@ -68,8 +68,9 @@ public class Oil extends Barrier {
 	}
 	
 	public synchronized void clean() {
-		timer.cancel();
+		
 		detachObserver();   //observer levalasztas
 		trackPart.removeFromTrackPart(this);
+		timer.cancel();
 	}
 }
