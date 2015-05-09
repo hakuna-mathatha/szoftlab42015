@@ -21,6 +21,7 @@ public class Control {
 	private static Timer timer;
 	private static Timer timerCleaner;
 
+
 	public Control() {
 		controlPlayTheGame = new ControlPlayTheGame(game);
 		controlMenu = new ControlMenu();

@@ -1,4 +1,5 @@
 package Phoebe.gui;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,7 +10,9 @@ import java.awt.*;
 public class Score extends JFrame {
 	private JButton btn_back;
 	private JButton btn_exit;
-    
+    JLabel player1_score;
+    JLabel player2_score;
+
 	public Score(String title){
         super(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -21,14 +24,15 @@ public class Score extends JFrame {
         JPanel panel11 = new JPanel();
         panel11.setLayout(new FlowLayout());
         JLabel player1 = new JLabel("Player1");
-        JLabel player1_score = new JLabel("125");
+        player1_score = new JLabel(String.valueOf(getPlayer1_score()));
+
         panel11.add(player1);
         panel11.add(player1_score);
 
         JPanel panel12 = new JPanel();
         panel12.setLayout(new FlowLayout());
         JLabel player2 = new JLabel("Player2");
-        JLabel player2_score = new JLabel("200");
+        player2_score = new JLabel(String.valueOf(getPlayer2_score()));
         panel12.add(player2);
         panel12.add(player2_score);
 
@@ -63,4 +67,14 @@ public class Score extends JFrame {
 	public void setBtn_exit(JButton btn_exit) {
 		this.btn_exit = btn_exit;
 	}
+
+    public JLabel getPlayer1_score(){
+        return player1_score;
+    }
+
+    public JLabel getPlayer2_score(){
+        return player2_score;
+    }
+
+
 }

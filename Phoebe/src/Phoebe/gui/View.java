@@ -178,4 +178,5 @@ public class View {
 		drawBarriers(g);
 		drawBots(g);
 	}
+
 }

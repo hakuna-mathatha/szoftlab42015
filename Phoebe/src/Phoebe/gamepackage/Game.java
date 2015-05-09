@@ -101,7 +101,7 @@ public class Game {
 		}
 	}
 
-	public Bot getWinner() {
+	public Robot getWinner() {
 		Robot winner = robots.get(0);
 		double max = winner.getDistance();
 		for (Robot robot : robots) {

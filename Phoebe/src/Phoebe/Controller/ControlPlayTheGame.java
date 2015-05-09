@@ -1,13 +1,16 @@
 package Phoebe.Controller;
+
 import Phoebe.gamepackage.Game;
 import Phoebe.gamepackage.Robot;
 import Phoebe.gamepackage.RobotState;
 import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -110,6 +113,11 @@ public class ControlPlayTheGame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Control.getTimer().cancel();
+            double res1 = game.getRobotList().get(0).getDistance();
+            double res2 = game.getRobotList().get(1).getDistance();
+            DecimalFormat df = new DecimalFormat("#.00");
+            View.getScore().getPlayer1_score().setText(String.valueOf(df.format(res1)));
+            View.getScore().getPlayer2_score().setText(String.valueOf(df.format(res2)));
 			View.scoreGame();
 		}
 	}
