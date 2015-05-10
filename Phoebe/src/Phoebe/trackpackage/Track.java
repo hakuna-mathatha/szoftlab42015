@@ -56,8 +56,14 @@ public class Track {
 //      Olaj és ragacsfoltok beolvasása, pályaelemhez hozzáadása
         Oil oil = (Oil) readFromFile(baseURL + "Oil1.dat", new Oil());
         findAPart(oil.getPosition()).addBase(oil, oil.getPosition());
+        Oil oil2 = (Oil) readFromFile(baseURL + "Oil2.dat", new Oil());
+        findAPart(oil2.getPosition()).addBase(oil2, oil2.getPosition());
         Putty putty = (Putty) readFromFile(baseURL + "Putty1.dat", new Putty());
         findAPart(putty.getPosition()).addBase(putty,putty.getPosition());
+        Putty putty2 = (Putty) readFromFile(baseURL + "Putty2.dat", new Putty());
+        findAPart(putty2.getPosition()).addBase(putty2,putty2.getPosition());
+        Putty putty3 = (Putty) readFromFile(baseURL + "Putty3.dat", new Putty());
+        findAPart(putty3.getPosition()).addBase(putty3,putty3.getPosition());
 
         edge = new EdgeofTheTrack();
     }

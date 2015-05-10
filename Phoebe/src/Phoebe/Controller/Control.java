@@ -103,7 +103,7 @@ public class Control {
 		controlPlayTheGame.setGame(game);
 		game.getTrack().create(index);
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
-		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
+		game.addRobotToTheGame(new Coordinate(15, 110), new Displacement(0.1, 1), 2);
 
 		cleanReplaceTime = 0;
 
@@ -146,13 +146,17 @@ public class Control {
 			}
 		}
 		if (died) {
-			timer.cancel();
-			time.cancel();
-			timerCleaner.cancel();
-			View.getPlayTheGame().getTime().setText("GAME OVER");
+			stopEverything();
 			// View.scoreGame();
 
 		}
+	}
+	
+	public void stopEverything() {
+		timer.cancel();
+		time.cancel();
+		timerCleaner.cancel();
+		View.getPlayTheGame().getTime().setText("GAME OVER");
 	}
 
 	private class TimerForTheRounds extends TimerTask {
@@ -208,6 +212,8 @@ public class Control {
 		public void run() {
 			gametime++;
 			View.getPlayTheGame().getTime().setText(gametime + "");
+			if(gametime==120)
+				stopEverything();
 
 		}
 
