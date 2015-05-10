@@ -64,7 +64,6 @@ public class Score extends JFrame {
 		this.player2_score = player2_score;
 	}
 
-	
 	public JLabel getPlayer1_score() {
 		return player1_score;
 	}

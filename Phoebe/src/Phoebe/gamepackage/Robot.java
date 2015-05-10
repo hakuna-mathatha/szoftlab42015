@@ -113,9 +113,6 @@ public class Robot extends Bot {
 	public void calcNextPosition(){
 		setNextPosition(calcCoordinate(position, displacement));
 	}
-	
-	
-	
 
 	@Override
 	public void jump(Track track) {
@@ -130,9 +127,7 @@ public class Robot extends Bot {
 		part.addBase(this, position);
 		displacement.angle = 0;
 		displacement.velocity = 1;
-//		System.out.println(displacement.getVelocity()+"********************");   //kivenni
 		getTheEffectForRobot(b);
-//		System.out.println(displacement.getVelocity()+"********************");    //kivenni
 		defaultNextPosition();
 	}
 	
@@ -168,20 +163,15 @@ public class Robot extends Bot {
 		Displacement fast = new Displacement();
 		Coordinate faster = new Coordinate();
 		faster = robot.getPosition().difCoord(robot.getLastPosition());
-//		System.out.println("Faster: "+faster.getX()+" " + faster.getY()+"\n");   ///kivenni
 		Coordinate slower = new Coordinate();
 		slower = this.getPosition().difCoord(this.getLastPosition());
-//		System.out.println("Slower: "+ slower.getX()+" " + slower.getY()+"\n");  //kivenni
 		Coordinate sum = new Coordinate();
 		sum = slower.addCoord(faster);
-//		System.out.println("Sum: "+ sum.getX()+" " + sum.getY()+"\n");  //kivenni
 		double velo = sum.legth() / 2;
-//		System.out.println("Velo: "+velo);   //kivenni
 		Coordinate direction = new Coordinate();
 		direction.setX(robot.getPosition().getX() - robot.getLastPosition().getX());
 		direction.setY(robot.getPosition().getY() - robot.getLastPosition().getY());
 		double leng = direction.legth();
-//		System.out.println(robot.getDisplacement().getVelocity());  //kivenni
 		Displacement displacement = robot.getDisplacement();
 		displacement.setVelocity(-1*(leng-velo));
 		return displacement;

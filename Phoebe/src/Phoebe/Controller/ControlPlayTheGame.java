@@ -6,9 +6,7 @@ import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
 
-import javax.jws.Oneway;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
@@ -129,7 +127,6 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			IControlKeys acc = Accelerate.getInstance();
-
 			callConrtrolModifier(bot, acc);
 			controlListCycle();
 			View.getDrawPanel().repaint();

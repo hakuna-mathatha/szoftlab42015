@@ -26,9 +26,9 @@ public class View {
 		trackPartPainters = new ArrayList<TrackPartPainter>();
 		barrierPainters = new ArrayList<BarrierPainter>();
 		botPainters = new ArrayList<BotPainter>();
-		menu = new Menu("Főmen�");
-		newGameMenu = new NewGameMenu("�j j�t�k");
-		score = new Score("V�geredm�ny");
+		menu = new Menu("Fomenu");
+		newGameMenu = new NewGameMenu("Uj jatek");
+		score = new Score("Vegeredmeny");
 		menu.setVisible(true);
 	}
 	
@@ -159,7 +159,6 @@ public class View {
 			}
 		}
 	}
-	
 
 	//Botokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBots(Graphics g) {
