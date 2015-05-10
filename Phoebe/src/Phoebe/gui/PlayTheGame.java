@@ -15,6 +15,10 @@ public class PlayTheGame extends JFrame{
 	private DrawPanel drawPanel;
 	private JButton btn_exit;
 	private JLabel time;
+    private JLabel oilRepo1;
+    private JLabel oilRepo2;
+    private JLabel puttyRepo1;
+    private JLabel puttyRepo2;
 
 	public PlayTheGame(String title){
         super(title);
@@ -31,7 +35,21 @@ public class PlayTheGame extends JFrame{
         drawPanel.setBackground(new Color(0,153,0));
         drawPanel.setBorder(blackline);
         jPanel.add(drawPanel);
-        
+
+        //Repositorik
+        JLabel player1 = new JLabel("Player1\n");
+        player1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        oilRepo1 = new JLabel("Oil repository: 5");
+        oilRepo1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        puttyRepo1 = new JLabel("Putty repository: 5");
+        puttyRepo1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel player2 = new JLabel("Player2");
+        player2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        oilRepo2 = new JLabel("Oil repository: 5");
+        oilRepo2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        puttyRepo2 = new JLabel("Putty repository: 5");
+        puttyRepo2.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         //Time
         time = new JLabel("00:00");
         GridBagConstraints c = new GridBagConstraints();
@@ -41,9 +59,18 @@ public class PlayTheGame extends JFrame{
         //Vegeredmenygomb
         JPanel jPanel2 = new JPanel();
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        jPanel2.add(player1);
+        jPanel2.add(oilRepo1);
+        jPanel2.add(puttyRepo1);
+        jPanel2.add(Box.createRigidArea(new Dimension(0,40)));
+        jPanel2.add(player2);
+        jPanel2.add(oilRepo2);
+        jPanel2.add(puttyRepo2);
+        jPanel2.add(Box.createRigidArea(new Dimension(0,100)));
         btn_score=new JButton("Végeredmény");
         btn_score.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel2.add(btn_score);
+
         //Kilepes gomb
         btn_exit=new JButton("Kilépés");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -62,6 +89,14 @@ public class PlayTheGame extends JFrame{
     public JLabel getTime() {
 		return time;
 	}
+
+    public JLabel getOilRepo1() {return oilRepo1;}
+
+    public JLabel getOilRepo2() {return oilRepo2;}
+
+    public JLabel getPuttyRepo1() {return puttyRepo1;}
+
+    public JLabel getPuttyRepo2() {return puttyRepo2;}
 
 	public void setDrawPanel(DrawPanel jPanel1) {
 		this.drawPanel = jPanel1;
