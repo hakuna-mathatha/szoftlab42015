@@ -67,7 +67,6 @@ public class Game {
 				cleaners.remove(i);
 				continue;
 			}
-//			System.out.println("Cleaner ciklus");
 			if(cleaner.getState().equals(RobotState.died)){
 				cleaners.remove(i);
 			}else{

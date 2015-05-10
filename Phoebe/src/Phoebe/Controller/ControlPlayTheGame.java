@@ -6,6 +6,7 @@ import Phoebe.gui.View;
 import Phoebe.trackpackage.Oil;
 import Phoebe.trackpackage.Putty;
 
+import javax.jws.Oneway;
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
@@ -38,14 +39,14 @@ public class ControlPlayTheGame {
 	}
 
 	public void putOil(Robot bot) {
-            if(bot.getState() != RobotState.died){
+            if(bot.getState() != RobotState.died && bot.getOilRepository()>0){
                     Oil oil = new Oil(bot.getPosition(), bot.getTrackPart());
                     bot.putTheBarrier(oil);
                 }
 	};
 
 	public void putPutty(Robot bot) {
-            if(bot.getState() != RobotState.died){
+            if(bot.getState() != RobotState.died && bot.getPuttyRepository()>0){
                     Putty putty = new Putty(bot.getPosition(), bot.getTrackPart());
                     bot.putTheBarrier(putty);
             }
@@ -54,19 +55,15 @@ public class ControlPlayTheGame {
 	public Robot chooseRobot(ActionEvent e) {
 		Robot bot = null;
 		String s = e.getActionCommand();
-//		System.out.println(s);
 		if (s == null) {
 			for (Robot b : game.getRobotList()) {
 				if (b.getId() == 1) {
-//					System.out.println("1. robot ");
 					bot = b;
 				}
 			}
 		} else {
-//			System.out.println("2.");
 			for (Robot b : game.getRobotList()) {
 				if (b.getId() == 2) {
-//					System.out.println("2.robot ");
 					bot = b;
 				}
 			}
@@ -81,7 +78,7 @@ public class ControlPlayTheGame {
 
 	protected static boolean t = false;
 
-	public static void controlListCycle() {
+	public static synchronized void controlListCycle() {
 		new Thread() {
 			public void run() {
 				while (controlKeys.size() > 0) {
@@ -114,6 +111,7 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent e) {
 			Control.getTimer().cancel();
 			Control.getTimerCleaner().cancel();
+			Control.getTime().cancel();
             double res1 = game.getRobotList().get(0).getDistance();
             double res2 = game.getRobotList().get(1).getDistance();
             DecimalFormat df = new DecimalFormat("#.00");

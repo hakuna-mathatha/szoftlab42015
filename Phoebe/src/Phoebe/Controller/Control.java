@@ -23,7 +23,10 @@ public class Control {
 	private static ControlNewGameMenu controlNewGameMenu;
 	private static Timer timer;
 	private static Timer timerCleaner;
-	private Timer time;
+	private static Timer time;
+	
+
+
 	private int gametime;
 
 	public Control() {
@@ -32,6 +35,10 @@ public class Control {
 		controlScore = new ControlScore();
 		controlNewGameMenu = new ControlNewGameMenu(this);
 		addTheControlLogic();
+	}
+	
+	public static Timer getTime() {
+		return time;
 	}
 
 	public static Timer getTimerCleaner() {
@@ -113,7 +120,7 @@ public class Control {
 	public void startTimerForRounds() {
 		TimerTask roundTimer = new TimerForTheRounds();
 		this.timer = new Timer();
-		this.timer.schedule(roundTimer, 1 * 1000, 5000);
+		this.timer.schedule(roundTimer, 1 * 1000, 2000);
 	}
 
 	public void whenToStopTheTimer() {
@@ -127,6 +134,7 @@ public class Control {
 		if (died && game.getCleanersList().size() == 0) {
 			timer.cancel();
 			time.cancel();
+			timerCleaner.cancel();
 			View.getPlayTheGame().getTime().setText("GAME OVER");
 			// View.scoreGame();
 
@@ -146,7 +154,7 @@ public class Control {
 	public void startTimerForRoundsCleaner() {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
-		this.timerCleaner.schedule(roundTimer, 1 * 1000, 500);
+		this.timerCleaner.schedule(roundTimer, 1 * 1000, 558);
 		
 	}
 

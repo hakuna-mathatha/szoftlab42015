@@ -3,6 +3,7 @@ import Phoebe.basepackage.Base;
 import Phoebe.basepackage.BaseType;
 import Phoebe.painter.RobotPainter;
 import Phoebe.trackpackage.*;
+
 import java.sql.Timestamp;
 
 public class Robot extends Bot {
@@ -71,7 +72,7 @@ public class Robot extends Bot {
 		veloMod = true;
 		directionMod = true;
 		this.id=id;
-		this.ray = 30;
+		this.ray = 50;
 		//Painter hozzaadasa
 		RobotPainter robotPainter = new RobotPainter(System.getProperty("user.dir") + "\\resources\\robot" + id + "_v1.png");
 		attachObserver(robotPainter);

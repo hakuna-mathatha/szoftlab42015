@@ -48,10 +48,11 @@ public class Putty extends Barrier {
 
 	//ha ragacsba lepunk, felezodik a sebesseg, es nem valtoztathatjuk sebesseget a kovetkezo korig
 	public void stepOn(Bot bot) {
-		countToRemove--;    //csokkentjuk a tartossagot
+		    //csokkentjuk a tartossagot
 
 		//csak a normal robotra hat
 		if (bot.getType() == BaseType.normalRobot) {
+			countToRemove--;
 			bot.setState(RobotState.putty);             //allapaota putty lesz
 			bot.setDirectionMod(true);                  //iranya valtoztathato
 			bot.setVeloMod(false);                      //sebessege nem valtoztathato
