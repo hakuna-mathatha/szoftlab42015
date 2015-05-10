@@ -1,7 +1,5 @@
 package Phoebe.trackpackage;
 
-import Phoebe.helperpackage.JSONHandler;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -139,24 +137,7 @@ public class Track {
         return type;
     }
 
-    private void fromJson() {
-        String baseURL = System.getProperty("user.dir") + "/data/JSONs/";
-        try {
-            JumpablePart jumpablePart1 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart1.dat", JumpablePart.class);
-            JumpablePart jumpablePart2 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart2.dat", JumpablePart.class);
-            JumpablePart jumpablePart3 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart3.dat", JumpablePart.class);
-            JumpablePart jumpablePart4 = (JumpablePart) JSONHandler.readStream(baseURL + "jumpablePart4.dat", JumpablePart.class);
-
-            trackParts.add(jumpablePart1);
-            trackParts.add(jumpablePart2);
-            trackParts.add(jumpablePart3);
-            trackParts.add(jumpablePart4);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        edge = new EdgeofTheTrack();
-    }
+    
 
     public TrackPart findAPart(Coordinate coord) {
         //kereses az elemek kozott
