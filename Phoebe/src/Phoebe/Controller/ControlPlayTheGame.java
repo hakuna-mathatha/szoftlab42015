@@ -294,6 +294,10 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			putOil(bot);
+            int oilRepo1 = game.getRobotList().get(0).getOilRepository();
+            int oilRepo2 = game.getRobotList().get(1).getOilRepository();
+            View.getPlayTheGame().getOilRepo1().setText("Oil repository: " + String.valueOf(oilRepo1));
+            View.getPlayTheGame().getOilRepo2().setText("Oil repository: " + String.valueOf(oilRepo2));
 			View.getDrawPanel().repaint();
 		}
 	}
@@ -303,6 +307,10 @@ public class ControlPlayTheGame {
 		public void actionPerformed(ActionEvent arg0) {
 			Robot bot = chooseRobot(arg0);
 			putPutty(bot);
+            int puttyRepo1 = game.getRobotList().get(0).getPuttyRepository();
+            int puttyRepo2 = game.getRobotList().get(1).getPuttyRepository();
+            View.getPlayTheGame().getPuttyRepo1().setText("Putty repository: " + String.valueOf(puttyRepo1));
+            View.getPlayTheGame().getPuttyRepo2().setText("Putty repository: " + String.valueOf(puttyRepo2));
 			View.getDrawPanel().repaint();
 		}
 	}
