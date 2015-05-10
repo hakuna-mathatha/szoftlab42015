@@ -24,12 +24,9 @@ public class Control {
 	private static Timer timer;
 	private static Timer timerCleaner;
 	private static Timer time;
-	
-
 
 	private int gametime;
-        private int cleanReplaceTime;
-      
+	private int cleanReplaceTime;
 
 	public Control() {
 		controlPlayTheGame = new ControlPlayTheGame(game);
@@ -38,7 +35,7 @@ public class Control {
 		controlNewGameMenu = new ControlNewGameMenu(this);
 		addTheControlLogic();
 	}
-	
+
 	public static Timer getTime() {
 		return time;
 	}
@@ -109,30 +106,32 @@ public class Control {
 		game.getTrack().create(index);
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
-                
-                cleanReplaceTime = 0;		
-		
-		CleanerRobot clean = new CleanerRobot();
-		TrackPart t = game.getTrack().findAPart(clean.getPosition());
-		t.addBase(clean, clean.getPosition());
-		clean.setTrackPart(t);
-		clean.selectNearestBarrier(game.getTrack());
-		game.getCleanersList().add(clean);
+
+		cleanReplaceTime = 0;
+
+//		CleanerRobot clean = new CleanerRobot();
+//		TrackPart t = game.getTrack().findAPart(clean.getPosition());
+//		t.addBase(clean, clean.getPosition());
+//		clean.setTrackPart(t);
+//		clean.selectNearestBarrier(game.getTrack());
+//		game.getCleanersList().add(clean);
 	}
-        
-        public void addNewClearner()
-        {
-            cleanReplaceTime++;
-            if(cleanReplaceTime == 3){
-                CleanerRobot clean = new CleanerRobot();
-		TrackPart t = game.getTrack().findAPart(clean.getPosition());
-		t.addBase(clean, clean.getPosition());
-		clean.setTrackPart(t);
-		clean.selectNearestBarrier(game.getTrack());
-		game.getCleanersList().add(clean);
-                cleanReplaceTime = 0;
-            }
-        }
+
+	public void addNewClearner() {
+		cleanReplaceTime++;
+		if (cleanReplaceTime == 3) {
+			CleanerRobot clean = new CleanerRobot();
+			TrackPart t = game.getTrack().findAPart(clean.getPosition());
+			t.addBase(clean, clean.getPosition());
+			clean.setTrackPart(t);
+			clean.selectNearestBarrier(game.getTrack());
+			if(game.getCleanersList().size() == 0)
+				startTimerForRoundsCleaner();
+			game.getCleanersList().add(clean);
+			cleanReplaceTime = 0;
+			
+		}
+	}
 
 	public void startTimerForRounds() {
 		TimerTask roundTimer = new TimerForTheRounds();
@@ -163,7 +162,7 @@ public class Control {
 		@Override
 		public void run() {
 			game.start();
-                        addNewClearner();
+			addNewClearner();
 			View.getDrawPanel().repaint();
 			whenToStopTheTimer();
 		}
@@ -173,14 +172,14 @@ public class Control {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
 		this.timerCleaner.schedule(roundTimer, 1 * 1000, 558);
-		
+
 	}
 
 	public boolean whenToStopTheTimerCleaner() {
 		if (game.getCleanersList().size() == 0) {
 			timerCleaner.cancel();
 			return true;
-			
+
 		}
 		return false;
 	}
@@ -196,24 +195,23 @@ public class Control {
 
 		}
 	}
-	
+
 	public void startTheTime() {
 		gametime = 0;
 		GameTime gameTime = new GameTime();
 		this.time = new Timer();
-		time.schedule(gameTime, 0,1000);
-		
+		time.schedule(gameTime, 0, 1000);
+
 	}
-	
-	
-	private class GameTime extends TimerTask{
+
+	private class GameTime extends TimerTask {
 
 		@Override
 		public void run() {
 			gametime++;
-			View.getPlayTheGame().getTime().setText(gametime+"");
-			
+			View.getPlayTheGame().getTime().setText(gametime + "");
+
 		}
-		
+
 	}
 }
