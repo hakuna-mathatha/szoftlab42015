@@ -153,19 +153,14 @@ public class Track {
     }
 
     public TrackPart findAPart(Coordinate coord) {
-
-//        System.out.println("\t\t" + getClass().getName() + ":findAPart");
-
         //kereses az elemek kozott
         for (JumpablePart p : trackParts) {
             //ha valamelyiken rajta van, akkor azt visszaadja
             if (p.containCoord(coord)) {
-//                System.out.println("Talalt");    //kivenni
                 return p;
             }
         }
         //ha egyiken sem volt rajta, akkor letert a palyarol
-//        System.out.println("Szakadek");   //kivenni
         return edge;
     }
 }

@@ -37,8 +37,7 @@ public abstract class Bot extends Base {
 
 	public abstract void jump(Track track);
 
-	public void modifyDisplacement(Displacement disp) {
-	}
+	public void modifyDisplacement(Displacement disp) {}
 
 	public void setPosition(Coordinate position1) {
 		this.position = position1;
@@ -91,8 +90,6 @@ public abstract class Bot extends Base {
 		Coordinate dirNorm = new Coordinate();
 		double leng = direction.legth();
 
-//		System.out.println(leng); //kivennimajd
-
 		Coordinate rotation = new Coordinate();
 		rotation.x = (direction.x * Math.cos(disp.getAngle()) - direction.y * Math.sin(disp.getAngle()));
 		rotation.y = (direction.y * Math.cos(disp.getAngle()) + direction.x * Math.sin(disp.getAngle()));
@@ -100,12 +97,8 @@ public abstract class Bot extends Base {
 		dirNorm.normal(rotation);
 
 		double velo = disp.getVelocity();
-//		System.out.println("velo"+" "+velo);  //kivenni majd
 		// Ha le van tiltva a sebesseg modositas, akkor a velo=1 legyen mert az elozo elmozdulas-t nem modosithatja
-
 		leng = leng+velo;
-//		System.out.println(leng); //kivenni
-
 		coordinate.setX(coord.x + leng * dirNorm.x );
 		coordinate.setY(coord.y + leng * dirNorm.y );
 		return coordinate;

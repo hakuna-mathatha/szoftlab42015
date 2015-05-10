@@ -39,7 +39,6 @@ public class NewGameMenu extends JFrame {
 		panel.setBorder(border);
 		super.add(panel, BorderLayout.CENTER);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 	
 	public JButton getBtn_exit() {

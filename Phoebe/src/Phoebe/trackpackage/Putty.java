@@ -57,7 +57,6 @@ public class Putty extends Barrier {
 			bot.setDirectionMod(true);                  //iranya valtoztathato
 			bot.setVeloMod(false);                      //sebessege nem valtoztathato
 			bot.setDisplacement(modifyVelo(bot));       //uj elmozdulas visszaallitasa
-			System.out.println("putttty********************"); //kivennii
 		}else if(bot.getType() == BaseType.cleanerRobot){
 			this.clean();
 		}
@@ -75,10 +74,8 @@ public class Putty extends Barrier {
 			direction.setX(robot.getPosition().getX() - robot.getLastPosition().getX());
 			direction.setY(robot.getPosition().getY() - robot.getLastPosition().getY());
 			double leng = direction.legth();
-			System.out.println("putttty********************"+leng);                //kivenni
 			Displacement displacement = robot.getDisplacement();
 			displacement.setVelocity(leng / (-2));
-			System.out.println("putttty********************"+displacement.getVelocity());  //kivenni
 			return displacement;
 	}
 }

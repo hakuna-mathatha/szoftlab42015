@@ -26,8 +26,6 @@ public class ControlNewGameMenu {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-	        // Azt majd meg kene csinalni hogy tobb palya kozul is lehessen valasztani, kezdetnek az is jo
-	        // ha mar egyre mukodik.
             int index = comboBox.getSelectedIndex();
             control.startNewGame(index);
             View.PlayTheGame();
