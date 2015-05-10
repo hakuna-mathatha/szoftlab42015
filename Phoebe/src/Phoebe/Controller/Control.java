@@ -109,12 +109,12 @@ public class Control {
 
 		cleanReplaceTime = 0;
 
-//		CleanerRobot clean = new CleanerRobot();
-//		TrackPart t = game.getTrack().findAPart(clean.getPosition());
-//		t.addBase(clean, clean.getPosition());
-//		clean.setTrackPart(t);
-//		clean.selectNearestBarrier(game.getTrack());
-//		game.getCleanersList().add(clean);
+		CleanerRobot clean = new CleanerRobot();
+		TrackPart t = game.getTrack().findAPart(clean.getPosition());
+		t.addBase(clean, clean.getPosition());
+		clean.setTrackPart(t);
+		clean.selectNearestBarrier(game.getTrack());
+		game.getCleanersList().add(clean);
 	}
 
 	public void addNewClearner() {

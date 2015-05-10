@@ -70,12 +70,16 @@ public class Track {
         JumpablePart jumpablePart3 = (JumpablePart) readFromFile(baseURL + "jumpablePart3.dat", new JumpablePart());
         JumpablePart jumpablePart4 = (JumpablePart) readFromFile(baseURL + "jumpablePart4.dat", new JumpablePart());
         JumpablePart jumpablePart5 = (JumpablePart) readFromFile(baseURL + "jumpablePart5.dat", new JumpablePart());
+        JumpablePart jumpablePart6 = (JumpablePart) readFromFile(baseURL + "jumpablePart6.dat", new JumpablePart());
+        JumpablePart jumpablePart7 = (JumpablePart) readFromFile(baseURL + "jumpablePart7.dat", new JumpablePart());
 
         trackParts.add(jumpablePart1);
         trackParts.add(jumpablePart2);
         trackParts.add(jumpablePart3);
         trackParts.add(jumpablePart4);
         trackParts.add(jumpablePart5);
+        trackParts.add(jumpablePart6);
+        trackParts.add(jumpablePart7);
 
         edge = new EdgeofTheTrack();
     }

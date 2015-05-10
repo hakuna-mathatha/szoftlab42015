@@ -21,10 +21,15 @@ public class RobotPainter extends BotPainter {
 		Robot robot = (Robot)observable;
 		g2.draw(new Line2D.Double(robot.getPosition().getX(), robot.getPosition().getY(), robot.getNextPosition()
 				.getX(), robot.getNextPosition().getY()));
+		
+		g2.setColor(Color.BLUE);
+	
 		g2.setColor(Color.RED);
 		g2.draw(new Ellipse2D.Double(robot.getNextPosition().getX() - 5, robot.getNextPosition().getY() - 5, 10, 10));
     	Base b = (Base)observable;
     	Coordinate coord = calculatePicturePosition(b.getPosition());
 		g.drawImage(image, (int)coord.getX(), (int)coord.getY(), (int)(image.getWidth() * View.scale*0.5), (int)(image.getHeight() * View.scale*0.5), null);
+		
+		
 	}
 }

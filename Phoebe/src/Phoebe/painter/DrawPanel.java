@@ -21,6 +21,7 @@ public class DrawPanel extends JPanel {
 	@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        setDoubleBuffered(true);
 		view.drawImage(g);
     }
 }

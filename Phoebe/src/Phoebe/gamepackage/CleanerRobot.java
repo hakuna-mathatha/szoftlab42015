@@ -9,12 +9,13 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CleanerRobot extends Bot {
+public class CleanerRobot extends Bot implements Runnable {
 	private Barrier nearestBarrier;
 	private boolean nearestBarrierExist;
 	private Coordinate purpose;
 	private static Object o = new Object();
 	private Coordinate point;
+	private Track track;
 
 	public CleanerRobot(Coordinate position1, Displacement disp1, Coordinate lastpos1) {
 		displacement = disp1;
@@ -37,7 +38,7 @@ public class CleanerRobot extends Bot {
 	public CleanerRobot() {
 		displacement = new Displacement(2, 1);
 		state = RobotState.pure;
-		nextPosition = new Coordinate(480, 480); // legyen a kiindulo ponttal
+		nextPosition = new Coordinate(420, 420); // legyen a kiindulo ponttal
 													// azonos
 		position = new Coordinate(420, 420);
 		lastPosition = new Coordinate(310, 310);
@@ -69,8 +70,8 @@ public class CleanerRobot extends Bot {
 		Barrier barrier = null;
 
 		for (JumpablePart parts : list) {
-			// System.out.println("Basek "+ parts.getBases().size()); //kivenni
-			for (Base base : parts.getBases()) {
+			for (int i = 0; i < parts.getBases().size(); i++) {
+				Base base = parts.getBases().get(i);
 				double tmp = Math.sqrt(Math.pow((position.getX() - base.getPosition().getX()), 2)
 						+ Math.pow((position.getY() - base.getPosition().getY()), 2));
 				if (tmp < distance && (base.getType().equals(BaseType.oil) || base.getType().equals(BaseType.putty))) {
@@ -101,10 +102,10 @@ public class CleanerRobot extends Bot {
 	}
 
 	public void jump(Track aTrack) {
-		// System.out.println("Cleaner jump");
 		synchronized (o) {
 			setState(RobotState.jump);
-			decideTheDirection(aTrack);
+			track = aTrack;
+			decideTheDirection();
 			setLastPosition(position);
 			setPosition(nextPosition);
 			trackPart.removeFromTrackPart(this);
@@ -118,35 +119,29 @@ public class CleanerRobot extends Bot {
 
 	public boolean isItJumpable(Track aTrack, Coordinate coord) {
 		if ((!(aTrack.findAPart(coord).getBase(coord).getType().equals(BaseType.edge)))) {
-
-			// this.displacement.setAngle(2);
-			// displacement.setVelocity(1);
 			return true;
-
 		}
 		return false;
 	}
-	
-	public Coordinate vectorRotation(Coordinate direction, double rot){
+
+	public Coordinate vectorRotation(Coordinate direction, double rot) {
 
 		this.displacement.setAngle(rot);
 
 		double leng = direction.legth();
 		Coordinate rotation = new Coordinate();
 
-		rotation.x = (direction.x * Math.cos(displacement.angle) - direction.y
-				* Math.sin(displacement.angle));
-		rotation.y = (direction.y * Math.cos(displacement.angle) + direction.x
-				* Math.sin(displacement.angle));
+		rotation.x = (direction.x * Math.cos(displacement.angle) - direction.y * Math.sin(displacement.angle));
+		rotation.y = (direction.y * Math.cos(displacement.angle) + direction.x * Math.sin(displacement.angle));
 		Coordinate dirNorm = new Coordinate();
 		dirNorm.normal(rotation);
 		leng = 20;
 		Coordinate coordinate1 = new Coordinate();
 		coordinate1.setX(fakeposition.x + leng * dirNorm.x);
 		coordinate1.setY(fakeposition.y + leng * dirNorm.y);
-
 		Coordinate dirnorm1 = new Coordinate();
 		dirnorm1.normal(coordinate1);
+		
 		return coordinate1;
 
 	}
@@ -158,22 +153,22 @@ public class CleanerRobot extends Bot {
 			Barrier b = this.nearestBarrier;
 			if (b == null)
 				return;
-
 			Coordinate direction = fakenextposition.difCoord(fakeposition);
-			double i = -1;
+			double i = 0;
 
 			while (!IsCoordOk) {
 				if (isItJumpable(aTrack, fakenextposition)) {
 					IsCoordOk = true;
-					this.displacement.setAngle(2);
 					displacement.setVelocity(1);
 				} else {
-					i = i - 0.1;
-					double rotationAnge = i*m;
+					double rotationAnge = i * m;
 					if (state.equals(RobotState.died))
 						return;
 
 					fakenextposition = vectorRotation(direction, rotationAnge);
+
+					i = i - 0.01;
+					
 				}
 			}
 		}
@@ -200,7 +195,6 @@ public class CleanerRobot extends Bot {
 				fakenextposition = fakeposition.addCoord(c);
 			else
 				fakenextposition = fakeposition.addCoord(dif);
-
 			findTheNewPoint(aTrack, m);
 		}
 
@@ -209,34 +203,42 @@ public class CleanerRobot extends Bot {
 	Coordinate fakeposition = new Coordinate();
 	Coordinate fakenextposition = new Coordinate();
 
-	public void decideTheDirection(Track track) {
+	public void decideTheDirection() {
 
 		List<Coordinate> list1 = new ArrayList<Coordinate>();
 		List<Coordinate> list2 = new ArrayList<Coordinate>();
+		
 		double d1 = 0;
 		double d2 = 0;
-
-		d1=calcThePath(track, list1, 1);
-		d2=calcThePath(track, list2, -1);
-
-		System.out.println("d1: " + d1 + " " + "d2: " + d2);
+		d1 = calcThePath(track, list1, 1);
+		d2 = calcThePath(track, list2, -1);
 
 		if (d1 < d2)
 			nextPosition = list1.get(0);
-		else
+		else if(d2<=d1 && d2!=0)
 			nextPosition = list2.get(0);
+		else {
+			nextPosition=lastPosition;
+		}
+		
 	}
 
 	public double calcThePath(Track track, List<Coordinate> l, int i) {
+		
 		fakeposition = position;
 		fakenextposition = position;
 		Barrier b = this.nearestBarrier;
+
 		Coordinate c = b.getPosition().difCoord(fakeposition);
 		double howfar = c.legth();
 		double distance = 0;
-
+		int rotationNumber=0;
+		
 		while (howfar > 0) {
-
+			if(rotationNumber>600){
+				i=i*(-1);
+				rotationNumber=0;
+			}
 			calcNextPosition(track, i);
 			l.add(fakenextposition);
 			Coordinate vector = fakeposition.difCoord(fakenextposition);
@@ -245,7 +247,9 @@ public class CleanerRobot extends Bot {
 			b = this.nearestBarrier;
 			c = b.getPosition().difCoord(fakeposition);
 			howfar = c.legth();
+			rotationNumber++;
 		}
+
 		return distance;
 	}
 
@@ -256,4 +260,10 @@ public class CleanerRobot extends Bot {
 	public void setPurpose(Coordinate purpose) {
 		this.purpose = purpose;
 	}
+
+	@Override
+	public void run() {
+		decideTheDirection();
+	}
+
 }

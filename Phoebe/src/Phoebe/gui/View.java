@@ -10,9 +10,11 @@ import java.util.Iterator;
  * Created by K�vesdi on 2015.05.01..
  */
 public class View {
-	public static int scale = 1;  //annak nyilvantartasa, hogy mennyivel kell valtoztatni a kep meretet a BasePainter hasznalja
+	public static int scale = 1; // annak nyilvantartasa, hogy mennyivel kell
+									// valtoztatni a kep meretet a BasePainter
+									// hasznalja
 
-	//listak az azonos tipusu Paintereknek
+	// listak az azonos tipusu Paintereknek
 	private static ArrayList<TrackPartPainter> trackPartPainters;
 	private static ArrayList<BarrierPainter> barrierPainters;
 	private static ArrayList<BotPainter> botPainters;
@@ -31,7 +33,7 @@ public class View {
 		score = new Score("V�geredm�ny");
 		menu.setVisible(true);
 	}
-	
+
 	public static ArrayList<TrackPartPainter> getTrackPartPainters() {
 		return trackPartPainters;
 	}
@@ -55,7 +57,7 @@ public class View {
 	public static void setBotPainters(ArrayList<BotPainter> botPainters) {
 		View.botPainters = botPainters;
 	}
-	
+
 	public static DrawPanel getDrawPanel() {
 		return drawPanel;
 	}
@@ -63,7 +65,7 @@ public class View {
 	public static void setDrawPanel(DrawPanel drawPanel) {
 		View.drawPanel = drawPanel;
 	}
-	
+
 	public static Menu getMenu() {
 		return menu;
 	}
@@ -79,7 +81,7 @@ public class View {
 	public static void setScore(Score score) {
 		View.score = score;
 	}
-	
+
 	public static NewGameMenu getNewGameMenu() {
 		return newGameMenu;
 	}
@@ -88,39 +90,48 @@ public class View {
 		View.newGameMenu = newGameMenu;
 	}
 
-	//Painter hozzaadasa TrackPartPainterek listajahoz
+	// Painter hozzaadasa TrackPartPainterek listajahoz
 	protected static void addToTrackPartPainters(TrackPartPainter trackPartPainter) {
-		trackPartPainters.add(trackPartPainter);
+		synchronized (trackPartPainters) {
+			trackPartPainters.add(trackPartPainter);
+
+		}
 	}
 
-	//Painter hozzadasa a BarrierPainter listajahoz
+	// Painter hozzadasa a BarrierPainter listajahoz
 	public static void addToBarrierPainters(BarrierPainter barrierPainter) {
-		barrierPainters.add(barrierPainter);
+		synchronized (barrierPainters) {
+			barrierPainters.add(barrierPainter);
+
+		}
 	}
 
-	//Painter hozzaadasa a BotPainterek listajahoz
+	// Painter hozzaadasa a BotPainterek listajahoz
 	public static void addToBotPainters(BotPainter botPainter) {
-		botPainters.add(botPainter);
+		synchronized (botPainters) {
+			botPainters.add(botPainter);
+		}
 	}
-	
-	public static void newGame(){
-        menu.setVisible(false);
-        newGameMenu.setVisible(true);
-    }
 
-    public static void backToMainMenu(){
-        score.setVisible(false);
-        menu.setVisible(true);
-    }
+	public static void newGame() {
+		menu.setVisible(false);
+		newGameMenu.setVisible(true);
+	}
 
-    public static void PlayTheGame(){
-        newGameMenu.setVisible(false);
-        playTheGame.setVisible(true);
-    }
-    public static void scoreGame(){
-        playTheGame.setVisible(false);
-        score.setVisible(true);
-    }
+	public static void backToMainMenu() {
+		score.setVisible(false);
+		menu.setVisible(true);
+	}
+
+	public static void PlayTheGame() {
+		newGameMenu.setVisible(false);
+		playTheGame.setVisible(true);
+	}
+
+	public static void scoreGame() {
+		playTheGame.setVisible(false);
+		score.setVisible(true);
+	}
 
 	public static PlayTheGame getPlayTheGame() {
 		return playTheGame;
@@ -129,51 +140,59 @@ public class View {
 	public static void setPlayTheGame(PlayTheGame playTheGame) {
 		View.playTheGame = playTheGame;
 	}
-	
-	public void reStart(){
+
+	public void reStart() {
 		trackPartPainters = new ArrayList<TrackPartPainter>();
 		barrierPainters = new ArrayList<BarrierPainter>();
 		botPainters = new ArrayList<BotPainter>();
 	}
 
-	//TrackPartokat tartlamazo listan iteralas, karbantartas, rajzolas
+	// TrackPartokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawTrackParts(Graphics g) {
-		for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
-			if (!painter.hasObservable()){
-				iterator.remove();
-			} else{
-				painter.onPaint(g);
+		synchronized (trackPartPainters) {
+			for (Iterator<TrackPartPainter> iterator = trackPartPainters.iterator(); iterator.hasNext();) {
+				Painter painter = iterator.next();
+				if (!painter.hasObservable()) {
+					iterator.remove();
+				} else {
+					painter.onPaint(g);
+				}
 			}
 		}
+		
 	}
 
-//	Barriereket tartlamazo listan iteralas, karbantartas, rajzolas
+	// Barriereket tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBarriers(Graphics g) {
-		for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
-			if (!painter.hasObservable()) {
-				iterator.remove();
-			} else {
-				painter.onPaint(g);
+		synchronized (barrierPainters) {
+			for (Iterator<BarrierPainter> iterator = barrierPainters.iterator(); iterator.hasNext();) {
+				Painter painter = iterator.next();
+				if (!painter.hasObservable()) {
+					iterator.remove();
+				} else {
+					painter.onPaint(g);
+				}
 			}
 		}
 	}
-	
 
-	//Botokat tartlamazo listan iteralas, karbantartas, rajzolas
+	// Botokat tartlamazo listan iteralas, karbantartas, rajzolas
 	public static void drawBots(Graphics g) {
-		for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
-			Painter painter = iterator.next();
-			if (!painter.hasObservable()) {
-				iterator.remove();
-			} else {
-				painter.onPaint(g);
+		synchronized (botPainters) {
+			for (Iterator<BotPainter> iterator = botPainters.iterator(); iterator.hasNext();) {
+				Painter painter = iterator.next();
+				if (!painter.hasObservable()) {
+					iterator.remove();
+				} else {
+					painter.onPaint(g);
+				}
 			}
 		}
+	
 	}
 
-	//elemek kirajzolasa, nincs kitakaras
+
+	// elemek kirajzolasa, nincs kitakaras
 	public static void drawImage(Graphics g) {
 		drawTrackParts(g);
 		drawBarriers(g);
