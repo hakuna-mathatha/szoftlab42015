@@ -25,6 +25,8 @@ public class Control {
 	private static Timer timerCleaner;
 	private Timer time;
 	private int gametime;
+        private int cleanReplaceTime;
+      
 
 	public Control() {
 		controlPlayTheGame = new ControlPlayTheGame(game);
@@ -100,7 +102,8 @@ public class Control {
 		game.getTrack().create(index);
 		game.addRobotToTheGame(new Coordinate(110, 15), new Displacement(0.1, 1), 1);
 		game.addRobotToTheGame(new Coordinate(20, 70), new Displacement(0.1, 1), 2);
-		
+                
+                cleanReplaceTime = 0;		
 		
 		CleanerRobot clean = new CleanerRobot();
 		TrackPart t = game.getTrack().findAPart(clean.getPosition());
@@ -109,6 +112,20 @@ public class Control {
 		clean.selectNearestBarrier(game.getTrack());
 		game.getCleanersList().add(clean);
 	}
+        
+        public void addNewClearner()
+        {
+            cleanReplaceTime++;
+            if(cleanReplaceTime == 3){
+                CleanerRobot clean = new CleanerRobot();
+		TrackPart t = game.getTrack().findAPart(clean.getPosition());
+		t.addBase(clean, clean.getPosition());
+		clean.setTrackPart(t);
+		clean.selectNearestBarrier(game.getTrack());
+		game.getCleanersList().add(clean);
+                cleanReplaceTime = 0;
+            }
+        }
 
 	public void startTimerForRounds() {
 		TimerTask roundTimer = new TimerForTheRounds();
@@ -124,7 +141,7 @@ public class Control {
 				died = false;
 			}
 		}
-		if (died && game.getCleanersList().size() == 0) {
+		if (died) {
 			timer.cancel();
 			time.cancel();
 			View.getPlayTheGame().getTime().setText("GAME OVER");
@@ -138,6 +155,7 @@ public class Control {
 		@Override
 		public void run() {
 			game.start();
+                        addNewClearner();
 			View.getDrawPanel().repaint();
 			whenToStopTheTimer();
 		}
