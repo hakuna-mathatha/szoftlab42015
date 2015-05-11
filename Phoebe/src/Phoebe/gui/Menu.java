@@ -18,11 +18,11 @@ public class Menu extends JFrame {
         JPanel panel = new JPanel();
 //      Új játék gomb
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        btn_newgame= new JButton("Új játék");
+        btn_newgame= new JButton("New Game");
         btn_newgame.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn_newgame);
 //      Kilépés gomb
-        btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Exit");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn_exit);
         EmptyBorder border = new EmptyBorder(80, 0, 0, 0);

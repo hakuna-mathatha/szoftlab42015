@@ -39,11 +39,11 @@ public class Score extends JFrame {
 
         JPanel panel13 = new JPanel();
         panel13.setLayout(new FlowLayout());
-        btn_back= new JButton("Vissza a főmenübe");
+        btn_back= new JButton("Back to the Main Menu");
         btn_back.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_back);
         // Kilépés gomb
-        btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Exit");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel13.add(btn_exit);
 

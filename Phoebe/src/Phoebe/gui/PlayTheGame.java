@@ -66,12 +66,12 @@ public class PlayTheGame extends JFrame{
         jPanel2.add(oilRepo2);
         jPanel2.add(puttyRepo2);
         jPanel2.add(Box.createRigidArea(new Dimension(0,100)));
-        btn_score=new JButton("Végeredmény");
+        btn_score=new JButton("Score");
         btn_score.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel2.add(btn_score);
 
         //Kilepes gomb
-        btn_exit=new JButton("Kilépés");
+        btn_exit=new JButton("Exit");
         btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel2.add(btn_exit);
         jPanel2.add(time);

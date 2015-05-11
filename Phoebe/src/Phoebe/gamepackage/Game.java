@@ -88,7 +88,6 @@ public class Game {
 	
 	public void startTheRobots(){
 		for(Robot rob : robots){
-			 System.out.println(rob.getId()+" "+rob.getState());
 			 if(rob.state.equals(RobotState.died) == true)
 				 continue;
 			 else{

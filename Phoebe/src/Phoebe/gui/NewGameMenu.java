@@ -25,14 +25,14 @@ public class NewGameMenu extends JFrame {
 		JPanel panel11 = new JPanel();
 		panel11.setLayout(new FlowLayout());
 		comboBox = new JComboBox<String>(maps);
-		btn_loadmap = new JButton("Betöltés");
+		btn_loadmap = new JButton("Load Map");
 		btn_loadmap.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel11.add(comboBox);
 		panel11.add(btn_loadmap);
 		panel.add(panel11);
 
 		// Kilépés gomb
-		btn_exit = new JButton("Kilépés");
+		btn_exit = new JButton("Exit");
 		btn_exit.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(btn_exit);
 		EmptyBorder border = new EmptyBorder(80, 0, 0, 0);
