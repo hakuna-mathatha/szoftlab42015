@@ -150,7 +150,6 @@ public class Robot extends Bot {
 			//Observer levalasztasa
 			detachObserver();
 		} else if (aBot.getType().equals(BaseType.cleanerRobot)) {
-			System.out.println("ra ugrott");   //kivenni
 			Displacement disp = new Displacement();
 			disp = aBot.getDisplacement();
 			double velocity = aBot.getDisplacement().getVelocity();
@@ -188,7 +187,6 @@ public class Robot extends Bot {
 			if ((puttyReporitory > 0 ) && (getState() != RobotState.died)) {
 				trackPart.addBase(barrier, position);
 				reducePuttyRepository();
-				System.out.println("Putt putty");
 			    }
 			}
 		}
