@@ -110,8 +110,15 @@ public class ControlPlayTheGame {
 			Control.getTimer().cancel();
 			Control.getTimerCleaner().cancel();
 			Control.getTime().cancel();
-            double res1 = game.getRobotList().get(0).getDistance();
-            double res2 = game.getRobotList().get(1).getDistance();
+			double res1=0;
+			double res2=0;
+			for(Robot r : game.getRobotList()){
+				if(r.getId()==1)
+					res1 = r.getDistance();
+				else if(r.getId()==2)
+		            res2 = r.getDistance();
+
+			}
             DecimalFormat df = new DecimalFormat("#.00");
             View.getScore().getPlayer1_score().setText(String.valueOf(df.format(res1)));
             View.getScore().getPlayer2_score().setText(String.valueOf(df.format(res2)));

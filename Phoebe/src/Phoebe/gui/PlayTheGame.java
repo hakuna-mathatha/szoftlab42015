@@ -66,7 +66,7 @@ public class PlayTheGame extends JFrame{
         jPanel2.add(oilRepo2);
         jPanel2.add(puttyRepo2);
         jPanel2.add(Box.createRigidArea(new Dimension(0,100)));
-        btn_score=new JButton("Score");
+        btn_score=new JButton("Results");
         btn_score.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel2.add(btn_score);
 

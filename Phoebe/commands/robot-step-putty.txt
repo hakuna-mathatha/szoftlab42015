@@ -1,4 +1,0 @@
-newgame
-placeRobot 2;2 0;2 0;2
-placeBarrier putty 6;2
-start
