@@ -187,7 +187,6 @@ public class Robot extends Bot {
 			if ((puttyReporitory > 0 ) && (getState() != RobotState.died)) {
 				trackPart.addBase(barrier, position);
 				reducePuttyRepository();
-				System.out.println("Putt putty");
 			    }
 			}
 		}

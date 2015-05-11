@@ -147,8 +147,6 @@ public class Control {
 		}
 		if (died) {
 			stopEverything();
-			// View.scoreGame();
-
 		}
 	}
 	
@@ -174,14 +172,12 @@ public class Control {
 		TimerTask roundTimer = new TimerForTheRoundsCleaner();
 		this.timerCleaner = new Timer();
 		this.timerCleaner.schedule(roundTimer, 1 * 1000, 558);
-
 	}
 
 	public boolean whenToStopTheTimerCleaner() {
 		if (game.getCleanersList().size() == 0) {
 			timerCleaner.cancel();
 			return true;
-
 		}
 		return false;
 	}
@@ -194,7 +190,6 @@ public class Control {
 				game.startTheCleaners();
 				View.getDrawPanel().repaint();
 			}
-
 		}
 	}
 
@@ -207,15 +202,12 @@ public class Control {
 	}
 
 	private class GameTime extends TimerTask {
-
 		@Override
 		public void run() {
 			gametime++;
 			View.getPlayTheGame().getTime().setText(gametime + "");
 			if(gametime==120)
 				stopEverything();
-
 		}
-
 	}
 }

@@ -1,8 +1,8 @@
 package Phoebe.gamepackage;
 import Phoebe.Controller.Control;
 import Phoebe.trackpackage.Coordinate;
-import Phoebe.trackpackage.Putty;
 import Phoebe.trackpackage.Track;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,7 +48,6 @@ public class Game {
     	Robot robot = new Robot(position,disp,id);
     	robot.setTrackPart(track.findAPart(robot.getPosition()));
     	robots.add(robot);
-//    	robot.putTheBarrier(new Putty(robot.getPosition(), robot.getTrackPart()));
     }
 
 	public synchronized void start() {
